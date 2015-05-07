@@ -30,7 +30,7 @@
         <!--Recently Heard-->
         <scene sceneID="MMi-W1-KaJ">
             <objects>
-                <viewController id="IXz-HG-hIe" customClass="MapViewController" customModule="KRLX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IXz-HG-hIe" customClass="RecentlyHeardViewController" customModule="KRLX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1V6-Hn-ruu"/>
                         <viewControllerLayoutGuide type="bottom" id="GLp-rp-ryS"/>
@@ -61,7 +61,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="95EEBA94-1AB7-4D9E-BCAA-2056D380BE49" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DDCB9ADF-B5E3-4581-8CAA-1DD5900B14C8" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="qh2-Mp-BC7"/>
@@ -269,10 +269,10 @@
             </objects>
             <point key="canvasLocation" x="2577" y="-686"/>
         </scene>
-        <!--View Controller-->
+        <!--News Article View Controller-->
         <scene sceneID="ZLG-W5-BUX">
             <objects>
-                <viewController id="ODg-Gj-bjw" sceneMemberID="viewController">
+                <viewController id="ODg-Gj-bjw" userLabel="News Article View Controller" customClass="AriticleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WBN-QW-bTH"/>
                         <viewControllerLayoutGuide type="bottom" id="EGS-b2-Hvg"/>
@@ -832,7 +832,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="95EEBA94-1AB7-4D9E-BCAA-2056D380BE49" width="300" height="300">
+        <image name="DDCB9ADF-B5E3-4581-8CAA-1DD5900B14C8" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

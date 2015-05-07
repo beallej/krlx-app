@@ -6,6 +6,10 @@
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.$(PRODUCT_NAME:rfc1034identifier)pert</string>
 	<key>CFBundleInfoDictionaryVersion</key>

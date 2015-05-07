@@ -25,6 +25,12 @@ class MenuController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    
+    
+//    func test:(sender: id) -> IBAction {
+//    self.test = !self.test;
+//    [self setNeedsStatusBarAppearanceUpdate];
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
