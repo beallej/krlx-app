@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="UPz-hM-whG" detailTextLabel="cSG-uf-kSk" rowHeight="63" style="IBUITableViewCellStyleSubtitle" id="g42-5U-yNu">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="firstSong" textLabel="UPz-hM-whG" detailTextLabel="cSG-uf-kSk" rowHeight="63" style="IBUITableViewCellStyleSubtitle" id="g42-5U-yNu">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g42-5U-yNu" id="Yct-OF-Ca4">
@@ -61,7 +61,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DDCB9ADF-B5E3-4581-8CAA-1DD5900B14C8" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B606EED7-8A7B-4891-BF97-B79F13AD8D34" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="qh2-Mp-BC7"/>
@@ -104,7 +104,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="YKx-IS-zwE" detailTextLabel="99r-Lj-e79" style="IBUITableViewCellStyleSubtitle" id="W8n-90-v0y">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="otherSong" textLabel="YKx-IS-zwE" detailTextLabel="99r-Lj-e79" style="IBUITableViewCellStyleSubtitle" id="W8n-90-v0y">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W8n-90-v0y" id="GoN-P9-aAr">
@@ -284,9 +284,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U81-Vi-Jpm">
                                 <rect key="frame" x="16" y="157" width="568" height="1443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1458" id="ngf-bx-WvX"/>
-                                </constraints>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="-100" maxX="0.0" maxY="0.0"/>
                                 <string key="text">Winter –Supreme Blue Dream
 
@@ -370,16 +367,9 @@ Published: 28 April 2015 ~ Category: Music
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dateImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="a8m-E5-DWd">
                                 <rect key="frame" x="16" y="80" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="N8I-r1-yru"/>
-                                    <constraint firstAttribute="height" constant="35" id="gU9-TM-ytk"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="• New Music Week 4 •" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch6-S2-tsP">
                                 <rect key="frame" x="197" y="80" width="207" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="4nE-yG-2GU"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -387,20 +377,7 @@ Published: 28 April 2015 ~ Category: Music
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a8m-E5-DWd" firstAttribute="leading" secondItem="1ux-8Q-Mwo" secondAttribute="leadingMargin" id="1CP-LG-m5s"/>
-                            <constraint firstItem="ch6-S2-tsP" firstAttribute="top" secondItem="a8m-E5-DWd" secondAttribute="top" id="61q-01-Ng6"/>
-                            <constraint firstItem="EGS-b2-Hvg" firstAttribute="top" secondItem="dPh-xC-5Gc" secondAttribute="bottom" constant="451" id="6Kx-Lj-M4V"/>
                             <constraint firstItem="ch6-S2-tsP" firstAttribute="top" secondItem="a8m-E5-DWd" secondAttribute="top" id="O2G-L5-GvH"/>
-                            <constraint firstItem="U81-Vi-Jpm" firstAttribute="leading" secondItem="1ux-8Q-Mwo" secondAttribute="leadingMargin" id="W5n-Zp-7QB"/>
-                            <constraint firstAttribute="centerX" secondItem="dPh-xC-5Gc" secondAttribute="centerX" id="ZTH-xj-xKa"/>
-                            <constraint firstItem="dPh-xC-5Gc" firstAttribute="top" secondItem="ch6-S2-tsP" secondAttribute="bottom" constant="9" id="Zas-3H-0nG"/>
-                            <constraint firstItem="U81-Vi-Jpm" firstAttribute="leading" secondItem="1ux-8Q-Mwo" secondAttribute="leadingMargin" id="a09-L4-kGO"/>
-                            <constraint firstItem="U81-Vi-Jpm" firstAttribute="top" secondItem="a8m-E5-DWd" secondAttribute="bottom" constant="27" id="b27-sJ-5UC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="U81-Vi-Jpm" secondAttribute="trailing" id="d4b-8E-hnW"/>
-                            <constraint firstItem="dPh-xC-5Gc" firstAttribute="trailing" secondItem="1ux-8Q-Mwo" secondAttribute="trailingMargin" id="mws-J2-J3V"/>
-                            <constraint firstItem="dPh-xC-5Gc" firstAttribute="top" secondItem="ch6-S2-tsP" secondAttribute="bottom" constant="9" id="ovc-bh-YcY"/>
-                            <constraint firstItem="a8m-E5-DWd" firstAttribute="top" secondItem="WBN-QW-bTH" secondAttribute="bottom" constant="16" id="qyf-VW-EFM"/>
-                            <constraint firstItem="ch6-S2-tsP" firstAttribute="centerX" secondItem="dPh-xC-5Gc" secondAttribute="centerX" id="zxy-1s-tFy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -638,7 +615,6 @@ DJ: Ibrahim Rabbani</string>
                         <constraints>
                             <constraint firstItem="IL0-tN-Stk" firstAttribute="bottom" secondItem="VBi-dM-ohh" secondAttribute="top" id="0P4-sR-0DP"/>
                             <constraint firstAttribute="centerX" secondItem="t6F-tM-TeV" secondAttribute="centerX" id="94Q-QJ-Jxf"/>
-                            <constraint firstAttribute="centerX" secondItem="Lhx-um-2Nz" secondAttribute="centerX" id="9n5-CC-YYP"/>
                             <constraint firstItem="IL0-tN-Stk" firstAttribute="top" secondItem="pBu-io-TV5" secondAttribute="top" id="EnU-Ud-uPS"/>
                             <constraint firstAttribute="centerX" secondItem="Cuq-eU-HWN" secondAttribute="centerX" id="Rcr-Ur-aMk"/>
                             <constraint firstAttribute="trailing" secondItem="IL0-tN-Stk" secondAttribute="trailing" id="Tpr-2c-fKS"/>
@@ -747,12 +723,14 @@ DJ: Ibrahim Rabbani</string>
                                     <constraint firstItem="dqe-Um-Zic" firstAttribute="centerY" secondItem="HiX-jQ-Q7d" secondAttribute="centerY" constant="-8" id="l80-66-vxE"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="385-YP-G0T">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="385-YP-G0T">
                                 <rect key="frame" x="0.0" y="237" width="600" height="363"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.93725496529999996" blue="0.87843143940000001" alpha="0.41999999999999998" colorSpace="deviceRGB"/>
+                                <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="WFm-Cd-isr">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="showCell" rowHeight="44" id="WFm-Cd-isr">
                                         <rect key="frame" x="0.0" y="0.0" width="613" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="WFm-Cd-isr" id="aMt-3T-yg1">
@@ -785,6 +763,7 @@ DJ: Ibrahim Rabbani</string>
                         <constraints>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="top" secondItem="J4s-kV-VwT" secondAttribute="bottom" constant="5" id="Bji-iN-vGI"/>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="leading" secondItem="6vP-qc-Sqk" secondAttribute="leading" id="L0h-dA-oyF"/>
+                            <constraint firstItem="2yk-do-Arp" firstAttribute="top" secondItem="HiX-jQ-Q7d" secondAttribute="bottom" id="NeL-kW-Qum"/>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="trailing" secondItem="J4s-kV-VwT" secondAttribute="trailing" id="ROE-He-uRZ"/>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="leading" secondItem="J4s-kV-VwT" secondAttribute="leading" id="cu5-8a-sZc"/>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="top" secondItem="6vP-qc-Sqk" secondAttribute="top" constant="113" id="eV9-sy-cvr"/>
@@ -832,7 +811,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="DDCB9ADF-B5E3-4581-8CAA-1DD5900B14C8" width="300" height="300">
+        <image name="B606EED7-8A7B-4891-BF97-B79F13AD8D34" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
