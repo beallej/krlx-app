@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController {
+class ScheduleViewController: UIViewController {
     @IBOutlet weak var menuButton:UIBarButtonItem!
 
     override func viewDidLoad() {

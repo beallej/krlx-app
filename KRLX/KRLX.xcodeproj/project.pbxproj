@@ -10,21 +10,17 @@
 		330BCCFB1AF1C6B400C8CCED /* musicIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 330BCCF71AF1C6B400C8CCED /* musicIcon.jpg */; };
 		330BCCFC1AF1C6B400C8CCED /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCCF81AF1C6B400C8CCED /* microphone.png */; };
 		330BCCFD1AF1C6B400C8CCED /* newsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCCF91AF1C6B400C8CCED /* newsIcon.png */; };
-		330BCCFE1AF1C6B400C8CCED /* schedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCCFA1AF1C6B400C8CCED /* schedule.png */; };
 		330BCD011AF1C91000C8CCED /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCCFF1AF1C91000C8CCED /* calendar.png */; };
-		330BCD021AF1C91000C8CCED /* recentMusic.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCD001AF1C91000C8CCED /* recentMusic.png */; };
 		330BCD051AF1CA1400C8CCED /* krlxSchedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCD031AF1CA1400C8CCED /* krlxSchedule.png */; };
 		330BCD061AF1CA1400C8CCED /* recentMusicIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCD041AF1CA1400C8CCED /* recentMusicIcon.png */; };
 		339075D01AF188D70083BF15 /* krlx.png in Resources */ = {isa = PBXBuildFile; fileRef = 339075CF1AF188D70083BF15 /* krlx.png */; };
-		339075D21AF18E990083BF15 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 339075D11AF18E990083BF15 /* volume.png */; };
 		BD286CD31AEF0BA10021B036 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD286CD21AEF0BA10021B036 /* SWRevealViewController.m */; };
-		BD286CD71AF055310021B036 /* musicBackground1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD286CD61AF055310021B036 /* musicBackground1.jpg */; };
 		BD286CD91AF067930021B036 /* dateImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286CD81AF067930021B036 /* dateImage.png */; };
 		BD286CDB1AF0688B0021B036 /* musicBackground1.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286CDA1AF0688B0021B036 /* musicBackground1.png */; };
 		BD286D111AF1B1240021B036 /* callMeMaybe.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D101AF1B1240021B036 /* callMeMaybe.png */; };
 		BD286D131AF20C4D0021B036 /* PhonographRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D121AF20C4D0021B036 /* PhonographRecord.png */; };
 		BD286D151AF2F1080021B036 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D141AF2F1080021B036 /* play.png */; };
-		BD6336061AF847360022AC58 /* sideBarPic1.png in Resources */ = {isa = PBXBuildFile; fileRef = BD6336041AF847360022AC58 /* sideBarPic1.png */; };
+		BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */; };
 		BD6336071AF847360022AC58 /* sideBarPic2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD6336051AF847360022AC58 /* sideBarPic2.png */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FB1A7F27DB00E30A3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47029F91A7F27DB00E30A3C /* Main.storyboard */; };
@@ -34,8 +30,8 @@
 		F4702A181A7F351C00E30A3C /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4702A171A7F351C00E30A3C /* MenuController.swift */; };
 		F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491E7491A7F4B300026528E /* NewsTableViewController.swift */; };
 		F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491E74B1A7F4C630026528E /* NewsTableViewCell.swift */; };
-		F491E7531A7F7DF20026528E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491E7521A7F7DF20026528E /* MapViewController.swift */; };
-		F491E7551A7F7E010026528E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491E7541A7F7E010026528E /* PhotoViewController.swift */; };
+		F491E7531A7F7DF20026528E /* RecentlyHeardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491E7521A7F7DF20026528E /* RecentlyHeardViewController.swift */; };
+		F491E7551A7F7E010026528E /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491E7541A7F7E010026528E /* ScheduleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,23 +48,19 @@
 		330BCCF71AF1C6B400C8CCED /* musicIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = musicIcon.jpg; sourceTree = "<group>"; };
 		330BCCF81AF1C6B400C8CCED /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		330BCCF91AF1C6B400C8CCED /* newsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsIcon.png; sourceTree = "<group>"; };
-		330BCCFA1AF1C6B400C8CCED /* schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule.png; sourceTree = "<group>"; };
 		330BCCFF1AF1C91000C8CCED /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
-		330BCD001AF1C91000C8CCED /* recentMusic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recentMusic.png; sourceTree = "<group>"; };
 		330BCD031AF1CA1400C8CCED /* krlxSchedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = krlxSchedule.png; sourceTree = "<group>"; };
 		330BCD041AF1CA1400C8CCED /* recentMusicIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recentMusicIcon.png; sourceTree = "<group>"; };
 		339075CF1AF188D70083BF15 /* krlx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = krlx.png; sourceTree = "<group>"; };
-		339075D11AF18E990083BF15 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
 		BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KRLX-Bridging-Header.h"; sourceTree = "<group>"; };
 		BD286CD11AEF0BA10021B036 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		BD286CD21AEF0BA10021B036 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		BD286CD61AF055310021B036 /* musicBackground1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = musicBackground1.jpg; sourceTree = "<group>"; };
 		BD286CD81AF067930021B036 /* dateImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dateImage.png; sourceTree = "<group>"; };
 		BD286CDA1AF0688B0021B036 /* musicBackground1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicBackground1.png; sourceTree = "<group>"; };
 		BD286D101AF1B1240021B036 /* callMeMaybe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callMeMaybe.png; sourceTree = "<group>"; };
 		BD286D121AF20C4D0021B036 /* PhonographRecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhonographRecord.png; sourceTree = "<group>"; };
 		BD286D141AF2F1080021B036 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
-		BD6336041AF847360022AC58 /* sideBarPic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sideBarPic1.png; sourceTree = "<group>"; };
+		BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		BD6336051AF847360022AC58 /* sideBarPic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sideBarPic2.png; sourceTree = "<group>"; };
 		F47029F01A7F27DB00E30A3C /* KRLX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRLX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F41A7F27DB00E30A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,8 +74,8 @@
 		F4702A171A7F351C00E30A3C /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		F491E7491A7F4B300026528E /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		F491E74B1A7F4C630026528E /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
-		F491E7521A7F7DF20026528E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		F491E7541A7F7E010026528E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		F491E7521A7F7DF20026528E /* RecentlyHeardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyHeardViewController.swift; sourceTree = "<group>"; };
+		F491E7541A7F7E010026528E /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,10 +135,11 @@
 				F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */,
 				F47029F31A7F27DB00E30A3C /* Supporting Files */,
 				F4702A171A7F351C00E30A3C /* MenuController.swift */,
+				BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */,
 				F491E7491A7F4B300026528E /* NewsTableViewController.swift */,
 				F491E74B1A7F4C630026528E /* NewsTableViewCell.swift */,
-				F491E7521A7F7DF20026528E /* MapViewController.swift */,
-				F491E7541A7F7E010026528E /* PhotoViewController.swift */,
+				F491E7521A7F7DF20026528E /* RecentlyHeardViewController.swift */,
+				F491E7541A7F7E010026528E /* ScheduleViewController.swift */,
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 			);
 			path = KRLX;
@@ -159,19 +152,14 @@
 				BD286D141AF2F1080021B036 /* play.png */,
 				330BCD041AF1CA1400C8CCED /* recentMusicIcon.png */,
 				330BCCFF1AF1C91000C8CCED /* calendar.png */,
-				330BCD001AF1C91000C8CCED /* recentMusic.png */,
 				330BCCF71AF1C6B400C8CCED /* musicIcon.jpg */,
 				330BCCF81AF1C6B400C8CCED /* microphone.png */,
 				BD286D121AF20C4D0021B036 /* PhonographRecord.png */,
 				330BCCF91AF1C6B400C8CCED /* newsIcon.png */,
-				330BCCFA1AF1C6B400C8CCED /* schedule.png */,
-				339075D11AF18E990083BF15 /* volume.png */,
-				BD6336041AF847360022AC58 /* sideBarPic1.png */,
 				BD6336051AF847360022AC58 /* sideBarPic2.png */,
 				339075CF1AF188D70083BF15 /* krlx.png */,
 				BD286D101AF1B1240021B036 /* callMeMaybe.png */,
 				BD286CD81AF067930021B036 /* dateImage.png */,
-				BD286CD61AF055310021B036 /* musicBackground1.jpg */,
 				BD286CDA1AF0688B0021B036 /* musicBackground1.png */,
 				F47029F41A7F27DB00E30A3C /* Info.plist */,
 			);
@@ -287,17 +275,12 @@
 				F47029FB1A7F27DB00E30A3C /* Main.storyboard in Resources */,
 				BD286D131AF20C4D0021B036 /* PhonographRecord.png in Resources */,
 				330BCCFC1AF1C6B400C8CCED /* microphone.png in Resources */,
-				BD286CD71AF055310021B036 /* musicBackground1.jpg in Resources */,
-				330BCCFE1AF1C6B400C8CCED /* schedule.png in Resources */,
 				F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */,
 				330BCD011AF1C91000C8CCED /* calendar.png in Resources */,
 				BD286D151AF2F1080021B036 /* play.png in Resources */,
 				330BCCFB1AF1C6B400C8CCED /* musicIcon.jpg in Resources */,
-				339075D21AF18E990083BF15 /* volume.png in Resources */,
 				339075D01AF188D70083BF15 /* krlx.png in Resources */,
 				F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */,
-				BD6336061AF847360022AC58 /* sideBarPic1.png in Resources */,
-				330BCD021AF1C91000C8CCED /* recentMusic.png in Resources */,
 				BD6336071AF847360022AC58 /* sideBarPic2.png in Resources */,
 				BD286CDB1AF0688B0021B036 /* musicBackground1.png in Resources */,
 			);
@@ -321,9 +304,10 @@
 				F4702A181A7F351C00E30A3C /* MenuController.swift in Sources */,
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
 				F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */,
-				F491E7531A7F7DF20026528E /* MapViewController.swift in Sources */,
+				BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */,
+				F491E7531A7F7DF20026528E /* RecentlyHeardViewController.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,
-				F491E7551A7F7E010026528E /* PhotoViewController.swift in Sources */,
+				F491E7551A7F7E010026528E /* ScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
