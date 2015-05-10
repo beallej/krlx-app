@@ -7,14 +7,26 @@
 //
 
 import UIKit
+import MediaPlayer
+import AVFoundation
 
-class LiveStreamViewController: UIViewController {
-    
+class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
+    //"radio.krlx.org/mp3/high_quality.m3u"
+    //var audioPlayer: AVAudioPlayer?
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
+    @IBOutlet weak var playButton: UIButton!
+    
+    var moviePlayer:MPMoviePlayerController!
+    //var player:AVPlayer = AVPlayer(URL: NSURL(string: "radio.krlx.org/mp3/high_quality.m3u"))
+    
+    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        playButton.setTitle("Play", forState: UIControlState.Normal)
+
+
+
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -25,10 +37,35 @@ class LiveStreamViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func buttonPressed(sender: AnyObject) {
+        toggle()
+    }
+    
+    func toggle() {
+        if playButton.titleLabel?.text == "Play" {
+            playRadio()
+        } else {
+            pauseRadio()
+        }
+    }
+    
+    func playRadio() {
+        player.play()
+        playButton.setTitle("Pause", forState: UIControlState.Normal)
+    }
+    
+    func pauseRadio() {
+        player.pause()
+        playButton.setTitle("Play", forState: UIControlState.Normal)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     
     /*
