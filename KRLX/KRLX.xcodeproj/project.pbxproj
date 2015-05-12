@@ -67,7 +67,6 @@
 		BD286D141AF2F1080021B036 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BD365C621B02801700BF946A /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		BD365C631B02801700BF946A /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
-		BD365C641B02801700BF946A /* Swift-HTML-Parser-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-HTML-Parser-Bridging-Header.h"; sourceTree = "<group>"; };
 		BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		BD6336051AF847360022AC58 /* sideBarPic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sideBarPic2.png; sourceTree = "<group>"; };
@@ -139,7 +138,6 @@
 			children = (
 				BD365C621B02801700BF946A /* HTMLNode.swift */,
 				BD365C631B02801700BF946A /* HTMLParser.swift */,
-				BD365C641B02801700BF946A /* Swift-HTML-Parser-Bridging-Header.h */,
 				BD286CCF1AEF0B7E0021B036 /* SWRevealViewController */,
 				F47029F51A7F27DB00E30A3C /* AppDelegate.swift */,
 				F47029F91A7F27DB00E30A3C /* Main.storyboard */,
