@@ -20,7 +20,7 @@ class NewsTableViewController: UITableViewController {
         }
      
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
-            
+            self.scrape()
             dispatch_async(dispatch_get_main_queue()) {
                 // 2
                 // This is where you would reload the tableview with all the scraped thingies.
