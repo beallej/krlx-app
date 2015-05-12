@@ -18,6 +18,24 @@ class NewsTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+     
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                // 2
+                // This is where you would reload the tableview with all the scraped thingies.
+                print("Done!")
+            }
+        }
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func scrape(){
         let myURLString = "http://www.krlx.org/"
         
         if let myURL = NSURL(string: myURLString) {
@@ -65,12 +83,9 @@ class NewsTableViewController: UITableViewController {
         } else {
             println("Error: \(myURLString) doesn't seem to be a valid URL")
         }
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,5 +178,25 @@ class NewsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
+}
+
+class ArticleHeader {
+    var author : String
+    var title : String
+    var date : NSDate
+    
+    init (authorString: String, titleString: String, dateString: String){
+        self.author = authorString
+        self.title = titleString
+      
+        var dateFormat = NSDateFormatter()
+      
+        dateFormat.dateFormat = "yyyy-MM-dd"
+        var dateFromString = dateFormat.dateFromString(dateString);
+        self.date = dateFromString!
+
+    }
 }
