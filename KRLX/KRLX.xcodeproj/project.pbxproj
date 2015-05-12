@@ -23,6 +23,7 @@
 		BD286D151AF2F1080021B036 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D141AF2F1080021B036 /* play.png */; };
 		BD365C651B02801700BF946A /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C621B02801700BF946A /* HTMLNode.swift */; };
 		BD365C661B02801700BF946A /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C631B02801700BF946A /* HTMLParser.swift */; };
+		BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD365C671B02820400BF946A /* libxml2.dylib */; };
 		BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */; };
 		BD55116F1AFBF7BE0016AEFA /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */; };
 		BD6336071AF847360022AC58 /* sideBarPic2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD6336051AF847360022AC58 /* sideBarPic2.png */; };
@@ -67,6 +68,7 @@
 		BD286D141AF2F1080021B036 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BD365C621B02801700BF946A /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		BD365C631B02801700BF946A /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
+		BD365C671B02820400BF946A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		BD6336051AF847360022AC58 /* sideBarPic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sideBarPic2.png; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */,
 				F4702A161A7F342F00E30A3C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +120,7 @@
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
+				BD365C671B02820400BF946A /* libxml2.dylib */,
 				F4702A151A7F342F00E30A3C /* MapKit.framework */,
 				F47029F21A7F27DB00E30A3C /* KRLX */,
 				F4702A081A7F27DC00E30A3C /* KRLXTests */,
@@ -398,6 +402,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -434,6 +443,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
