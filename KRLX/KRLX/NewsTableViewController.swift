@@ -18,29 +18,25 @@ class NewsTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        let html = "<html><head></head><body><ul><li><input type='image' name='input1' value='string1value' class='abc' /></li><li><input type='image' name='input2' value='string2value' class='def' /></li></ul><span class='spantext'><b>Hello World 1</b></span><span class='spantext'><b>Hello World 2</b></span><a href='example.com'>example(English)</a><a href='example.co.jp'>example(JP)</a></body>"
-        
-        var err : NSError?
-        var parser     = HTMLParser(html: html, error: &err)
-        if err != nil {
-            println(err)
-            exit(1)
-        }
-        
-        var bodyNode   = parser.body
-        
-        if let inputNodes = bodyNode?.findChildTags("b") {
-            for node in inputNodes {
-                println(node.contents)
+   
+     
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                // 2
+                // This is where you would reload the tableview with all the scraped thingies.
+                print("Done!")
             }
         }
         
-        if let inputNodes = bodyNode?.findChildTags("a") {
-            for node in inputNodes {
-                println(node.contents)
-                println(node.getAttributeNamed("href"))
-            }
-        }
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func scrape(){
         let myURLString = "http://www.krlx.org/"
         
         if let myURL = NSURL(string: myURLString) {
@@ -50,17 +46,29 @@ class NewsTableViewController: UITableViewController {
             if let error = error {
                 println("Error : \(error)")
             } else {
-                //println("HTML : \(myHTMLString)")
+                let html = myHTMLString as! String
+                var err : NSError?
+                var parser     = HTMLParser(html: html, error: &err)
+                if err != nil {
+                    println(err)
+                    exit(1)
+                }
+                
+                var bodyNode   = parser.body
+                
+                if let inputNodes = bodyNode?.findChildTags("article-header") {
+                    for node in inputNodes {
+                        println(node.contents)
+                    }
+                }
+                
             }
         } else {
             println("Error: \(myURLString) doesn't seem to be a valid URL")
         }
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -153,5 +161,25 @@ class NewsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
+}
+
+class ArticleHeader {
+    var author : String
+    var title : String
+    var date : NSDate
+    
+    init (authorString: String, titleString: String, dateString: String){
+        self.author = authorString
+        self.title = titleString
+      
+        var dateFormat = NSDateFormatter()
+      
+        dateFormat.dateFormat = "yyyy-MM-dd"
+        var dateFromString = dateFormat.dateFromString(dateString);
+        self.date = dateFromString!
+
+    }
 }
