@@ -20,7 +20,7 @@ class NewsTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        var article = ArticleHeader(authorString: "Nicki Minaj", titleString: "Beez in the trap", dateString: "2012-01-30")
+        var article = ArticleHeader(authorString: "Nicki Minaj", titleString: "Beez in the trap", dateString: "2012-01-30", urlString: "http://www.cats.com")
         articles.append(article)
      
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
@@ -28,7 +28,7 @@ class NewsTableViewController: UITableViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 // 2
                 // This is where you would reload the tableview with all the scraped thingies.
-                print("Done!")
+                print("Done with scrape in NewsTableViewController!")
             }
         }
         
@@ -41,59 +41,69 @@ class NewsTableViewController: UITableViewController {
     
     func scrape(){
         let myURLString = "http://www.krlx.org/"
-        
         if let myURL = NSURL(string: myURLString) {
             var error: NSError?
             let myHTMLString = String(contentsOfURL: myURL, encoding: NSUTF8StringEncoding, error: &error)
-            
             if let error = error {
                 println("Error : \(error)")
             } else {
-
-                //println("HTML : \(myHTMLString)")
                 let html = myHTMLString
                 var err : NSError?
                 println("before parse")
-                var parser     = HTMLParser(html: html!, error: &err)
+                var parser = HTMLParser(html: html!, error: &err)
                 println("after parse")
                 if err != nil {
                     println(err)
                     exit(1)
                 }
-                
-                var bodyNode   = parser.body
-
-                var count = 0
-                if let inputNodes = bodyNode?.xpath("//h2[@class='article-header']") {
-                    for node in inputNodes {
-                        println("hey")
-                        var eachArticle = node.rawContents
-                        var parserArticle = HTMLParser(html: eachArticle, error: &err)
-                        var articleBody   = parserArticle.body
-                        if let inputArticle = articleBody?.findChildTags("a") {
-                            for node in inputArticle {
-                                var article_header = node.contents
-                                var article_url = node.getAttributeNamed("href")
-                                println(article_header)
-                                println(article_url)
+                var allArticle = parser.body
+                if let inputAllArticleNodes = allArticle?.xpath("//div[@class='items-leading']") {
+                    for node in inputAllArticleNodes {
+                        var bodyHTML = node.rawContents
+                        var parser = HTMLParser(html: bodyHTML, error: &err)
+                        var bodyNode   = parser.body
+                        
+                        
+                        //Get link and title of the article
+                        if let inputNodes = bodyNode?.xpath("//h2[@class='article-header']") {
+                            for node in inputNodes {
+                                var eachArticle = node.rawContents
+                                var parserArticle = HTMLParser(html: eachArticle, error: &err)
+                                var articleBody   = parserArticle.body
+                                if let inputArticle = articleBody?.findChildTags("a") {
+                                    for node in inputArticle {
+                                        var article_header = node.contents
+                                        var article_url = node.getAttributeNamed("href")
+                                        println(article_header)
+                                        println(article_url)
+                                    }
+                                }
                             }
                         }
                         
-                        count = count + 1
+                        //Get author
+                        if let inputNodes = bodyNode?.xpath("//dl[@class='article-info']/dd") {
+                            for node in inputNodes {
+                                var author = node.contents
+                                println(author)
+                            }
+                        }
+                        
+                        if let inputNodes = bodyNode?.xpath("//aside/time") {
+                            for node in inputNodes {
+                                var datetime = node.getAttributeNamed("datetime")
+                                println(datetime)
+                            }
+                        }
                     }
-                    println(count)
                 }
-       
-
             }
         } else {
             println("Error: \(myURLString) doesn't seem to be a valid URL")
         }
-        
-
-        
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -123,6 +133,26 @@ class NewsTableViewController: UITableViewController {
 
         return cell
     }
+
+    
+ 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
+        let articleStoryboard = UIStoryboard(name: "Article", bundle: nil)
+
+        var articleVC = articleStoryboard.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
+        articleVC.articleHeader = articles[indexPath.row]
+        
+        
+        print("in NewsTableViewController: ")
+        print(articleVC.articleHeader.getURL())
+       
+        self.navigationController?.pushViewController(articleVC, animated: true)
+    }
+  
+
+        
+ 
     
 
     /*
@@ -164,17 +194,16 @@ class NewsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        let articleVC = storyboard.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
-        
-        // Now we do just as we did with the CowViewController in prepareForSegue above.
-        articleVC.goatName = self.goatName
-        articleVC.delegate = self
-        
-        self.navigationController?.pushViewController(goatVC, animated: true)
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using [segue destinationViewController].
+//        // Pass the selected object to the new view controller.
+//        let articleVC = storyboard!.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
+//        
+//        // Now we do just as we did with the CowViewController in prepareForSegue above.
+//        //articleVC.url =
+//        
+//        self.navigationController?.pushViewController(articleVC, animated: true)
+//    }
     
     
     
@@ -183,32 +212,4 @@ class NewsTableViewController: UITableViewController {
 
 }
 
-class ArticleHeader {
-    var author : String
-    var title : String
-    var date : [String]
-    let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV, DEC"]
-    
-    init (authorString: String, titleString: String, dateString: String){
-        self.author = authorString
-        self.title = titleString
-        
-        var dateArr = split(dateString) {$0 == "-"}
-        var monthNum = dateArr[1].toInt()! - 1
-        let monthstr = self.months[monthNum]
-        
-        //[day, MONTH,  year]: ex. ["21", "DEC", "1993"]
-        self.date = [dateArr[2], monthstr, dateArr[0]]
 
-    }
-    func getTitle() -> String{
-        return self.title
-    }
-    func getAuthor() -> String{
-        return self.author
-    }
-    func getDate() -> [String]{
-        return self.date
-    }
-
-}
