@@ -23,7 +23,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
     override func viewDidLoad() {
         
-        playButton.setTitle("Play", forState: UIControlState.Normal)
+        //playButton.setTitle("Play", forState: UIControlState.Normal)
+        //playButton.setBackgroundImage(UIIMage(contentsofFile "play"), forState: //)
 
 
 

@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KRLX/NewsTableViewController.swift"
-            timestampString = "453154277.583828"
+            timestampString = "453167346.902128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "NewsTableViewController"
             landmarkType = "3">
          </BreakpointContent>
