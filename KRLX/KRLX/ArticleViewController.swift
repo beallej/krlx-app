@@ -61,10 +61,15 @@ class ArticleViewController: UIViewController {
                 error: nil)
             
             dispatch_async(dispatch_get_main_queue()) {
-                // 2
-                // This is where you would reload the view with all the scraped info
-                //self.content.reloadInputViews()
-                self.content.attributedText = attrStr
+               
+                //Get rid of the title in the content
+                var stringArr = split(attrStr!.string) {$0 == "\n"}
+                let repeatedTitle: Int = count(stringArr[0])
+                let range : NSRange = NSMakeRange(repeatedTitle, attrStr!.length-repeatedTitle)
+                let finalStr = attrStr!.attributedSubstringFromRange(range)
+                
+                //set content
+                self.content.attributedText = finalStr
                 self.content.font = UIFont(name: "Avenir Next", size: 14.0)
                 print("Done with async stuff!")
             }
