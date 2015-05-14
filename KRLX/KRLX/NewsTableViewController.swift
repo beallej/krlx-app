@@ -1,9 +1,8 @@
 //
 //  NewsTableViewController.swift
-//  SidebarMenu
 //
-//  Created by Simon Ng on 2/2/15.
-//  Copyright (c) 2015 AppCoda. All rights reserved.
+//
+//  Created by Josie and Phuong Dinh on April 15.
 //
 
 import UIKit
@@ -20,17 +19,18 @@ class NewsTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        var article = ArticleHeader(authorString: "Nicki Minaj", titleString: "Beez in the trap", dateString: "2012-01-30", urlString: "http://www.cats.com")
-        articles.append(article)
+        //var article = ArticleHeader(authorString: "Nicki Minaj", titleString: "Beez in the trap", dateString: "2012-01-30", urlString: "http://www.cats.com")
+        //articles.append(article)
+        self.scrape()
      
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
-            self.scrape()
-            dispatch_async(dispatch_get_main_queue()) {
-                // 2
-                // This is where you would reload the tableview with all the scraped thingies.
-                print("Done with scrape in NewsTableViewController!")
-            }
-        }
+//        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
+//            self.scrape()
+//            dispatch_async(dispatch_get_main_queue()) {
+//                // 2
+//                // This is where you would reload the tableview with all the scraped thingies.
+//                print("Done with scrape in NewsTableViewController!")
+//            }
+//        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -57,11 +57,15 @@ class NewsTableViewController: UITableViewController {
                     exit(1)
                 }
                 var allArticle = parser.body
-                if let inputAllArticleNodes = allArticle?.xpath("//div[@class='items-leading']") {
-                    for node in inputAllArticleNodes {
+                if let inputAllArticleNodes = allArticle?.xpath("//div[@class='items-leading']/div[@class='items-leading'] | //div[@class='items-leading']/div[@class='leading-0']") {
+                        for node in inputAllArticleNodes {
                         var bodyHTML = node.rawContents
                         var parser = HTMLParser(html: bodyHTML, error: &err)
                         var bodyNode   = parser.body
+                        var author = String()
+                        var article_url = String()
+                        var article_header = String()
+                        var datetime = String()
                         
                         
                         //Get link and title of the article
@@ -72,8 +76,8 @@ class NewsTableViewController: UITableViewController {
                                 var articleBody   = parserArticle.body
                                 if let inputArticle = articleBody?.findChildTags("a") {
                                     for node in inputArticle {
-                                        var article_header = node.contents
-                                        var article_url = node.getAttributeNamed("href")
+                                        article_header = node.contents
+                                        article_url = node.getAttributeNamed("href")
                                         println(article_header)
                                         println(article_url)
                                     }
@@ -84,17 +88,19 @@ class NewsTableViewController: UITableViewController {
                         //Get author
                         if let inputNodes = bodyNode?.xpath("//dl[@class='article-info']/dd") {
                             for node in inputNodes {
-                                var author = node.contents
+                                author = node.contents
                                 println(author)
                             }
                         }
                         
                         if let inputNodes = bodyNode?.xpath("//aside/time") {
                             for node in inputNodes {
-                                var datetime = node.getAttributeNamed("datetime")
+                                datetime = node.getAttributeNamed("datetime")
                                 println(datetime)
                             }
                         }
+                        var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
+                        articles.append(article)
                     }
                 }
             }
@@ -118,7 +124,8 @@ class NewsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return 1
+        println(articles.count)
+        return articles.count
     }
 
     
