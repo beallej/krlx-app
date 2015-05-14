@@ -19,8 +19,7 @@ class NewsTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        //var article = ArticleHeader(authorString: "Nicki Minaj", titleString: "Beez in the trap", dateString: "2012-01-30", urlString: "http://www.cats.com")
-        //articles.append(article)
+
         self.scrape()
      
 //        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
@@ -78,8 +77,7 @@ class NewsTableViewController: UITableViewController {
                                     for node in inputArticle {
                                         article_header = node.contents
                                         article_url = node.getAttributeNamed("href")
-                                        println(article_header)
-                                        println(article_url)
+
                                     }
                                 }
                             }
@@ -89,14 +87,14 @@ class NewsTableViewController: UITableViewController {
                         if let inputNodes = bodyNode?.xpath("//dl[@class='article-info']/dd") {
                             for node in inputNodes {
                                 author = node.contents
-                                println(author)
+
                             }
                         }
                         
                         if let inputNodes = bodyNode?.xpath("//aside/time") {
                             for node in inputNodes {
                                 datetime = node.getAttributeNamed("datetime")
-                                println(datetime)
+
                             }
                         }
                         var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
