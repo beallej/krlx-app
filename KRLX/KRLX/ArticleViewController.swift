@@ -50,16 +50,32 @@ class ArticleViewController: UIViewController {
         self.content.attributedText = attrStr
         
         //Because scraping takes and converting html into text takes forever too
-//        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
-//            
-//            let articleContentScraped = String(self.scrape())
-//            self.content.text = articleContentScraped
-//            dispatch_async(dispatch_get_main_queue()) {
-//                // 2
-//                // This is where you would reload the view with all the scraped info
-//                print("Done with async stuff!")
-//            }
-//        }
+
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
+            
+            //Get content
+            let articleContentScraped = self.scrape()
+            //Put content into textbox
+            var attrStr = NSAttributedString(
+                data: articleContentScraped.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
+                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                documentAttributes: nil,
+                error: nil)
+            
+            dispatch_async(dispatch_get_main_queue()) {
+               
+                //Get rid of the title in the content
+                var stringArr = split(attrStr!.string) {$0 == "\n"}
+                let repeatedTitle: Int = count(stringArr[0])
+                let range : NSRange = NSMakeRange(repeatedTitle, attrStr!.length-repeatedTitle)
+                let finalStr = attrStr!.attributedSubstringFromRange(range)
+                
+                //set content
+                self.content.attributedText = finalStr
+                self.content.font = UIFont(name: "Avenir Next", size: 14.0)
+                print("Done with async stuff!")
+            }
+        }
         
                 
         // Do any additional setup after loading the view.
