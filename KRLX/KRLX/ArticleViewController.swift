@@ -24,10 +24,20 @@ class ArticleViewController: UIViewController {
         super.viewDidLoad()
         self.titleLabel.text = self.articleHeader.getTitle()
         let dt = self.articleHeader.getDate()
-        self.dayLabel.text = dt[0]
-        self.monthLabel.text = dt[1]
-        //real subtitles actually have more than this... I'm ok with this though :D the date is pretty!
-        self.subtitle.text = self.articleHeader.getAuthor()
+
+        let (day, month, year, longMonth) = (dt[0], dt[1], dt[2], dt[3])
+        self.dayLabel.text = day
+        self.monthLabel.text = month
+ 
+        
+        
+        
+        
+        
+
+        
+        //real subtitles actually have more than this...
+        self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
         
         //Get content
         let articleContentScraped = self.scrape()

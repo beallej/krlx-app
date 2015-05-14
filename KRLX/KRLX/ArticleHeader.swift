@@ -12,14 +12,8 @@ class ArticleHeader {
     var date : [String]
     var url : String
     let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    init(){
-        self.author = ""
-        self.title = ""
-        self.url = ""
-        self.date = [""]
-        self.url = ""
-    }
-    
+    let longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+       
     init (authorString: String, titleString: String, dateString: String, urlString: String){
         self.author = authorString
         self.title = titleString
@@ -28,9 +22,10 @@ class ArticleHeader {
         var dateArr = split(dateString) {$0 == "-"}
         var monthNum = dateArr[1].toInt()! - 1
         let monthstr = self.months[monthNum]
+        let longMonth = self.longMonths[monthNum]
         
         //[day, MONTH,  year]: ex. ["21", "DEC", "1993"]
-        self.date = [dateArr[2], monthstr, dateArr[0]]
+        self.date = [dateArr[2], monthstr, dateArr[0], longMonth]
         
     }
     func getTitle() -> String{

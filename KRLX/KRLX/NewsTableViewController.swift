@@ -9,6 +9,7 @@ import UIKit
 
 class NewsTableViewController: UITableViewController {
     @IBOutlet weak var menuButton:UIBarButtonItem!
+    @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
     var articles = [ArticleHeader]()
     
 
@@ -20,16 +21,16 @@ class NewsTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
 
-        self.scrape()
-     
-//        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
-//            self.scrape()
-//            dispatch_async(dispatch_get_main_queue()) {
-//                // 2
-//                // This is where you would reload the tableview with all the scraped thingies.
-//                print("Done with scrape in NewsTableViewController!")
-//            }
-//        }
+  
+    
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { 
+            self.scrape()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+                self.spinnyWidget.stopAnimating()
+                print("Done with scrape in NewsTableViewController!")
+            }
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
