@@ -20,7 +20,7 @@ class NewsTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-  
+
      
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { 
             self.scrape()
@@ -48,9 +48,7 @@ class NewsTableViewController: UITableViewController {
             } else {
                 let html = myHTMLString
                 var err : NSError?
-                println("before parse")
                 var parser = HTMLParser(html: html!, error: &err)
-                println("after parse")
                 if err != nil {
                     println(err)
                     exit(1)
@@ -77,8 +75,8 @@ class NewsTableViewController: UITableViewController {
                                     for node in inputArticle {
                                         article_header = node.contents
                                         article_url = node.getAttributeNamed("href")
-                                        println(article_header)
-                                        println(article_url)
+                                        article_url = "http://krlx.org/"+article_url
+
                                     }
                                 }
                             }
@@ -88,14 +86,14 @@ class NewsTableViewController: UITableViewController {
                         if let inputNodes = bodyNode?.xpath("//dl[@class='article-info']/dd") {
                             for node in inputNodes {
                                 author = node.contents
-                                println(author)
+
                             }
                         }
                         
                         if let inputNodes = bodyNode?.xpath("//aside/time") {
                             for node in inputNodes {
                                 datetime = node.getAttributeNamed("datetime")
-                                println(datetime)
+
                             }
                         }
                         var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
@@ -148,10 +146,6 @@ class NewsTableViewController: UITableViewController {
 
         var articleVC = articleStoryboard.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
         articleVC.articleHeader = articles[indexPath.row]
-        
-        
-        print("in NewsTableViewController: ")
-        print(articleVC.articleHeader.getURL())
        
         self.navigationController?.pushViewController(articleVC, animated: true)
     }

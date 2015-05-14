@@ -38,14 +38,34 @@ class ArticleViewController: UIViewController {
         //real subtitles actually have more than this...
         self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
         
+//        //Get content
+//        let articleContentScraped = self.scrape()
+//        //Put content into textbox
+//        var attrStr = NSAttributedString(
+//            data: articleContentScraped.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
+//            options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+//            documentAttributes: nil,
+//            error: nil)
+//        self.content.attributedText = attrStr
         
-        //Because scraping takes foever
+        //Because scraping takes and converting html into text takes forever too
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
             
-            self.scrape()
+            //Get content
+            let articleContentScraped = self.scrape()
+            //Put content into textbox
+            var attrStr = NSAttributedString(
+                data: articleContentScraped.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
+                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                documentAttributes: nil,
+                error: nil)
+            
             dispatch_async(dispatch_get_main_queue()) {
                 // 2
                 // This is where you would reload the view with all the scraped info
+                //self.content.reloadInputViews()
+                self.content.attributedText = attrStr
+                self.content.font = UIFont(name: "Avenir Next", size: 14.0)
                 print("Done with async stuff!")
             }
         }
@@ -57,9 +77,9 @@ class ArticleViewController: UIViewController {
     
 
     //does scraping for an article    
-    func scrape(){
-        print(self.articleHeader.getURL())
+    func scrape() -> String{
         let myURLString = self.articleHeader.getURL()
+        var article_content = String()
         if let myURL = NSURL(string: myURLString) {
             var error: NSError?
             let myHTMLString = String(contentsOfURL: myURL, encoding: NSUTF8StringEncoding, error: &error)
@@ -68,15 +88,16 @@ class ArticleViewController: UIViewController {
             } else {
                 let html = myHTMLString
                 var err : NSError?
-                println("before parse")
                 var parser = HTMLParser(html: html!, error: &err)
-                println("after parse")
                 if err != nil {
                     println(err)
                     exit(1)
                 }
                 var allArticle = parser.body
-                //Do parsing here
+                if let inputAllArticleNodes = allArticle?.xpath("//div[@class='gk-article']") {
+                    for node in inputAllArticleNodes {
+                        article_content = node.rawContents
+                        println(article_content)
                 
             }
         }
@@ -84,7 +105,9 @@ class ArticleViewController: UIViewController {
         println("Error: \(myURLString) doesn't seem to be a valid URL")
         }
     }
-
+        }
+        return String(article_content)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

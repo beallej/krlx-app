@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,28 +19,24 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black.png" translatesAutoresizingMaskIntoConstraints="NO" id="iNe-zX-Yep">
                                 <rect key="frame" x="16" y="90" width="43" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="CfX-AL-SgJ"/>
-                                    <constraint firstAttribute="width" constant="43" id="Gqk-6L-tAJ"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9z-T0-WP1">
                                 <rect key="frame" x="16" y="92" width="43" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ElE-ST-ell"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="APR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk2-AF-qjJ">
-                                <rect key="frame" x="16" y="109" width="43" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk2-AF-qjJ">
+                                <rect key="frame" x="16" y="107" width="43" height="24"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="• New Music Week 4 •" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-aI-wu6">
-                                <rect key="frame" x="67" y="18" width="466" height="84"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="84" id="RQw-vw-5dz"/>
-                                </constraints>
+                                <rect key="frame" x="67" y="50" width="466" height="63"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -50,7 +45,8 @@
                                 <rect key="frame" x="195" y="110" width="210" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="UOb-Wz-Svd"/>
+                                    <constraint firstAttribute="width" constant="210" id="Dxg-Wf-0d8"/>
+                                    <constraint firstAttribute="height" constant="39" id="ISF-y6-4mr"/>
                                 </constraints>
                                 <string key="text">Written by Mary Reagan Harvey 
 Published: 28 April 2015 ~ Category: Music
@@ -64,105 +60,47 @@ Published: 28 April 2015 ~ Category: Music
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n30-Ey-deI">
-                                <rect key="frame" x="16" y="157" width="568" height="1443"/>
+                                <rect key="frame" x="16" y="157" width="568" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1443" id="khw-lH-ImJ"/>
+                                    <constraint firstAttribute="height" constant="1443" id="Dpm-8N-j2A"/>
+                                    <constraint firstAttribute="height" constant="1443" id="F3z-xr-jmv"/>
                                 </constraints>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="-100" maxX="0.0" maxY="0.0"/>
-                                <string key="text">Winter –Supreme Blue Dream
-
-
-Winter's first full length LP is dreamy and lush, more than a little like the strain of marijuana it's named after. Driven by front woman Samira Winter's floating vocals and graceful guitar melodies darting out from underneath swells of reverb, this album is absolutely entrancing. Unlike many of their Dream Pop/Shoegaze compatriots who often fail to innovate once they've found a winning formula, Winter refuses to sit still.  Each track contains a tiny innovation, with hand drums, saxophones, electronic beats, and acoustic guitar all being featured at one point or another. Yet, despite all of these additions, Supreme Blue Dream somehow remains a cohesive and beautiful album that is easy to let yourself sink into.
-
-RIYL: Cocteau Twins, My Bloody Valentine, Beach House 
-Top Tracks: Crazy, Some Kind of Surprise, Expectations/Exigencias 
-
-
-George Fitzgerald –Fading Love
-
-
-George Fitzgerald first came on the electronic scene by dropping deep house festival anthems like “Child” and “Thinking of You.” On his first LP however, Fitzgerald has moved away from “hands in the air” house music and towards a more cerebral type of dance music that has a broader emotional range than eye jiggling ecstasy. While clearly remaining dance music with throbbing bass and piercing synthesizers at its core, Fading Love makes effective use of poignant vocal samples and sparse production to land emotional punches that most of its contemporaries don't even attempt.   
-
-RIYL: Aphex Twin, Midland, xxy
-Top Tracks: Full Circle, Call it Love (If You Want To), Shards
-
- 
-
-Speedy Ortiz –Foil Deer
-
- 
-
-Their sophomore LP continues the sound developed in their first album Major Arcana, pretty but gritty, Foil Deer is full of high energy angst, with tracks to yell with or cool down to. Best to listen to if angry, but not angry enough.
-
- 
-
-RIYL: Pile, Pavement, Viet Cong
-
-Top Tracks: Raising the Skate, Puffer, The Graduates
-
- 
-
-Cuushe –Night Lines
-
- 
-
-If you like Yumi Zouma you will like this. Sourcing sounds from films, animations, and field recordings, this film creates a dreamy hypnotic rhythm that might put you to sleep—in a good way. It’s a shame the EP is only 4 songs because it goes by way too fast. So whispy you almost can’t grasp it before it floats past in a parade of glitter and cartoon stars.
-
- 
-
-RIYL: memoryhouse, Mister Twin Sister, Sibylle Baier, Die Antwoord
-
-Top Tracks: Tie, Daze
-
- 
-
- 
-
-Mikal Cronin– MCIII
-
-For some reason, people continue to associate Mikal Cronin with Ty Segall. I mean, yeah, he played in like half of Segall’s twenty-something bands, and his first solo album way back when still had a pretty lo-fi garagey sound to it, but in the past couple of years, Cronin has been moving past that. Enter MCIII, an incredible album with gorgeous arrangements and a sense of fun missing in most well produced rock these days. Don’t let the lack of crunchiness and the occasional angsty lyrics turn you off; Cronin’s third outing is fantastic.
-
-RIYL: Courtney Barnett, Ty Segall, War on Drugs 
-Top Tracks: Turn Around, Made My Mind Up, i) Alone, ii) Gold
-
-
-Bent Denim – Romances You
-
-Bent Denim is…interesting. Listening to Romances You, you’re never quite completely sure what kind of sound they’re going for. Sometimes, they’ll sound like Astronautalis in The Mighty Ocean, while other times they’ll sound like a super angsty combination of Yo La Tengo and Conor Oberst doing lo-fi Bright Eyes songs in a basement. In the end though, it’s a pretty good album, with some fantastic, sparse sounding tracks, and some less than fantastic weird poppy tracks that may or may not have a drum machine in them.
-
-RIYL: Yo La Tengo, Early Astronautalis, Psych folk, Told Slant
-Top Tracks: Caitlin_, Key Lime Pie, China Doll, Good </string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Dpm-8N-j2A"/>
+                                        <exclude reference="F3z-xr-jmv"/>
+                                    </mask>
+                                </variation>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iNe-zX-Yep" firstAttribute="centerX" secondItem="V9z-T0-WP1" secondAttribute="centerX" id="4oB-tP-NaK"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="vxQ-Ew-Tq3" secondAttribute="bottom" constant="8" id="7Gh-cY-HTp"/>
-                            <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="V9z-T0-WP1" secondAttribute="trailing" constant="8" id="EGI-rY-GO2"/>
-                            <constraint firstItem="V9z-T0-WP1" firstAttribute="centerX" secondItem="dk2-AF-qjJ" secondAttribute="centerX" id="FMR-iz-bjb"/>
-                            <constraint firstItem="dk2-AF-qjJ" firstAttribute="centerX" secondItem="V9z-T0-WP1" secondAttribute="centerX" id="Hmm-Sg-SdT"/>
-                            <constraint firstAttribute="centerX" secondItem="vxQ-Ew-Tq3" secondAttribute="centerX" id="LTc-sS-CMZ"/>
-                            <constraint firstItem="iNe-zX-Yep" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="70" id="Nid-Ap-Gk9"/>
-                            <constraint firstItem="gqG-aI-wu6" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="-2" id="R2q-oR-O7X"/>
-                            <constraint firstItem="V9z-T0-WP1" firstAttribute="firstBaseline" secondItem="gqG-aI-wu6" secondAttribute="firstBaseline" constant="64" id="WVN-gG-Utx"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="iNe-zX-Yep" secondAttribute="bottom" constant="24" id="X5v-KA-klS"/>
-                            <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="8" id="aa5-1q-X3B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gqG-aI-wu6" secondAttribute="trailing" constant="51" id="0zY-MQ-f79"/>
+                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="iNe-zX-Yep" secondAttribute="bottom" constant="24" id="1yw-W6-A22"/>
+                            <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="-3" id="204-s8-U43"/>
+                            <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="V9z-T0-WP1" secondAttribute="trailing" constant="8" symbolic="YES" id="5wl-lu-I4m"/>
+                            <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="iNe-zX-Yep" secondAttribute="trailing" constant="8" symbolic="YES" id="96C-yV-mby"/>
+                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="V9z-T0-WP1" secondAttribute="bottom" constant="44" id="CUV-fc-osR"/>
+                            <constraint firstItem="V9z-T0-WP1" firstAttribute="trailing" secondItem="dk2-AF-qjJ" secondAttribute="trailing" id="DmY-eT-Vva"/>
+                            <constraint firstItem="V9z-T0-WP1" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="72" id="E3P-2i-8v2"/>
+                            <constraint firstItem="iNe-zX-Yep" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="70" id="KqS-Ia-oL5"/>
+                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="dk2-AF-qjJ" secondAttribute="bottom" constant="26" id="P1r-aH-lBp"/>
+                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="vxQ-Ew-Tq3" secondAttribute="bottom" constant="8" symbolic="YES" id="S7T-sr-1a9"/>
+                            <constraint firstItem="dk2-AF-qjJ" firstAttribute="leading" secondItem="n30-Ey-deI" secondAttribute="leading" id="WJl-yc-gSl"/>
+                            <constraint firstItem="dk2-AF-qjJ" firstAttribute="leading" secondItem="iNe-zX-Yep" secondAttribute="leading" id="XXK-ed-zSa"/>
+                            <constraint firstItem="V9z-T0-WP1" firstAttribute="leading" secondItem="rRh-2w-N2F" secondAttribute="leadingMargin" id="ZhI-22-DPx"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="n30-Ey-deI" secondAttribute="bottom" id="aBd-5V-giX"/>
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="rRh-2w-N2F" secondAttribute="leading" id="buQ-lD-j1I"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="leading" secondItem="iNe-zX-Yep" secondAttribute="leading" id="fbg-Nx-JbQ"/>
                             <constraint firstItem="dk2-AF-qjJ" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="25" id="gOQ-HV-KvL"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="dk2-AF-qjJ" secondAttribute="bottom" constant="26" id="hf4-45-tcR"/>
-                            <constraint firstItem="V9z-T0-WP1" firstAttribute="width" secondItem="iNe-zX-Yep" secondAttribute="width" id="iOC-FR-jeD"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="leading" secondItem="dk2-AF-qjJ" secondAttribute="leading" id="mc3-pB-VrL"/>
-                            <constraint firstAttribute="centerX" secondItem="gqG-aI-wu6" secondAttribute="centerX" id="n98-Iv-Adb"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="leading" secondItem="rRh-2w-N2F" secondAttribute="leading" constant="16" id="oGr-j8-GRA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gqG-aI-wu6" secondAttribute="trailing" constant="51" id="pi4-ci-Qdt"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="V9z-T0-WP1" secondAttribute="bottom" constant="44" id="sEa-HR-JiO"/>
-                            <constraint firstItem="V9z-T0-WP1" firstAttribute="width" secondItem="dk2-AF-qjJ" secondAttribute="width" id="uoa-AP-drT"/>
-                            <constraint firstItem="n30-Ey-deI" firstAttribute="leading" secondItem="V9z-T0-WP1" secondAttribute="leading" id="usU-af-Bxb"/>
-                            <constraint firstAttribute="centerX" secondItem="n30-Ey-deI" secondAttribute="centerX" id="xj4-3W-Iqd"/>
+                            <constraint firstItem="n30-Ey-deI" firstAttribute="centerX" secondItem="vxQ-Ew-Tq3" secondAttribute="centerX" id="hgW-0K-AqB"/>
+                            <constraint firstItem="gqG-aI-wu6" firstAttribute="top" secondItem="rRh-2w-N2F" secondAttribute="topMargin" constant="50" id="kJc-qZ-d7Z"/>
+                            <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="centerX" secondItem="gqG-aI-wu6" secondAttribute="centerX" id="rxU-ml-NmY"/>
+                            <constraint firstItem="dk2-AF-qjJ" firstAttribute="leading" secondItem="V9z-T0-WP1" secondAttribute="leading" id="ske-z0-7fn"/>
+                            <constraint firstItem="n30-Ey-deI" firstAttribute="trailing" secondItem="rRh-2w-N2F" secondAttribute="trailingMargin" id="vxt-bZ-72m"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
