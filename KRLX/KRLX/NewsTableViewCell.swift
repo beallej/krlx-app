@@ -1,9 +1,7 @@
 //
 //  NewsTableViewCell.swift
-//  SidebarMenu/Users/josiebealle/Documents/mobileapps/krlx-app/KRLX/KRLX/NewsTableViewController.swift
 //
-//  Created by Simon Ng on 2/2/15.
-//  Copyright (c) 2015 AppCoda. All rights reserved.
+//  Created by Josie and Phuong Dinh on April 15.
 //
 
 import UIKit
