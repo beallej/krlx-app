@@ -21,8 +21,6 @@ class NewsTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
 
-  
-    
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { 
             self.scrape()
             dispatch_async(dispatch_get_main_queue()) {
