@@ -16,8 +16,5 @@ profile
 *.moved-aside
 DerivedData
 .idea/
-*.xccheckout
 *.xcsettings
 *.xcbkptlist
-KRLX/KRLX.xcodeproj/project.xcworkspace/xcshareddata/KRLX.xccheckout
-
