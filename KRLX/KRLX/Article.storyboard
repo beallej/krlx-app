@@ -31,13 +31,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="APR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk2-AF-qjJ">
-                                <rect key="frame" x="16" y="109" width="43" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk2-AF-qjJ">
+                                <rect key="frame" x="16" y="107" width="43" height="24"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="• New Music Week 4 •" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-aI-wu6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-aI-wu6">
                                 <rect key="frame" x="67" y="18" width="466" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="RQw-vw-5dz"/>
@@ -52,7 +52,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="210" id="UOb-Wz-Svd"/>
                                 </constraints>
-                                <string key="text">Written by Mary Reagan Harvey 
+                                <string key="text">Written by Mary Reagan Harvey
 Published: 28 April 2015 ~ Category: Music
 
 
@@ -63,84 +63,28 @@ Published: 28 April 2015 ~ Category: Music
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="9"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n30-Ey-deI">
-                                <rect key="frame" x="16" y="157" width="568" height="1443"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text=" " translatesAutoresizingMaskIntoConstraints="NO" id="n30-Ey-deI">
+                                <rect key="frame" x="16" y="157" width="568" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1443" id="khw-lH-ImJ"/>
                                 </constraints>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="-100" maxX="0.0" maxY="0.0"/>
-                                <string key="text">Winter –Supreme Blue Dream
-
-
-Winter's first full length LP is dreamy and lush, more than a little like the strain of marijuana it's named after. Driven by front woman Samira Winter's floating vocals and graceful guitar melodies darting out from underneath swells of reverb, this album is absolutely entrancing. Unlike many of their Dream Pop/Shoegaze compatriots who often fail to innovate once they've found a winning formula, Winter refuses to sit still.  Each track contains a tiny innovation, with hand drums, saxophones, electronic beats, and acoustic guitar all being featured at one point or another. Yet, despite all of these additions, Supreme Blue Dream somehow remains a cohesive and beautiful album that is easy to let yourself sink into.
-
-RIYL: Cocteau Twins, My Bloody Valentine, Beach House 
-Top Tracks: Crazy, Some Kind of Surprise, Expectations/Exigencias 
-
-
-George Fitzgerald –Fading Love
-
-
-George Fitzgerald first came on the electronic scene by dropping deep house festival anthems like “Child” and “Thinking of You.” On his first LP however, Fitzgerald has moved away from “hands in the air” house music and towards a more cerebral type of dance music that has a broader emotional range than eye jiggling ecstasy. While clearly remaining dance music with throbbing bass and piercing synthesizers at its core, Fading Love makes effective use of poignant vocal samples and sparse production to land emotional punches that most of its contemporaries don't even attempt.   
-
-RIYL: Aphex Twin, Midland, xxy
-Top Tracks: Full Circle, Call it Love (If You Want To), Shards
-
- 
-
-Speedy Ortiz –Foil Deer
-
- 
-
-Their sophomore LP continues the sound developed in their first album Major Arcana, pretty but gritty, Foil Deer is full of high energy angst, with tracks to yell with or cool down to. Best to listen to if angry, but not angry enough.
-
- 
-
-RIYL: Pile, Pavement, Viet Cong
-
-Top Tracks: Raising the Skate, Puffer, The Graduates
-
- 
-
-Cuushe –Night Lines
-
- 
-
-If you like Yumi Zouma you will like this. Sourcing sounds from films, animations, and field recordings, this film creates a dreamy hypnotic rhythm that might put you to sleep—in a good way. It’s a shame the EP is only 4 songs because it goes by way too fast. So whispy you almost can’t grasp it before it floats past in a parade of glitter and cartoon stars.
-
- 
-
-RIYL: memoryhouse, Mister Twin Sister, Sibylle Baier, Die Antwoord
-
-Top Tracks: Tie, Daze
-
- 
-
- 
-
-Mikal Cronin– MCIII
-
-For some reason, people continue to associate Mikal Cronin with Ty Segall. I mean, yeah, he played in like half of Segall’s twenty-something bands, and his first solo album way back when still had a pretty lo-fi garagey sound to it, but in the past couple of years, Cronin has been moving past that. Enter MCIII, an incredible album with gorgeous arrangements and a sense of fun missing in most well produced rock these days. Don’t let the lack of crunchiness and the occasional angsty lyrics turn you off; Cronin’s third outing is fantastic.
-
-RIYL: Courtney Barnett, Ty Segall, War on Drugs 
-Top Tracks: Turn Around, Made My Mind Up, i) Alone, ii) Gold
-
-
-Bent Denim – Romances You
-
-Bent Denim is…interesting. Listening to Romances You, you’re never quite completely sure what kind of sound they’re going for. Sometimes, they’ll sound like Astronautalis in The Mighty Ocean, while other times they’ll sound like a super angsty combination of Yo La Tengo and Conor Oberst doing lo-fi Bright Eyes songs in a basement. In the end though, it’s a pretty good album, with some fantastic, sparse sounding tracks, and some less than fantastic weird poppy tracks that may or may not have a drum machine in them.
-
-RIYL: Yo La Tengo, Early Astronautalis, Psych folk, Told Slant
-Top Tracks: Caitlin_, Key Lime Pie, China Doll, Good </string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" calendarEvent="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="khw-lH-ImJ"/>
+                                    </mask>
+                                </variation>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="centerX" secondItem="V9z-T0-WP1" secondAttribute="centerX" id="4oB-tP-NaK"/>
                             <constraint firstItem="n30-Ey-deI" firstAttribute="top" secondItem="vxQ-Ew-Tq3" secondAttribute="bottom" constant="8" id="7Gh-cY-HTp"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="n30-Ey-deI" secondAttribute="bottom" id="DHG-Bp-eij"/>
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="V9z-T0-WP1" secondAttribute="trailing" constant="8" id="EGI-rY-GO2"/>
                             <constraint firstItem="V9z-T0-WP1" firstAttribute="centerX" secondItem="dk2-AF-qjJ" secondAttribute="centerX" id="FMR-iz-bjb"/>
                             <constraint firstItem="dk2-AF-qjJ" firstAttribute="centerX" secondItem="V9z-T0-WP1" secondAttribute="centerX" id="Hmm-Sg-SdT"/>

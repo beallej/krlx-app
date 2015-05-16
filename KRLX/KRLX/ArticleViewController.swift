@@ -28,30 +28,14 @@ class ArticleViewController: UIViewController {
         let (day, month, year, longMonth) = (dt[0], dt[1], dt[2], dt[3])
         self.dayLabel.text = day
         self.monthLabel.text = month
- 
-        
-        
-        
-        
-        
-
         
         //real subtitles actually have more than this...
         self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
         
-        //Get content
-        let articleContentScraped = self.scrape()
-        //Put content into textbox
-        var attrStr = NSAttributedString(
-            data: articleContentScraped.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
-            options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-            documentAttributes: nil,
-            error: nil)
-        self.content.attributedText = attrStr
         
         //Because scraping takes and converting html into text takes forever too
 
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             //Get content
             let articleContentScraped = self.scrape()
@@ -64,21 +48,19 @@ class ArticleViewController: UIViewController {
             
             dispatch_async(dispatch_get_main_queue()) {
                
-                //Get rid of the title in the content
-                var stringArr = split(attrStr!.string) {$0 == "\n"}
-                let repeatedTitle: Int = count(stringArr[0])
-                let range : NSRange = NSMakeRange(repeatedTitle, attrStr!.length-repeatedTitle)
+                //Get rid of the title in the content and "next" hyperlink at end
+                var articleArr = split(attrStr!.string) {$0 == "\n"}
+                let repeatedTitleSize: Int = count(articleArr[0])
+                let nextLinkSize : Int = count(articleArr[count(articleArr)-1])
+                let range : NSRange = NSMakeRange(repeatedTitleSize, attrStr!.length-repeatedTitleSize-nextLinkSize)
                 let finalStr = attrStr!.attributedSubstringFromRange(range)
                 
                 //set content
                 self.content.attributedText = finalStr
                 self.content.font = UIFont(name: "Avenir Next", size: 14.0)
-                print("Done with async stuff!")
             }
-        }
-        
+        }       
                 
-        // Do any additional setup after loading the view.
     }
     
     
