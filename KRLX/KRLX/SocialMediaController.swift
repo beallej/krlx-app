@@ -13,10 +13,14 @@ import UIKit
 class SocialMediaController: UIViewController{
     let transitionManager = MenuTransitionManager()
     
-    @IBOutlet weak var twitterIcon: UIImageView!
+    //@IBOutlet weak var twitterIcon: UIImageView!
     
-    @IBOutlet weak var facebookIcon: UIImageView!
+    //@IBOutlet weak var facebookIcon: UIImageView!
     
+    @IBOutlet weak var facebookIcon: UIButton!
+    
+    
+    @IBOutlet weak var twitterIcon: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,41 @@ class SocialMediaController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    @IBAction func twitterButtonSender(sender: AnyObject) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            
+            var tweetShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            
+            self.presentViewController(tweetShare, animated: true, completion: nil)
+            
+        } else {
+            
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to tweet.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+   
+    @IBAction func facebookButtonSender(sender: AnyObject) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+            var fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            
+            self.presentViewController(fbShare, animated: true, completion: nil)
+            
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
     
 }
 

@@ -166,7 +166,9 @@ class NewsTableViewController: UITableViewController {
     }
 
     func buttonClicked(sender: UIButton!){
+        let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("socialMediaView") as! SocialMediaController
         
+        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
         
     }
  
