@@ -13,6 +13,10 @@
 		330BCD011AF1C91000C8CCED /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCCFF1AF1C91000C8CCED /* calendar.png */; };
 		330BCD051AF1CA1400C8CCED /* krlxSchedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCD031AF1CA1400C8CCED /* krlxSchedule.png */; };
 		330BCD061AF1CA1400C8CCED /* recentMusicIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 330BCD041AF1CA1400C8CCED /* recentMusicIcon.png */; };
+		3339AD2E1B083D2600E5DBD0 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 3339AD2C1B083D2600E5DBD0 /* twitter.png */; };
+		3339AD2F1B083D2600E5DBD0 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 3339AD2D1B083D2600E5DBD0 /* facebook.png */; };
+		3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */; };
+		3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */; };
 		339075D01AF188D70083BF15 /* krlx.png in Resources */ = {isa = PBXBuildFile; fileRef = 339075CF1AF188D70083BF15 /* krlx.png */; };
 		3397B65A1AFEE58C00974947 /* high_quality.m3u in Resources */ = {isa = PBXBuildFile; fileRef = 3397B6591AFEE58C00974947 /* high_quality.m3u */; };
 		BD286CD31AEF0BA10021B036 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD286CD21AEF0BA10021B036 /* SWRevealViewController.m */; };
@@ -59,6 +63,10 @@
 		330BCCFF1AF1C91000C8CCED /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		330BCD031AF1CA1400C8CCED /* krlxSchedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = krlxSchedule.png; sourceTree = "<group>"; };
 		330BCD041AF1CA1400C8CCED /* recentMusicIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recentMusicIcon.png; sourceTree = "<group>"; };
+		3339AD2C1B083D2600E5DBD0 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		3339AD2D1B083D2600E5DBD0 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaController.swift; sourceTree = "<group>"; };
+		3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTransitionManager.swift; sourceTree = "<group>"; };
 		339075CF1AF188D70083BF15 /* krlx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = krlx.png; sourceTree = "<group>"; };
 		3397B6591AFEE58C00974947 /* high_quality.m3u */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = high_quality.m3u; sourceTree = "<group>"; };
 		BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KRLX-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -164,6 +172,8 @@
 				F491E7521A7F7DF20026528E /* RecentlyHeardViewController.swift */,
 				F491E7541A7F7E010026528E /* ScheduleViewController.swift */,
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
+				3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */,
+				3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */,
 			);
 			path = KRLX;
 			sourceTree = "<group>";
@@ -171,7 +181,9 @@
 		F47029F31A7F27DB00E30A3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3339AD2D1B083D2600E5DBD0 /* facebook.png */,
 				3397B6591AFEE58C00974947 /* high_quality.m3u */,
+				3339AD2C1B083D2600E5DBD0 /* twitter.png */,
 				330BCD031AF1CA1400C8CCED /* krlxSchedule.png */,
 				BD286D141AF2F1080021B036 /* play.png */,
 				330BCD041AF1CA1400C8CCED /* recentMusicIcon.png */,
@@ -302,6 +314,7 @@
 				330BCCFC1AF1C6B400C8CCED /* microphone.png in Resources */,
 				F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */,
 				330BCD011AF1C91000C8CCED /* calendar.png in Resources */,
+				3339AD2F1B083D2600E5DBD0 /* facebook.png in Resources */,
 				BD286D151AF2F1080021B036 /* play.png in Resources */,
 				BD785BE11B02C1AB003A3C33 /* black.png in Resources */,
 				330BCCFB1AF1C6B400C8CCED /* musicIcon.jpg in Resources */,
@@ -309,6 +322,7 @@
 				F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */,
 				3397B65A1AFEE58C00974947 /* high_quality.m3u in Resources */,
 				BD6336071AF847360022AC58 /* sideBarPic2.png in Resources */,
+				3339AD2E1B083D2600E5DBD0 /* twitter.png in Resources */,
 				BD785BF01B03EE8C003A3C33 /* Main.storyboard in Resources */,
 				BD286CDB1AF0688B0021B036 /* musicBackground1.png in Resources */,
 			);
@@ -330,8 +344,10 @@
 			files = (
 				BD365C661B02801700BF946A /* HTMLParser.swift in Sources */,
 				BD286CD31AEF0BA10021B036 /* SWRevealViewController.m in Sources */,
+				3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */,
 				F4702A181A7F351C00E30A3C /* MenuController.swift in Sources */,
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
+				3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */,
 				F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */,
 				BD55116F1AFBF7BE0016AEFA /* ArticleViewController.swift in Sources */,
 				BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */,

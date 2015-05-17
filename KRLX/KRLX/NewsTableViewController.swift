@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Social
 
 class NewsTableViewController: UITableViewController {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
     var articles = [ArticleHeader]()
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +127,19 @@ class NewsTableViewController: UITableViewController {
     }
 
     
+    @IBAction func shareButtonPushed(sender: UIButton) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterSheet.setInitialText("Share on Twitter")
+            self.presentViewController(twitterSheet, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NewsTableViewCell
         let article = articles[indexPath.row]
@@ -134,11 +148,27 @@ class NewsTableViewController: UITableViewController {
         cell.dayLabel.text = article.getDate()[0]
         cell.monthLabel.text = article.getDate()[1]
 
-
+        //Create Share button
+        let button : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        button.frame = CGRectMake(300, 70, 50, 24)
+        let cellHeight: CGFloat = 44.0
+        button.backgroundColor = UIColor.blackColor()
+        button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.setTitle("Share", forState: UIControlState.Normal)
+        button.titleLabel!.adjustsFontSizeToFitWidth = true
+        /////////////////////////////////////
+        ////CHANGE THE FONT LATER!!!!!!!/////
+        /////////////////////////////////////
+        button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
+        cell.addSubview(button)
+        
         return cell
     }
 
-    
+    func buttonClicked(sender: UIButton!){
+        
+        
+    }
  
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
        

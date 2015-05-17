@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -63,7 +63,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="224124B7-07E4-44DC-8EC2-3992CD85EDCE" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1E48121B-E3D1-46F0-A132-BF3CF7CF9C4F" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -304,11 +304,56 @@
                     <connections>
                         <outlet property="menuButton" destination="0mF-q0-GmA" id="Nbl-nT-P7u"/>
                         <outlet property="spinnyWidget" destination="dxe-IS-nvW" id="ZeI-Lu-oBi"/>
+                        <segue destination="foi-2N-qkZ" kind="presentation" id="kQV-Se-hTj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHq-4Y-pqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="-686"/>
+            <point key="canvasLocation" x="2629" y="-686"/>
+        </scene>
+        <!--Social Media Controller-->
+        <scene sceneID="4gC-Ys-Rxs">
+            <objects>
+                <viewController id="foi-2N-qkZ" customClass="SocialMediaController" customModule="KRLX" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YjI-MC-VZ1"/>
+                        <viewControllerLayoutGuide type="bottom" id="zck-iy-mg9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wWr-CQ-ce6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="OPg-GY-bfR">
+                                <rect key="frame" x="86" y="64" width="144" height="149"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aet-6I-HO7">
+                                <rect key="frame" x="276" y="535" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="twitter.png" translatesAutoresizingMaskIntoConstraints="NO" id="ad1-yw-FpL">
+                                <rect key="frame" x="403" y="74" width="127" height="130"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ad1-yw-FpL" secondAttribute="centerX" constant="-166.5" id="2fa-DQ-eCa"/>
+                            <constraint firstAttribute="centerY" secondItem="ad1-yw-FpL" secondAttribute="centerY" constant="161" id="Kbg-k5-iLQ"/>
+                            <constraint firstAttribute="centerX" secondItem="Aet-6I-HO7" secondAttribute="centerX" id="ZtF-DO-X2S"/>
+                            <constraint firstAttribute="centerY" secondItem="OPg-GY-bfR" secondAttribute="centerY" constant="161.5" id="xCx-bv-1hI"/>
+                            <constraint firstAttribute="centerX" secondItem="OPg-GY-bfR" secondAttribute="centerX" constant="142" id="yP8-Za-WSq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="TwP-NI-yLx"/>
+                    <connections>
+                        <outlet property="facebookIcon" destination="OPg-GY-bfR" id="VqB-Ti-QcR"/>
+                        <outlet property="twitterIcon" destination="ad1-yw-FpL" id="bvN-hD-hPI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r7r-b6-bH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3393" y="-694"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="WvI-gM-KFV">
@@ -767,7 +812,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="224124B7-07E4-44DC-8EC2-3992CD85EDCE" width="300" height="300">
+        <image name="1E48121B-E3D1-46F0-A132-BF3CF7CF9C4F" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -6822,6 +6867,7 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         </image>
         <image name="PhonographRecord.png" width="2332" height="1764"/>
         <image name="black.png" width="256" height="256"/>
+        <image name="facebook.png" width="300" height="300"/>
         <image name="krlx.png" width="250" height="185"/>
         <image name="krlxSchedule.png" width="128" height="128"/>
         <image name="menu" width="22" height="22"/>
@@ -6830,6 +6876,7 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         <image name="newsIcon.png" width="128" height="128"/>
         <image name="play.png" width="1024" height="1024"/>
         <image name="recentMusicIcon.png" width="460" height="460"/>
+        <image name="twitter.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zsI-tj-JJH"/>
