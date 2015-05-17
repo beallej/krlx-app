@@ -11,6 +11,9 @@ import Social
 import UIKit
 
 class SocialMediaController: UIViewController{
+    
+    @IBOutlet weak var menuBarItem: UINavigationItem!
+    
     let transitionManager = MenuTransitionManager()
     
     //@IBOutlet weak var twitterIcon: UIImageView!
@@ -35,6 +38,9 @@ class SocialMediaController: UIViewController{
     }
     
     
+    @IBAction func goBackToArticlePage(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
     
     @IBAction func twitterButtonSender(sender: AnyObject) {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
@@ -68,6 +74,15 @@ class SocialMediaController: UIViewController{
         }
     }
     
+
     
+    @IBAction func goBack(sender: AnyObject) {
+        performSegueWithIdentifier("back",sender: nil)
+    }
+    
+    
+    @IBAction func back(sender : UIButton) {
+        performSegueWithIdentifier("back",sender: nil)
+    }
 }
 

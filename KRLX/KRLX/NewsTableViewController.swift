@@ -126,7 +126,7 @@ class NewsTableViewController: UITableViewController {
         return articles.count
     }
 
-    
+    /*
     @IBAction func shareButtonPushed(sender: UIButton) {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
             var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
@@ -137,7 +137,7 @@ class NewsTableViewController: UITableViewController {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-    }
+    }*/
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -183,7 +183,21 @@ class NewsTableViewController: UITableViewController {
     }
   
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "next") {
+        }
+    }
+    
+    @IBAction func push(sender : UIButton) {
+        performSegueWithIdentifier("next",sender: nil)
+    }
+    
+    //unwind
+    @IBAction func exitTo(segue: UIStoryboardSegue) {
+        if (segue.identifier == "back") {
+        }
         
+    }
  
     
 
