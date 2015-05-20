@@ -14,7 +14,7 @@ import Social
 import UIKit
 import WebKit
 
-class ArticleViewController: UIViewController {
+class ArticleViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -22,9 +22,8 @@ class ArticleViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var subtitle: UITextView!
     
-    @IBOutlet weak var content: UIView!
     
-    @IBOutlet weak var uiWebView: UIWebView!
+    @IBOutlet weak var content: UIWebView!
     
     var webView: WKWebView?
     
@@ -44,16 +43,20 @@ class ArticleViewController: UIViewController {
 //    }
 // -----------------------------------------
     
-    override func loadView() {
-        super.loadView()
-        
-        self.webView = WKWebView()
-        self.view = self.webView!
-    }
+    
+    
+// -------------------IF WE EVER GO BACK TO POOPY WKWEBVIEW----------------------
+//    override func loadView() {
+//        super.loadView()
+//        
+//        self.webView = WKWebView()
+//        self.view = self.webView!
+//    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.content.delegate = self
         
         //adds spinner to show activity while getting content
         self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
@@ -61,65 +64,76 @@ class ArticleViewController: UIViewController {
         activityIndicator.startAnimating()
 
         
-        //-------------UNCOMMENT IF WE ONLY SCRAPE CONENT------------
         
-        //        self.titleLabel.text = self.articleHeader.getTitle()
-        //        let dt = self.articleHeader.getDate()
-        //
-        //        let (day, month, year, longMonth) = (dt[0], dt[1], dt[2], dt[3])
-        //        self.dayLabel.text = day
-        //        self.monthLabel.text = month
-        //
-        //
-        //        //real subtitles actually have more than this...
-        //        self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
-        //-------------------------------------------------------------
+        self.titleLabel.text = self.articleHeader.getTitle()
+        let dt = self.articleHeader.getDate()
+
+        let (day, month, year, longMonth) = (dt[0], dt[1], dt[2], dt[3])
+        self.dayLabel.text = day
+        self.monthLabel.text = month
+
+
+        self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
         
         
         //Because scraping takes and converting html into text takes forever too
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
-            //Get content
-            var articleContentScraped = self.scrape()
-            articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0]
-
-            
-            //Put content into textbox
-//            var attrStr = NSAttributedString(
-//                data: articleContentScraped.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
-//                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-//                documentAttributes: nil,
-//                error: nil)
-//            println("NEWSTRING")
-//            println(attrStr)
-//            println("NEWSTRING")
-            
-            dispatch_async(dispatch_get_main_queue()) {
-//                
-//                //Get rid of the title in the content and "next" hyperlink at end
-//                var articleArr = split(attrStr!.string) {$0 == "\n"}
-//                let repeatedTitleSize: Int = count(articleArr[0])
-//                let nextLinkSize : Int = count(articleArr[count(articleArr)-1])
-//                let range : NSRange = NSMakeRange(repeatedTitleSize, attrStr!.length-repeatedTitleSize-nextLinkSize)
-//                let finalStr = attrStr!.attributedSubstringFromRange(range)
-//                let otherString = finalStr.string
-                let otherString = articleContentScraped
-                var newStr = "<!DOCTYPE html><html><head><base href=\""+self.articleHeader.getURL()+"\"/><meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /><link rel=\"stylesheet\" href=\"http://krlx.org/media/mod_social_slider/css/style.css\" type=\"text/css\" /><meta name=\"viewport\"><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/docs.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap-responsive.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/custom.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/jquery.gcal_flow.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/buttons.css\" type=\"text/css\" media=\"screen\"><link href='http://fonts.googleapis.com/css?family=Oswald:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'></head><body><div class=\"gk-article\">"+otherString+"</div></body></html>"
-                //sorry about the long string. Maybe we can tuck this away on some textfile
-                
-                self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
+            //Get content -- check to see if we already loaded it
+            if let newStr = self.articleHeader.getContent(){
+                self.content.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.removeFromSuperview()
             }
+            else {
+                var articleContentScraped = self.scrape()
+                articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0]
+
+                    dispatch_async(dispatch_get_main_queue()) {
+                    
+    //                //Get rid of the title in the content and "next" hyperlink at end
+                        let otherString = articleContentScraped
+                        var newStr = "<!DOCTYPE html><html><head><base href=\""+self.articleHeader.getURL()+"\"/><meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /><link rel=\"stylesheet\" href=\"http://krlx.org/media/mod_social_slider/css/style.css\" type=\"text/css\" /><meta name=\"viewport\"><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/docs.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap-responsive.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/custom.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/jquery.gcal_flow.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/buttons.css\" type=\"text/css\" media=\"screen\"><link href='http://fonts.googleapis.com/css?family=Oswald:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'></head><body><div class=\"gk-article\">"+otherString+"</div></body></html>"
+                        
+                    //sorry about the long string. Maybe we can tuck this away on some textfile
+                    self.articleHeader.content = newStr
+                        
+                    // ---------------------POOPY WKWEBVIEW, IN CASE WE NEED IT--------------------
+                    //self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
+                    
+                    self.content.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
+                    }
+                }
         }
         
     }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.zoomToFit()
+    }
+
+    func zoomToFit(){
+    
+        var scroll = self.content.scrollView
+        
+// -------------------WHY WONT IT ZOOM OR STAY ZOOMED OR LOCK HOROZONTAL SCROLL I HATE IT----------------------
+//        let zoom = (self.content.bounds.size.width+50)/scroll.contentSize.width
+//        let diff = (self.content.bounds.size.width*zoom - self.content.bounds.size.width)/2.0
+//        
+//        let zRect = CGRect(x: self.content.frame.origin.x + 100, y: self.content.frame.origin.y, width: self.content.bounds.size.width-100, height: self.content.frame.height)
+//        scroll.zoomToRect(zRect, animated: true)
+        //scroll.zoomScale = zoom
+       // scroll.setZoomScale(zoom, animated: false)
+        //scroll.setContentOffset(CGPointMake(30, 0), animated: false)
 
 
+        
+    }
     
     
-    
-    //    //does scraping for an article
+    //    does scraping for an article
     func scrape() -> String{
         let myURLString = self.articleHeader.getURL()
         var article_content = String()

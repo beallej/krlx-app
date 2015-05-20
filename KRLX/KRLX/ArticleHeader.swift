@@ -11,6 +11,7 @@ class ArticleHeader {
     var title : String
     var date : [String]
     var url : String
+    var content : String?
     let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     let longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
        
@@ -39,6 +40,9 @@ class ArticleHeader {
     }
     func getURL() -> String{
         return self.url
+    }
+    func getContent() -> String?{
+        return self.content
     }
 
 }
