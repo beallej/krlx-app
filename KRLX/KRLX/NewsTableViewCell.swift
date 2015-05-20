@@ -8,7 +8,7 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var authorImageView:UIImageView!
+    @IBOutlet weak var dateBkgd :UIImageView!
     @IBOutlet weak var postTitleLabel:UILabel!
     @IBOutlet weak var authorLabel:UILabel!
 
@@ -17,7 +17,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.authorImageView.image = UIImage(named: "black")
+        self.dateBkgd.image = UIImage(named: "black")
         
         // Initialization code
     }
