@@ -21,15 +21,33 @@ class NewsTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { 
+        
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             self.scrape()
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
                 self.spinnyWidget.stopAnimating()
-                print("Done with scrape in NewsTableViewController!")
             }
         }
+
+        
+    
+
+//        if sharedData.loadedArticleHeaders.count == 0{
+//            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+//                self.scrape()
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    self.tableView.reloadData()
+//                    self.spinnyWidget.stopAnimating()
+//                }
+//            }
+//
+//        }
+//        else {
+//            self.spinnyWidget.stopAnimating()
+//
+//        }
+
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -98,7 +116,16 @@ class NewsTableViewController: UITableViewController {
                             }
                         }
                         var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
-                        articles.append(article)
+                        //articles.append(article)
+                            if !(sharedData.loadedArticleHeaders.containsObject(article)) {
+                                
+                                
+                                //TODO: this should go at top if new, but not if loading for first time
+                                sharedData.loadedArticleHeaders.addObject(article)
+                                
+
+                            }
+                        //sharedData.loadedArticleHeaders.append(article)
                     }
                 }
             }
@@ -122,8 +149,8 @@ class NewsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        println(articles.count)
-        return articles.count
+        return sharedData.loadedArticleHeaders.count
+        //return articles.count
     }
 
     /*
@@ -142,7 +169,7 @@ class NewsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NewsTableViewCell
-        let article = articles[indexPath.row]
+        let article = sharedData.loadedArticleHeaders[indexPath.row] as! ArticleHeader
         cell.postTitleLabel.text = article.getTitle()
         cell.authorLabel.text = article.getAuthor()
         cell.dayLabel.text = article.getDate()[0]
@@ -177,7 +204,7 @@ class NewsTableViewController: UITableViewController {
         let articleStoryboard = UIStoryboard(name: "Article", bundle: nil)
 
         var articleVC = articleStoryboard.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
-        articleVC.articleHeader = articles[indexPath.row]
+        articleVC.articleHeader = sharedData.loadedArticleHeaders[indexPath.row] as! ArticleHeader
        
         self.navigationController?.pushViewController(articleVC, animated: true)
     }

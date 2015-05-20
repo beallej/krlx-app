@@ -25,6 +25,7 @@
 		BD286D111AF1B1240021B036 /* callMeMaybe.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D101AF1B1240021B036 /* callMeMaybe.png */; };
 		BD286D131AF20C4D0021B036 /* PhonographRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D121AF20C4D0021B036 /* PhonographRecord.png */; };
 		BD286D151AF2F1080021B036 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D141AF2F1080021B036 /* play.png */; };
+		BD2F27571B0C238700A835F8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F27561B0C238700A835F8 /* Globals.swift */; };
 		BD365C651B02801700BF946A /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C621B02801700BF946A /* HTMLNode.swift */; };
 		BD365C661B02801700BF946A /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C631B02801700BF946A /* HTMLParser.swift */; };
 		BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD365C671B02820400BF946A /* libxml2.dylib */; };
@@ -77,6 +78,7 @@
 		BD286D101AF1B1240021B036 /* callMeMaybe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callMeMaybe.png; sourceTree = "<group>"; };
 		BD286D121AF20C4D0021B036 /* PhonographRecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhonographRecord.png; sourceTree = "<group>"; };
 		BD286D141AF2F1080021B036 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		BD2F27561B0C238700A835F8 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		BD365C621B02801700BF946A /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		BD365C631B02801700BF946A /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		BD365C671B02820400BF946A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -174,6 +176,7 @@
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 				3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */,
 				3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */,
+				BD2F27561B0C238700A835F8 /* Globals.swift */,
 			);
 			path = KRLX;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */,
 				F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */,
 				BD55116F1AFBF7BE0016AEFA /* ArticleViewController.swift in Sources */,
+				BD2F27571B0C238700A835F8 /* Globals.swift in Sources */,
 				BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */,
 				F491E7531A7F7DF20026528E /* RecentlyHeardViewController.swift in Sources */,
 				BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */,

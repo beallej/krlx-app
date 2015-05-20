@@ -24,8 +24,9 @@ class ArticleViewController: UIViewController {
     
     @IBOutlet weak var content: UIView!
     
+    @IBOutlet weak var uiWebView: UIWebView!
     
-    var webView: WKWebView?    
+    var webView: WKWebView?
     
     var articleHeader : ArticleHeader!
     var activityIndicator : UIActivityIndicatorView!
