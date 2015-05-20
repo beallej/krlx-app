@@ -26,7 +26,10 @@ class ArticleViewController: UIViewController {
     
     
     var webView: WKWebView?
+    
+    
     var articleHeader : ArticleHeader!
+    var activityIndicator : UIActivityIndicatorView!
     
     
     
@@ -41,6 +44,12 @@ class ArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //adds spinner to show activity while getting content
+        self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+        self.navigationItem.titleView = self.activityIndicator
+        activityIndicator.startAnimating()
+
         
         //-------------UNCOMMENT IF WE ONLY SCRAPE CONENT------------
         
@@ -80,12 +89,14 @@ class ArticleViewController: UIViewController {
                 let otherString = finalStr.string
                 var newStr = "<!DOCTYPE html><html><body>"+otherString+"</body></html>"
                 self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
-                
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.removeFromSuperview()
             }
         }
         
     }
-    
+
+
     
     
     
