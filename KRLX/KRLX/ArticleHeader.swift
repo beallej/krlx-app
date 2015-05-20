@@ -2,7 +2,7 @@
 //  ArticleHeader.swift
 //  KRLX
 //
-//  Created by Josie Bealle on 13/05/2015.
+//  Created by Josie Bealle and Phuong Dinh on 13/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 

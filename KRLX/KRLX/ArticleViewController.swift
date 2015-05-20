@@ -2,7 +2,7 @@
 //  ArticleViewController.swift
 //  KRLX
 //
-//  Created by Josie Bealle on 07/05/2015.
+//  Created by Josie Bealle and Phuong Dinh on 07/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
@@ -25,14 +25,23 @@ class ArticleViewController: UIViewController {
     @IBOutlet weak var content: UIView!
     
     
-    var webView: WKWebView?
-    
+    var webView: WKWebView?    
     
     var articleHeader : ArticleHeader!
     var activityIndicator : UIActivityIndicatorView!
     
     
-    
+//   ------I tried CSS but fail -------------
+//    required init(coder aDecoder: NSCoder) {
+//        let config = WKWebViewConfiguration()
+//        let scriptURL = NSBundle.mainBundle().pathForResource("articleNameStyle", ofType: "js")
+//        let scriptContent = String(contentsOfFile:scriptURL!, encoding:NSUTF8StringEncoding, error: nil)
+//        let script = WKUserScript(source: scriptContent!, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
+//        config.userContentController.addUserScript(script)
+//        self.webView = WKWebView(frame: CGRectZero, configuration: config)
+//        super.init(coder: aDecoder)
+//    }
+// -----------------------------------------
     
     override func loadView() {
         super.loadView()
@@ -70,24 +79,33 @@ class ArticleViewController: UIViewController {
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             //Get content
-            let articleContentScraped = self.scrape()
+            var articleContentScraped = self.scrape()
+            articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0]
+
+            
             //Put content into textbox
-            var attrStr = NSAttributedString(
-                data: articleContentScraped.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
-                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil,
-                error: nil)
+//            var attrStr = NSAttributedString(
+//                data: articleContentScraped.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
+//                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+//                documentAttributes: nil,
+//                error: nil)
+//            println("NEWSTRING")
+//            println(attrStr)
+//            println("NEWSTRING")
             
             dispatch_async(dispatch_get_main_queue()) {
+//                
+//                //Get rid of the title in the content and "next" hyperlink at end
+//                var articleArr = split(attrStr!.string) {$0 == "\n"}
+//                let repeatedTitleSize: Int = count(articleArr[0])
+//                let nextLinkSize : Int = count(articleArr[count(articleArr)-1])
+//                let range : NSRange = NSMakeRange(repeatedTitleSize, attrStr!.length-repeatedTitleSize-nextLinkSize)
+//                let finalStr = attrStr!.attributedSubstringFromRange(range)
+//                let otherString = finalStr.string
+                let otherString = articleContentScraped
+                var newStr = "<!DOCTYPE html><html><head><base href=\""+self.articleHeader.getURL()+"\"/><meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /><link rel=\"stylesheet\" href=\"http://krlx.org/media/mod_social_slider/css/style.css\" type=\"text/css\" /><meta name=\"viewport\"><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/docs.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap-responsive.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/custom.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/jquery.gcal_flow.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/buttons.css\" type=\"text/css\" media=\"screen\"><link href='http://fonts.googleapis.com/css?family=Oswald:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'></head><body><div class=\"gk-article\">"+otherString+"</div></body></html>"
+                //sorry about the long string. Maybe we can tuck this away on some textfile
                 
-                //Get rid of the title in the content and "next" hyperlink at end
-                var articleArr = split(attrStr!.string) {$0 == "\n"}
-                let repeatedTitleSize: Int = count(articleArr[0])
-                let nextLinkSize : Int = count(articleArr[count(articleArr)-1])
-                let range : NSRange = NSMakeRange(repeatedTitleSize, attrStr!.length-repeatedTitleSize-nextLinkSize)
-                let finalStr = attrStr!.attributedSubstringFromRange(range)
-                let otherString = finalStr.string
-                var newStr = "<!DOCTYPE html><html><body>"+otherString+"</body></html>"
                 self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.removeFromSuperview()
