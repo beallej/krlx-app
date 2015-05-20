@@ -18,14 +18,15 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var subtitle: UITextView!
     
     
     @IBOutlet weak var content: UIWebView!
     
-    var webView: WKWebView?
+    // -------------------EVIL WKWEBVIEW-----------------------------
+    //var webView: WKWebView?
+    // ---------------------------------------------------------------------------
     
     var articleHeader : ArticleHeader!
     var activityIndicator : UIActivityIndicatorView!
@@ -41,8 +42,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
 //        self.webView = WKWebView(frame: CGRectZero, configuration: config)
 //        super.init(coder: aDecoder)
 //    }
-// -----------------------------------------
-    
+// ---------------------------------------------------------------------------
     
     
 // -------------------IF WE EVER GO BACK TO POOPY WKWEBVIEW----------------------
@@ -52,10 +52,14 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
 //        self.webView = WKWebView()
 //        self.view = self.webView!
 //    }
+// ---------------------------------------------------------------------------
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set webview delegate
         self.content.delegate = self
         
         //adds spinner to show activity while getting content
@@ -64,15 +68,12 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         activityIndicator.startAnimating()
 
         
-        
+        //add basic info
         self.titleLabel.text = self.articleHeader.getTitle()
         let dt = self.articleHeader.getDate()
-
         let (day, month, year, longMonth) = (dt[0], dt[1], dt[2], dt[3])
         self.dayLabel.text = day
         self.monthLabel.text = month
-
-
         self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
         
         
@@ -88,37 +89,40 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
             else {
                 var articleContentScraped = self.scrape()
                 articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0]
-
                     dispatch_async(dispatch_get_main_queue()) {
-                    
-    //                //Get rid of the title in the content and "next" hyperlink at end
-                        let otherString = articleContentScraped
-                        var newStr = "<!DOCTYPE html><html><head><base href=\""+self.articleHeader.getURL()+"\"/><meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /><link rel=\"stylesheet\" href=\"http://krlx.org/media/mod_social_slider/css/style.css\" type=\"text/css\" /><meta name=\"viewport\"><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/docs.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"http://krlx.org/templates/krlx/css/bootstrap-responsive.css\" type=\"text/css\" media=\"screen\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/custom.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/jquery.gcal_flow.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"/templates/krlx/css/buttons.css\" type=\"text/css\" media=\"screen\"><link href='http://fonts.googleapis.com/css?family=Oswald:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'></head><body><div class=\"gk-article\">"+otherString+"</div></body></html>"
                         
-                    //sorry about the long string. Maybe we can tuck this away on some textfile
-                    self.articleHeader.content = newStr
+                        //Put the pieces of the giant HTML string together
+                        let htmlStrings = self.openFile("htmlString", fileExtension: "txt")!.componentsSeparatedByString("\n")
+                        let finalHTMLString = htmlStrings[0]+self.articleHeader.getURL()+htmlStrings[1]+articleContentScraped+htmlStrings[2]
+                            
+                        self.articleHeader.content = finalHTMLString
+                            
+                        // ---------------------POOPY WKWEBVIEW, IN CASE WE NEED IT--------------------
+                        //self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
+                        // ---------------------------------------------------------------------------
                         
-                    // ---------------------POOPY WKWEBVIEW, IN CASE WE NEED IT--------------------
-                    //self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
-                    
-                    self.content.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.removeFromSuperview()
+                        //load content, dismiss activity indicator
+                        self.content.loadHTMLString(finalHTMLString, baseURL: NSURL(string: self.articleHeader.getURL()))
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.removeFromSuperview()
                     }
                 }
         }
         
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
-        self.zoomToFit()
-    }
-
-    func zoomToFit(){
-    
-        var scroll = self.content.scrollView
-        
 // -------------------WHY WONT IT ZOOM OR STAY ZOOMED OR LOCK HOROZONTAL SCROLL I HATE IT----------------------
+//    
+//    func webViewDidFinishLoad(webView: UIWebView) {
+//        self.zoomToFit()
+//    }
+//
+//    func zoomToFit(){
+//    
+//        var scroll = self.content.scrollView
+//    }
+    
+// -------------------I HAVE TRIED ALL OF THESE TO NO AVAIL----------------------
 //        let zoom = (self.content.bounds.size.width+50)/scroll.contentSize.width
 //        let diff = (self.content.bounds.size.width*zoom - self.content.bounds.size.width)/2.0
 //        
@@ -127,13 +131,19 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         //scroll.zoomScale = zoom
        // scroll.setZoomScale(zoom, animated: false)
         //scroll.setContentOffset(CGPointMake(30, 0), animated: false)
+// ---------------------------------------------------------------------------
 
 
         
+    //opens a file
+    func openFile (fileName: String, fileExtension: String, utf8: NSStringEncoding = NSUTF8StringEncoding) -> String? {
+        let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: fileExtension)
+        var error: NSError?
+        return NSFileManager().fileExistsAtPath(filePath!) ? String(contentsOfFile: filePath!, encoding: utf8, error: &error)! : nil
     }
     
     
-    //    does scraping for an article
+    //does scraping for an article
     func scrape() -> String{
         let myURLString = self.articleHeader.getURL()
         var article_content = String()
@@ -154,7 +164,6 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                 if let inputAllArticleNodes = allArticle?.xpath("//div[@class='gk-article']") {
                     for node in inputAllArticleNodes {
                         article_content = node.rawContents
-                        println(article_content)
                         
                     }
                 }
@@ -172,15 +181,5 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

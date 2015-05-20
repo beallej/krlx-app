@@ -30,30 +30,12 @@ class NewsTableViewController: UITableViewController {
             }
         }
 
-        
-    
 
-//        if sharedData.loadedArticleHeaders.count == 0{
-//            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
-//                self.scrape()
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.tableView.reloadData()
-//                    self.spinnyWidget.stopAnimating()
-//                }
-//            }
-//
-//        }
-//        else {
-//            self.spinnyWidget.stopAnimating()
-//
-//        }
 
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func scrape(){
@@ -75,57 +57,57 @@ class NewsTableViewController: UITableViewController {
                 var allArticle = parser.body
                 if let inputAllArticleNodes = allArticle?.xpath("//div[@class='items-leading']/div[@class='items-leading'] | //div[@class='items-leading']/div[@class='leading-0']") {
                         for node in inputAllArticleNodes {
-                        var bodyHTML = node.rawContents
-                        var parser = HTMLParser(html: bodyHTML, error: &err)
-                        var bodyNode   = parser.body
-                        var author = String()
-                        var article_url = String()
-                        var article_header = String()
-                        var datetime = String()
-                        
-                        
-                        //Get link and title of the article
-                        if let inputNodes = bodyNode?.xpath("//h2[@class='article-header']") {
-                            for node in inputNodes {
-                                var eachArticle = node.rawContents
-                                var parserArticle = HTMLParser(html: eachArticle, error: &err)
-                                var articleBody   = parserArticle.body
-                                if let inputArticle = articleBody?.findChildTags("a") {
-                                    for node in inputArticle {
-                                        article_header = node.contents
-                                        article_url = node.getAttributeNamed("href")
-                                        article_url = "http://krlx.org/"+article_url
+                            var bodyHTML = node.rawContents
+                            var parser = HTMLParser(html: bodyHTML, error: &err)
+                            var bodyNode   = parser.body
+                            var author = String()
+                            var article_url = String()
+                            var article_header = String()
+                            var datetime = String()
+                            
+                            
+                            //Get link and title of the article
+                            if let inputNodes = bodyNode?.xpath("//h2[@class='article-header']") {
+                                for node in inputNodes {
+                                    var eachArticle = node.rawContents
+                                    var parserArticle = HTMLParser(html: eachArticle, error: &err)
+                                    var articleBody   = parserArticle.body
+                                    if let inputArticle = articleBody?.findChildTags("a") {
+                                        for node in inputArticle {
+                                            article_header = node.contents
+                                            article_url = node.getAttributeNamed("href")
+                                            article_url = "http://krlx.org/"+article_url
 
+                                        }
                                     }
                                 }
                             }
-                        }
-                        
-                        //Get author
-                        if let inputNodes = bodyNode?.xpath("//dl[@class='article-info']/dd") {
-                            for node in inputNodes {
-                                author = node.contents
+                            
+                            //Get author
+                            if let inputNodes = bodyNode?.xpath("//dl[@class='article-info']/dd") {
+                                for node in inputNodes {
+                                    author = node.contents
 
+                                }
                             }
-                        }
-                        
-                        if let inputNodes = bodyNode?.xpath("//aside/time") {
-                            for node in inputNodes {
-                                datetime = node.getAttributeNamed("datetime")
+                            
+                            if let inputNodes = bodyNode?.xpath("//aside/time") {
+                                for node in inputNodes {
+                                    datetime = node.getAttributeNamed("datetime")
 
+                                }
                             }
-                        }
-                        var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
-                        //articles.append(article)
+                            var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
                             if !(sharedData.loadedArticleHeaders.containsObject(article)) {
-                                
-                                
-                                //TODO: this should go at top if new, but not if loading for first time
-                                sharedData.loadedArticleHeaders.addObject(article)
-                                
-
+                                self.articles.append(article)
                             }
-                        //sharedData.loadedArticleHeaders.append(article)
+                        
+                    }
+                   
+                    //insert new articles at the top
+                    if self.articles.count != 0{
+                        sharedData.loadedArticleHeaders.insertObjects(self.articles, atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, self.articles.count)))
+                        self.articles.removeAll(keepCapacity: true)
                     }
                 }
             }
@@ -153,19 +135,6 @@ class NewsTableViewController: UITableViewController {
         //return articles.count
     }
 
-    /*
-    @IBAction func shareButtonPushed(sender: UIButton) {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-            var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterSheet.setInitialText("Share on Twitter")
-            self.presentViewController(twitterSheet, animated: true, completion: nil)
-        } else {
-            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
-    }*/
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NewsTableViewCell
@@ -183,6 +152,8 @@ class NewsTableViewController: UITableViewController {
         button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         button.setTitle("Share", forState: UIControlState.Normal)
         button.titleLabel!.adjustsFontSizeToFitWidth = true
+        
+        
         /////////////////////////////////////
         ////CHANGE THE FONT LATER!!!!!!!/////
         /////////////////////////////////////
@@ -225,64 +196,7 @@ class NewsTableViewController: UITableViewController {
         }
         
     }
- 
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using [segue destinationViewController].
-//        // Pass the selected object to the new view controller.
-//        let articleVC = storyboard!.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
-//        
-//        // Now we do just as we did with the CowViewController in prepareForSegue above.
-//        //articleVC.url =
-//        
-//        self.navigationController?.pushViewController(articleVC, animated: true)
-//    }
-    
-    
-    
-    
-    
-
 }
 
 

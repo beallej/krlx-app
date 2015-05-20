@@ -26,6 +26,7 @@
 		BD286D131AF20C4D0021B036 /* PhonographRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D121AF20C4D0021B036 /* PhonographRecord.png */; };
 		BD286D151AF2F1080021B036 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286D141AF2F1080021B036 /* play.png */; };
 		BD2F27571B0C238700A835F8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F27561B0C238700A835F8 /* Globals.swift */; };
+		BD2F27591B0D0D3400A835F8 /* htmlString.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD2F27581B0D0D3400A835F8 /* htmlString.txt */; };
 		BD365C651B02801700BF946A /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C621B02801700BF946A /* HTMLNode.swift */; };
 		BD365C661B02801700BF946A /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C631B02801700BF946A /* HTMLParser.swift */; };
 		BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD365C671B02820400BF946A /* libxml2.dylib */; };
@@ -79,6 +80,7 @@
 		BD286D121AF20C4D0021B036 /* PhonographRecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhonographRecord.png; sourceTree = "<group>"; };
 		BD286D141AF2F1080021B036 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BD2F27561B0C238700A835F8 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		BD2F27581B0D0D3400A835F8 /* htmlString.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htmlString.txt; sourceTree = "<group>"; };
 		BD365C621B02801700BF946A /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		BD365C631B02801700BF946A /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		BD365C671B02820400BF946A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -184,6 +186,7 @@
 		F47029F31A7F27DB00E30A3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD2F27581B0D0D3400A835F8 /* htmlString.txt */,
 				3339AD2D1B083D2600E5DBD0 /* facebook.png */,
 				3397B6591AFEE58C00974947 /* high_quality.m3u */,
 				3339AD2C1B083D2600E5DBD0 /* twitter.png */,
@@ -312,6 +315,7 @@
 				BD286CD91AF067930021B036 /* dateImage.png in Resources */,
 				330BCD051AF1CA1400C8CCED /* krlxSchedule.png in Resources */,
 				BD785BED1B03EE0C003A3C33 /* Article.storyboard in Resources */,
+				BD2F27591B0D0D3400A835F8 /* htmlString.txt in Resources */,
 				330BCD061AF1CA1400C8CCED /* recentMusicIcon.png in Resources */,
 				330BCCFD1AF1C6B400C8CCED /* newsIcon.png in Resources */,
 				BD286D131AF20C4D0021B036 /* PhonographRecord.png in Resources */,
