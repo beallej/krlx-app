@@ -6,7 +6,13 @@
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
+
+
+
+
 import Social
+import UIKit
+import WebKit
 
 class ArticleViewController: UIViewController {
     
@@ -16,26 +22,42 @@ class ArticleViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var subtitle: UITextView!
     
-    @IBOutlet weak var content: UITextView!
+    @IBOutlet weak var content: UIView!
     
     
+    var webView: WKWebView?
     var articleHeader : ArticleHeader!
+    
+    
+    
+    
+    override func loadView() {
+        super.loadView()
+        
+        self.webView = WKWebView()
+        self.view = self.webView!
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titleLabel.text = self.articleHeader.getTitle()
-        let dt = self.articleHeader.getDate()
-
-        let (day, month, year, longMonth) = (dt[0], dt[1], dt[2], dt[3])
-        self.dayLabel.text = day
-        self.monthLabel.text = month
-
         
-        //real subtitles actually have more than this...
-        self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
+        //-------------UNCOMMENT IF WE ONLY SCRAPE CONENT------------
+        
+        //        self.titleLabel.text = self.articleHeader.getTitle()
+        //        let dt = self.articleHeader.getDate()
+        //
+        //        let (day, month, year, longMonth) = (dt[0], dt[1], dt[2], dt[3])
+        //        self.dayLabel.text = day
+        //        self.monthLabel.text = month
+        //
+        //
+        //        //real subtitles actually have more than this...
+        //        self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
+        //-------------------------------------------------------------
         
         
         //Because scraping takes and converting html into text takes forever too
-
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             //Get content
@@ -48,25 +70,26 @@ class ArticleViewController: UIViewController {
                 error: nil)
             
             dispatch_async(dispatch_get_main_queue()) {
-               
+                
                 //Get rid of the title in the content and "next" hyperlink at end
                 var articleArr = split(attrStr!.string) {$0 == "\n"}
                 let repeatedTitleSize: Int = count(articleArr[0])
                 let nextLinkSize : Int = count(articleArr[count(articleArr)-1])
                 let range : NSRange = NSMakeRange(repeatedTitleSize, attrStr!.length-repeatedTitleSize-nextLinkSize)
                 let finalStr = attrStr!.attributedSubstringFromRange(range)
+                let otherString = finalStr.string
+                var newStr = "<!DOCTYPE html><html><body>"+otherString+"</body></html>"
+                self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
                 
-                //set content
-                self.content.attributedText = finalStr
-                self.content.font = UIFont(name: "Avenir Next", size: 14.0)
             }
-        }       
-                
+        }
+        
     }
     
     
-
-    //does scraping for an article    
+    
+    
+    //    //does scraping for an article
     func scrape() -> String{
         let myURLString = self.articleHeader.getURL()
         var article_content = String()
@@ -88,13 +111,13 @@ class ArticleViewController: UIViewController {
                     for node in inputAllArticleNodes {
                         article_content = node.rawContents
                         println(article_content)
-                
+                        
+                    }
+                }
+                else {
+                    println("Error: \(myURLString) doesn't seem to be a valid URL")
+                }
             }
-        }
-        else {
-        println("Error: \(myURLString) doesn't seem to be a valid URL")
-        }
-    }
         }
         return String(article_content)
     }
