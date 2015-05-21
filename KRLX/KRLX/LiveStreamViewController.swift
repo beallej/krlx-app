@@ -17,10 +17,12 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     
-    var moviePlayer:MPMoviePlayerController!
-    //var player:AVPlayer = AVPlayer(URL: NSURL(string: "radio.krlx.org/mp3/high_quality.m3u"))
+    var playBoolean = true
     
-    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
+    var moviePlayer:MPMoviePlayerController!
+    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
+    
+    //var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
     override func viewDidLoad() {
         
         //playButton.setTitle("Play", forState: UIControlState.Normal)
@@ -44,21 +46,28 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func toggle() {
-        if playButton.titleLabel?.text == "Play" {
+        if playBoolean {
             playRadio()
-        } else {
+            playBoolean = false
+        }else{
             pauseRadio()
+            playBoolean = true
+
         }
     }
     
     func playRadio() {
         player.play()
-        playButton.setTitle("Pause", forState: UIControlState.Normal)
+        let image = UIImage(named: "pause") as UIImage?
+        //playButton.setTitle("Pause", forState: UIControlState.Normal)
+        playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
     func pauseRadio() {
         player.pause()
-        playButton.setTitle("Play", forState: UIControlState.Normal)
+        let image = UIImage(named: "play") as UIImage?
+        playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        //playButton.setTitle("Play", forState: UIControlState.Normal)
     }
     
     override func didReceiveMemoryWarning() {
