@@ -21,14 +21,14 @@
                                 <rect key="frame" x="16" y="90" width="43" height="43"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vxQ-Ew-Tq3">
-                                <rect key="frame" x="195" y="110" width="210" height="39"/>
+                                <rect key="frame" x="218" y="110" width="165" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="5gQ-qU-tJU"/>
+                                    <constraint firstAttribute="width" constant="165" id="5gQ-qU-tJU"/>
                                     <constraint firstAttribute="height" constant="39" id="RUp-tK-8pu"/>
                                 </constraints>
                                 <string key="text">Written by Mary Reagan Harvey
-Published: 28 April 2015 ~ Category: Music
+Published: 28 December 2015
 
 
 
@@ -53,10 +53,6 @@ Published: 28 April 2015 ~ Category: Music
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView autoresizesSubviews="NO" contentMode="center" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQ4-Qm-5TW">
-                                <rect key="frame" x="0.0" y="157" width="600" height="443"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-aI-wu6">
                                 <rect key="frame" x="67" y="28" width="466" height="74"/>
                                 <constraints>
@@ -66,6 +62,10 @@ Published: 28 April 2015 ~ Category: Music
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView autoresizesSubviews="NO" contentMode="center" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQ4-Qm-5TW">
+                                <rect key="frame" x="0.0" y="157" width="600" height="443"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

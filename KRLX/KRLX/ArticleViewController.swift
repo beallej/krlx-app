@@ -113,14 +113,18 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     
 // -------------------WHY WONT IT ZOOM OR STAY ZOOMED OR LOCK HOROZONTAL SCROLL I HATE IT----------------------
 //    
-//    func webViewDidFinishLoad(webView: UIWebView) {
-//        self.zoomToFit()
-//    }
-//
-//    func zoomToFit(){
-//    
-//        var scroll = self.content.scrollView
-//    }
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.zoomToFit()
+        let v = content.scrollView.center.x
+        
+    }
+    func zoomToFit(){
+        var scroll = self.content.scrollView
+        var ctr = self.view.frame.size.width/2.0
+        scroll.setZoomScale(1.17, animated: true)
+        scroll.center.x = ctr
+        
+    }
     
 // -------------------I HAVE TRIED ALL OF THESE TO NO AVAIL----------------------
 //        let zoom = (self.content.bounds.size.width+50)/scroll.contentSize.width
@@ -157,7 +161,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                 var err : NSError?
                 var parser = HTMLParser(html: html!, error: &err)
                 if err != nil {
-                    println(err)
+                    //println(err)
                     exit(1)
                 }
                 var allArticle = parser.body
@@ -168,7 +172,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                     }
                 }
                 else {
-                    println("Error: \(myURLString) doesn't seem to be a valid URL")
+                    //println("Error: \(myURLString) doesn't seem to be a valid URL")
                 }
             }
         }
