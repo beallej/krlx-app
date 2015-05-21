@@ -17,6 +17,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     
+    var playBoolean = true
+    
     var moviePlayer:MPMoviePlayerController!
     var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
     
@@ -44,17 +46,20 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func toggle() {
-        if playButton.titleLabel?.text == "Play" {
+        if playBoolean {
             playRadio()
-        } else {
+            playBoolean = false
+        }else{
             pauseRadio()
+            playBoolean = true
+
         }
     }
     
     func playRadio() {
         player.play()
         let image = UIImage(named: "pause") as UIImage?
-        playButton.setTitle("Pause", forState: UIControlState.Normal)
+        //playButton.setTitle("Pause", forState: UIControlState.Normal)
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
@@ -62,7 +67,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         player.pause()
         let image = UIImage(named: "play") as UIImage?
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
-        playButton.setTitle("Play", forState: UIControlState.Normal)
+        //playButton.setTitle("Play", forState: UIControlState.Normal)
     }
     
     override func didReceiveMemoryWarning() {
