@@ -22,6 +22,8 @@ class NewsTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        
+        //because scraping is sloooowwww
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             self.scrape()
             dispatch_async(dispatch_get_main_queue()) {
@@ -168,8 +170,7 @@ class NewsTableViewController: UITableViewController {
         button.frame = frameRect
   
             
-        //button.addConstraint(flushRight)
-        //button.frame = CGRectMake(300, 70, 50, 24)
+        
         let cellHeight: CGFloat = 44.0
         button.backgroundColor = UIColor.blackColor()
         button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)

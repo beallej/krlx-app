@@ -11,11 +11,15 @@ import UIKit
 class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
+    @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
     var show_arrays = [ShowHeader]()
     var cellIdentifier = "showCell"
 
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var currentDJLabel: UILabel!
+    @IBOutlet weak var currentShowLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +32,15 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         }
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
+        
+        //clear placeholder time label
+        self.currentTimeLabel.text = ""
+        
+        //Display previously loaded first show
+        if sharedData.loadedShowHeaders.count != 0{
+            self.setFirstShow()
+
+        }
 
         // Pull calendar
         self.pullKRLXGoogleCal()
@@ -62,17 +75,19 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                         var ShowTitle = item["summary"] as! String
                         var startTime = (item["start"] as! NSDictionary)["dateTime"] as! String
                         var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
-//                        println(ShowTitle)
-//                        println(startTime)
-//                        println(endTime)
-//                        println("---------")
                         var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: "UNKNOWN lol")
                         self.show_arrays.append(show)
                         
                     }
                 }
-                //self.setupViews()
-                self.tableView?.reloadData()
+                var newShowList = NSMutableArray(array: self.show_arrays)
+                if newShowList != sharedData.loadedShowHeaders{
+                    sharedData.loadedShowHeaders = newShowList
+                    self.setFirstShow()
+                    self.tableView?.reloadData()
+
+                }
+                self.spinnyWidget.stopAnimating()
             }
             else
             {
@@ -80,6 +95,30 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                 //-------NOT DONE---------
             }
         })
+    }
+    
+    //times are formatted super ugly-ly
+    func prettifyTimeLabel(time: String) -> String
+    {
+        var finalTime : String
+        //2015-05-21T05:30:00-05:00 --> 05:30:00
+        var tm = time.componentsSeparatedByString("T")[1].componentsSeparatedByString("-")[0]
+        
+        //05:30:00 --> 5:30
+        var hour = tm.substringWithRange(Range<String.Index>(start: tm.startIndex, end: advance(tm.endIndex, -6)))
+        var minute = tm.substringWithRange(Range<String.Index>(start: advance(tm.startIndex, 2), end: advance(tm.endIndex, -3)))
+        var hourNumber = hour.toInt()
+        
+        //this isn't military time
+        if hourNumber > 12 {
+            hourNumber = hourNumber! % 12
+            finalTime = hourNumber!.description + minute + "pm"
+        }
+        else{
+            finalTime = hourNumber!.description+minute+"am"
+        }
+        return finalTime
+        
     }
     
 
@@ -91,19 +130,26 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        println(self.show_arrays.count)
-        return self.show_arrays.count
+        return sharedData.loadedShowHeaders.count - 1
+    }
+    
+    
+    //The current show is not in tableview, it is pinned to top in a view
+    func setFirstShow(){
+        let show = sharedData.loadedShowHeaders[0] as! ShowHeader
+        self.currentShowLabel.text = show.getTitle()
+        self.currentDJLabel.text = show.getDJ()
+        let finalTimeString = self.prettifyTimeLabel(show.getStartTime()) + " - " + self.prettifyTimeLabel(show.getEndTime())
+        self.currentTimeLabel.text = finalTimeString
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
-        let show = self.show_arrays[indexPath.row]
-        //-------------Not sure why optional value here?????????-------
+        let show = sharedData.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
         cell.title.text = show.getTitle()
-        cell.start.text = show.getStartTime()
-        //---------------
-        println("Print Cell")
+        let finalTimeString = self.prettifyTimeLabel(show.getStartTime()) + " - " + self.prettifyTimeLabel(show.getEndTime())
+        cell.start.text = finalTimeString
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

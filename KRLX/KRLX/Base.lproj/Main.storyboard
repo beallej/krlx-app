@@ -62,7 +62,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9A4771B8-1C74-43C4-BD7B-7B30CC579FB2" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D568F427-75EF-4F0C-BE6B-F887F312D483" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -687,7 +687,7 @@ DJ: Ibrahim Rabbani</string>
             </objects>
             <point key="canvasLocation" x="1765" y="780"/>
         </scene>
-        <!--Schedule-->
+        <!--Schedule View Controller-->
         <scene sceneID="atx-Sh-5y3">
             <objects>
                 <viewController id="Gkz-ka-TEw" customClass="ScheduleViewController" customModule="KRLX" customModuleProvider="target" sceneMemberID="viewController">
@@ -699,12 +699,6 @@ DJ: Ibrahim Rabbani</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="Find a show!" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-kV-VwT">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-jQ-Q7d">
                                 <rect key="frame" x="0.0" y="113" width="600" height="487"/>
                                 <subviews>
@@ -720,21 +714,15 @@ DJ: Ibrahim Rabbani</string>
                                         <color key="textColor" red="0.74013573232323226" green="0.59502404160158717" blue="0.29348090549706873" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="License to Chill" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sC-SC-ioN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sC-SC-ioN">
                                         <rect key="frame" x="106" y="36" width="303" height="29"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
                                         <color key="textColor" red="0.0" green="1" blue="1" alpha="0.68999999999999995" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ibrahim Rabbani" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnl-9q-rv0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnl-9q-rv0">
                                         <rect key="frame" x="106" y="60" width="127" height="21"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="16"/>
-                                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 - 11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqe-Um-Zic">
-                                        <rect key="frame" x="540" y="44" width="52" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -760,19 +748,55 @@ DJ: Ibrahim Rabbani</string>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="WFm-Cd-isr" id="aMt-3T-yg1">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-jw-5Da">
-                                                            <rect key="frame" x="19" y="11" width="44" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ua-2v-WMR">
-                                                            <rect key="frame" x="543" y="8" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSK-Om-341">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-jw-5Da">
+                                                                    <rect key="frame" x="8" y="8" width="506" height="21"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Y3H-hI-nCO"/>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="bci-g7-Pxp"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <variation key="default">
+                                                                        <mask key="constraints">
+                                                                            <exclude reference="bci-g7-Pxp"/>
+                                                                        </mask>
+                                                                    </variation>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ua-2v-WMR">
+                                                                    <rect key="frame" x="522" y="8" width="70" height="21"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="70" id="XkO-2q-ksT"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="216" id="8fx-TB-DOo"/>
+                                                                <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="8" id="Djg-th-LrS"/>
+                                                                <constraint firstAttribute="trailing" secondItem="3Ua-2v-WMR" secondAttribute="trailing" constant="8" id="E8T-Of-rtS"/>
+                                                                <constraint firstItem="0rB-jw-5Da" firstAttribute="leading" secondItem="sSK-Om-341" secondAttribute="leading" constant="8" id="L3a-yc-na5"/>
+                                                                <constraint firstItem="3Ua-2v-WMR" firstAttribute="baseline" secondItem="0rB-jw-5Da" secondAttribute="baseline" id="O1S-NB-8ML"/>
+                                                                <constraint firstItem="0rB-jw-5Da" firstAttribute="top" secondItem="sSK-Om-341" secondAttribute="top" constant="8" id="Uo3-t4-Naq"/>
+                                                            </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="8fx-TB-DOo"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </view>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="sSK-Om-341" firstAttribute="top" secondItem="aMt-3T-yg1" secondAttribute="top" id="0fe-j5-05p"/>
+                                                        <constraint firstAttribute="bottom" secondItem="sSK-Om-341" secondAttribute="bottom" id="NI0-vl-lWn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="sSK-Om-341" secondAttribute="trailing" id="RN6-RM-zca"/>
+                                                        <constraint firstItem="sSK-Om-341" firstAttribute="leading" secondItem="aMt-3T-yg1" secondAttribute="leading" id="cjc-4J-vW5"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
@@ -783,14 +807,25 @@ DJ: Ibrahim Rabbani</string>
                                         </prototypes>
                                         <sections/>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm - 12:00pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqe-Um-Zic">
+                                        <rect key="frame" x="448" y="8" width="144" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="dqe-Um-Zic" firstAttribute="top" secondItem="HiX-jQ-Q7d" secondAttribute="top" constant="44" id="CXx-It-Luk"/>
+                                    <constraint firstItem="dqe-Um-Zic" firstAttribute="top" secondItem="HiX-jQ-Q7d" secondAttribute="top" constant="8" id="CXx-It-Luk"/>
                                     <constraint firstItem="dqe-Um-Zic" firstAttribute="trailing" secondItem="HiX-jQ-Q7d" secondAttribute="trailingMargin" id="F8J-O5-EyP"/>
-                                    <constraint firstItem="dqe-Um-Zic" firstAttribute="centerY" secondItem="HiX-jQ-Q7d" secondAttribute="centerY" constant="-189" id="l80-66-vxE"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="Find a show!" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-kV-VwT">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <constraints>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="top" secondItem="J4s-kV-VwT" secondAttribute="bottom" constant="5" id="Bji-iN-vGI"/>
@@ -802,11 +837,46 @@ DJ: Ibrahim Rabbani</string>
                             <constraint firstAttribute="trailing" secondItem="HiX-jQ-Q7d" secondAttribute="trailing" id="qzQ-ad-fb3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Schedule" id="UID-y6-GcJ">
+                    <navigationItem key="navigationItem" id="UID-y6-GcJ">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="sTu-ab-xi8"/>
+                        <view key="titleView" contentMode="scaleToFill" id="wZy-Lj-7J5">
+                            <rect key="frame" x="180" y="6" width="240" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2D-1M-guO" userLabel="Schedule">
+                                    <rect key="frame" x="58" y="6" width="101" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="101" id="CIA-r3-oco"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Fiy-gZ-1hR">
+                                    <rect key="frame" x="162" y="6" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="V2D-1M-guO" firstAttribute="leading" secondItem="wZy-Lj-7J5" secondAttribute="leading" constant="58" id="1Wi-dL-RMR"/>
+                                <constraint firstItem="Fiy-gZ-1hR" firstAttribute="leading" secondItem="V2D-1M-guO" secondAttribute="trailing" constant="3" id="GLV-Eu-78r"/>
+                                <constraint firstItem="Fiy-gZ-1hR" firstAttribute="top" secondItem="V2D-1M-guO" secondAttribute="top" id="i5v-wX-Xun"/>
+                                <constraint firstItem="Fiy-gZ-1hR" firstAttribute="centerY" secondItem="wZy-Lj-7J5" secondAttribute="centerY" id="wlY-yt-CcG"/>
+                                <constraint firstItem="V2D-1M-guO" firstAttribute="centerX" secondItem="wZy-Lj-7J5" secondAttribute="centerX" id="yD0-5f-CD2"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="yD0-5f-CD2"/>
+                                </mask>
+                            </variation>
+                        </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="currentDJLabel" destination="mnl-9q-rv0" id="w4g-fc-TqF"/>
+                        <outlet property="currentShowLabel" destination="9sC-SC-ioN" id="ze1-xo-11V"/>
+                        <outlet property="currentTimeLabel" destination="dqe-Um-Zic" id="4IT-Tp-8bZ"/>
                         <outlet property="menuButton" destination="sTu-ab-xi8" id="iej-yC-l19"/>
+                        <outlet property="spinnyWidget" destination="Fiy-gZ-1hR" id="i9p-Te-c6M"/>
                         <outlet property="tableView" destination="385-YP-G0T" id="RiN-ZV-arH"/>
                     </connections>
                 </viewController>
@@ -845,7 +915,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="9A4771B8-1C74-43C4-BD7B-7B30CC579FB2" width="300" height="300">
+        <image name="D568F427-75EF-4F0C-BE6B-F887F312D483" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

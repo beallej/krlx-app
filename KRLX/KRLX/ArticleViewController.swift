@@ -21,35 +21,10 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var content: UIWebView!
     
-    // -------------------EVIL WKWEBVIEW-----------------------------
-    //var webView: WKWebView?
-    // ---------------------------------------------------------------------------
-    
     var articleHeader : ArticleHeader!
     var activityIndicator : UIActivityIndicatorView!
     
     
-//   ------I tried CSS but fail -------------
-//    required init(coder aDecoder: NSCoder) {
-//        let config = WKWebViewConfiguration()
-//        let scriptURL = NSBundle.mainBundle().pathForResource("articleNameStyle", ofType: "js")
-//        let scriptContent = String(contentsOfFile:scriptURL!, encoding:NSUTF8StringEncoding, error: nil)
-//        let script = WKUserScript(source: scriptContent!, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
-//        config.userContentController.addUserScript(script)
-//        self.webView = WKWebView(frame: CGRectZero, configuration: config)
-//        super.init(coder: aDecoder)
-//    }
-// ---------------------------------------------------------------------------
-    
-    
-// -------------------IF WE EVER GO BACK TO POOPY WKWEBVIEW----------------------
-//    override func loadView() {
-//        super.loadView()
-//        
-//        self.webView = WKWebView()
-//        self.view = self.webView!
-//    }
-// ---------------------------------------------------------------------------
 
     
     
@@ -94,9 +69,6 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                             
                         self.articleHeader.content = finalHTMLString
                             
-                        // ---------------------POOPY WKWEBVIEW, IN CASE WE NEED IT--------------------
-                        //self.webView?.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
-                        // ---------------------------------------------------------------------------
                         
                         //load content, dismiss activity indicator
                         self.content.loadHTMLString(finalHTMLString, baseURL: NSURL(string: self.articleHeader.getURL()))
@@ -110,20 +82,18 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     
 // -------------------WHY WONT IT ZOOM OR STAY ZOOMED OR LOCK HOROZONTAL SCROLL I HATE IT----------------------
 //    
-    func webViewDidFinishLoad(webView: UIWebView) {
-        self.zoomToFit()
-        let v = content.scrollView.center.x
-        
-    }
-    func zoomToFit(){
-        var scroll = self.content.scrollView
-        var ctr = self.view.frame.size.width/2.0
-        scroll.setZoomScale(1.17, animated: true)
-        scroll.center.x = ctr
-        
-    }
+//    func webViewDidFinishLoad(webView: UIWebView) {
+//        self.zoomToFit()
+//        let v = content.scrollView.center.x
+//        
+//    }
     
 // -------------------I HAVE TRIED ALL OF THESE TO NO AVAIL----------------------
+//    func zoomToFit(){
+//        var scroll = self.content.scrollView
+//        var ctr = self.view.frame.size.width/2.0
+//        scroll.setZoomScale(1.17, animated: true)
+//        scroll.center.x = ctr
 //        let zoom = (self.content.bounds.size.width+50)/scroll.contentSize.width
 //        let diff = (self.content.bounds.size.width*zoom - self.content.bounds.size.width)/2.0
 //        
