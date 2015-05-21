@@ -53,11 +53,15 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     func playRadio() {
         player.play()
+        let image = UIImage(named: "pause") as UIImage?
         playButton.setTitle("Pause", forState: UIControlState.Normal)
+        playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
     func pauseRadio() {
         player.pause()
+        let image = UIImage(named: "play") as UIImage?
+        playButton.setBackgroundImage(image, forState: UIControlState.Normal)
         playButton.setTitle("Play", forState: UIControlState.Normal)
     }
     
