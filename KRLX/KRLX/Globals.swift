@@ -2,7 +2,7 @@
 //  Globals.swift
 //  KRLX
 //
-//  Created by Josie Bealle on 19/05/2015.
+//  Created by Josie Bealle and Phuong Dinh on 19/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ class Singleton {
     init() {
         loadedArticleHeaders = NSMutableArray()
 
-    }    
+    }
     
 }
 let sharedData = Singleton()

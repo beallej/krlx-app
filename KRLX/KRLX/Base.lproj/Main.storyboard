@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -63,7 +62,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="654E66F6-8E36-4091-8F7A-36BE624974B1" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5B99E8D5-32B2-4250-9479-540096F35D04" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -763,38 +762,31 @@ DJ: Ibrahim Rabbani</string>
                                 <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="showCell" rowHeight="44" id="WFm-Cd-isr">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="showCell" rowHeight="44" id="WFm-Cd-isr" customClass="ScheduleTableViewCell" customModule="KRLX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="613" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="WFm-Cd-isr" id="aMt-3T-yg1">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ibrahim's Show" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztb-zu-y1W">
-                                                    <rect key="frame" x="14" y="10" width="578" height="25"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                                                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-jw-5Da">
+                                                    <rect key="frame" x="19" y="11" width="44" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11 - 12p" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGQ-IZ-yG2">
-                                                    <rect key="frame" x="504" y="13" width="85" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="85" id="NXr-9c-3mt"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="15"/>
-                                                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ua-2v-WMR">
+                                                    <rect key="frame" x="543" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ztb-zu-y1W" firstAttribute="bottom" secondItem="aMt-3T-yg1" secondAttribute="bottomMargin" id="D1x-w2-rjP"/>
-                                                <constraint firstItem="ztb-zu-y1W" firstAttribute="leading" secondItem="aMt-3T-yg1" secondAttribute="leadingMargin" constant="6" id="Jr1-m8-Jdx"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SGQ-IZ-yG2" secondAttribute="bottom" constant="-2" id="Lfq-dO-o7R"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ztb-zu-y1W" secondAttribute="trailing" id="doS-dw-xQ5"/>
-                                                <constraint firstItem="ztb-zu-y1W" firstAttribute="baseline" secondItem="SGQ-IZ-yG2" secondAttribute="firstBaseline" id="htn-6C-ag5"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="SGQ-IZ-yG2" secondAttribute="trailing" constant="3" id="ppa-9B-a48"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="start" destination="3Ua-2v-WMR" id="myc-MG-Vyu"/>
+                                            <outlet property="title" destination="0rB-jw-5Da" id="Aby-00-TRF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -815,6 +807,7 @@ DJ: Ibrahim Rabbani</string>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="sTu-ab-xi8" id="iej-yC-l19"/>
+                        <outlet property="tableView" destination="385-YP-G0T" id="LS2-6C-slT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFn-u7-oFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -852,7 +845,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="654E66F6-8E36-4091-8F7A-36BE624974B1" width="300" height="300">
+        <image name="5B99E8D5-32B2-4250-9479-540096F35D04" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
