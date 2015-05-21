@@ -10,9 +10,9 @@ import UIKit
 
 class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var menuButton:UIBarButtonItem!
-    //@IBOutlet weak var tableView: UITableView?
-    var tableView : UITableView?
     
+    
+    @IBOutlet weak var tableView: UITableView!
     var show_arrays = [ShowHeader]()
     var cellIdentifier = "showCell"
 
@@ -26,6 +26,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        self.tableView!.delegate = self
+        self.tableView!.dataSource = self
 
         // Pull calendar
         self.pullKRLXGoogleCal()
@@ -33,14 +35,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
     }
     
-    func setupViews() //Set up the KRLX Table View
-    {
-        self.tableView = UITableView(frame:self.view!.frame)
-        self.tableView!.delegate = self
-        self.tableView!.dataSource = self
-        self.tableView!.registerClass(ScheduleTableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
-        self.view?.addSubview(self.tableView!)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,10 +47,13 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = url
         request.HTTPMethod = "GET"
+        var response: NSURLResponse?
+        var error: NSError?
         
+   
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler:{ (response:NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
-            let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: error) as? NSDictionary
+            var errorJSON: AutoreleasingUnsafeMutablePointer<NSError?> = nil
+            let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
             
             if (jsonResult != nil){
                 // No idea how to parse this object as it seems to be a NSDictionary but battling to interact with it.
@@ -75,6 +72,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                     }
                 }
                 //self.setupViews()
+                self.tableView?.reloadData()
             }
             else
             {
@@ -102,8 +100,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
         let show = self.show_arrays[indexPath.row]
         //-------------Not sure why optional value here?????????-------
-        //cell.title.text = show.getTitle()
-        //cell.start.text = show.getStartTime()
+        cell.title.text = show.getTitle()
+        cell.start.text = show.getStartTime()
         //---------------
         println("Print Cell")
         return cell

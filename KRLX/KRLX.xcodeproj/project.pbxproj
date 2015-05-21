@@ -19,6 +19,8 @@
 		3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */; };
 		339075D01AF188D70083BF15 /* krlx.png in Resources */ = {isa = PBXBuildFile; fileRef = 339075CF1AF188D70083BF15 /* krlx.png */; };
 		3397B65A1AFEE58C00974947 /* high_quality.m3u in Resources */ = {isa = PBXBuildFile; fileRef = 3397B6591AFEE58C00974947 /* high_quality.m3u */; };
+		BD02FEDD1B0E578500751F7B /* ShowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02FEDC1B0E578500751F7B /* ShowHeader.swift */; };
+		BD02FEDF1B0E579B00751F7B /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */; };
 		BD286CD31AEF0BA10021B036 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD286CD21AEF0BA10021B036 /* SWRevealViewController.m */; };
 		BD286CD91AF067930021B036 /* dateImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286CD81AF067930021B036 /* dateImage.png */; };
 		BD286CDB1AF0688B0021B036 /* musicBackground1.png in Resources */ = {isa = PBXBuildFile; fileRef = BD286CDA1AF0688B0021B036 /* musicBackground1.png */; };
@@ -71,6 +73,8 @@
 		3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTransitionManager.swift; sourceTree = "<group>"; };
 		339075CF1AF188D70083BF15 /* krlx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = krlx.png; sourceTree = "<group>"; };
 		3397B6591AFEE58C00974947 /* high_quality.m3u */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = high_quality.m3u; sourceTree = "<group>"; };
+		BD02FEDC1B0E578500751F7B /* ShowHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHeader.swift; sourceTree = "<group>"; };
+		BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KRLX-Bridging-Header.h"; sourceTree = "<group>"; };
 		BD286CD11AEF0BA10021B036 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		BD286CD21AEF0BA10021B036 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -169,7 +173,9 @@
 				F47029F31A7F27DB00E30A3C /* Supporting Files */,
 				F4702A171A7F351C00E30A3C /* MenuController.swift */,
 				BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */,
+				BD02FEDC1B0E578500751F7B /* ShowHeader.swift */,
 				BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */,
+				BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */,
 				BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */,
 				F491E7491A7F4B300026528E /* NewsTableViewController.swift */,
 				F491E74B1A7F4C630026528E /* NewsTableViewCell.swift */,
@@ -355,11 +361,13 @@
 				3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */,
 				F4702A181A7F351C00E30A3C /* MenuController.swift in Sources */,
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
+				BD02FEDD1B0E578500751F7B /* ShowHeader.swift in Sources */,
 				3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */,
 				F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */,
 				BD55116F1AFBF7BE0016AEFA /* ArticleViewController.swift in Sources */,
 				BD2F27571B0C238700A835F8 /* Globals.swift in Sources */,
 				BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */,
+				BD02FEDF1B0E579B00751F7B /* ScheduleTableViewCell.swift in Sources */,
 				F491E7531A7F7DF20026528E /* RecentlyHeardViewController.swift in Sources */,
 				BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,
