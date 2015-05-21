@@ -18,9 +18,9 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var playButton: UIButton!
     
     var moviePlayer:MPMoviePlayerController!
-    //var player:AVPlayer = AVPlayer(URL: NSURL(string: "radio.krlx.org/mp3/high_quality.m3u"))
+    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
     
-    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
+    //var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
     override func viewDidLoad() {
         
         //playButton.setTitle("Play", forState: UIControlState.Normal)
