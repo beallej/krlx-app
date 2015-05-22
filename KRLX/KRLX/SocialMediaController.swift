@@ -3,6 +3,7 @@
 //  KRLX
 //
 //  Created by Naomi Yamamoto on 5/16/15.
+//  Reference: http://mathewsanders.com/custom-menu-transitions-in-swift/
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 

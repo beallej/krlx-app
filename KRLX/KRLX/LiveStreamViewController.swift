@@ -28,8 +28,6 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         //playButton.setTitle("Play", forState: UIControlState.Normal)
         //playButton.setBackgroundImage(UIIMage(contentsofFile "play"), forState: //)
 
-
-
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
