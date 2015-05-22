@@ -21,6 +21,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var button: UIButton!
     
     
+    @IBOutlet weak var bls: UIButton!
     @IBOutlet weak var content: UIWebView!
     
     var articleHeader : ArticleHeader!
@@ -54,9 +55,9 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         //let button : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         //button.backgroundColor = UIColor.blackColor()
         self.button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.button.setTitle("Share", forState: UIControlState.Normal)
-        self.button.titleLabel!.adjustsFontSizeToFitWidth = true
-        self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
+        //self.button.setTitle("Share", forState: UIControlState.Normal)
+        //self.button.titleLabel!.adjustsFontSizeToFitWidth = true
+        //self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
         //self.button = button
         
         
