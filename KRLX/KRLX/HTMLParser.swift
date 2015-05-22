@@ -67,8 +67,8 @@ public class HTMLParser {
     }
     
     /**
-    * @param[in] html  HTML文字列
-    * @param[in] error エラーがあれば返します
+    * @param[in] html  HTML character line
+    * @param[in] error If there is any error, returns it
     */
     public init(html: String, encoding: UInt, option: CInt, inout error: NSError?) {
         if html.lengthOfBytesUsingEncoding(encoding) > 0 {
