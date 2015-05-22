@@ -17,7 +17,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     
-    var playBoolean = true
+    var isPlaying = true
     
     var moviePlayer:MPMoviePlayerController!
     var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
@@ -40,17 +40,13 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        toggle()
-    }
-    
-    func toggle() {
-        if playBoolean {
+        if isPlaying {
             playRadio()
-            playBoolean = false
+            isPlaying = false
         }else{
             pauseRadio()
-            playBoolean = true
-
+            isPlaying = true
+            
         }
     }
     
