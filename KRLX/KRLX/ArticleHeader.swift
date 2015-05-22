@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
+
 class ArticleHeader {
     var author : String
     var title : String
@@ -44,5 +45,5 @@ class ArticleHeader {
     func getContent() -> String?{
         return self.content
     }
-
+    
 }

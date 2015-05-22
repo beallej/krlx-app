@@ -18,6 +18,8 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var subtitle: UITextView!
     
+    @IBOutlet weak var button: UIButton!
+    
     
     @IBOutlet weak var content: UIWebView!
     
@@ -47,6 +49,15 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         self.dayLabel.text = day
         self.monthLabel.text = month
         self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
+        
+        ///////////////Testing Purpose/////////////
+        //let button : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        //button.backgroundColor = UIColor.blackColor()
+        self.button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.button.setTitle("Share", forState: UIControlState.Normal)
+        self.button.titleLabel!.adjustsFontSizeToFitWidth = true
+        self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
+        //self.button = button
         
         
         //Because scraping takes and converting html into text takes forever too
@@ -104,6 +115,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         //scroll.setContentOffset(CGPointMake(30, 0), animated: false)
 // ---------------------------------------------------------------------------
 
+    
 
         
     //opens a file
@@ -145,6 +157,26 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         }
         return String(article_content)
     }
+    
+    //////////Testing function to create a share button in article itself/////////////////
+    func buttonClicked(sender: UIButton!){
+        let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("socialMediaView") as! SocialMediaController
+        
+        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
+        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "next") {
+        }
+    }
+    //unwind
+    @IBAction func exitTo(segue: UIStoryboardSegue) {
+        if (segue.identifier == "back") {
+        }
+        
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////
     
     
     override func didReceiveMemoryWarning() {
