@@ -23,6 +23,7 @@
 		BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */; };
 		BD785BED1B03EE0C003A3C33 /* Article.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD785BEC1B03EE0C003A3C33 /* Article.storyboard */; };
 		BD785BF01B03EE8C003A3C33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD785BEE1B03EE8C003A3C33 /* Main.storyboard */; };
+		BD84995F1B0F895300D43BA9 /* ScrapeAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47029FC1A7F27DB00E30A3C /* Images.xcassets */; };
 		F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */; };
@@ -63,6 +64,7 @@
 		BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleHeader.swift; sourceTree = "<group>"; };
 		BD785BEC1B03EE0C003A3C33 /* Article.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Article.storyboard; sourceTree = "<group>"; };
 		BD785BEF1B03EE8C003A3C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapeAssistant.swift; sourceTree = "<group>"; };
 		F47029F01A7F27DB00E30A3C /* KRLX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRLX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F41A7F27DB00E30A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47029F51A7F27DB00E30A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,15 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		BD84995D1B0F876200D43BA9 /* Swift-HTML-Parser */ = {
+			isa = PBXGroup;
+			children = (
+				BD365C621B02801700BF946A /* HTMLNode.swift */,
+				BD365C631B02801700BF946A /* HTMLParser.swift */,
+			);
+			name = "Swift-HTML-Parser";
+			sourceTree = "<group>";
+		};
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +141,7 @@
 		F47029F21A7F27DB00E30A3C /* KRLX */ = {
 			isa = PBXGroup;
 			children = (
-				BD365C621B02801700BF946A /* HTMLNode.swift */,
-				BD365C631B02801700BF946A /* HTMLParser.swift */,
+				BD84995D1B0F876200D43BA9 /* Swift-HTML-Parser */,
 				BD286CCF1AEF0B7E0021B036 /* SWRevealViewController */,
 				F47029F51A7F27DB00E30A3C /* AppDelegate.swift */,
 				BD785BEE1B03EE8C003A3C33 /* Main.storyboard */,
@@ -153,6 +163,7 @@
 				3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */,
 				3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */,
 				BD2F27561B0C238700A835F8 /* Globals.swift */,
+				BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */,
 			);
 			path = KRLX;
 			sourceTree = "<group>";
@@ -308,6 +319,7 @@
 				BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,
 				BD365C651B02801700BF946A /* HTMLNode.swift in Sources */,
+				BD84995F1B0F895300D43BA9 /* ScrapeAssistant.swift in Sources */,
 				F491E7551A7F7E010026528E /* ScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

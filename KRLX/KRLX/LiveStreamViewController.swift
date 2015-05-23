@@ -11,8 +11,7 @@ import MediaPlayer
 import AVFoundation
 
 class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
-    //"radio.krlx.org/mp3/high_quality.m3u"
-    //var audioPlayer: AVAudioPlayer?
+
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
     @IBOutlet weak var playButton: UIButton!
@@ -22,12 +21,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     var moviePlayer:MPMoviePlayerController!
     var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
     
-    //var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
     override func viewDidLoad() {
-        
-        //playButton.setTitle("Play", forState: UIControlState.Normal)
-        //playButton.setBackgroundImage(UIIMage(contentsofFile "play"), forState: //)
-
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -53,7 +47,6 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     func playRadio() {
         player.play()
         let image = UIImage(named: "pause") as UIImage?
-        //playButton.setTitle("Pause", forState: UIControlState.Normal)
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
@@ -61,7 +54,6 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         player.pause()
         let image = UIImage(named: "play") as UIImage?
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
-        //playButton.setTitle("Play", forState: UIControlState.Normal)
     }
     
     override func didReceiveMemoryWarning() {

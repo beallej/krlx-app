@@ -12,7 +12,6 @@ class MenuController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //var imgView:UIImageView = UIImageView(image:UIImage(named: "musicBackground1"))
         var imgView:UIImageView = UIImageView(image:UIImage(named: "sideBarPic2"))
         self.tableView.backgroundView = imgView
         

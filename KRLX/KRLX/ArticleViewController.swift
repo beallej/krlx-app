@@ -21,6 +21,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var button: UIButton!
     
     
+    @IBOutlet weak var bls: UIButton!
     @IBOutlet weak var content: UIWebView!
     
     var articleHeader : ArticleHeader!
@@ -54,9 +55,9 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         //let button : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         //button.backgroundColor = UIColor.blackColor()
         self.button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.button.setTitle("Share", forState: UIControlState.Normal)
-        self.button.titleLabel!.adjustsFontSizeToFitWidth = true
-        self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
+        //self.button.setTitle("Share", forState: UIControlState.Normal)
+        //self.button.titleLabel!.adjustsFontSizeToFitWidth = true
+        //self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
         //self.button = button
         
         
@@ -70,7 +71,10 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                 self.activityIndicator.removeFromSuperview()
             }
             else {
-                var articleContentScraped = self.scrape()
+                let scraper = ScrapeAssistant()
+                var articleContentScraped = scraper.scrapeArticle(self.articleHeader.getURL())
+                
+                //self.scrape()
                 articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0]
                     dispatch_async(dispatch_get_main_queue()) {
                         
@@ -125,37 +129,6 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     }
     
     
-    //does scraping for an article
-    func scrape() -> String{
-        let myURLString = self.articleHeader.getURL()
-        var article_content = String()
-        if let myURL = NSURL(string: myURLString) {
-            var error: NSError?
-            let myHTMLString = String(contentsOfURL: myURL, encoding: NSUTF8StringEncoding, error: &error)
-            if let error = error {
-                println("Error : \(error)")
-            } else {
-                let html = myHTMLString
-                var err : NSError?
-                var parser = HTMLParser(html: html!, error: &err)
-                if err != nil {
-                    //println(err)
-                    exit(1)
-                }
-                var allArticle = parser.body
-                if let inputAllArticleNodes = allArticle?.xpath("//div[@class='gk-article']") {
-                    for node in inputAllArticleNodes {
-                        article_content = node.rawContents
-                        
-                    }
-                }
-                else {
-                    //println("Error: \(myURLString) doesn't seem to be a valid URL")
-                }
-            }
-        }
-        return String(article_content)
-    }
     
     //////////Testing function to create a share button in article itself/////////////////
     func buttonClicked(sender: UIButton!){
