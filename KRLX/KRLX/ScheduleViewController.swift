@@ -55,7 +55,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     func pullKRLXGoogleCal() {
-        let url = NSURL(string: "https://www.googleapis.com/calendar/v3/calendars/o6bu0ms41q99plohvtkdkt9th4%40group.calendar.google.com/events?key=AIzaSyC9CY79m2HwZZGE24UZU_MRppmumYMCOgI") //this is my google event, not KRLX
+        let url = NSURL(string: "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin=2015-05-22T19%3A27%3A05%2B0000&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I") //this is my google event, not KRLX
         
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = url

@@ -76,13 +76,12 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                         
                         //Put the pieces of the giant HTML string together
                         let htmlStrings = self.openFile("htmlString", fileExtension: "txt")!.componentsSeparatedByString("\n")
-                        let finalHTMLString = htmlStrings[0]+self.articleHeader.getURL()+htmlStrings[1]+articleContentScraped+htmlStrings[2]
-                            
-                        self.articleHeader.content = finalHTMLString
-                            
+                        var finalHTMLString = htmlStrings[0]+self.articleHeader.getURL()+htmlStrings[1]+articleContentScraped+htmlStrings[2]
+                        finalHTMLString = finalHTMLString.stringByReplacingOccurrencesOfString("class=\"MsoNormal\"", withString:"class=\"MsoNormal\" style=\"line-height: 1.5;\"") // Enlarge space between lines for readability
                         
                         //load content, dismiss activity indicator
                         self.content.loadHTMLString(finalHTMLString, baseURL: NSURL(string: self.articleHeader.getURL()))
+                        self.articleHeader.content = finalHTMLString //Put content into the class (no need to load next time)
                         self.activityIndicator.stopAnimating()
                         self.activityIndicator.removeFromSuperview()
                     }
