@@ -75,7 +75,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                 var articleContentScraped = scraper.scrapeArticle(self.articleHeader.getURL())
                 
                 //self.scrape()
-                articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0]
+                articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0] //eliminate the title and the next navigation
                     dispatch_async(dispatch_get_main_queue()) {
                         
                         //Put the pieces of the giant HTML string together

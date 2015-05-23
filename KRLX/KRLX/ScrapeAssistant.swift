@@ -11,7 +11,7 @@ class ScrapeAssistant {
         
     }
     
-    //does scraping for an article
+    //does scraping for an article content
     func scrapeArticle(url: String) -> String {
         let myURLString = url
         var article_content = String()
@@ -43,7 +43,7 @@ class ScrapeAssistant {
         return String(article_content)
     }
     
-    
+    // does scraping for article title, date, author
     func scrapeArticleInfo() -> [ArticleHeader] {
         var articles = [ArticleHeader]()
         let myURLString = "http://www.krlx.org/"

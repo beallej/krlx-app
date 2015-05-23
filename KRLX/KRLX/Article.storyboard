@@ -2,11 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-<<<<<<< HEAD
-=======
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
->>>>>>> 706b373d0e9afbef33ca5ab5367f45a7b6fa9893
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -26,14 +23,10 @@
                                 <rect key="frame" x="16" y="90" width="43" height="43"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vxQ-Ew-Tq3">
-<<<<<<< HEAD
-                                <rect key="frame" x="211" y="90" width="179" height="39"/>
-=======
                                 <rect key="frame" x="218" y="103" width="165" height="39"/>
->>>>>>> 706b373d0e9afbef33ca5ab5367f45a7b6fa9893
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="179" id="5gQ-qU-tJU"/>
+                                    <constraint firstAttribute="width" constant="165" id="5gQ-qU-tJU"/>
                                     <constraint firstAttribute="height" constant="39" id="RUp-tK-8pu"/>
                                 </constraints>
                                 <string key="text">Written by Mary Reagan Harvey
@@ -71,17 +64,8 @@ Published: 28 December 2015
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-<<<<<<< HEAD
-                            <webView contentMode="center" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQ4-Qm-5TW">
-                                <rect key="frame" x="0.0" y="141" width="600" height="459"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDb-0u-EG8">
-                                <rect key="frame" x="448" y="99" width="40" height="30"/>
-=======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDb-0u-EG8">
                                 <rect key="frame" x="544" y="97" width="40" height="30"/>
->>>>>>> 706b373d0e9afbef33ca5ab5367f45a7b6fa9893
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="wFM-GT-2pu"/>
@@ -102,30 +86,18 @@ Published: 28 December 2015
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-<<<<<<< HEAD
-                            <constraint firstAttribute="centerX" secondItem="tDb-0u-EG8" secondAttribute="centerX" constant="-168" id="2YF-rz-dno"/>
-=======
                             <constraint firstItem="tDb-0u-EG8" firstAttribute="firstBaseline" secondItem="dk2-AF-qjJ" secondAttribute="baseline" constant="-7" id="3Ih-G0-374"/>
                             <constraint firstItem="tDb-0u-EG8" firstAttribute="baseline" secondItem="dk2-AF-qjJ" secondAttribute="firstBaseline" constant="-7" id="8rG-RQ-Ise"/>
->>>>>>> 706b373d0e9afbef33ca5ab5367f45a7b6fa9893
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="leading" secondItem="dk2-AF-qjJ" secondAttribute="leading" id="Aej-45-9kG"/>
                             <constraint firstItem="V9z-T0-WP1" firstAttribute="trailing" secondItem="dk2-AF-qjJ" secondAttribute="trailing" id="BvU-fz-E6c"/>
                             <constraint firstItem="tDb-0u-EG8" firstAttribute="centerY" secondItem="dk2-AF-qjJ" secondAttribute="centerY" constant="-7" id="Dan-0a-HMX"/>
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="vxQ-Ew-Tq3" secondAttribute="bottom" constant="8" symbolic="YES" id="Ehe-lV-PaG"/>
-                            <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="dk2-AF-qjJ" secondAttribute="bottom" constant="10" id="H0j-If-2Qa"/>
+                            <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="dk2-AF-qjJ" secondAttribute="bottom" constant="26" id="H0j-If-2Qa"/>
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="V9z-T0-WP1" secondAttribute="trailing" constant="8" symbolic="YES" id="OEi-jz-opW"/>
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="centerX" secondItem="vxQ-Ew-Tq3" secondAttribute="centerX" id="PXL-6R-WD3"/>
-<<<<<<< HEAD
-                            <constraint firstAttribute="centerY" secondItem="tDb-0u-EG8" secondAttribute="centerY" constant="186" id="Qwt-5D-3Q3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gqG-aI-wu6" secondAttribute="trailing" constant="51" id="WXj-Wg-KTI"/>
-                            <constraint firstAttribute="centerY" secondItem="tDb-0u-EG8" secondAttribute="centerY" constant="186" id="ZpD-2x-M8l"/>
-                            <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="-12" id="aGR-K8-Nlm"/>
-                            <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="V9z-T0-WP1" secondAttribute="bottom" constant="28" id="aUY-eA-Q1G"/>
-=======
                             <constraint firstAttribute="trailingMargin" secondItem="gqG-aI-wu6" secondAttribute="trailing" constant="51" id="WXj-Wg-KTI"/>
                             <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="8" symbolic="YES" id="aGR-K8-Nlm"/>
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="V9z-T0-WP1" secondAttribute="bottom" constant="44" id="aUY-eA-Q1G"/>
->>>>>>> 706b373d0e9afbef33ca5ab5367f45a7b6fa9893
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="iNe-zX-Yep" secondAttribute="trailing" constant="8" symbolic="YES" id="ali-bs-ocG"/>
                             <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dk2-AF-qjJ" secondAttribute="trailing" id="ams-2g-RKA"/>
                             <constraint firstItem="tDb-0u-EG8" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="2" id="biW-F8-qXb"/>
@@ -135,15 +107,11 @@ Published: 28 December 2015
                             <constraint firstItem="dk2-AF-qjJ" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="25" id="gOQ-HV-KvL"/>
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="8" symbolic="YES" id="hXV-KQ-4sY"/>
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="leading" secondItem="rRh-2w-N2F" secondAttribute="leading" id="hud-Cc-dv5"/>
-<<<<<<< HEAD
-                            <constraint firstAttribute="centerX" secondItem="tDb-0u-EG8" secondAttribute="centerX" constant="-168" id="ijk-z4-KAI"/>
-=======
->>>>>>> 706b373d0e9afbef33ca5ab5367f45a7b6fa9893
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="centerX" secondItem="vxQ-Ew-Tq3" secondAttribute="centerX" id="iwV-xX-hF0"/>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="leading" secondItem="rRh-2w-N2F" secondAttribute="leadingMargin" id="jeK-B9-6Ws"/>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="centerY" secondItem="tDb-0u-EG8" secondAttribute="centerY" id="o3Z-26-e8T"/>
                             <constraint firstAttribute="trailing" secondItem="RQ4-Qm-5TW" secondAttribute="trailing" id="oZf-Zp-FHh"/>
-                            <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="iNe-zX-Yep" secondAttribute="bottom" constant="8" id="pLG-lo-fIr"/>
+                            <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="iNe-zX-Yep" secondAttribute="bottom" constant="24" id="pLG-lo-fIr"/>
                             <constraint firstItem="V9z-T0-WP1" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="72" id="tn6-IX-UmF"/>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="70" id="v1d-oB-KpP"/>
                             <constraint firstItem="V9z-T0-WP1" firstAttribute="leading" secondItem="dk2-AF-qjJ" secondAttribute="leading" id="wP4-yg-uAQ"/>
