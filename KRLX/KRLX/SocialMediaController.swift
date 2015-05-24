@@ -21,6 +21,8 @@ class SocialMediaController: UIViewController{
     
     //@IBOutlet weak var facebookIcon: UIImageView!
     
+    var articleURL: String = "Article URL\n"
+    
     @IBOutlet weak var facebookIcon: UIButton!
     
     
@@ -47,7 +49,7 @@ class SocialMediaController: UIViewController{
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
             
             var tweetShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            
+            tweetShare.setInitialText(articleURL)
             self.presentViewController(tweetShare, animated: true, completion: nil)
             
         } else {
@@ -64,7 +66,7 @@ class SocialMediaController: UIViewController{
     @IBAction func facebookButtonSender(sender: AnyObject) {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             var fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            
+            fbShare.setInitialText(articleURL)
             self.presentViewController(fbShare, animated: true, completion: nil)
             
         } else {

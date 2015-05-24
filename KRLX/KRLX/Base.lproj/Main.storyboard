@@ -62,7 +62,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AF9A2EB4-3D12-403B-8720-E4F601CCB9F0" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E67092FF-6D87-4A51-84D9-8EEA6668898E" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -313,79 +313,11 @@
                     <connections>
                         <outlet property="menuButton" destination="0mF-q0-GmA" id="Nbl-nT-P7u"/>
                         <outlet property="spinnyWidget" destination="dxe-IS-nvW" id="ZeI-Lu-oBi"/>
-                        <segue destination="foi-2N-qkZ" kind="push" identifier="next" id="CXG-k4-dZP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHq-4Y-pqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2553" y="-726"/>
-        </scene>
-        <!--Social Media Controller-->
-        <scene sceneID="4gC-Ys-Rxs">
-            <objects>
-                <viewController storyboardIdentifier="socialMediaView" id="foi-2N-qkZ" customClass="SocialMediaController" customModule="KRLX" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YjI-MC-VZ1"/>
-                        <viewControllerLayoutGuide type="bottom" id="zck-iy-mg9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wWr-CQ-ce6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfD-aP-sPi">
-                                <rect key="frame" x="257" y="219" width="86" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="86" id="Tqv-K4-apa"/>
-                                    <constraint firstAttribute="height" constant="86" id="oWa-FR-dSD"/>
-                                </constraints>
-                                <state key="normal" title="Twitter" image="twitter.png"/>
-                                <connections>
-                                    <action selector="twitterButtonSender:" destination="foi-2N-qkZ" eventType="touchUpInside" id="jIn-yT-Wa2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDA-e1-9VA">
-                                <rect key="frame" x="276" y="492" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="3Fd-mf-TeR" kind="unwind" unwindAction="exitTo:" id="QHE-sQ-9Sj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iue-pq-b9U">
-                                <rect key="frame" x="251" y="101" width="98" height="98"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="5rv-Fx-Mmk"/>
-                                    <constraint firstAttribute="height" constant="98" id="qaC-SR-oeT"/>
-                                </constraints>
-                                <state key="normal" title="Facebook" image="facebook.png"/>
-                                <connections>
-                                    <action selector="facebookButtonSender:" destination="foi-2N-qkZ" eventType="touchUpInside" id="asD-Ne-gtd"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="iue-pq-b9U" firstAttribute="top" secondItem="YjI-MC-VZ1" secondAttribute="bottom" constant="37" id="8yn-U9-Qme"/>
-                            <constraint firstItem="XfD-aP-sPi" firstAttribute="top" secondItem="iue-pq-b9U" secondAttribute="bottom" constant="20" id="Y3P-RX-Bql"/>
-                            <constraint firstAttribute="centerX" secondItem="XfD-aP-sPi" secondAttribute="centerX" id="Z7p-Jh-NcS"/>
-                            <constraint firstItem="zck-iy-mg9" firstAttribute="top" secondItem="uDA-e1-9VA" secondAttribute="bottom" constant="78" id="gqV-Em-ShQ"/>
-                            <constraint firstAttribute="centerX" secondItem="XfD-aP-sPi" secondAttribute="centerX" id="nws-eu-ICX"/>
-                            <constraint firstAttribute="centerX" secondItem="iue-pq-b9U" secondAttribute="centerX" id="qRZ-mc-spr"/>
-                            <constraint firstAttribute="centerX" secondItem="uDA-e1-9VA" secondAttribute="centerX" id="vu1-XG-ViN"/>
-                            <constraint firstAttribute="centerX" secondItem="iue-pq-b9U" secondAttribute="centerX" id="yQN-JN-NUe"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="dpH-DR-KNZ"/>
-                    <connections>
-                        <outlet property="facebookIcon" destination="iue-pq-b9U" id="WbR-bL-PZk"/>
-                        <outlet property="twitterIcon" destination="XfD-aP-sPi" id="dVf-aZ-Qph"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r7r-b6-bH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="3Fd-mf-TeR" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="3281" y="-726"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="WvI-gM-KFV">
@@ -915,7 +847,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AF9A2EB4-3D12-403B-8720-E4F601CCB9F0" width="300" height="300">
+        <image name="E67092FF-6D87-4A51-84D9-8EEA6668898E" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -6970,7 +6902,6 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         </image>
         <image name="PhonographRecord.png" width="2332" height="1764"/>
         <image name="black.png" width="256" height="256"/>
-        <image name="facebook.png" width="300" height="300"/>
         <image name="krlx.png" width="250" height="185"/>
         <image name="krlxSchedule.png" width="128" height="128"/>
         <image name="menu" width="22" height="22"/>
@@ -6979,7 +6910,6 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         <image name="newsIcon.png" width="128" height="128"/>
         <image name="play.png" width="1024" height="1024"/>
         <image name="recentMusicIcon.png" width="460" height="460"/>
-        <image name="twitter.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cQO-fF-LGe"/>
