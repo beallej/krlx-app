@@ -2,8 +2,8 @@
 //  ScheduleViewController.swift
 //  KRLXperts
 //
-//  Created by Phuong Dinh and Josie Bealle, adapted from Simon Ng on 2/2/15.
-//  Copyright (c) 2015 AppCoda. All rights reserved.
+//  Created by Phuong Dinh and Josie Bealle.
+//  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
 import UIKit
@@ -55,7 +55,13 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     func pullKRLXGoogleCal() {
-        let url = NSURL(string: "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin=2015-05-22T19%3A27%3A05%2B0000&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I") //this is my google event, not KRLX
+        
+        //--------------------
+        //Need to get current time to put into the API String
+        // API also don't return the event at the right time (I wonder if time zone is different!!!)
+        //--------------------------
+        let url = NSURL(string: "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago&maxResults=100&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I")
+   
         
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = url
@@ -69,13 +75,19 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
             
             if (jsonResult != nil){
-                // No idea how to parse this object as it seems to be a NSDictionary but battling to interact with it.
                 if let allitems_wrapper = jsonResult["items"] as? NSArray{
                     for item in allitems_wrapper {
                         var ShowTitle = item["summary"] as! String
                         var startTime = (item["start"] as! NSDictionary)["dateTime"] as! String
                         var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
-                        var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: "UNKNOWN lol")
+                        var ShowDJ: String
+                        if let DJ:String = item["description"] as? String {
+                            ShowDJ = DJ
+                        }
+                        else {
+                            ShowDJ = ""
+                        }
+                        var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ)
                         self.show_arrays.append(show)
                         
                     }
