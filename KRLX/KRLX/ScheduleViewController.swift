@@ -60,7 +60,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         //Need to get current time to put into the API String
         // API also don't return the event at the right time (I wonder if time zone is different!!!)
         //--------------------------
-        let url = NSURL(string: "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago&maxResults=100&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I")
+        
+        let curTime = getCurrentTime()
+        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=100&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
+       let url = NSURL(string: urlString)
+//
+        //let url = NSURL(string: "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago&maxResults=100&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I")
    
         
         var request : NSMutableURLRequest = NSMutableURLRequest()
@@ -126,11 +131,25 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             hourNumber = hourNumber! % 12
             finalTime = hourNumber!.description + minute + "pm"
         }
+        else if hourNumber == 12 {
+            finalTime = hourNumber!.description + minute + "pm"
+        }
         else{
             finalTime = hourNumber!.description+minute+"am"
         }
         return finalTime
         
+    }
+    
+    func getCurrentTime () -> String{
+        //timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago
+        let now = NSDate()
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH'%3A'mm'%3A'ss"
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        var dateString = dateFormatter.stringFromDate(now) as String
+        print(dateString)
+        return dateString
     }
     
 
