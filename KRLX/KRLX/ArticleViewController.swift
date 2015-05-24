@@ -81,7 +81,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                         //Put the pieces of the giant HTML string together
                         let htmlStrings = self.openFile("htmlString", fileExtension: "txt")!.componentsSeparatedByString("\n")
                         var finalHTMLString = htmlStrings[0]+self.articleHeader.getURL()+htmlStrings[1]+articleContentScraped+htmlStrings[2]
-                        finalHTMLString = finalHTMLString.stringByReplacingOccurrencesOfString("class=\"MsoNormal\"", withString:"class=\"MsoNormal\" style=\"line-height: 1.5;\"") // Enlarge space between lines for readability
+                        finalHTMLString = finalHTMLString.stringByReplacingOccurrencesOfString("style=\"font-size: 13.0pt; mso-bidi-font-size: 12.0pt;\"", withString:"") // Deal with span html style
                         
                         //load content, dismiss activity indicator
                         self.content.loadHTMLString(finalHTMLString, baseURL: NSURL(string: self.articleHeader.getURL()))
