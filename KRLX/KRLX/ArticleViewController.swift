@@ -139,7 +139,13 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "next") {
+            var newURL = articleHeader.getURL()
+            let destinationVC = segue.destinationViewController as! SocialMediaController
+            destinationVC.articleURL = newURL
         }
+        var newURL = articleHeader.getURL()
+        let destinationVC = segue.destinationViewController as! SocialMediaController
+        destinationVC.articleURL = newURL
     }
     //unwind
     @IBAction func exitTo(segue: UIStoryboardSegue) {
