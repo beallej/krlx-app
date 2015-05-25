@@ -157,6 +157,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         
     }
     
+
+    
     func getCurrentTime () -> String{
         // Get current time in UTC to substitute in the Google API String
         // timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago
@@ -198,6 +200,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         cell.title.text = show.getTitle()
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         cell.start.text = finalTimeString
+        
         cell.date.text = show.getDate()
         return cell
     }
