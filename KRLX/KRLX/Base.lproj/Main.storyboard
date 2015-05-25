@@ -62,7 +62,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B67C81FA-5085-4EDF-BB79-A96E5B624B91" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9C957CFF-B6D7-47AD-8067-B2836FAF64FC" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -644,8 +644,8 @@ DJ: Ibrahim Rabbani</string>
                                         <color key="textColor" red="0.74013573232323226" green="0.59502404160158717" blue="0.29348090549706873" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sC-SC-ioN">
-                                        <rect key="frame" x="8" y="41" width="584" height="51"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading " lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sC-SC-ioN">
+                                        <rect key="frame" x="8" y="36" width="584" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="0fI-Yh-p16"/>
                                         </constraints>
@@ -653,24 +653,24 @@ DJ: Ibrahim Rabbani</string>
                                         <color key="textColor" red="0.0" green="1" blue="1" alpha="0.68999999999999995" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Up Next:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl6-4c-slh">
-                                        <rect key="frame" x="8" y="127" width="106" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up Next:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl6-4c-slh">
+                                        <rect key="frame" x="8" y="124" width="106" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="cnX-xH-Ps2"/>
-                                            <constraint firstAttribute="width" constant="106" id="uNp-eq-UvD"/>
+                                            <constraint firstAttribute="height" constant="21" id="bsU-0c-pDD"/>
+                                            <constraint firstAttribute="width" constant="106" id="oQN-F5-vB0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.74013573229999996" green="0.5950240416" blue="0.2934809055" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12:00pm - 12:00pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqe-Um-Zic">
-                                        <rect key="frame" x="448" y="8" width="144" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm - 12:00pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqe-Um-Zic">
+                                        <rect key="frame" x="448" y="8" width="144" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="385-YP-G0T">
-                                        <rect key="frame" x="0.0" y="157" width="600" height="330"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="385-YP-G0T">
+                                        <rect key="frame" x="0.0" y="159" width="600" height="328"/>
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="separatorColor" red="0.0" green="0.93725496529999996" blue="0.87843143940000001" alpha="0.41999999999999998" colorSpace="deviceRGB"/>
                                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -686,7 +686,7 @@ DJ: Ibrahim Rabbani</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-jw-5Da">
-                                                                    <rect key="frame" x="8" y="8" width="410" height="52"/>
+                                                                    <rect key="frame" x="8" y="8" width="440" height="52"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Y3H-hI-nCO"/>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="bci-g7-Pxp"/>
@@ -700,26 +700,36 @@ DJ: Ibrahim Rabbani</string>
                                                                         </mask>
                                                                     </variation>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8y-dg-ZJy">
+                                                                    <rect key="frame" x="482" y="31" width="90" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm - 12:00pm" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ua-2v-WMR">
-                                                                    <rect key="frame" x="426" y="9" width="166" height="51"/>
+                                                                    <rect key="frame" x="449" y="8" width="143" height="34"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="166" id="XkO-2q-ksT"/>
+                                                                        <constraint firstAttribute="width" constant="143" id="XkO-2q-ksT"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstItem="U8y-dg-ZJy" firstAttribute="top" secondItem="sSK-Om-341" secondAttribute="top" constant="31" id="3St-Up-rkZ"/>
                                                                 <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="216" id="8fx-TB-DOo"/>
-                                                                <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="8" id="Djg-th-LrS"/>
+                                                                <constraint firstItem="U8y-dg-ZJy" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="34" id="92b-ub-6fm"/>
+                                                                <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="1" id="Djg-th-LrS"/>
                                                                 <constraint firstAttribute="trailing" secondItem="3Ua-2v-WMR" secondAttribute="trailing" constant="8" id="E8T-Of-rtS"/>
+                                                                <constraint firstAttribute="bottom" secondItem="U8y-dg-ZJy" secondAttribute="bottom" constant="16" id="EiM-rT-LEG"/>
                                                                 <constraint firstItem="0rB-jw-5Da" firstAttribute="leading" secondItem="sSK-Om-341" secondAttribute="leading" constant="8" id="L3a-yc-na5"/>
-                                                                <constraint firstItem="3Ua-2v-WMR" firstAttribute="baseline" secondItem="0rB-jw-5Da" secondAttribute="baseline" id="O1S-NB-8ML"/>
+                                                                <constraint firstItem="3Ua-2v-WMR" firstAttribute="baseline" secondItem="0rB-jw-5Da" secondAttribute="baseline" constant="-17" id="O1S-NB-8ML"/>
                                                                 <constraint firstAttribute="centerY" secondItem="0rB-jw-5Da" secondAttribute="centerY" id="R9x-eC-ofv"/>
                                                                 <constraint firstItem="0rB-jw-5Da" firstAttribute="top" secondItem="sSK-Om-341" secondAttribute="top" constant="8" id="Uo3-t4-Naq"/>
                                                                 <constraint firstAttribute="centerY" secondItem="0rB-jw-5Da" secondAttribute="centerY" id="Vpe-sv-4PE"/>
-                                                                <constraint firstAttribute="centerY" secondItem="3Ua-2v-WMR" secondAttribute="centerY" id="xax-Eu-3WY"/>
+                                                                <constraint firstAttribute="trailing" secondItem="U8y-dg-ZJy" secondAttribute="trailing" constant="28" id="d0h-z5-usg"/>
+                                                                <constraint firstAttribute="centerY" secondItem="3Ua-2v-WMR" secondAttribute="centerY" constant="9" id="xax-Eu-3WY"/>
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
@@ -737,6 +747,7 @@ DJ: Ibrahim Rabbani</string>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
+                                                    <outlet property="date" destination="U8y-dg-ZJy" id="zdI-9C-8IB"/>
                                                     <outlet property="start" destination="3Ua-2v-WMR" id="rIc-58-MJd"/>
                                                     <outlet property="title" destination="0rB-jw-5Da" id="Kqc-X1-DmE"/>
                                                 </connections>
@@ -744,10 +755,10 @@ DJ: Ibrahim Rabbani</string>
                                         </prototypes>
                                         <sections/>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnl-9q-rv0">
-                                        <rect key="frame" x="8" y="100" width="584" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnl-9q-rv0">
+                                        <rect key="frame" x="8" y="74" width="584" height="22"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="jKv-ri-tTY"/>
+                                            <constraint firstAttribute="height" constant="22" id="jKv-ri-tTY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="16"/>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -756,22 +767,22 @@ DJ: Ibrahim Rabbani</string>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ZWf-fC-EF3" firstAttribute="leading" secondItem="Sl6-4c-slh" secondAttribute="leading" id="2il-c6-snX"/>
-                                    <constraint firstItem="mnl-9q-rv0" firstAttribute="top" secondItem="9sC-SC-ioN" secondAttribute="bottom" constant="8" symbolic="YES" id="6HS-6l-S0s"/>
+                                    <constraint firstItem="mnl-9q-rv0" firstAttribute="top" secondItem="9sC-SC-ioN" secondAttribute="bottom" constant="-13" id="6HS-6l-S0s"/>
                                     <constraint firstItem="dqe-Um-Zic" firstAttribute="top" secondItem="HiX-jQ-Q7d" secondAttribute="top" constant="8" id="CXx-It-Luk"/>
                                     <constraint firstItem="dqe-Um-Zic" firstAttribute="trailing" secondItem="HiX-jQ-Q7d" secondAttribute="trailingMargin" id="F8J-O5-EyP"/>
                                     <constraint firstItem="9sC-SC-ioN" firstAttribute="trailing" secondItem="mnl-9q-rv0" secondAttribute="trailing" id="HWZ-L3-ain"/>
                                     <constraint firstItem="mnl-9q-rv0" firstAttribute="leading" secondItem="9sC-SC-ioN" secondAttribute="leading" id="I2Q-g2-hG0"/>
                                     <constraint firstAttribute="trailing" secondItem="9sC-SC-ioN" secondAttribute="trailing" constant="8" id="RHb-6f-S5S"/>
-                                    <constraint firstItem="Sl6-4c-slh" firstAttribute="top" secondItem="mnl-9q-rv0" secondAttribute="bottom" constant="6" id="VxB-OD-XsT"/>
+                                    <constraint firstItem="Sl6-4c-slh" firstAttribute="leading" secondItem="mnl-9q-rv0" secondAttribute="leading" id="Srh-ng-KDe"/>
                                     <constraint firstAttribute="trailing" secondItem="385-YP-G0T" secondAttribute="trailing" id="ac4-Kl-V7e"/>
                                     <constraint firstAttribute="bottom" secondItem="385-YP-G0T" secondAttribute="bottom" id="e8G-Sm-HVp"/>
                                     <constraint firstItem="ZWf-fC-EF3" firstAttribute="leading" secondItem="9sC-SC-ioN" secondAttribute="leading" id="exO-eB-o50"/>
                                     <constraint firstItem="ZWf-fC-EF3" firstAttribute="top" secondItem="HiX-jQ-Q7d" secondAttribute="top" constant="8" id="iIA-Yx-Ztz"/>
+                                    <constraint firstItem="385-YP-G0T" firstAttribute="top" secondItem="Sl6-4c-slh" secondAttribute="bottom" constant="14" id="ik9-T6-YfC"/>
                                     <constraint firstItem="9sC-SC-ioN" firstAttribute="leading" secondItem="HiX-jQ-Q7d" secondAttribute="leading" constant="8" id="kfH-gb-ZEJ"/>
-                                    <constraint firstItem="385-YP-G0T" firstAttribute="top" secondItem="Sl6-4c-slh" secondAttribute="bottom" constant="9" id="lCO-k2-O0N"/>
                                     <constraint firstItem="ZWf-fC-EF3" firstAttribute="baseline" secondItem="dqe-Um-Zic" secondAttribute="baseline" constant="2" id="qfD-wa-tI8"/>
-                                    <constraint firstItem="9sC-SC-ioN" firstAttribute="top" secondItem="dqe-Um-Zic" secondAttribute="bottom" constant="13" id="uus-Rm-7sn"/>
+                                    <constraint firstItem="9sC-SC-ioN" firstAttribute="top" secondItem="dqe-Um-Zic" secondAttribute="bottom" constant="5" id="uus-Rm-7sn"/>
+                                    <constraint firstItem="Sl6-4c-slh" firstAttribute="top" secondItem="mnl-9q-rv0" secondAttribute="bottom" constant="28" id="wBb-fF-H6r"/>
                                     <constraint firstItem="385-YP-G0T" firstAttribute="leading" secondItem="HiX-jQ-Q7d" secondAttribute="leading" id="xpw-4o-xHW"/>
                                 </constraints>
                             </view>
@@ -870,7 +881,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="B67C81FA-5085-4EDF-BB79-A96E5B624B91" width="300" height="300">
+        <image name="9C957CFF-B6D7-47AD-8067-B2836FAF64FC" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

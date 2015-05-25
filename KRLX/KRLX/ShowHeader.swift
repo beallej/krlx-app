@@ -13,12 +13,14 @@ class ShowHeader {
     var start : String
     var end : String
     var DJ : String
+    var date: String
     
-    init (titleString: String, startString: String, endString: String, DJString: String){
+    init (titleString: String, startString: String, endString: String, DJString: String, dateString:String){
         self.title = titleString
         self.start = startString
         self.end = endString
         self.DJ = DJString
+        self.date = dateString // initialize to nil
     }
     func getTitle() -> String{
         println(self.title)
@@ -32,6 +34,9 @@ class ShowHeader {
     }
     func getEndTime() -> String{
         return self.end
+    }
+    func getDate() -> String{
+        return self.date
     }
 
     

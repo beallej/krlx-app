@@ -55,14 +55,11 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     func pullKRLXGoogleCal() {
-        
-        //--------------------
-        //Need to get current time to put into the API String
-        // API also don't return the event at the right time (I wonder if time zone is different!!!)
-        //--------------------------
-        
+    // This function pull KRLX calendar using Google Calendar API, 
+    // parse info and display it in readable form
+
         let curTime = getCurrentTime()
-        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=100&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
+        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=60&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
        let url = NSURL(string: urlString)
 //
         //let url = NSURL(string: "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago&maxResults=100&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I")
@@ -80,13 +77,16 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             if (data != nil){
             
                 let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
-                
+                // Parse show content of NSDictionary
                 if (jsonResult != nil){
                     if let allitems_wrapper = jsonResult["items"] as? NSArray{
                         for item in allitems_wrapper {
                             var ShowTitle = item["summary"] as! String
-                            var startTime = (item["start"] as! NSDictionary)["dateTime"] as! String
+                            var startTimeArray = (item["start"] as! NSDictionary)["dateTime"] as! String
+                            var startTime = self.prettifyTimeLabel(startTimeArray)[0]
+                            var date = self.prettifyTimeLabel(startTimeArray)[1] as String
                             var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
+                            endTime = self.prettifyTimeLabel(endTime)[0]
                             var ShowDJ: String
                             if let DJ:String = item["description"] as? String {
                                 ShowDJ = DJ
@@ -94,7 +94,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                             else {
                                 ShowDJ = ""
                             }
-                            var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ)
+                            var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
                             self.show_arrays.append(show)
                             
                         }
@@ -124,41 +124,44 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         })
     }
     
-    //times are formatted super ugly-ly
-    func prettifyTimeLabel(time: String) -> String
+    func prettifyTimeLabel(time: String) -> [String]
+        // This function take in a time string of format 2015-05-21T05:30:00-05:00
+        // Return an array of prettified [time, date]
     {
-        var finalTime : String
+        var finalTime : [String] = []
         //2015-05-21T05:30:00-05:00 --> 05:30:00
         var tm = time.componentsSeparatedByString("T")[1].componentsSeparatedByString("-")[0]
+        var date = time.componentsSeparatedByString("T")[0]
         
         //05:30:00 --> 5:30
         var hour = tm.substringWithRange(Range<String.Index>(start: tm.startIndex, end: advance(tm.endIndex, -6)))
         var minute = tm.substringWithRange(Range<String.Index>(start: advance(tm.startIndex, 2), end: advance(tm.endIndex, -3)))
         var hourNumber = hour.toInt()
         
-        //this isn't military time
+        //Convert 24 hour scale to 12 hour scale
         if hourNumber > 12 {
             hourNumber = hourNumber! % 12
-            finalTime = hourNumber!.description + minute + "pm"
+            finalTime.append(hourNumber!.description + minute + "pm")
         }
         else if hourNumber == 12 {
-            finalTime = hourNumber!.description + minute + "pm"
+            finalTime.append(hourNumber!.description + minute + "pm")
         }
         else{
-            finalTime = hourNumber!.description+minute+"am"
+            finalTime.append(hourNumber!.description+minute+"am")
         }
+        finalTime.append(date)
         return finalTime
         
     }
     
     func getCurrentTime () -> String{
-        //timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago
+        // Get current time in UTC to substitute in the Google API String
+        // timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago
         let now = NSDate()
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH'%3A'mm'%3A'ss"
         dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
         var dateString = dateFormatter.stringFromDate(now) as String
-        print(dateString)
         return dateString
     }
     
@@ -175,12 +178,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     
-    //The current show is not in tableview, it is pinned to top in a view
+    //The current show is not in tableview, it is pinned to top in a separate view
     func setFirstShow(){
         let show = sharedData.loadedShowHeaders[0] as! ShowHeader
         self.currentShowLabel.text = show.getTitle()
         self.currentDJLabel.text = show.getDJ()
-        let finalTimeString = self.prettifyTimeLabel(show.getStartTime()) + " - " + self.prettifyTimeLabel(show.getEndTime())
+        let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         self.currentTimeLabel.text = finalTimeString
     }
     
@@ -188,11 +191,14 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
         let show = sharedData.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
+        //offset by 1 because the first show is displayed separately
         cell.title.text = show.getTitle()
-        let finalTimeString = self.prettifyTimeLabel(show.getStartTime()) + " - " + self.prettifyTimeLabel(show.getEndTime())
+        let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         cell.start.text = finalTimeString
+        cell.date.text = show.getDate()
         return cell
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
     }
