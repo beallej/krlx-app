@@ -63,6 +63,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9C957CFF-B6D7-47AD-8067-B2836FAF64FC" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -646,6 +647,7 @@ DJ: Ibrahim Rabbani</string>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading " lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sC-SC-ioN">
                                         <rect key="frame" x="8" y="36" width="584" height="51"/>
+
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="0fI-Yh-p16"/>
                                         </constraints>
@@ -687,6 +689,7 @@ DJ: Ibrahim Rabbani</string>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-jw-5Da">
                                                                     <rect key="frame" x="8" y="8" width="440" height="52"/>
+
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Y3H-hI-nCO"/>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="bci-g7-Pxp"/>
@@ -718,10 +721,12 @@ DJ: Ibrahim Rabbani</string>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="U8y-dg-ZJy" firstAttribute="top" secondItem="sSK-Om-341" secondAttribute="top" constant="31" id="3St-Up-rkZ"/>
+
                                                                 <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="216" id="8fx-TB-DOo"/>
                                                                 <constraint firstItem="U8y-dg-ZJy" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="34" id="92b-ub-6fm"/>
                                                                 <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="1" id="Djg-th-LrS"/>
                                                                 <constraint firstAttribute="trailing" secondItem="3Ua-2v-WMR" secondAttribute="trailing" constant="8" id="E8T-Of-rtS"/>
+
                                                                 <constraint firstAttribute="bottom" secondItem="U8y-dg-ZJy" secondAttribute="bottom" constant="16" id="EiM-rT-LEG"/>
                                                                 <constraint firstItem="0rB-jw-5Da" firstAttribute="leading" secondItem="sSK-Om-341" secondAttribute="leading" constant="8" id="L3a-yc-na5"/>
                                                                 <constraint firstItem="3Ua-2v-WMR" firstAttribute="baseline" secondItem="0rB-jw-5Da" secondAttribute="baseline" constant="-17" id="O1S-NB-8ML"/>

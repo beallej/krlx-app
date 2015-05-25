@@ -108,7 +108,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                     }
                     self.spinnyWidget.stopAnimating()
                 }
-                //handle error
+                    
                 else
                 {
                     self.currentShowLabel.text = "Whoops! Something's wrong with the server"
@@ -145,6 +145,9 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         }
         else if hourNumber == 12 {
             finalTime.append(hourNumber!.description + minute + "pm")
+        }
+        else if hourNumber == 0 {
+            finalTime.append("12" + minute + "am")
         }
         else{
             finalTime.append(hourNumber!.description+minute+"am")
@@ -201,6 +204,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
+
     }
 
 

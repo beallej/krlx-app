@@ -30,6 +30,7 @@ class ArticleHeader {
         self.date = [dateArr[2], monthstr, dateArr[0], longMonth]
         
     }
+
     func getTitle() -> String{
         return self.title
     }

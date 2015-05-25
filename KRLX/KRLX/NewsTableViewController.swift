@@ -35,8 +35,17 @@ class NewsTableViewController: UITableViewController {
 
             }
             dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
                 self.spinnyWidget.stopAnimating()
+                self.tableView.reloadData()
+                
+                if (sharedData.loadedArticleHeaders.count == 0){
+                    var alert = UIAlertController(title: "Whoops!", message: "Internet problems, try again later", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                
             }
         }
 

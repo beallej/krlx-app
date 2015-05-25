@@ -23,7 +23,6 @@ class ShowHeader {
         self.date = dateString // initialize to nil
     }
     func getTitle() -> String{
-        println(self.title)
         return self.title
     }
     func getDJ() -> String{

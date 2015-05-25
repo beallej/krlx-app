@@ -12,11 +12,10 @@ class ScheduleTableViewCell: UITableViewCell {
     //@IBOutlet weak var DJ:UILabel!
     
     @IBOutlet weak var start: UILabel!
-    
-    //@IBOutlet weak var end: UILabel!
+
     
     @IBOutlet weak var date: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
