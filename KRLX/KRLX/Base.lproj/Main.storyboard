@@ -62,8 +62,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9C957CFF-B6D7-47AD-8067-B2836FAF64FC" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
-
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A2C335F5-7267-4F84-B70B-3D304D31D711" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -288,7 +287,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="0mF-q0-GmA"/>
                         <view key="titleView" contentMode="scaleToFill" id="TVb-bd-Jya">
-                            <rect key="frame" x="205" y="0.0" width="191" height="44"/>
+                            <rect key="frame" x="204.5" y="0.0" width="191" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scX-E9-WjK">
@@ -505,39 +504,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhonographRecord.png" translatesAutoresizingMaskIntoConstraints="NO" id="IL0-tN-Stk">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6F-tM-TeV">
-                                <rect key="frame" x="195" y="172" width="210" height="186"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="krlx.png" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-YV-ZSs">
-                                        <rect key="frame" x="0.0" y="0.0" width="210" height="186"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="186" id="GJK-oj-E0H"/>
-                                            <constraint firstAttribute="width" constant="210" id="XET-D1-Byc"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="krlx.png" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-YV-ZSs">
+                                <rect key="frame" x="195" y="207" width="210" height="186"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="ziU-YV-ZSs" secondAttribute="centerX" id="QXL-Xy-SN8"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ziU-YV-ZSs" secondAttribute="bottom" id="Txx-ef-KNP"/>
-                                    <constraint firstItem="ziU-YV-ZSs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="t6F-tM-TeV" secondAttribute="top" id="WgF-oW-Ntk"/>
-                                    <constraint firstItem="ziU-YV-ZSs" firstAttribute="top" secondItem="t6F-tM-TeV" secondAttribute="top" id="Xpk-Fy-2tH"/>
-                                    <constraint firstItem="ziU-YV-ZSs" firstAttribute="top" secondItem="t6F-tM-TeV" secondAttribute="top" id="Y6d-lW-soM"/>
-                                    <constraint firstItem="ziU-YV-ZSs" firstAttribute="top" secondItem="t6F-tM-TeV" secondAttribute="top" id="Yfl-WJ-bGf"/>
-                                    <constraint firstItem="ziU-YV-ZSs" firstAttribute="centerY" secondItem="t6F-tM-TeV" secondAttribute="centerY" id="bwA-Wf-0Ri"/>
-                                    <constraint firstItem="ziU-YV-ZSs" firstAttribute="leading" secondItem="t6F-tM-TeV" secondAttribute="leading" id="scD-ma-uSf"/>
-                                    <constraint firstAttribute="bottom" secondItem="ziU-YV-ZSs" secondAttribute="bottom" id="v85-KY-2bg"/>
+                                    <constraint firstAttribute="height" constant="186" id="GJK-oj-E0H"/>
+                                    <constraint firstAttribute="width" constant="210" id="XET-D1-Byc"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Xpk-Fy-2tH"/>
-                                        <exclude reference="Y6d-lW-soM"/>
-                                        <exclude reference="v85-KY-2bg"/>
-                                    </mask>
-                                </variation>
-                            </view>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-um-2Nz">
                                 <rect key="frame" x="150" y="408" width="300" height="57"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -572,18 +547,17 @@ DJ: Ibrahim Rabbani</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IL0-tN-Stk" firstAttribute="bottom" secondItem="VBi-dM-ohh" secondAttribute="top" id="0P4-sR-0DP"/>
                             <constraint firstItem="b3G-5O-OeB" firstAttribute="top" secondItem="Lhx-um-2Nz" secondAttribute="bottom" constant="19" id="0jN-dJ-6X3"/>
                             <constraint firstAttribute="centerX" secondItem="b3G-5O-OeB" secondAttribute="centerX" id="24z-RS-nqO"/>
-                            <constraint firstItem="b3G-5O-OeB" firstAttribute="centerX" secondItem="t6F-tM-TeV" secondAttribute="centerX" id="5db-pV-Iz7"/>
-                            <constraint firstAttribute="centerX" secondItem="t6F-tM-TeV" secondAttribute="centerX" id="94Q-QJ-Jxf"/>
-                            <constraint firstItem="IL0-tN-Stk" firstAttribute="top" secondItem="pBu-io-TV5" secondAttribute="top" id="EnU-Ud-uPS"/>
                             <constraint firstItem="VBi-dM-ohh" firstAttribute="top" secondItem="b3G-5O-OeB" secondAttribute="bottom" constant="36" id="M6C-e5-SvB"/>
+                            <constraint firstItem="VBi-dM-ohh" firstAttribute="top" secondItem="IL0-tN-Stk" secondAttribute="bottom" id="OcK-NL-2Ez"/>
                             <constraint firstAttribute="centerX" secondItem="Lhx-um-2Nz" secondAttribute="centerX" id="PB5-iY-yYn"/>
-                            <constraint firstAttribute="trailing" secondItem="IL0-tN-Stk" secondAttribute="trailing" id="Tpr-2c-fKS"/>
+                            <constraint firstItem="IL0-tN-Stk" firstAttribute="leading" secondItem="pBu-io-TV5" secondAttribute="leading" id="ROa-OD-bg3"/>
+                            <constraint firstItem="IL0-tN-Stk" firstAttribute="top" secondItem="IPC-hk-0Qs" secondAttribute="bottom" id="VGa-tM-FHc"/>
                             <constraint firstItem="b3G-5O-OeB" firstAttribute="centerX" secondItem="Lhx-um-2Nz" secondAttribute="centerX" id="YDX-9m-h4a"/>
-                            <constraint firstItem="Lhx-um-2Nz" firstAttribute="top" secondItem="t6F-tM-TeV" secondAttribute="bottom" constant="50" id="o0h-rH-LCO"/>
-                            <constraint firstItem="IL0-tN-Stk" firstAttribute="leading" secondItem="pBu-io-TV5" secondAttribute="leading" id="qqI-VA-mRF"/>
+                            <constraint firstAttribute="trailing" secondItem="IL0-tN-Stk" secondAttribute="trailing" id="eeg-6g-EB5"/>
+                            <constraint firstAttribute="centerX" secondItem="ziU-YV-ZSs" secondAttribute="centerX" id="iVN-7n-G0t"/>
+                            <constraint firstAttribute="centerY" secondItem="ziU-YV-ZSs" secondAttribute="centerY" id="phR-ur-ruy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Live Stream" id="cfc-BV-ZDE">
@@ -647,7 +621,6 @@ DJ: Ibrahim Rabbani</string>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading " lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sC-SC-ioN">
                                         <rect key="frame" x="8" y="36" width="584" height="51"/>
-
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="0fI-Yh-p16"/>
                                         </constraints>
@@ -689,7 +662,6 @@ DJ: Ibrahim Rabbani</string>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-jw-5Da">
                                                                     <rect key="frame" x="8" y="8" width="440" height="52"/>
-
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Y3H-hI-nCO"/>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="bci-g7-Pxp"/>
@@ -721,12 +693,10 @@ DJ: Ibrahim Rabbani</string>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="U8y-dg-ZJy" firstAttribute="top" secondItem="sSK-Om-341" secondAttribute="top" constant="31" id="3St-Up-rkZ"/>
-
                                                                 <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="216" id="8fx-TB-DOo"/>
                                                                 <constraint firstItem="U8y-dg-ZJy" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="34" id="92b-ub-6fm"/>
                                                                 <constraint firstItem="3Ua-2v-WMR" firstAttribute="leading" secondItem="0rB-jw-5Da" secondAttribute="trailing" constant="1" id="Djg-th-LrS"/>
                                                                 <constraint firstAttribute="trailing" secondItem="3Ua-2v-WMR" secondAttribute="trailing" constant="8" id="E8T-Of-rtS"/>
-
                                                                 <constraint firstAttribute="bottom" secondItem="U8y-dg-ZJy" secondAttribute="bottom" constant="16" id="EiM-rT-LEG"/>
                                                                 <constraint firstItem="0rB-jw-5Da" firstAttribute="leading" secondItem="sSK-Om-341" secondAttribute="leading" constant="8" id="L3a-yc-na5"/>
                                                                 <constraint firstItem="3Ua-2v-WMR" firstAttribute="baseline" secondItem="0rB-jw-5Da" secondAttribute="baseline" constant="-17" id="O1S-NB-8ML"/>
@@ -886,7 +856,7 @@ DJ: Ibrahim Rabbani</string>
         </scene>
     </scenes>
     <resources>
-        <image name="9C957CFF-B6D7-47AD-8067-B2836FAF64FC" width="300" height="300">
+        <image name="A2C335F5-7267-4F84-B70B-3D304D31D711" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
