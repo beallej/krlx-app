@@ -77,39 +77,49 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
    
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler:{ (response:NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             var errorJSON: AutoreleasingUnsafeMutablePointer<NSError?> = nil
-            let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
+            if (data != nil){
             
-            if (jsonResult != nil){
-                if let allitems_wrapper = jsonResult["items"] as? NSArray{
-                    for item in allitems_wrapper {
-                        var ShowTitle = item["summary"] as! String
-                        var startTime = (item["start"] as! NSDictionary)["dateTime"] as! String
-                        var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
-                        var ShowDJ: String
-                        if let DJ:String = item["description"] as? String {
-                            ShowDJ = DJ
+                let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
+                
+                if (jsonResult != nil){
+                    if let allitems_wrapper = jsonResult["items"] as? NSArray{
+                        for item in allitems_wrapper {
+                            var ShowTitle = item["summary"] as! String
+                            var startTime = (item["start"] as! NSDictionary)["dateTime"] as! String
+                            var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
+                            var ShowDJ: String
+                            if let DJ:String = item["description"] as? String {
+                                ShowDJ = DJ
+                            }
+                            else {
+                                ShowDJ = ""
+                            }
+                            var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ)
+                            self.show_arrays.append(show)
+                            
                         }
-                        else {
-                            ShowDJ = ""
-                        }
-                        var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ)
-                        self.show_arrays.append(show)
-                        
                     }
-                }
-                var newShowList = NSMutableArray(array: self.show_arrays)
-                if newShowList != sharedData.loadedShowHeaders{
-                    sharedData.loadedShowHeaders = newShowList
-                    self.setFirstShow()
-                    self.tableView?.reloadData()
+                    var newShowList = NSMutableArray(array: self.show_arrays)
+                    if newShowList != sharedData.loadedShowHeaders{
+                        sharedData.loadedShowHeaders = newShowList
+                        self.setFirstShow()
+                        self.tableView?.reloadData()
 
+                    }
+                    self.spinnyWidget.stopAnimating()
                 }
-                self.spinnyWidget.stopAnimating()
+                //handle error
+                else
+                {
+                    self.currentShowLabel.text = "Whoops! Something's wrong with the server"
+                    self.spinnyWidget.stopAnimating()
+                }
             }
-            else
-            {
-                //Handle ERROR
-                //-------NOT DONE---------
+                
+            //no response
+            else{
+                self.currentShowLabel.text = "No internet connection"
+                self.spinnyWidget.stopAnimating()
             }
         })
     }
