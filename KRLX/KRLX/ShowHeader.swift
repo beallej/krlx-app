@@ -21,7 +21,6 @@ class ShowHeader {
         self.DJ = DJString
     }
     func getTitle() -> String{
-        println(self.title)
         return self.title
     }
     func getDJ() -> String{

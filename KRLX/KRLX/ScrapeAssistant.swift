@@ -25,7 +25,6 @@ class ScrapeAssistant {
                 var err : NSError?
                 var parser = HTMLParser(html: html!, error: &err)
                 if err != nil {
-                    //println(err)
                     exit(1)
                 }
                 var allArticle = parser.body

@@ -55,12 +55,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     func pullKRLXGoogleCal() {
-        
-        //--------------------
-        //Need to get current time to put into the API String
-        // API also don't return the event at the right time (I wonder if time zone is different!!!)
-        //--------------------------
-        
+       
         let curTime = getCurrentTime()
         var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=100&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
        let url = NSURL(string: urlString)
@@ -108,7 +103,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                     }
                     self.spinnyWidget.stopAnimating()
                 }
-                //handle error
+                    
                 else
                 {
                     self.currentShowLabel.text = "Whoops! Something's wrong with the server"
@@ -144,6 +139,9 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         else if hourNumber == 12 {
             finalTime = hourNumber!.description + minute + "pm"
         }
+        else if hourNumber == 0 {
+            finalTime = "12" + minute + "am"
+        }
         else{
             finalTime = hourNumber!.description+minute+"am"
         }
@@ -152,13 +150,11 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     func getCurrentTime () -> String{
-        //timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago
         let now = NSDate()
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH'%3A'mm'%3A'ss"
         dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
         var dateString = dateFormatter.stringFromDate(now) as String
-        print(dateString)
         return dateString
     }
     
@@ -189,12 +185,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
         let show = sharedData.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
         cell.title.text = show.getTitle()
-        let finalTimeString = self.prettifyTimeLabel(show.getStartTime()) + " - " + self.prettifyTimeLabel(show.getEndTime())
-        cell.start.text = finalTimeString
+        cell.start.text = self.prettifyTimeLabel(show.getStartTime()) + " - "
+        cell.end.text = self.prettifyTimeLabel(show.getEndTime())
         return cell
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("You selected cell #\(indexPath.row)!")
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
     }
 
 
