@@ -2,7 +2,7 @@
 //  ScrapeAssistant.swift
 //  KRLX
 //
-//  Created by Josie Bealle on 22/05/2015.
+//  Created by Phuong Dinh and Josie Bealle on 22/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 

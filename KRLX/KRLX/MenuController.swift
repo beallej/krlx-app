@@ -3,6 +3,7 @@
 //  SidebarMenu
 //
 //  Created by Simon Ng on 2/2/15.
+//  Adapted by KRLXpert on May 2015
 //  Copyright (c) 2015 AppCoda. All rights reserved.
 //
 

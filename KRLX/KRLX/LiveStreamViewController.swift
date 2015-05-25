@@ -2,7 +2,7 @@
 //  LiveStreamViewController.swift
 //  KRLX
 //
-//  Created by Josie Bealle on 07/05/2015.
+//  Created by KRLXxpert on 07/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
