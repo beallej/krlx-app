@@ -17,14 +17,17 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var playButton: UIButton!
     
     // http://stackoverflow.com/questions/5655864/check-play-state-of-avplayer
-
+    
     @IBOutlet weak var currentShowLabel: UILabel!
+    
+    //@IBOutlet weak var currentDJLabel: UILabel!
+    
     var show_arrays = [ShowHeader]()
     var currentShowName: String = "show"
     var currentDJName: String = "DJ"
     
     override func viewDidLoad() {
-        self.currentShowLabel.text = ""
+        self.currentShowLabel.text = "Loading Show Name and DJ Name..."
         self.setCurrentShow()
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.isPlaying {
@@ -79,7 +82,10 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     func setCurrentShow(){
         let calendarAssistant = GoogleAPIPull()
         if let currentShow = calendarAssistant.getCurrentShow(){
-            self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " by " + currentShow.getDJ()
+            self.currentShowLabel.numberOfLines = 2
+            self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nBy " + currentShow.getDJ()
+            self.currentShowLabel.sizeToFit()
+            //self.currentDJLabe.text = "By " + currentShow.getDJ()
         }
         // if nothing returned from server, label is blank
     }
