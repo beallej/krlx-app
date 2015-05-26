@@ -22,6 +22,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var volumeController: UISlider!
     
+    var refreshTimerAssistant : AutoRefreshAssistant!
+    
     
     
     var show_arrays = [ShowHeader]()
@@ -45,10 +47,18 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        self.refreshTimerAssistant = AutoRefreshAssistant(selector: "refreshShow")
         
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
     }
-    
+    func refreshShow(){
+        self.setCurrentShow()
+        
+        //refreshes every 30 minutes
+        self.refreshTimerAssistant.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("refreshShow"), userInfo: nil, repeats: true)
+        
+    }
+
     
     @IBAction func buttonPressed(sender: AnyObject) {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

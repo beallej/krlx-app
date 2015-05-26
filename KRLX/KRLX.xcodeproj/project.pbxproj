@@ -26,6 +26,7 @@
 		BD785BF01B03EE8C003A3C33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD785BEE1B03EE8C003A3C33 /* Main.storyboard */; };
 		BD84995F1B0F895300D43BA9 /* ScrapeAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */; };
 		BD944B951B14F7D6005E6A83 /* GoogleAPIPull.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */; };
+		BD944B971B152F9F005E6A83 /* AutoRefreshAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD944B961B152F9F005E6A83 /* AutoRefreshAssistant.swift */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47029FC1A7F27DB00E30A3C /* Images.xcassets */; };
 		F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */; };
@@ -68,6 +69,7 @@
 		BD785BEF1B03EE8C003A3C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapeAssistant.swift; sourceTree = "<group>"; };
 		BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPIPull.swift; sourceTree = "<group>"; };
+		BD944B961B152F9F005E6A83 /* AutoRefreshAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoRefreshAssistant.swift; sourceTree = "<group>"; };
 		F47029F01A7F27DB00E30A3C /* KRLX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRLX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F41A7F27DB00E30A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47029F51A7F27DB00E30A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				F47029F31A7F27DB00E30A3C /* Supporting Files */,
 				F4702A171A7F351C00E30A3C /* MenuController.swift */,
 				BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */,
+				BD944B961B152F9F005E6A83 /* AutoRefreshAssistant.swift */,
 				BD02FEDC1B0E578500751F7B /* ShowHeader.swift */,
 				BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */,
 				BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */,
@@ -313,6 +316,7 @@
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
 				BD02FEDD1B0E578500751F7B /* ShowHeader.swift in Sources */,
 				BD944B951B14F7D6005E6A83 /* GoogleAPIPull.swift in Sources */,
+				BD944B971B152F9F005E6A83 /* AutoRefreshAssistant.swift in Sources */,
 				3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */,
 				F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */,
 				BD55116F1AFBF7BE0016AEFA /* ArticleViewController.swift in Sources */,

@@ -20,6 +20,10 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var currentDJLabel: UILabel!
     @IBOutlet weak var currentShowLabel: UILabel!
+    
+    var refreshTimerAssistant : AutoRefreshAssistant!
+    var calendarAssistant : GoogleAPIPull!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +47,17 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         }
 
         // Pull calendar
-        var calendarAssistant = GoogleAPIPull()
-        if let needReload = calendarAssistant.pullKRLXGoogleCal(){
+        self.calendarAssistant = GoogleAPIPull()
+        self.loadCalendar()
+        self.spinnyWidget.stopAnimating()
+        
+        self.refreshTimerAssistant = AutoRefreshAssistant(selector: "loadCalendar")
+        
+
+    }
+    
+    func loadCalendar(){
+        if let needReload = self.calendarAssistant.pullKRLXGoogleCal(){
             if needReload {
                 self.setFirstShow()
                 self.tableView.reloadData()
@@ -55,8 +68,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                 self.currentShowLabel.text = "Sorry! Internet Problems"
             }
         }
-        self.spinnyWidget.stopAnimating()
-        
 
     }
     
