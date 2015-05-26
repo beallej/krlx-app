@@ -16,11 +16,18 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     
-    var isPlaying = true
     // http://stackoverflow.com/questions/5655864/check-play-state-of-avplayer
 
     override func viewDidLoad() {
-        
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDelegate.isPlaying {
+            let image = UIImage(named: "pause") as UIImage?
+            playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+            
+        }else{
+            let image = UIImage(named: "play") as UIImage?
+            playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        }
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
@@ -32,12 +39,13 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        if isPlaying {
-            playRadio()
-            isPlaying = false
-        }else{
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDelegate.isPlaying {
             pauseRadio()
-            isPlaying = true
+            appDelegate.isPlaying = false
+        }else{
+            playRadio()
+            appDelegate.isPlaying = true
             
         }
     }
