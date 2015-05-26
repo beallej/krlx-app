@@ -20,7 +20,9 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var currentShowLabel: UILabel!
     
-    //@IBOutlet weak var currentDJLabel: UILabel!
+    @IBOutlet weak var volumeController: UISlider!
+    
+    
     
     var show_arrays = [ShowHeader]()
     var currentShowName: String = "show"
@@ -73,6 +75,15 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         let image = UIImage(named: "play") as UIImage?
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
+    
+    
+    @IBAction func changeVolume(sender: UISlider) {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var currentVolume = Float(sender.value)
+        appDelegate.player.volume = currentVolume
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
