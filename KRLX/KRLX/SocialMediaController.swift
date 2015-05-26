@@ -78,7 +78,7 @@ class SocialMediaController: UIViewController{
     }
     
 
-    
+    /*
     @IBAction func goBack(sender: AnyObject) {
         performSegueWithIdentifier("back",sender: nil)
     }
@@ -86,6 +86,6 @@ class SocialMediaController: UIViewController{
     
     @IBAction func back(sender : UIButton) {
         performSegueWithIdentifier("back",sender: nil)
-    }
+    }*/
 }
 

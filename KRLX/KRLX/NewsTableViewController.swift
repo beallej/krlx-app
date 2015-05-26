@@ -143,7 +143,7 @@ class NewsTableViewController: UITableViewController {
         self.navigationController?.pushViewController(articleVC, animated: true)
     }
   
-
+/*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "next") {
         }
@@ -159,6 +159,7 @@ class NewsTableViewController: UITableViewController {
         }
         
     }
+    */
     
 }
 
