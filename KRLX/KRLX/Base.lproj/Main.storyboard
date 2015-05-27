@@ -62,7 +62,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="09BC815F-C77C-463B-939A-7DFC099F0AE1" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9432D41C-F886-4A06-BBB6-27C01E9A9E1D" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -106,6 +106,11 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumArt" destination="eaf-Gj-4Db" id="CzO-Cv-nOQ"/>
+                                            <outlet property="artist" destination="5qQ-wy-7X2" id="uJI-Nw-MOy"/>
+                                            <outlet property="title" destination="6cL-A6-EMX" id="bOS-YY-LMt"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="otherSong" textLabel="YKx-IS-zwE" detailTextLabel="99r-Lj-e79" style="IBUITableViewCellStyleSubtitle" id="W8n-90-v0y" customClass="OtherShowTableViewCell" customModule="KRLX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -156,6 +161,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="artist" destination="v9c-fY-ZIa" id="5EM-7E-JDS"/>
+                                            <outlet property="title" destination="pTc-4h-PLX" id="ZQR-s2-g23"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -874,7 +883,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="09BC815F-C77C-463B-939A-7DFC099F0AE1" width="300" height="300">
+        <image name="9432D41C-F886-4A06-BBB6-27C01E9A9E1D" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

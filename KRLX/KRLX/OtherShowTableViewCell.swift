@@ -16,10 +16,13 @@ class OtherShowTableViewCell: UITableViewCell {
     
     @IBOutlet weak var artist: UILabel!
     
-    
+    var song : SongHeader!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.title.text = song.getTitle()
+        self.artist.text = song.getArtist()
         
         // Initialization code
     }
