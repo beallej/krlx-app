@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -62,7 +62,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6D401C32-C299-47B4-BFB1-AB9EDE2562D6" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1DF4C737-F1CE-424B-95AB-F86E62AAAF2A" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-Gj-4Db">
                                                     <rect key="frame" x="10" y="9" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Urc-qH-XfK"/>
@@ -513,19 +513,6 @@
                                     <constraint firstAttribute="width" constant="210" id="XET-D1-Byc"/>
                                 </constraints>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="OOP-ev-eTo">
-                                <rect key="frame" x="183" y="538" width="235" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="SRy-0p-2Ic"/>
-                                    <constraint firstAttribute="width" constant="231" id="TWW-j0-0cP"/>
-                                </constraints>
-                                <color key="minimumTrackTintColor" red="0.26186753142158642" green="0.43326741216390224" blue="0.59534801136363635" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="maximumTrackTintColor" red="0.57754304857218874" green="0.62802598828034106" blue="0.84799163510101017" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" red="0.53864820075757569" green="0.42037301137841027" blue="0.48162079289507242" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="changeVolume:" destination="sE8-Cy-yWP" eventType="valueChanged" id="pIQ-G7-YDF"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3G-5O-OeB">
                                 <rect key="frame" x="260" y="418" width="80" height="80"/>
                                 <constraints>
@@ -549,6 +536,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="volumeMin.png" maximumValueImage="volumeMax.png" translatesAutoresizingMaskIntoConstraints="NO" id="OOP-ev-eTo">
+                                <rect key="frame" x="157" y="527" width="286" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SRy-0p-2Ic"/>
+                                    <constraint firstAttribute="width" constant="282" id="TWW-j0-0cP"/>
+                                </constraints>
+                                <color key="minimumTrackTintColor" red="0.26186753142158642" green="0.43326741216390224" blue="0.59534801136363635" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="0.57754304857218874" green="0.62802598828034106" blue="0.84799163510101017" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" red="0.53864820075757569" green="0.42037301137841027" blue="0.48162079289507242" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changeVolume:" destination="sE8-Cy-yWP" eventType="valueChanged" id="pIQ-G7-YDF"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -556,7 +556,7 @@
                             <constraint firstAttribute="centerX" secondItem="OOP-ev-eTo" secondAttribute="centerX" id="6tj-X2-F5W"/>
                             <constraint firstAttribute="centerX" secondItem="b3G-5O-OeB" secondAttribute="centerX" id="8R5-Of-ANd"/>
                             <constraint firstAttribute="centerX" secondItem="O0b-Tq-BHy" secondAttribute="centerX" id="GTv-eN-tOW"/>
-                            <constraint firstItem="VBi-dM-ohh" firstAttribute="top" secondItem="OOP-ev-eTo" secondAttribute="bottom" constant="32" id="HPY-Yb-LyF"/>
+                            <constraint firstItem="VBi-dM-ohh" firstAttribute="top" secondItem="OOP-ev-eTo" secondAttribute="bottom" constant="43" id="HPY-Yb-LyF"/>
                             <constraint firstAttribute="centerX" secondItem="O0b-Tq-BHy" secondAttribute="centerX" id="LFc-hh-osv"/>
                             <constraint firstAttribute="centerX" secondItem="O0b-Tq-BHy" secondAttribute="centerX" id="OXj-JI-zhW"/>
                             <constraint firstItem="VBi-dM-ohh" firstAttribute="top" secondItem="IL0-tN-Stk" secondAttribute="bottom" id="OcK-NL-2Ez"/>
@@ -566,7 +566,7 @@
                             <constraint firstAttribute="centerX" secondItem="ziU-YV-ZSs" secondAttribute="centerX" id="b99-tm-guQ"/>
                             <constraint firstItem="O0b-Tq-BHy" firstAttribute="top" secondItem="ziU-YV-ZSs" secondAttribute="bottom" constant="40" id="cBU-8Y-jg0"/>
                             <constraint firstAttribute="trailing" secondItem="IL0-tN-Stk" secondAttribute="trailing" id="eeg-6g-EB5"/>
-                            <constraint firstItem="OOP-ev-eTo" firstAttribute="top" secondItem="b3G-5O-OeB" secondAttribute="bottom" constant="40" id="gEe-aV-hGC"/>
+                            <constraint firstItem="OOP-ev-eTo" firstAttribute="top" secondItem="b3G-5O-OeB" secondAttribute="bottom" constant="29" id="gEe-aV-hGC"/>
                             <constraint firstItem="VBi-dM-ohh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OOP-ev-eTo" secondAttribute="bottom" id="hEY-r0-oRl"/>
                             <constraint firstAttribute="centerX" secondItem="ziU-YV-ZSs" secondAttribute="centerX" id="iVN-7n-G0t"/>
                             <constraint firstAttribute="centerY" secondItem="ziU-YV-ZSs" secondAttribute="centerY" constant="116" id="phR-ur-ruy"/>
@@ -878,7 +878,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6D401C32-C299-47B4-BFB1-AB9EDE2562D6" width="300" height="300">
+        <image name="1DF4C737-F1CE-424B-95AB-F86E62AAAF2A" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -6940,6 +6940,8 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         <image name="newsIcon.png" width="128" height="128"/>
         <image name="play" width="128" height="128"/>
         <image name="recentMusicIcon.png" width="460" height="460"/>
+        <image name="volumeMax.png" width="32" height="32"/>
+        <image name="volumeMin.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cQO-fF-LGe"/>
