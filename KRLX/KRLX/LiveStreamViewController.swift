@@ -22,7 +22,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var volumeController: UISlider!
     
-    var refreshTimerAssistant : AutoRefreshAssistant!
+    var refreshTimer : NSTimer!
     
     
     
@@ -47,15 +47,44 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        self.refreshTimerAssistant = AutoRefreshAssistant(selector: "refreshShow")
-        
+        self.setUpTimer()
                 // Do any additional setup after loading the view.
+    }
+    
+    
+   
+    
+    func setUpTimer(){
+        //refreshes at next half hour
+        let timeInt = self.getTimeToRefresh()
+        let timeSeconds : NSTimeInterval = Double(timeInt)*60.0
+        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("refreshShow"), userInfo: nil, repeats: false)
+    }
+    
+    
+    func getTimeToRefresh() -> Int{
+        let now = NSDate()
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "mm"
+        var minString = dateFormatter.stringFromDate(now) as String
+        let minInt = minString.toInt()!
+        
+        
+        var timeToRefresh : Int
+        if minInt <= 30 {
+            timeToRefresh = 30 - minInt
+        }
+        else{
+            timeToRefresh = 60 - minInt
+        }
+        return timeToRefresh
+        
+        
     }
     func refreshShow(){
         self.setCurrentShow()
-        
         //refreshes every 30 minutes
-        self.refreshTimerAssistant.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("refreshShow"), userInfo: nil, repeats: true)
+        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("setCurrentShow"), userInfo: nil, repeats: true)
         
     }
 
@@ -106,7 +135,6 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
             self.currentShowLabel.numberOfLines = 2
             self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nBy " + currentShow.getDJ()
             self.currentShowLabel.sizeToFit()
-            //self.currentDJLabe.text = "By " + currentShow.getDJ()
         }
         // if nothing returned from server, label is blank
     }

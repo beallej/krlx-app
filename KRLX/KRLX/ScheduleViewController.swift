@@ -21,7 +21,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet weak var currentDJLabel: UILabel!
     @IBOutlet weak var currentShowLabel: UILabel!
     
-    var refreshTimerAssistant : AutoRefreshAssistant!
+    var refreshTimer : NSTimer!
     var calendarAssistant : GoogleAPIPull!
     
     override func viewDidLoad() {
@@ -51,11 +51,46 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.loadCalendar()
         self.spinnyWidget.stopAnimating()
         
-        self.refreshTimerAssistant = AutoRefreshAssistant(selector: "loadCalendar")
+        self.setUpTimer()
         
 
     }
     
+    
+    func setUpTimer(){
+        //refreshes at next half hour
+        let timeInt = self.getTimeToRefresh()
+        let timeSeconds : NSTimeInterval = Double(timeInt)*60.0
+        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("refreshCalendar"), userInfo: nil, repeats: false)
+    }
+    
+    
+    func getTimeToRefresh() -> Int{
+        let now = NSDate()
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "mm"
+        var minString = dateFormatter.stringFromDate(now) as String
+        let minInt = minString.toInt()!
+        
+        
+        var timeToRefresh : Int
+        if minInt <= 30 {
+            timeToRefresh = 30 - minInt
+        }
+        else{
+            timeToRefresh = 60 - minInt
+        }
+        return timeToRefresh
+        
+        
+    }
+    func refreshCalendar(){
+        self.loadCalendar()
+        
+        //refreshes every 30 minutes
+        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("loadCalendar"), userInfo: nil, repeats: true)
+        
+    }
     func loadCalendar(){
         if let needReload = self.calendarAssistant.pullKRLXGoogleCal(){
             if needReload {
@@ -71,6 +106,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
     }
     
+     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
