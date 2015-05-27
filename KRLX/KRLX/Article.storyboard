@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -22,24 +22,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black.png" translatesAutoresizingMaskIntoConstraints="NO" id="iNe-zX-Yep">
                                 <rect key="frame" x="16" y="90" width="43" height="43"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vxQ-Ew-Tq3">
-                                <rect key="frame" x="218" y="103" width="165" height="39"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="165" id="5gQ-qU-tJU"/>
-                                    <constraint firstAttribute="height" constant="39" id="RUp-tK-8pu"/>
-                                </constraints>
-                                <string key="text">Written by Mary Reagan Harvey
-Published: 28 December 2015
-
-
-
-
-
-</string>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9z-T0-WP1">
                                 <rect key="frame" x="16" y="92" width="43" height="21"/>
                                 <constraints>
@@ -60,7 +42,7 @@ Published: 28 December 2015
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="pRT-uU-bQi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="23"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -83,6 +65,24 @@ Published: 28 December 2015
                                 <rect key="frame" x="0.0" y="157" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vxQ-Ew-Tq3">
+                                <rect key="frame" x="165" y="92" width="270" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="5gQ-qU-tJU"/>
+                                    <constraint firstAttribute="height" constant="50" id="RUp-tK-8pu"/>
+                                </constraints>
+                                <string key="text">Written by Mary Reagan Harvey
+Published: 28 December 2015
+
+
+
+
+
+</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -96,7 +96,7 @@ Published: 28 December 2015
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="V9z-T0-WP1" secondAttribute="trailing" constant="8" symbolic="YES" id="OEi-jz-opW"/>
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="centerX" secondItem="vxQ-Ew-Tq3" secondAttribute="centerX" id="PXL-6R-WD3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gqG-aI-wu6" secondAttribute="trailing" constant="51" id="WXj-Wg-KTI"/>
-                            <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="8" symbolic="YES" id="aGR-K8-Nlm"/>
+                            <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="top" secondItem="gqG-aI-wu6" secondAttribute="bottom" constant="-3" id="aGR-K8-Nlm"/>
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="V9z-T0-WP1" secondAttribute="bottom" constant="44" id="aUY-eA-Q1G"/>
                             <constraint firstItem="gqG-aI-wu6" firstAttribute="leading" secondItem="iNe-zX-Yep" secondAttribute="trailing" constant="8" symbolic="YES" id="ali-bs-ocG"/>
                             <constraint firstItem="vxQ-Ew-Tq3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dk2-AF-qjJ" secondAttribute="trailing" id="ams-2g-RKA"/>
@@ -149,8 +149,8 @@ Published: 28 December 2015
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd2-Ww-Mx4">
-                                <rect key="frame" x="257" y="219" width="86" height="86"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd2-Ww-Mx4">
+                                <rect key="frame" x="257" y="175" width="86" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="99I-bp-nKE"/>
                                     <constraint firstAttribute="height" constant="86" id="CTn-Re-MRJ"/>
@@ -169,8 +169,8 @@ Published: 28 December 2015
                                     <segue destination="ryx-Ce-Rwb" kind="unwind" unwindAction="exitTo:" id="hkm-XJ-ePv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtO-S1-Wwt">
-                                <rect key="frame" x="251" y="101" width="98" height="98"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtO-S1-Wwt">
+                                <rect key="frame" x="251" y="57" width="98" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="5qq-EP-chr"/>
                                     <constraint firstAttribute="height" constant="98" id="hNf-p1-mwh"/>
