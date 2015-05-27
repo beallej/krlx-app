@@ -86,52 +86,9 @@ class NewsTableViewController: UITableViewController {
         cell.monthLabel.text = article.getDate()[1]
 
         
-        
-//        // -------------------IT DOESNT KEEP CONSTRAINTS ON ROTATION :(((----------------------
-//
-//        //Create Share button
-//        let button : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-//        let width : CGFloat = 50
-//        let height : CGFloat = 24
-//        let top = cell.dateBkgd.frame.maxY - height
-//        let left = cell.frame.width - width - 8
-//        //button.frame = CGRectMake(left, top, width, height)
-//        
-//        //flush right
-//        NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: cell, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: -8.0)
-//       //align with date
-//        NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: cell.dateBkgd, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
-//        var frameRect = button.frame
-//        frameRect.origin.x = cell.frame.width - width - 8
-//        frameRect.origin.y = cell.dateBkgd.frame.maxY - height
-//        frameRect.size.width = 50.0
-//        frameRect.size.height = 24.0
-//        button.frame = frameRect
-//  
-//            
-//        
-//        let cellHeight: CGFloat = 44.0
-//        button.backgroundColor = UIColor.blackColor()
-//        button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-//        button.setTitle("Share", forState: UIControlState.Normal)
-//        button.titleLabel!.adjustsFontSizeToFitWidth = true
-        
-        
-        /////////////////////////////////////
-        ////CHANGE THE FONT LATER!!!!!!!/////
-        /////////////////////////////////////
-//        button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
-//        cell.addSubview(button)
-        
-        return cell
+         return cell
     }
 
-//    func buttonClicked(sender: UIButton!){
-//        let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("socialMediaView") as! SocialMediaController
-//        
-//        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
-//        
-//    }
  
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
        
@@ -142,24 +99,7 @@ class NewsTableViewController: UITableViewController {
        
         self.navigationController?.pushViewController(articleVC, animated: true)
     }
-  
-/*
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "next") {
-        }
-    }
-    
-    @IBAction func push(sender : UIButton) {
-        performSegueWithIdentifier("next",sender: nil)
-    }
-    
-    //unwind
-    @IBAction func exitTo(segue: UIStoryboardSegue) {
-        if (segue.identifier == "back") {
-        }
-        
-    }
-    */
+
     
 }
 

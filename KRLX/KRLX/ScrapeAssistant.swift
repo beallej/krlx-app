@@ -161,6 +161,7 @@ class ScrapeAssistant {
                             imageURL = node.getAttributeNamed("src")
                         }
                         var song = SongHeader(titleString: title, singerString: singer,urlString: imageURL)
+                        let m = sharedData.loadedSongHeaders
                         if !(sharedData.loadedSongHeaders.containsObject(song)) {
                             songs.append(song)
                         }
@@ -173,6 +174,8 @@ class ScrapeAssistant {
                             title = (titleNsinger.componentsSeparatedByString("</b> - "))[0]
                             singer = (titleNsinger.componentsSeparatedByString("</b> - "))[1].componentsSeparatedByString("</p>")[0]
                             var song = SongHeader(titleString: title, singerString: singer)
+                            let m = sharedData.loadedSongHeaders
+
                             if !(sharedData.loadedSongHeaders.containsObject(song)) {
                                 songs.append(song)
                             }
