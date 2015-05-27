@@ -94,31 +94,6 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         
     }
     
-// -------------------WHY WONT IT ZOOM OR STAY ZOOMED OR LOCK HOROZONTAL SCROLL I HATE IT----------------------
-//    
-//    func webViewDidFinishLoad(webView: UIWebView) {
-//        self.zoomToFit()
-//        let v = content.scrollView.center.x
-//        
-//    }
-    
-// -------------------I HAVE TRIED ALL OF THESE TO NO AVAIL----------------------
-//    func zoomToFit(){
-//        var scroll = self.content.scrollView
-//        var ctr = self.view.frame.size.width/2.0
-//        scroll.setZoomScale(1.17, animated: true)
-//        scroll.center.x = ctr
-//        let zoom = (self.content.bounds.size.width+50)/scroll.contentSize.width
-//        let diff = (self.content.bounds.size.width*zoom - self.content.bounds.size.width)/2.0
-//        
-//        let zRect = CGRect(x: self.content.frame.origin.x + 100, y: self.content.frame.origin.y, width: self.content.bounds.size.width-100, height: self.content.frame.height)
-//        scroll.zoomToRect(zRect, animated: true)
-        //scroll.zoomScale = zoom
-       // scroll.setZoomScale(zoom, animated: false)
-        //scroll.setContentOffset(CGPointMake(30, 0), animated: false)
-// ---------------------------------------------------------------------------
-
-    
 
         
     //opens a file

@@ -143,6 +143,7 @@ class GoogleAPIPull {
             //needsReload never assigned
 
             }
+        self.show_arrays.removeAll(keepCapacity: true)
         return needsReload
 
         }
