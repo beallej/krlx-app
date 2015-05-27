@@ -120,6 +120,71 @@ class ScrapeAssistant {
         return articles
     }
 
+    func scrapeRecentlyHeard() -> [SongHeader] {
+        var songs = [SongHeader]()
+        let myURLString = "http://www.krlx.org/"
+        if let myURL = NSURL(string: myURLString) {
+            var error: NSError?
+            let myHTMLString = String(contentsOfURL: myURL, encoding: NSUTF8StringEncoding, error: &error)
+            if let error = error {
+                println("Error : \(error)")
+            } else {
+                let html = myHTMLString
+                var err : NSError?
+                var parser = HTMLParser(html: html!, error: &err)
+                if err != nil {
+                    println(err)
+                    exit(1)
+                }
+                
+                var allArticle = parser.body
+                if let inputAllArticleNodes = allArticle?.xpath("//div[@class='custom']") {
+                    // Recently Heard div is the 3rd div with class custom
+                    var divRecentHeard = inputAllArticleNodes[2].rawContents
+                    var parser = HTMLParser(html: divRecentHeard, error: &err)
+                    var recentHeardContent   = parser.body
+                    
+                    var imageURL = String()
+                    var title = String()
+                    var singer = String()
+                    
+                    // Get image of first item
+                    if let imageTag = recentHeardContent?.findChildTags("img") {
+                        for node in imageTag {
+                            imageURL = node.getAttributeNamed("src")
+                            println(imageURL)
+                        }
+                    }
+                    // Get first item
+                    if let inputNodes = recentHeardContent?.xpath("//div[@id='info']/p") {
+                        title = inputNodes[0].contents //first para is title, second para is singer
+                        singer = inputNodes[1].contents
+                        var song = SongHeader(titleString: title, singerString: singer)
+                        if !(sharedData.loadedSongHeaders.containsObject(song)) {
+                            songs.append(song)
+                        }
+                    }
+                    // Get next 4 items
+                    if let otherRecentlyHeard = recentHeardContent?.xpath("//p[not(ancestor::div[@id='info'])]") {
+                        println(otherRecentlyHeard.count)
+                        for node in otherRecentlyHeard {
+                            var titleNsinger = (node.rawContents.componentsSeparatedByString("<b>"))[1]
+                            title = (titleNsinger.componentsSeparatedByString("</b> - "))[0]
+                            singer = (titleNsinger.componentsSeparatedByString("</b> - "))[1].componentsSeparatedByString("</p>")[0]
+                            var song = SongHeader(titleString: title, singerString: singer)
+                            if !(sharedData.loadedSongHeaders.containsObject(song)) {
+                                songs.append(song)
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            println("Error: \(myURLString) doesn't seem to be a valid URL")
+        }
+        return songs
+    }
+
     
     
 

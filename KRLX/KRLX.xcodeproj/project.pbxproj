@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044391731B16315000D0C998 /* SongHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044391721B16315000D0C998 /* SongHeader.swift */; };
 		330A1BBD1B15B6B90060A4A9 /* volumeMax.png in Resources */ = {isa = PBXBuildFile; fileRef = 330A1BBB1B15B6B90060A4A9 /* volumeMax.png */; };
 		330A1BBE1B15B6B90060A4A9 /* volumeMin.png in Resources */ = {isa = PBXBuildFile; fileRef = 330A1BBC1B15B6B90060A4A9 /* volumeMin.png */; };
 		3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044391721B16315000D0C998 /* SongHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongHeader.swift; sourceTree = "<group>"; };
 		330A1BBB1B15B6B90060A4A9 /* volumeMax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeMax.png; sourceTree = "<group>"; };
 		330A1BBC1B15B6B90060A4A9 /* volumeMin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeMin.png; sourceTree = "<group>"; };
 		3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				F47029F31A7F27DB00E30A3C /* Supporting Files */,
 				F4702A171A7F351C00E30A3C /* MenuController.swift */,
 				BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */,
+				044391721B16315000D0C998 /* SongHeader.swift */,
 				BD02FEDC1B0E578500751F7B /* ShowHeader.swift */,
 				BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */,
 				BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */,
@@ -329,6 +332,7 @@
 				BD02FEDF1B0E579B00751F7B /* ScheduleTableViewCell.swift in Sources */,
 				F491E7531A7F7DF20026528E /* RecentlyHeardViewController.swift in Sources */,
 				BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */,
+				044391731B16315000D0C998 /* SongHeader.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,
 				BD365C651B02801700BF946A /* HTMLNode.swift in Sources */,
 				BD84995F1B0F895300D43BA9 /* ScrapeAssistant.swift in Sources */,

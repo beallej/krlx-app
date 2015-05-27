@@ -20,6 +20,8 @@ class RecentlyHeardViewController: UIViewController {
         }
 
         // Do any additional setup after loading the view.
+        let scraper = ScrapeAssistant()
+        let songs = scraper.scrapeRecentlyHeard()
     }
 
     override func didReceiveMemoryWarning() {

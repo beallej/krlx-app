@@ -13,9 +13,12 @@ import UIKit
 class Singleton {
     var loadedArticleHeaders : NSMutableArray
     var loadedShowHeaders : NSMutableArray
+    var loadedSongHeaders : NSMutableArray
     init() {
         loadedArticleHeaders = NSMutableArray()
         loadedShowHeaders = NSMutableArray()
+        loadedSongHeaders = NSMutableArray()
+
 
     }
     
