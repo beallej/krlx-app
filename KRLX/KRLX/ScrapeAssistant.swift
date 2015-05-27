@@ -120,6 +120,7 @@ class ScrapeAssistant {
         return articles
     }
 
+    //This function scrape KRLX for list of recently heard
     func scrapeRecentlyHeard() -> [SongHeader] {
         var songs = [SongHeader]()
         let myURLString = "http://www.krlx.org/"
