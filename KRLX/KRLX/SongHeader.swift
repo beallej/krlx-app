@@ -13,11 +13,15 @@ class SongHeader {
     var artist: String
     var url: String?
     
+    init (titleString: String, singerString:String, urlString:String){
+        self.title = titleString
+        self.artist = singerString
+        self.url = urlString
+    }
     init (titleString: String, singerString:String){
         self.title = titleString
         self.artist = singerString
     }
-    
     func getTitle() -> String{
         return self.title
     }

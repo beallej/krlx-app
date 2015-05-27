@@ -142,36 +142,36 @@ class ScrapeAssistant {
                     // Recently Heard div is the 3rd div with class custom
                     var divRecentHeard = inputAllArticleNodes[2].rawContents
                     var parser = HTMLParser(html: divRecentHeard, error: &err)
+                    
                     var recentHeardContent   = parser.body
                     
                     var imageURL = String()
                     var title = String()
                     var singer = String()
+
+                    // Get first item
+                    if let inputNodes = recentHeardContent?.xpath("//div[@id='info']/p") {
+                        title = inputNodes[0].contents //first para is title, second para is singer
+                        singer = inputNodes[1].contents
+                        }
                     
                     // Get image of first item
                     if let imageTag = recentHeardContent?.findChildTags("img") {
                         for node in imageTag {
                             imageURL = node.getAttributeNamed("src")
-                            println(imageURL)
                         }
-                    }
-                    // Get first item
-                    if let inputNodes = recentHeardContent?.xpath("//div[@id='info']/p") {
-                        title = inputNodes[0].contents //first para is title, second para is singer
-                        singer = inputNodes[1].contents
-                        var song = SongHeader(titleString: title, singerString: singer)
+                        var song = SongHeader(titleString: title, singerString: singer,urlString: imageURL)
                         if !(sharedData.loadedSongHeaders.containsObject(song)) {
                             songs.append(song)
                         }
                     }
+
                     // Get next 4 items
                     if let otherRecentlyHeard = recentHeardContent?.xpath("//p[not(ancestor::div[@id='info'])]") {
-                        println(otherRecentlyHeard.count)
                         for node in otherRecentlyHeard {
                             var titleNsinger = (node.rawContents.componentsSeparatedByString("<b>"))[1]
                             title = (titleNsinger.componentsSeparatedByString("</b> - "))[0]
                             singer = (titleNsinger.componentsSeparatedByString("</b> - "))[1].componentsSeparatedByString("</p>")[0]
-                            println(title)
                             var song = SongHeader(titleString: title, singerString: singer)
                             if !(sharedData.loadedSongHeaders.containsObject(song)) {
                                 songs.append(song)
