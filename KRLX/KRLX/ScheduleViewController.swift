@@ -143,7 +143,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         cell.title.text = show.getTitle()
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         cell.start.text = finalTimeString
-        
         cell.date.text = show.getDate()
         return cell
     }

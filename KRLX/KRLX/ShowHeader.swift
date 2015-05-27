@@ -21,7 +21,9 @@ class ShowHeader {
         self.end = endString
         self.DJ = DJString
         self.date = dateString // initialize to nil
-        self.date = self.formatDate(dateString)
+        if dateString != "" {
+            self.date = self.formatDate(dateString)
+        }
     }
     func getTitle() -> String{
         return self.title

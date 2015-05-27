@@ -54,7 +54,6 @@ class GoogleAPIPull {
                         }
                         var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
                         currentShow = show
-                        
                     }
                 }
             }
@@ -117,8 +116,9 @@ class GoogleAPIPull {
                             }
                             var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
                             self.show_arrays.append(show)
-                            
                         }
+                        var lastLine = ShowHeader(titleString: "For more upcoming shows visit krlx.org", startString: "", endString: "", DJString: "", dateString: "")
+                        self.show_arrays.append(lastLine)
                     }
                     var newShowList = NSMutableArray(array: self.show_arrays)
                     if newShowList != sharedData.loadedShowHeaders{
