@@ -60,6 +60,15 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         //self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
         //self.button = button
         
+        //------------------------------------
+        //test  spinning image
+        
+        var urlSpin = NSURL(string:"http://www.blackbox.sa.com/app/webroot/img/loading.gif")
+        var req = NSURLRequest(URL:urlSpin!)
+        self.content.loadRequest(req)
+        //self.content.loadHTMLString("<!DOCTYPE html><html><head></head><body><div><font size='30pt'>Loading... Please wait! or a spinner</font></div></body></html>", baseURL: NSURL(string: self.articleHeader.getURL()))
+        
+        //-------------------------------------
         
         //Because scraping takes and converting html into text takes forever too
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
