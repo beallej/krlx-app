@@ -20,7 +20,6 @@
 		BD365C651B02801700BF946A /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C621B02801700BF946A /* HTMLNode.swift */; };
 		BD365C661B02801700BF946A /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C631B02801700BF946A /* HTMLParser.swift */; };
 		BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD365C671B02820400BF946A /* libxml2.dylib */; };
-		BD50A2001B127F13002FE5A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD50A1FF1B127F13002FE5A6 /* MapKit.framework */; };
 		BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */; };
 		BD55116F1AFBF7BE0016AEFA /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */; };
 		BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */; };
@@ -64,7 +63,6 @@
 		BD365C621B02801700BF946A /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		BD365C631B02801700BF946A /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		BD365C671B02820400BF946A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		BD50A1FF1B127F13002FE5A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleHeader.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD50A2001B127F13002FE5A6 /* MapKit.framework in Frameworks */,
 				BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,7 +124,6 @@
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
-				BD50A1FF1B127F13002FE5A6 /* MapKit.framework */,
 				BD365C671B02820400BF946A /* libxml2.dylib */,
 				F47029F21A7F27DB00E30A3C /* KRLX */,
 				F4702A081A7F27DC00E30A3C /* KRLXTests */,
