@@ -54,7 +54,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         ///////////////Testing Purpose/////////////
         //let button : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         //button.backgroundColor = UIColor.blackColor()
-        self.button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        //self.button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         //self.button.setTitle("Share", forState: UIControlState.Normal)
         //self.button.titleLabel!.adjustsFontSizeToFitWidth = true
         //self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
@@ -115,12 +115,14 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     
     
     //////////Testing function to create a share button in article itself/////////////////
+    /*
     func buttonClicked(sender: UIButton!){
         let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("socialMediaView") as! SocialMediaController
         
         presentViewController(threeActionsMainAppController, animated: true, completion: nil)
         
     }
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "next") {
             var newURL = articleHeader.getURL()
