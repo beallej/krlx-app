@@ -171,6 +171,7 @@ class ScrapeAssistant {
                             var titleNsinger = (node.rawContents.componentsSeparatedByString("<b>"))[1]
                             title = (titleNsinger.componentsSeparatedByString("</b> - "))[0]
                             singer = (titleNsinger.componentsSeparatedByString("</b> - "))[1].componentsSeparatedByString("</p>")[0]
+                            println(title)
                             var song = SongHeader(titleString: title, singerString: singer)
                             if !(sharedData.loadedSongHeaders.containsObject(song)) {
                                 songs.append(song)
