@@ -144,6 +144,9 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         cell.start.text = finalTimeString
         cell.date.text = show.getDate()
+        if (indexPath.row == tableView.numberOfRowsInSection(0) - 1){
+            cell.start.text = ""
+        }
         return cell
     }
     
