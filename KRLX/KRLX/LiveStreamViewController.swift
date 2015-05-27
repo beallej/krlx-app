@@ -133,7 +133,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         let calendarAssistant = GoogleAPIPull()
         if let currentShow = calendarAssistant.getCurrentShow(){
             self.currentShowLabel.numberOfLines = 2
-            self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nBy " + currentShow.getDJ()
+            self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
             self.currentShowLabel.sizeToFit()
         }
         // if nothing returned from server, label is blank

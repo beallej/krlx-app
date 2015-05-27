@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330A1BBD1B15B6B90060A4A9 /* volumeMax.png in Resources */ = {isa = PBXBuildFile; fileRef = 330A1BBB1B15B6B90060A4A9 /* volumeMax.png */; };
+		330A1BBE1B15B6B90060A4A9 /* volumeMin.png in Resources */ = {isa = PBXBuildFile; fileRef = 330A1BBC1B15B6B90060A4A9 /* volumeMin.png */; };
 		3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */; };
 		3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */; };
 		3397B65A1AFEE58C00974947 /* high_quality.m3u in Resources */ = {isa = PBXBuildFile; fileRef = 3397B6591AFEE58C00974947 /* high_quality.m3u */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		330A1BBB1B15B6B90060A4A9 /* volumeMax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeMax.png; sourceTree = "<group>"; };
+		330A1BBC1B15B6B90060A4A9 /* volumeMin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeMin.png; sourceTree = "<group>"; };
 		3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaController.swift; sourceTree = "<group>"; };
 		3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTransitionManager.swift; sourceTree = "<group>"; };
 		3397B6591AFEE58C00974947 /* high_quality.m3u */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = high_quality.m3u; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		F47029F31A7F27DB00E30A3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				330A1BBB1B15B6B90060A4A9 /* volumeMax.png */,
+				330A1BBC1B15B6B90060A4A9 /* volumeMin.png */,
 				BD2F27581B0D0D3400A835F8 /* htmlString.txt */,
 				3397B6591AFEE58C00974947 /* high_quality.m3u */,
 				F47029F41A7F27DB00E30A3C /* Info.plist */,
@@ -284,8 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD785BED1B03EE0C003A3C33 /* Article.storyboard in Resources */,
+				330A1BBD1B15B6B90060A4A9 /* volumeMax.png in Resources */,
 				BD2F27591B0D0D3400A835F8 /* htmlString.txt in Resources */,
 				F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */,
+				330A1BBE1B15B6B90060A4A9 /* volumeMin.png in Resources */,
 				F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */,
 				3397B65A1AFEE58C00974947 /* high_quality.m3u in Resources */,
 				BD785BF01B03EE8C003A3C33 /* Main.storyboard in Resources */,
