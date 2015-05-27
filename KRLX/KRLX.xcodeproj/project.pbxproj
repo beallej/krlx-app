@@ -23,6 +23,8 @@
 		BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD365C671B02820400BF946A /* libxml2.dylib */; };
 		BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */; };
 		BD55116F1AFBF7BE0016AEFA /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */; };
+		BD77895C1B165E0800CCD46A /* FirstShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD77895B1B165E0800CCD46A /* FirstShowTableViewCell.swift */; };
+		BD77895E1B165FFA00CCD46A /* OtherShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD77895D1B165FFA00CCD46A /* OtherShowTableViewCell.swift */; };
 		BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */; };
 		BD785BED1B03EE0C003A3C33 /* Article.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD785BEC1B03EE0C003A3C33 /* Article.storyboard */; };
 		BD785BF01B03EE8C003A3C33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD785BEE1B03EE8C003A3C33 /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 		BD365C671B02820400BF946A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		BD77895B1B165E0800CCD46A /* FirstShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstShowTableViewCell.swift; sourceTree = "<group>"; };
+		BD77895D1B165FFA00CCD46A /* OtherShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherShowTableViewCell.swift; sourceTree = "<group>"; };
 		BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleHeader.swift; sourceTree = "<group>"; };
 		BD785BEC1B03EE0C003A3C33 /* Article.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Article.storyboard; sourceTree = "<group>"; };
 		BD785BEF1B03EE8C003A3C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,11 +164,13 @@
 				BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */,
 				BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */,
 				BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */,
+				F491E7541A7F7E010026528E /* ScheduleViewController.swift */,
 				BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */,
 				F491E7491A7F4B300026528E /* NewsTableViewController.swift */,
 				F491E74B1A7F4C630026528E /* NewsTableViewCell.swift */,
 				F491E7521A7F7DF20026528E /* RecentlyHeardViewController.swift */,
-				F491E7541A7F7E010026528E /* ScheduleViewController.swift */,
+				BD77895B1B165E0800CCD46A /* FirstShowTableViewCell.swift */,
+				BD77895D1B165FFA00CCD46A /* OtherShowTableViewCell.swift */,
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 				3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */,
 				3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */,
@@ -327,10 +333,12 @@
 				BD55116D1AFBF50E0016AEFA /* LiveStreamViewController.swift in Sources */,
 				BD02FEDF1B0E579B00751F7B /* ScheduleTableViewCell.swift in Sources */,
 				F491E7531A7F7DF20026528E /* RecentlyHeardViewController.swift in Sources */,
+				BD77895C1B165E0800CCD46A /* FirstShowTableViewCell.swift in Sources */,
 				BD785BEB1B03A72A003A3C33 /* ArticleHeader.swift in Sources */,
 				044391731B16315000D0C998 /* SongHeader.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,
 				BD365C651B02801700BF946A /* HTMLNode.swift in Sources */,
+				BD77895E1B165FFA00CCD46A /* OtherShowTableViewCell.swift in Sources */,
 				BD84995F1B0F895300D43BA9 /* ScrapeAssistant.swift in Sources */,
 				F491E7551A7F7E010026528E /* ScheduleViewController.swift in Sources */,
 			);

@@ -10,16 +10,25 @@ import Foundation
 
 class SongHeader {
     var title : String
-    var singer: String
+    var artist: String
+    var url: String?
     
     init (titleString: String, singerString:String){
         self.title = titleString
-        self.singer = singerString
+        self.artist = singerString
     }
+    
     func getTitle() -> String{
         return self.title
     }
-    func getSinger() -> String{
-        return self.singer
+    func getArtist() -> String{
+        return self.artist
+    }
+    
+    func setURL(url : String){
+        self.url = url
+    }
+    func getURL() -> String?{
+        return self.url
     }
 }
