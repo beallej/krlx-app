@@ -35,6 +35,8 @@ class SongHeader {
     func getURL() -> String?{
         return self.url
     }
+    
+    //Checks if we already loaded this in sharedData.loadedSongHeaders, because of typecasting we can't just check membership
     func isLoaded() -> Bool{
         let loadedSongs = NSArray(array: sharedData.loadedSongHeaders) as! [SongHeader]
         for song in loadedSongs{

@@ -65,7 +65,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("refreshShow"), userInfo: nil, repeats: false)
     }
     
-    
+    //gets time between now and next 30 min mark, so we know when to refresh next
     func getTimeToRefresh() -> Int{
         let now = NSDate()
         var dateFormatter = NSDateFormatter()
@@ -85,6 +85,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         
         
     }
+    
     func refreshShow(){
         self.setCurrentShow()
         //refreshes every 30 minutes

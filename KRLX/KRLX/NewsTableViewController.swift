@@ -22,7 +22,7 @@ class NewsTableViewController: UITableViewController {
         }
         
         
-        //because scraping is sloooowwww
+        //because scraping is sloooowwww, we use the magic of asynchronization!
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             let scraper = ScrapeAssistant()
@@ -76,7 +76,7 @@ class NewsTableViewController: UITableViewController {
         //return articles.count
     }
 
-    
+    //populate table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NewsTableViewCell
         let article = sharedData.loadedArticleHeaders[indexPath.row] as! ArticleHeader

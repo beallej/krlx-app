@@ -9,7 +9,6 @@ import UIKit
 class ScheduleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
-    //@IBOutlet weak var DJ:UILabel!
     
     @IBOutlet weak var start: UILabel!
 

@@ -64,7 +64,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("refreshCalendar"), userInfo: nil, repeats: false)
     }
     
-    
+    //gets time between now and next 30 min mark, so we know when to refresh next
     func getTimeToRefresh() -> Int{
         let now = NSDate()
         var dateFormatter = NSDateFormatter()
@@ -135,15 +135,19 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.currentTimeLabel.text = finalTimeString
     }
     
-    
+    //populates table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
         let show = sharedData.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
         //offset by 1 because the first show is displayed separately
         cell.title.text = show.getTitle()
+        
+        
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         cell.start.text = finalTimeString
         cell.date.text = show.getDate()
+        
+        //The last cell isnt a show, it tells you go to the website
         if (indexPath.row == tableView.numberOfRowsInSection(0) - 1){
             cell.start.text = ""
         }

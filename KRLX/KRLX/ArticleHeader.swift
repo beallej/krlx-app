@@ -47,6 +47,7 @@ class ArticleHeader {
         return self.content
     }
     
+    //Checks if we already loaded this in sharedData.loadedArticleHeaders, because of typecasting we can't just check membership
     func isLoaded() -> Bool{
         let loadedArticles = NSArray(array: sharedData.loadedArticleHeaders) as! [ArticleHeader]
 

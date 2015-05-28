@@ -107,12 +107,6 @@ class ScrapeAssistant {
                         if !(article.isLoaded()){
                             articles.append(article)
                         }
-//                        if !(sharedData.loadedArticleHeaders.containsObject(article)) {
-//                            articles.append(article)
-//                        }
-//                        else{
-//                            print("MEOW1")
-//                        }
                         
                     }
     

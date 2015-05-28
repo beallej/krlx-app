@@ -21,14 +21,11 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var button: UIButton!
     
     
-    @IBOutlet weak var bls: UIButton!
     @IBOutlet weak var content: UIWebView!
     
     var articleHeader : ArticleHeader!
     var activityIndicator : UIActivityIndicatorView!
     
-    
-
     
     
     override func viewDidLoad() {
@@ -40,7 +37,8 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         //adds spinner to show activity while getting content
         self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
         self.navigationItem.titleView = self.activityIndicator
-        activityIndicator.startAnimating()
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.startAnimating()
 
         
         //add basic info
@@ -63,6 +61,8 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         //------------------------------------
         //test  spinning image
         
+        
+        //Display an adorable gif while loading <3
         var urlSpin = NSURL(string:"http://www.blackbox.sa.com/app/webroot/img/loading.gif")
         var req = NSURLRequest(URL:urlSpin!)
         self.content.loadRequest(req)
@@ -70,14 +70,13 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         
         //-------------------------------------
         
-        //Because scraping takes and converting html into text takes forever too
+        //Because scraping takes and converting html into text takes forever too, we use the magical powers of asychronization!
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             //Get content -- check to see if we already loaded it
             if let newStr = self.articleHeader.getContent(){
                 self.content.loadHTMLString(newStr, baseURL: NSURL(string: self.articleHeader.getURL()))
                 self.activityIndicator.stopAnimating()
-                self.activityIndicator.removeFromSuperview()
             }
             else {
                 let scraper = ScrapeAssistant()
@@ -94,9 +93,11 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
                         
                         //load content, dismiss activity indicator
                         self.content.loadHTMLString(finalHTMLString, baseURL: NSURL(string: self.articleHeader.getURL()))
-                        self.articleHeader.content = finalHTMLString //Put content into the class (no need to load next time)
+                        
+                        //Put content into the class (no need to load next time)
+                        self.articleHeader.content = finalHTMLString
+                        
                         self.activityIndicator.stopAnimating()
-                        self.activityIndicator.removeFromSuperview()
                     }
                 }
         }
