@@ -34,6 +34,10 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
         self.currentShowLabel.text = "Loading Show Name and DJ Name..."
         self.setCurrentShow()
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //volumeController.setThumbImage(<#image: UIImage?#>, forState: <#UIControlState#>)
+        volumeController.value = appDelegate.currentVolume
+        appDelegate.player.volume = appDelegate.currentVolume
+        
         if appDelegate.isPlaying {
             let image = UIImage(named: "pause") as UIImage?
             playButton.setBackgroundImage(image, forState: UIControlState.Normal)
@@ -118,8 +122,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBAction func changeVolume(sender: UISlider) {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var currentVolume = Float(sender.value)
-        appDelegate.player.volume = currentVolume
+        appDelegate.currentVolume = Float(sender.value)
+        appDelegate.player.volume = appDelegate.currentVolume
     }
     
     
