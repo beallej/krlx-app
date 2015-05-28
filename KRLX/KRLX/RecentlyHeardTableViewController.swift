@@ -66,21 +66,29 @@ class RecentlyHeardTableViewController: UITableViewController {
     func loadSongs(){
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
-            //IT STILL WONT SHOW UP UGH
+            //Makes the spinner reappear
             if !(self.spinnyWidget.isAnimating()) {
-                self.spinnyWidget.startAnimating()
+                NSThread.detachNewThreadSelector("threadStartAnimating", toTarget: self, withObject: nil)
+                
+
             }
             
             let songs = self.scraper.scrapeRecentlyHeard()
             self.filterNewSongs(songs)
       
             dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
                 self.spinnyWidget.stopAnimating()
+                self.tableView.reloadData()
+
             }
         }
 
         
+    }
+    
+    //Another thread for the spinner to reappear
+    func threadStartAnimating() {
+        self.spinnyWidget.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {
