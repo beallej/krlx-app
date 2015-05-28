@@ -39,8 +39,7 @@ class RecentlyHeardTableViewController: UITableViewController {
         refreshControl.endRefreshing()
         
     }
-    //because containsobj doesnt work
-    //will fix later
+    //Adds new songs to the top
     func filterNewSongs(songs: [SongHeader]){
         var firstLoaded : Int?
         for i in 0...4{

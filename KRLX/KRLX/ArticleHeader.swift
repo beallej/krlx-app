@@ -47,4 +47,15 @@ class ArticleHeader {
         return self.content
     }
     
+    func isLoaded() -> Bool{
+        let loadedArticles = NSArray(array: sharedData.loadedArticleHeaders) as! [ArticleHeader]
+
+        for article: ArticleHeader in loadedArticles{
+            if self.url == article.url{
+                return true
+            }
+        }
+        return false
+    }
+    
 }

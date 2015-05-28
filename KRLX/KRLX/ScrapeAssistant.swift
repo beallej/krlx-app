@@ -104,9 +104,15 @@ class ScrapeAssistant {
                             }
                         }
                         var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
-                        if !(sharedData.loadedArticleHeaders.containsObject(article)) {
+                        if !(article.isLoaded()){
                             articles.append(article)
                         }
+//                        if !(sharedData.loadedArticleHeaders.containsObject(article)) {
+//                            articles.append(article)
+//                        }
+//                        else{
+//                            print("MEOW1")
+//                        }
                         
                     }
     
