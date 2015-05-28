@@ -9,6 +9,7 @@
 import Foundation
 class GoogleAPIPull {
     var show_arrays : [ShowHeader]
+    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     init(){
         show_arrays = [ShowHeader]()
@@ -17,7 +18,8 @@ class GoogleAPIPull {
     func getCurrentShow() -> ShowHeader?{
         var currentShow: ShowHeader?
         let curTime = getCurrentTime()
-        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=1&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
+        let key = appDelegate.openFile("GoogleCalCredentials", fileExtension: "txt")
+        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=1&key="+key!
         let url = NSURL(string: urlString)
         
         
@@ -121,8 +123,8 @@ class GoogleAPIPull {
                         self.show_arrays.append(lastLine)
                     }
                     var newShowList = NSMutableArray(array: self.show_arrays)
-                    if newShowList != sharedData.loadedShowHeaders{
-                        sharedData.loadedShowHeaders = newShowList
+                    if newShowList != appDelegate.loadedShowHeaders{
+                        appDelegate.loadedShowHeaders = newShowList
                         needsReload = true
   
                     }

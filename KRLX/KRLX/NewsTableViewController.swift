@@ -11,9 +11,10 @@ import Social
 class NewsTableViewController: UITableViewController {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
-
+    var appDelegate: AppDelegate!
 
     override func viewDidLoad() {
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         super.viewDidLoad()
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -29,7 +30,7 @@ class NewsTableViewController: UITableViewController {
             let articles = scraper.scrapeArticleInfo()
             if articles.count != 0{
                 //insert new articles at the top
-                sharedData.loadedArticleHeaders.insertObjects(articles, atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, articles.count)))
+                self.appDelegate.loadedArticleHeaders.insertObjects(articles, atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, articles.count)))
               
                 
 
@@ -38,7 +39,7 @@ class NewsTableViewController: UITableViewController {
                 self.spinnyWidget.stopAnimating()
                 self.tableView.reloadData()
                 
-                if (sharedData.loadedArticleHeaders.count == 0){
+                if (self.appDelegate.loadedArticleHeaders.count == 0){
                     var alert = UIAlertController(title: "Whoops!", message: "Internet problems, try again later", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -72,14 +73,14 @@ class NewsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return sharedData.loadedArticleHeaders.count
+        return appDelegate.loadedArticleHeaders.count
         //return articles.count
     }
 
     //populate table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NewsTableViewCell
-        let article = sharedData.loadedArticleHeaders[indexPath.row] as! ArticleHeader
+        let article = appDelegate.loadedArticleHeaders[indexPath.row] as! ArticleHeader
         cell.postTitleLabel.text = article.getTitle()
         cell.authorLabel.text = article.getAuthor()
         cell.dayLabel.text = article.getDate()[0]
@@ -95,7 +96,7 @@ class NewsTableViewController: UITableViewController {
         let articleStoryboard = UIStoryboard(name: "Article", bundle: nil)
 
         var articleVC = articleStoryboard.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
-        articleVC.articleHeader = sharedData.loadedArticleHeaders[indexPath.row] as! ArticleHeader
+        articleVC.articleHeader = appDelegate.loadedArticleHeaders[indexPath.row] as! ArticleHeader
        
         self.navigationController?.pushViewController(articleVC, animated: true)
     }

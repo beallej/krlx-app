@@ -13,6 +13,8 @@ class SongHeader {
     var artist: String
     var url: String?
     
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     init (titleString: String, singerString:String, urlString:String){
         self.title = titleString
         self.artist = singerString
@@ -36,9 +38,9 @@ class SongHeader {
         return self.url
     }
     
-    //Checks if we already loaded this in sharedData.loadedSongHeaders, because of typecasting we can't just check membership
+    //Checks if we already loaded this in appDelegate.loadedSongHeaders, because of typecasting we can't just check membership
     func isLoaded() -> Bool{
-        let loadedSongs = NSArray(array: sharedData.loadedSongHeaders) as! [SongHeader]
+        let loadedSongs = NSArray(array: appDelegate.loadedSongHeaders) as! [SongHeader]
         for song in loadedSongs{
             print(song.getTitle())
             if (song.getTitle() == self.title) && (song.getArtist() == self.artist) {

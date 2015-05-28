@@ -15,6 +15,8 @@ class ArticleHeader {
     var content : String?
     let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     let longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
+    var appDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
        
     init (authorString: String, titleString: String, dateString: String, urlString: String){
         self.author = authorString
@@ -47,9 +49,9 @@ class ArticleHeader {
         return self.content
     }
     
-    //Checks if we already loaded this in sharedData.loadedArticleHeaders, because of typecasting we can't just check membership
+    //Checks if we already loaded this in appDelegate.loadedArticleHeaders, because of typecasting we can't just check membership
     func isLoaded() -> Bool{
-        let loadedArticles = NSArray(array: sharedData.loadedArticleHeaders) as! [ArticleHeader]
+        let loadedArticles = NSArray(array: appDelegate.loadedArticleHeaders) as! [ArticleHeader]
 
         for article: ArticleHeader in loadedArticles{
             if self.url == article.url{

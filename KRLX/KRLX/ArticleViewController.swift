@@ -29,8 +29,11 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     //var rightBarButtonItemPlay: UIBarButtonItem = UIBarButtonItem(customView: buttonPlay)
+   
+    var appDelegate: AppDelegate!
     
     override func viewDidLoad() {
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         super.viewDidLoad()
         //Adding play/pause button in navigation bar
         addRightNavItemOnView()
@@ -92,7 +95,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
                     dispatch_async(dispatch_get_main_queue()) {
                         
                         //Put the pieces of the giant HTML string together
-                        let htmlStrings = self.openFile("htmlString", fileExtension: "txt")!.componentsSeparatedByString("\n")
+                        let htmlStrings = self.appDelegate.openFile("htmlString", fileExtension: "txt")!.componentsSeparatedByString("\n")
                         var finalHTMLString = htmlStrings[0]+self.articleHeader.getURL()+htmlStrings[1]+articleContentScraped+htmlStrings[2]
                         finalHTMLString = finalHTMLString.stringByReplacingOccurrencesOfString("style=\"font-size: 13.0pt; mso-bidi-font-size: 12.0pt;\"", withString:"") // Deal with span html style
                         
@@ -111,13 +114,6 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
 
         
-    //opens a file
-    func openFile (fileName: String, fileExtension: String, utf8: NSStringEncoding = NSUTF8StringEncoding) -> String? {
-        let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: fileExtension)
-        var error: NSError?
-        return NSFileManager().fileExistsAtPath(filePath!) ? String(contentsOfFile: filePath!, encoding: utf8, error: &error)! : nil
-    }
-    
     
     
     //////////Testing function to create a share button in article itself/////////////////

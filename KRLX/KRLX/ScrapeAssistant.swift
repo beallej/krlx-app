@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
-class ScrapeAssistant {    
+class ScrapeAssistant {
+    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     init(){
         
     }
@@ -167,8 +168,8 @@ class ScrapeAssistant {
                             imageURL = node.getAttributeNamed("src")
                         }
                         var song = SongHeader(titleString: title, singerString: singer,urlString: imageURL)
-                        let m = sharedData.loadedSongHeaders
-                        if !(sharedData.loadedSongHeaders.containsObject(song)) {
+                        let m = appDelegate.loadedSongHeaders
+                        if !(appDelegate.loadedSongHeaders.containsObject(song)) {
                             songs.append(song)
                         }
                     }
@@ -180,9 +181,9 @@ class ScrapeAssistant {
                             title = (titleNsinger.componentsSeparatedByString("</b> - "))[0]
                             singer = (titleNsinger.componentsSeparatedByString("</b> - "))[1].componentsSeparatedByString("</p>")[0]
                             var song = SongHeader(titleString: title, singerString: singer)
-                            let m = sharedData.loadedSongHeaders
+                            let m = appDelegate.loadedSongHeaders
 
-                            if !(sharedData.loadedSongHeaders.containsObject(song)) {
+                            if !(appDelegate.loadedSongHeaders.containsObject(song)) {
                                 songs.append(song)
                             }
                         }

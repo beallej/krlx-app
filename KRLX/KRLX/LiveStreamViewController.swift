@@ -10,7 +10,7 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
+class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataObserver{
 
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
@@ -56,7 +56,9 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     
-   
+    func notify() {
+        self.setCurrentShow()
+    }
     
     func setUpTimer(){
         //refreshes at next half hour

@@ -15,7 +15,10 @@ class RecentlyHeardTableViewController: UITableViewController {
     
     var scraper : ScrapeAssistant!
 
+    var appDelegate: AppDelegate!
+    
     override func viewDidLoad() {
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         super.viewDidLoad()
         
         if self.revealViewController() != nil {
@@ -63,10 +66,10 @@ class RecentlyHeardTableViewController: UITableViewController {
 
         if firstLoaded != nil {
             mutableSongArray.removeObjectsAtIndexes(NSIndexSet(indexesInRange: NSMakeRange(firstLoaded!, songs.count-firstLoaded!)))
-            sharedData.loadedSongHeaders.insertObjects(mutableSongArray as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, mutableSongArray.count)))
+            appDelegate.loadedSongHeaders.insertObjects(mutableSongArray as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, mutableSongArray.count)))
         }
         else{
-            sharedData.loadedSongHeaders.insertObjects(mutableSongArray as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, 5)))
+            appDelegate.loadedSongHeaders.insertObjects(mutableSongArray as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, 5)))
         }
     }
     
@@ -112,13 +115,13 @@ class RecentlyHeardTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return sharedData.loadedSongHeaders.count
+        return appDelegate.loadedSongHeaders.count
     }
     
     //popoulate table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell : UITableViewCell!
-        let song = sharedData.loadedSongHeaders[indexPath.row] as! SongHeader
+        let song = appDelegate.loadedSongHeaders[indexPath.row] as! SongHeader
         
         
         if indexPath.row == 0{

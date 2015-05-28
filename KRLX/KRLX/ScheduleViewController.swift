@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, DataObserver {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
@@ -26,7 +26,10 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var appDelegate: AppDelegate!
+    
     override func viewDidLoad() {
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         super.viewDidLoad()
         //Change the font color in the search bar
         var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
@@ -46,7 +49,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.currentTimeLabel.text = ""
         
         //Display previously loaded first show
-        if sharedData.loadedShowHeaders.count != 0{
+        if appDelegate.loadedShowHeaders.count != 0{
             self.setFirstShow()
 
         }
@@ -61,6 +64,9 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
     }
     
+    func notify() {
+        self.loadCalendar()
+    }
     
     func setUpTimer(){
         //refreshes at next half hour
@@ -104,7 +110,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             }
         }
         else{
-            if (sharedData.loadedShowHeaders.count == 0){
+            if (appDelegate.loadedShowHeaders.count == 0){
                 self.currentShowLabel.text = "Sorry! Internet Problems"
             }
         }
@@ -127,13 +133,13 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return sharedData.loadedShowHeaders.count - 1
+        return appDelegate.loadedShowHeaders.count - 1
     }
     
     
     //The current show is not in tableview, it is pinned to top in a separate view
     func setFirstShow(){
-        let show = sharedData.loadedShowHeaders[0] as! ShowHeader
+        let show = appDelegate.loadedShowHeaders[0] as! ShowHeader
         self.currentShowLabel.text = show.getTitle()
         self.currentDJLabel.text = show.getDJ()
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
@@ -143,7 +149,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     //populates table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
-        let show = sharedData.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
+        let show = appDelegate.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
         //offset by 1 because the first show is displayed separately
         cell.title.text = show.getTitle()
         
