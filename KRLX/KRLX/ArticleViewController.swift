@@ -125,7 +125,8 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         
     }
     */
-    /*
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "next") {
             var newURL = articleHeader.getURL()
@@ -141,7 +142,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         if (segue.identifier == "back") {
         }
         
-    }*/
+    }
     
     //////////////////////////////////////////////////////////////////////////////////
     

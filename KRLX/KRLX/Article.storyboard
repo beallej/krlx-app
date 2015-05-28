@@ -58,7 +58,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fr0-EU-zb8" kind="show" id="tQf-73-Wrx"/>
+                                    <segue destination="fr0-EU-zb8" kind="presentation" id="tQf-73-Wrx"/>
                                 </connections>
                             </button>
                             <webView contentMode="center" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQ4-Qm-5TW">
