@@ -160,6 +160,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     ///Adding play/pause button
     func addRightNavItemOnView()
     {
+        //self.navigationItem.rightBarButtonItem = nil
         //let buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         buttonPlay.frame = CGRectMake(0, 0, 40, 40)
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -167,8 +168,9 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
             buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
             buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         }else{
-            buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
-            buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            buttonPlay.hidden = true
+            //buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+            //buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         }
         
         var rightBarButtonItemPlay: UIBarButtonItem = UIBarButtonItem(customView: buttonPlay)
@@ -192,18 +194,20 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     func playRadio(){
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.player.play()
+        addRightNavItemOnView()
         let image = UIImage(named: "pause") as UIImage?
         //buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
-        self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
-        //self.navigationItem.rightBarButtonItem
+        //self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
+        self.navigationItem.rightBarButtonItem!.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
+
         //playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
     func pauseRadio(){
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.player.pause()
-        //let image = UIImage(named: "play") as UIImage?
-        //self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
+        let image = UIImage(named: "play") as UIImage?
+        self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
         
         //playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
