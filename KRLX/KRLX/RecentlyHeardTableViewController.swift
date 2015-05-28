@@ -138,10 +138,10 @@ class RecentlyHeardTableViewController: UITableViewController {
     override func tableView(tableView: UITableView,
         heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             if indexPath.row == 0{
-                return 63
+                return 75
             }
             else{
-                return 44
+                return 50
             }
             
     }
