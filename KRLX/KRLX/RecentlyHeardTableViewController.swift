@@ -25,7 +25,6 @@ class RecentlyHeardTableViewController: UITableViewController {
         }
         
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
-
         // Do any additional setup after loading the view.
         scraper = ScrapeAssistant()
         self.loadSongs()
@@ -37,39 +36,44 @@ class RecentlyHeardTableViewController: UITableViewController {
         
         // Simply adding an object to the data source for this example
         self.loadSongs()
+        refreshControl.endRefreshing()
         
     }
     //because containsobj doesnt work
     //will fix later
-//    func checkIfInSongList(songs: [SongHeader]){
-//        var titleList = [String]()
-//        for i in 0...4{
-//            let loadedSong = sharedData.loadedSongHeaders.objectAtIndex(i) as! SongHeader
-//            titleList.append(loadedSong.getTitle())
-//        }
-//        var j = 0
-//        for song in songs{
-//            if !(song.getTitle() in titleList){
-//                sharedData.loadedSongHeaders.insertObject(song, atIndex: j)
-//            }
-//            j+=1
-//            
-//            
-//        }
-//        
-//    }
+    func filterNewSongs(songs: [SongHeader]){
+        var firstLoaded : Int?
+        for i in 0...4{
+            if songs[4-i].isLoaded(){
+                firstLoaded = 4-i
+            }
+            else{
+                break
+            }
+            
+        }
+        var mutableSongArray = NSMutableArray(array: songs)
+
+        if firstLoaded != nil {
+            mutableSongArray.removeObjectsAtIndexes(NSIndexSet(indexesInRange: NSMakeRange(firstLoaded!, songs.count-firstLoaded!)))
+            sharedData.loadedSongHeaders.insertObjects(mutableSongArray as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, mutableSongArray.count)))
+        }
+        else{
+            sharedData.loadedSongHeaders.insertObjects(mutableSongArray as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, 5)))
+        }
+    }
     
     func loadSongs(){
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+            
+            //IT STILL WONT SHOW UP UGH
             if !(self.spinnyWidget.isAnimating()) {
                 self.spinnyWidget.startAnimating()
             }
             
             let songs = self.scraper.scrapeRecentlyHeard()
-            if songs.count != 0{
-                //insert new articles at the top
-                sharedData.loadedSongHeaders.insertObjects(songs, atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, songs.count)))
-            }
+            self.filterNewSongs(songs)
+      
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
                 self.spinnyWidget.stopAnimating()

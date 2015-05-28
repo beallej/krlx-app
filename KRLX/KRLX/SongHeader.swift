@@ -35,4 +35,14 @@ class SongHeader {
     func getURL() -> String?{
         return self.url
     }
+    func isLoaded() -> Bool{
+        let loadedSongs = NSArray(array: sharedData.loadedSongHeaders) as! [SongHeader]
+        for song in loadedSongs{
+            print(song.getTitle())
+            if (song.getTitle() == self.title) && (song.getArtist() == self.artist) {
+                return true
+            }
+        }
+        return false
+    }
 }
