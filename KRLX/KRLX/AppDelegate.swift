@@ -107,32 +107,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //gets time between now and next 30 min mark, so we know when to refresh next
     func getTimeToRefresh() -> Int{
         let now = NSDate()
-//        var dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "mm"
-//        var minString = dateFormatter.stringFromDate(now) as String
-//        let minInt = minString.toInt()!
-//        
-//        
-//        var timeToRefresh : Int
-//        if minInt <= 30 {
-//            timeToRefresh = 30 - minInt
-//        }
-//        else{
-//            timeToRefresh = 60 - minInt
-//        }
-        //return timeToRefresh
-        
-        //http://stackoverflow.com/questions/15584238/get-the-future-time-as-nsdate
-        let calendar = NSCalendar.currentCalendar()
-        var components = NSDateComponents.new()
-        components.minute = 30
-        components.hour = 0
-        let date = calendar.dateByAddingComponents(components, toDate: now, options: nil)
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "mm','ss"
-        var dateString : String = dateFormatter.stringFromDate(date!)
+        var dateString : String = dateFormatter.stringFromDate(now)
         var dateArray = dateString.componentsSeparatedByString(",")
-        var timeToRefresh = dateArray[0].toInt()!*60 + dateArray[1].toInt()!
+        var minInt = dateArray[0].toInt()!
+        let secInt = dateArray[1].toInt()!      
+        
+        
+        var timeToRefresh : Int
+        if minInt < 30 {
+            timeToRefresh = 30 - minInt
+        }
+        else{
+            timeToRefresh = 60 - minInt
+        }
+        timeToRefresh = timeToRefresh*60 + secInt
         return timeToRefresh
     
         

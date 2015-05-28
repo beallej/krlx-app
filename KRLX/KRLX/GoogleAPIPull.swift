@@ -29,7 +29,8 @@ class GoogleAPIPull {
         var response: NSURLResponse?
         var error: NSError?
         
-        //NSURLConnection used here because NSURLSession does not have a synchronous request option,  which we need in this case.
+        
+        //replace with NSURLSession.dataTaskWithURL(url: NSURL, completionHandler completionHandler: NSData!, NSURLResponse!) NSError!) -> Void)?)
         let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
         if let data = urlData{
