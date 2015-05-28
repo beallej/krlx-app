@@ -162,9 +162,9 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     {
         //self.navigationItem.rightBarButtonItem = nil
         //let buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        buttonPlay.frame = CGRectMake(0, 0, 40, 40)
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.isPlaying {
+            buttonPlay.frame = CGRectMake(0, 0, 40, 40)
             buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
             buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         }else{
@@ -185,8 +185,8 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
             appDelegate.isPlaying = false
             
         }else{
-            playRadio()
-            appDelegate.isPlaying = true
+            //playRadio()
+            //appDelegate.isPlaying = true
             
         }
     }
@@ -206,9 +206,9 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     func pauseRadio(){
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.player.pause()
-        let image = UIImage(named: "play") as UIImage?
-        self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
-        
+        //let image = UIImage(named: "play") as UIImage?
+        //self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
+        buttonPlay.hidden = true
         //playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
