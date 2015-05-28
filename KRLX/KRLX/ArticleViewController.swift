@@ -10,8 +10,9 @@
 import Social
 import UIKit
 import WebKit
+import AVFoundation
 
-class ArticleViewController: UIViewController, UIWebViewDelegate {
+class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,10 +27,13 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     var articleHeader : ArticleHeader!
     var activityIndicator : UIActivityIndicatorView!
     
-    
+    var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    //var rightBarButtonItemPlay: UIBarButtonItem = UIBarButtonItem(customView: buttonPlay)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Adding play/pause button in navigation bar
+        addRightNavItemOnView()
         
         //set webview delegate
         self.content.delegate = self
@@ -152,5 +156,56 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    ///Adding play/pause button
+    func addRightNavItemOnView()
+    {
+        //let buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        buttonPlay.frame = CGRectMake(0, 0, 40, 40)
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDelegate.isPlaying {
+            buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
+            buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        }else{
+            buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+            buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        
+        var rightBarButtonItemPlay: UIBarButtonItem = UIBarButtonItem(customView: buttonPlay)
+        self.navigationItem.setRightBarButtonItem(rightBarButtonItemPlay, animated: false)
+        
+    }
+    
+    @IBAction func musicButtonClicked(sender: AnyObject) {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDelegate.isPlaying {
+            pauseRadio()
+            appDelegate.isPlaying = false
+            
+        }else{
+            playRadio()
+            appDelegate.isPlaying = true
+            
+        }
+    }
+    
+    func playRadio(){
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.player.play()
+        let image = UIImage(named: "pause") as UIImage?
+        //buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
+        self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
+        //self.navigationItem.rightBarButtonItem
+        //playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+    }
+    
+    func pauseRadio(){
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.player.pause()
+        //let image = UIImage(named: "play") as UIImage?
+        //self.navigationItem.rightBarButtonItem?.setBackgroundImage(image, forState: UIControlState.Normal, barMetrics: .Default)
+        
+        //playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+    }
     
 }
