@@ -23,7 +23,7 @@ class RecentlyHeardTableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
+        tableView.tableFooterView = UIView()
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         // Do any additional setup after loading the view.
         scraper = ScrapeAssistant()
@@ -104,7 +104,6 @@ class RecentlyHeardTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return sharedData.loadedSongHeaders.count
-        //return articles.count
     }
     
     
