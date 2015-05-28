@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -61,7 +61,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D4E6E860-8E6E-4E09-AEF5-EB8A81288B09" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D12CD4C6-BE09-46F2-BC2A-E4C4C0F5CB1F" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
                                             <rect key="frame" x="14" y="11" width="53" height="53"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="53" id="LwD-Gp-WRW"/>
@@ -815,10 +815,10 @@
                                     <constraint firstItem="385-YP-G0T" firstAttribute="leading" secondItem="HiX-jQ-Q7d" secondAttribute="leading" id="xpw-4o-xHW"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="Find a show!" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-kV-VwT">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Find a show!" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-kV-VwT">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -871,6 +871,7 @@
                         <outlet property="currentShowLabel" destination="9sC-SC-ioN" id="ze1-xo-11V"/>
                         <outlet property="currentTimeLabel" destination="dqe-Um-Zic" id="4IT-Tp-8bZ"/>
                         <outlet property="menuButton" destination="sTu-ab-xi8" id="iej-yC-l19"/>
+                        <outlet property="searchBar" destination="J4s-kV-VwT" id="141-Dd-RYJ"/>
                         <outlet property="spinnyWidget" destination="Fiy-gZ-1hR" id="i9p-Te-c6M"/>
                         <outlet property="tableView" destination="385-YP-G0T" id="RiN-ZV-arH"/>
                     </connections>
@@ -910,7 +911,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D4E6E860-8E6E-4E09-AEF5-EB8A81288B09" width="300" height="300">
+        <image name="D12CD4C6-BE09-46F2-BC2A-E4C4C0F5CB1F" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

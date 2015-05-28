@@ -24,8 +24,13 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     var refreshTimer : NSTimer!
     var calendarAssistant : GoogleAPIPull!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Change the font color in the search bar
+        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
         
         var app = UIApplication.sharedApplication()
         app.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
