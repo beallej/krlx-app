@@ -143,6 +143,8 @@ class GoogleAPIPull {
             //needsReload never assigned
 
             }
+        
+        //
         self.show_arrays.removeAll(keepCapacity: true)
         return needsReload
 
@@ -182,6 +184,7 @@ class GoogleAPIPull {
         return finalTime
         
     }
+    
     func getCurrentTime () -> String{
         // Get current time in UTC to substitute in the Google API String
         // timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago

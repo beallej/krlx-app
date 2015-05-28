@@ -24,8 +24,16 @@ class RecentlyHeardTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         tableView.tableFooterView = UIView()
+        
+        
+        
+        //pull to refresh power!
+        //http://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/
+        
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         // Do any additional setup after loading the view.
+        
+        
         scraper = ScrapeAssistant()
         self.loadSongs()
     }
@@ -65,7 +73,8 @@ class RecentlyHeardTableViewController: UITableViewController {
     func loadSongs(){
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
-            //Makes the spinner reappear
+            //Makes the spinner reappear, apparently we need multithreading to do this
+            //http://stackoverflow.com/questions/6829279/how-show-activity-indicator-when-press-button-for-upload-next-view-or-webview
             if !(self.spinnyWidget.isAnimating()) {
                 NSThread.detachNewThreadSelector("threadStartAnimating", toTarget: self, withObject: nil)
                 
@@ -106,7 +115,7 @@ class RecentlyHeardTableViewController: UITableViewController {
         return sharedData.loadedSongHeaders.count
     }
     
-    
+    //popoulate table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell : UITableViewCell!
         let song = sharedData.loadedSongHeaders[indexPath.row] as! SongHeader
