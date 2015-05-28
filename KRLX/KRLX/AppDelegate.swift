@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, DataObserver {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
@@ -55,11 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, DataObserver {
     
     var refreshTimer : NSTimer!
     var subscribers = NSMutableArray()
+    var firstTimerRun = true
 
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.setUpTimer()
         return true
     }
     func preferredStatusBarStyle()-> UIStatusBarStyle{
@@ -96,28 +98,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, DataObserver {
     
     func setUpTimer(){
         //refreshes at next half hour
-        self.subscribers.addObject(self)
         let timeInt = self.getTimeToRefresh()
-        let timeSeconds : NSTimeInterval = Double(timeInt)*60.0
-        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("notify"), userInfo: nil, repeats: false)
-//        
-//        init(fireDate date: NSDate,
-//            interval seconds: NSTimeInterval,
-//            target target: AnyObject,
-//            selector aSelector: Selector,
-//            userInfo userInfo: AnyObject?,
-//            repeats repeats: Bool)
+        var timeSeconds : NSTimeInterval = Double(timeInt)
+        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("handleTimer"), userInfo: nil, repeats: false)
+
     }
-    func notify(){
-        self.subscribers.removeObject(self)
-        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("notify"), userInfo: nil, repeats: true)
-    }
-//    func refreshData(){
-//        
-//        //refreshes every 30 minutes
-//        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("notify"), userInfo: nil, repeats: true)
-//        
-//    }
     
     //gets time between now and next 30 min mark, so we know when to refresh next
     func getTimeToRefresh() -> Int{
@@ -149,14 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, DataObserver {
         var dateArray = dateString.componentsSeparatedByString(",")
         var timeToRefresh = dateArray[0].toInt()!*60 + dateArray[1].toInt()!
         return timeToRefresh
-
-//        
-//        NSCalendar *calendar = [NSCalendar currentCalendar];
-//        NSDateComponents *components = [NSDateComponents new];
-//        components.minute = 30;
-//        components.hour = 1;
-//        NSDate *date = [calendar dateByAddingComponents:components toDate:< your date > options:0];
-//        
+    
         
     }
     
@@ -171,7 +149,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, DataObserver {
         self.subscribers.removeObject(viewController)
         print (m - subscribers.count)
     }
-    func timerHandler(){
+    func handleTimer(){
+        
+        //The first time, the timer runs for less time to get to next half hour mark
+        if (self.firstTimerRun){
+            self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("handleTimer"), userInfo: nil, repeats: true)
+            self.firstTimerRun = false
+        }
+        
         for subscriber in self.subscribers{
             let dataSubscriber = subscriber as! DataObserver
             dataSubscriber.notify()

@@ -57,6 +57,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     
     func notify() {
+        print("meow3")
         self.setCurrentShow()
     }
     
