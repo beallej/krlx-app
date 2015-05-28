@@ -13,10 +13,37 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
-
-    var isPlaying = false
     
+    //For navigation bar item
+    var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    var rightBarButtonItem: UIBarButtonItem!
+    
+    
+    func playRadio(){
+        
+        player.play()
+        
+        buttonPlay.frame = CGRectMake(0, 0, 40, 40)
+        buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
+        buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        rightBarButtonItem = UIBarButtonItem(customView: buttonPlay)
+ 
+    }
+    
+    func pauseRadio(){
+        player.pause()
+        buttonPause.frame = CGRectMake(0, 0, 40, 40)
+        buttonPause.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+        buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        rightBarButtonItem = UIBarButtonItem(customView: buttonPause)
+        
+    }
+    
+    //For live streaming view
+    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
+    var isPlaying = false
     var currentVolume: Float = 0.5
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
