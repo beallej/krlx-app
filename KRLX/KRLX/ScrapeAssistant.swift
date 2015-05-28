@@ -157,10 +157,15 @@ class ScrapeAssistant {
                     var singer = String()
 
                     // Get first item
-                    if let inputNodes = recentHeardContent?.xpath("//div[@id='info']/p") {
+                    if let inputNodes = recentHeardContent?.xpath("//div[@id='info']/p/a") {
+                        println("have href tag case")
                         title = inputNodes[0].contents //first para is title, second para is singer
                         singer = inputNodes[1].contents
-                        }
+                    }else if let inputNodes = recentHeardContent?.xpath("//div[@id='info']/p") {
+                        println("no a tag case")
+                        title = inputNodes[0].contents //first para is title, second para is singer
+                        singer = inputNodes[1].contents
+                    }
                     
                     // Get image of first item
                     if let imageTag = recentHeardContent?.findChildTags("img") {
