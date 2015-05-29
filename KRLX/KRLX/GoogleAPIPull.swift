@@ -13,16 +13,13 @@ class GoogleAPIPull {
     init(){
     }
     
-    func pullKRLXGoogleCal(){
+    func pullKRLXGoogleCal(delegate: DataObserver){
         // This function pull KRLX calendar using Google Calendar API,
         // parse info and display it in readable form
         var show_arrays = [ShowHeader]()
         let curTime = getCurrentTime()
         var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=60&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
         let url = NSURL(string: urlString)
-//        var response: NSURLResponse?
-//        var error: NSError?
-//        var urlData: NSData?
   
         var session = NSURLSession.sharedSession()
         var task = session.dataTaskWithURL(url!, completionHandler: { (urlData: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
@@ -57,8 +54,7 @@ class GoogleAPIPull {
                         }
                         var newShowList = NSMutableArray(array: show_arrays)
                         self.appDelegate.loadedShowHeaders = newShowList
-                        self.appDelegate.notifySubscribers()
-                        
+                        delegate.updateView()
                     }
                         
                     else

@@ -33,16 +33,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     override func viewDidLoad() {
         self.appDelegate.subscribe(self)
-
-        self.currentShowLabel.text = "Loading Show Name and DJ Name..."
-        //dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
-
-           self.calendarAssistant.pullKRLXGoogleCal()
-//           dispatch_async(dispatch_get_main_queue()) {
- //               self.setCurrentShow()
-//            }
-        //}
-        //volumeController.setThumbImage(<#image: UIImage?#>, forState: <#UIControlState#>)
+        self.calendarAssistant.pullKRLXGoogleCal(self)
+  
         volumeController.value = appDelegate.currentVolume
         appDelegate.player.volume = appDelegate.currentVolume
         
@@ -62,7 +54,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
                 // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
-//        self.appDelegate.subscribe(self)
+        self.appDelegate.subscribe(self)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -71,7 +63,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     
     func notify() {
-        self.setCurrentShow()
+        self.calendarAssistant.pullKRLXGoogleCal(self)
     }
     
     @IBAction func buttonPressed(sender: AnyObject) {
@@ -114,11 +106,16 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         // Dispose of any resources that can be recreated.
     }
     
-    func setCurrentShow(){
-        if let currentShow: ShowHeader = appDelegate.loadedShowHeaders[0] as? ShowHeader{
-            self.currentShowLabel.numberOfLines = 3
-            self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
-            self.currentShowLabel.sizeToFit()
+    func updateView(){
+        if let currentShow: ShowHeader = self.appDelegate.loadedShowHeaders[0] as? ShowHeader{
+            
+            //UI updates must be in main queue, else there is a delay :(
+            dispatch_async(dispatch_get_main_queue()) {
+            
+                self.currentShowLabel.numberOfLines = 3
+                self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
+                self.currentShowLabel.sizeToFit()
+            }
         }
         // if nothing ever loaded from server, label is blank
     }

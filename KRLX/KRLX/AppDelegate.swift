@@ -71,8 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var refreshTimer : NSTimer!
     var subscribers = NSMutableArray()
     var firstTimerRun = true
-    var calendarAssistant : GoogleAPIPull!
-
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -132,8 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setUpTimer(){
-        self.calendarAssistant = GoogleAPIPull()
-        self.calendarAssistant.pullKRLXGoogleCal()
+
         //refreshes at next half hour
         let timeInt = self.getTimeToRefresh()
         var timeSeconds : NSTimeInterval = Double(timeInt)
@@ -143,6 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //gets time between now and next 30 min mark, so we know when to refresh next
     func getTimeToRefresh() -> Int{
+        
         let now = NSDate()
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "mm','ss"
@@ -165,37 +163,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    
-    
-    
     func subscribe(viewController : UIViewController){
         self.subscribers.addObject(viewController)
     }
     func unssubscribe(viewController : UIViewController){
-        let m = subscribers.count
         self.subscribers.removeObject(viewController)
     }
+    
     func handleTimer(){
-        
-        //Refresh shows
-        self.calendarAssistant.pullKRLXGoogleCal()
         
         //The first time, the timer runs for less time to get to next half hour mark
         if (self.firstTimerRun){
             self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("handleTimer"), userInfo: nil, repeats: true)
             self.firstTimerRun = false
         }
-        //self.notifySubscribers()
         
-    }
-    
-    //CURRENTLY CALLED IN GOOGLECALAPI
-    func notifySubscribers(){
+        //Notify subscribers of change!
         for subscriber in self.subscribers{
             let dataSubscriber = subscriber as! DataObserver
             dataSubscriber.notify()
         }
     }
+
 
 
 

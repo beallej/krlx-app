@@ -8,4 +8,5 @@
 
 protocol DataObserver{
     func notify()
+    func updateView()
 }
