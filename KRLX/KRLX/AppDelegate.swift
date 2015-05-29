@@ -18,28 +18,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var rightBarButtonItem: UIBarButtonItem!
+    //var setNavigationItem: Bool = false
     
+    
+    func setButtonPlay(){
+        self.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
+        self.buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
+        self.buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPlay)
+    
+    }
+    
+    func setButtonPause(){
+        self.buttonPause.frame = CGRectMake(0, 0, 40, 40)
+        self.buttonPause.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+        self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPause)
+        
+    }
     
     func playRadio(){
-        
         player.play()
-        
-        buttonPlay.frame = CGRectMake(0, 0, 40, 40)
-        buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
-        buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        
+        setButtonPlay()
+        self.buttonPause.hidden = true
+        self.buttonPlay.hidden = false
         rightBarButtonItem = UIBarButtonItem(customView: buttonPlay)
+        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+        //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
  
     }
     
     func pauseRadio(){
         player.pause()
-        buttonPause.frame = CGRectMake(0, 0, 40, 40)
-        buttonPause.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
-        buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        setButtonPause()
+        self.buttonPlay.hidden = true
+        self.buttonPause.hidden = false
         rightBarButtonItem = UIBarButtonItem(customView: buttonPause)
+        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+        //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
         
     }
+    
+    @IBAction func musicButtonClicked(sender: AnyObject){
+        if self.isPlaying {
+            self.pauseRadio()
+            //setNavigationItem = true
+            //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+            self.isPlaying = false
+            
+        }else{
+            self.playRadio()
+            //setNavigationItem = true
+            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+            //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+            //navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+            self.isPlaying = true
+            
+        }
+    }
+    
     
     //For live streaming view
     var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
@@ -56,7 +94,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var refreshTimer : NSTimer!
     var subscribers = NSMutableArray()
     var firstTimerRun = true
-
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

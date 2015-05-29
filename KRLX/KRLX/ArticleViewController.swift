@@ -152,31 +152,54 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     }
     
     
-    ///Adding play/pause button
     func addRightNavItemOnView()
     {
-        //self.navigationItem.rightBarButtonItem = nil
-        //let buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.rightBarButtonItem = UIBarButtonItem(customView: appDelegate.buttonPlay)
         if appDelegate.isPlaying {
+            appDelegate.setButtonPlay()
+        }else{
+            appDelegate.setButtonPause()
+        }
+        self.navigationItem.setRightBarButtonItem(appDelegate.rightBarButtonItem, animated: false)
+        
+    }
+
+    
+    
+    ///Adding play/pause button
+    /*
+    func addRightNavItemOnView()
+    {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.rightBarButtonItem = UIBarButtonItem(customView: appDelegate.buttonPlay)
+        if appDelegate.isPlaying {
+            appDelegate.setButtonPlay()
+            /*
             appDelegate.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
             appDelegate.buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
             appDelegate.buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             appDelegate.rightBarButtonItem = UIBarButtonItem(customView: appDelegate.buttonPlay)
+*/  
         }else{
+            appDelegate.setButtonPause()
             //appDelegate.buttonPlay.hidden = true
+            /*
             appDelegate.buttonPause.frame = CGRectMake(0, 0, 40, 40)
             appDelegate.buttonPause.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
             appDelegate.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             appDelegate.rightBarButtonItem = UIBarButtonItem(customView: appDelegate.buttonPause)
+*/
         }
-        
         self.navigationItem.setRightBarButtonItem(appDelegate.rightBarButtonItem, animated: false)
         
     }
-    
+    */
+
+    /*
     @IBAction func musicButtonClicked(sender: AnyObject) {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //appDelegate.rightBarButtonItem = UIBarButtonItem(customView: appDelegate.buttonPlay)
         if appDelegate.isPlaying {
             appDelegate.pauseRadio()
             self.navigationItem.setRightBarButtonItem(appDelegate.rightBarButtonItem, animated: false)
@@ -188,7 +211,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
             appDelegate.isPlaying = true
             
         }
-    }
+    }*/
     /*
     func playRadio(){
         //var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
