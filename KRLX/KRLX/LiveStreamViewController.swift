@@ -29,11 +29,12 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     var show_arrays = [ShowHeader]()
     var currentShowName: String = "show"
     var currentDJName: String = "DJ"
+    var calendarAssistant = GoogleAPIPull()
     
     override func viewDidLoad() {
-        self.currentShowLabel.text = "Loading Show Name and DJ Name..."
-        self.setCurrentShow()
-        //volumeController.setThumbImage(<#image: UIImage?#>, forState: <#UIControlState#>)
+        self.appDelegate.subscribe(self)
+        self.calendarAssistant.pullKRLXGoogleCal(self)
+  
         volumeController.value = appDelegate.currentVolume
         appDelegate.player.volume = appDelegate.currentVolume
         
@@ -62,7 +63,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     
     func notify() {
-        self.setCurrentShow()
+        self.calendarAssistant.pullKRLXGoogleCal(self)
     }
     
     @IBAction func buttonPressed(sender: AnyObject) {
@@ -105,14 +106,18 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         // Dispose of any resources that can be recreated.
     }
     
-    func setCurrentShow(){
-        let calendarAssistant = GoogleAPIPull()
-        if let currentShow = calendarAssistant.getCurrentShow(){
-            self.currentShowLabel.numberOfLines = 3
-            self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
-            self.currentShowLabel.sizeToFit()
+    func updateView(){
+        if let currentShow: ShowHeader = self.appDelegate.loadedShowHeaders[0] as? ShowHeader{
+            
+            //UI updates must be in main queue, else there is a delay :(
+            dispatch_async(dispatch_get_main_queue()) {
+            
+                self.currentShowLabel.numberOfLines = 3
+                self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
+                self.currentShowLabel.sizeToFit()
+            }
         }
-        // if nothing returned from server, label is blank
+        // if nothing ever loaded from server, label is blank
     }
     
 }

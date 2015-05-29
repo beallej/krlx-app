@@ -71,10 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var refreshTimer : NSTimer!
     var subscribers = NSMutableArray()
     var firstTimerRun = true
-
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
+        return true
+    }
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         self.setUpTimer()
         
         // Initialize play/pause buttons
@@ -89,10 +92,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.pauseButtonItem = UIBarButtonItem(customView: self.buttonPause)
         
         return true
+
     }
     func preferredStatusBarStyle()-> UIStatusBarStyle{
         return UIStatusBarStyle.LightContent
     }
+    
+   
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -109,6 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -123,6 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setUpTimer(){
+
         //refreshes at next half hour
         let timeInt = self.getTimeToRefresh()
         var timeSeconds : NSTimeInterval = Double(timeInt)
@@ -132,6 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //gets time between now and next 30 min mark, so we know when to refresh next
     func getTimeToRefresh() -> Int{
+        
         let now = NSDate()
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "mm','ss"
@@ -154,16 +163,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    
-    
-    
     func subscribe(viewController : UIViewController){
         self.subscribers.addObject(viewController)
     }
     func unssubscribe(viewController : UIViewController){
-        let m = subscribers.count
         self.subscribers.removeObject(viewController)
     }
+    
     func handleTimer(){
         
         //The first time, the timer runs for less time to get to next half hour mark
@@ -172,12 +178,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.firstTimerRun = false
         }
         
+        //Notify subscribers of change!
         for subscriber in self.subscribers{
             let dataSubscriber = subscriber as! DataObserver
             dataSubscriber.notify()
         }
-        //for each subscriber, ssubscriber.notify()
     }
+
 
 
 

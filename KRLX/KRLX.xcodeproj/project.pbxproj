@@ -171,6 +171,7 @@
 				BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */,
 				BD02FEDC1B0E578500751F7B /* ShowHeader.swift */,
 				BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */,
+				BDCEA5231B177E6700A078C3 /* DataObserver.swift */,
 				BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */,
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 			);
@@ -184,7 +185,6 @@
 				3397B6591AFEE58C00974947 /* high_quality.m3u */,
 				F47029F41A7F27DB00E30A3C /* Info.plist */,
 				BDCEA5211B177BD700A078C3 /* GoogleCalCredentials.txt */,
-				BDCEA5231B177E6700A078C3 /* DataObserver.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

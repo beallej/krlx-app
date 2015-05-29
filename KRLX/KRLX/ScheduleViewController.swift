@@ -21,15 +21,20 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet weak var currentDJLabel: UILabel!
     @IBOutlet weak var currentShowLabel: UILabel!
     
-    var calendarAssistant : GoogleAPIPull!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     var appDelegate: AppDelegate!
+    var calendarAssistant = GoogleAPIPull()
     
     override func viewDidLoad() {
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         super.viewDidLoad()
+        
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        //Pulls Shows from Calendar
+        self.calendarAssistant.pullKRLXGoogleCal(self)
+        
         //Change the font color in the search bar
         var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
@@ -53,10 +58,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
         }
 
-        // Pull calendar
-        self.calendarAssistant = GoogleAPIPull()
-        self.loadCalendar()
-        self.spinnyWidget.stopAnimating()
+        
         
         
 
@@ -70,25 +72,24 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     func notify() {
-        self.loadCalendar()
+        self.calendarAssistant.pullKRLXGoogleCal(self)
     }
     
-    func loadCalendar(){
-        if let needReload = self.calendarAssistant.pullKRLXGoogleCal(){
-            if needReload {
+    func updateView(){
+        //UI updates must be in main queue, else there is a delay :(
+        dispatch_async(dispatch_get_main_queue()) {
+            if (self.appDelegate.loadedShowHeaders.count == 0){
+                self.currentShowLabel.text = "Sorry! Internet Problems"
+            }
+            else{
                 self.setFirstShow()
                 self.tableView.reloadData()
             }
-        }
-        else{
-            if (appDelegate.loadedShowHeaders.count == 0){
-                self.currentShowLabel.text = "Sorry! Internet Problems"
+            if self.spinnyWidget.isAnimating(){
+                self.spinnyWidget.stopAnimating()
             }
         }
-
     }
-    
-     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
