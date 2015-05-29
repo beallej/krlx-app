@@ -40,8 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func playRadio(){
         player.play()
         setButtonPlay()
-        self.buttonPause.hidden = true
-        self.buttonPlay.hidden = false
+        //self.buttonPause.hidden = true
+        //self.buttonPlay.hidden = false
         rightBarButtonItem = UIBarButtonItem(customView: buttonPlay)
         window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
         //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
@@ -51,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func pauseRadio(){
         player.pause()
         setButtonPause()
-        self.buttonPlay.hidden = true
-        self.buttonPause.hidden = false
+        //self.buttonPlay.hidden = true
+        //self.buttonPause.hidden = false
         rightBarButtonItem = UIBarButtonItem(customView: buttonPause)
         window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
         //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
