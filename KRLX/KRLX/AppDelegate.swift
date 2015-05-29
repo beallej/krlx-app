@@ -174,7 +174,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func unssubscribe(viewController : UIViewController){
         let m = subscribers.count
         self.subscribers.removeObject(viewController)
-        print (m - subscribers.count)
     }
     func handleTimer(){
         

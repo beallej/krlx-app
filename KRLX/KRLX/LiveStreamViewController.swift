@@ -22,8 +22,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     @IBOutlet weak var volumeController: UISlider!
     
-    var refreshTimer : NSTimer!
-    
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     
     
     var show_arrays = [ShowHeader]()
@@ -33,7 +33,6 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     override func viewDidLoad() {
         self.currentShowLabel.text = "Loading Show Name and DJ Name..."
         self.setCurrentShow()
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         //volumeController.setThumbImage(<#image: UIImage?#>, forState: <#UIControlState#>)
         volumeController.value = appDelegate.currentVolume
         appDelegate.player.volume = appDelegate.currentVolume
@@ -51,51 +50,20 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        self.setUpTimer()
                 // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.appDelegate.subscribe(self)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.appDelegate.unssubscribe(self)
     }
     
     
     func notify() {
-        print("meow3")
         self.setCurrentShow()
     }
-    
-    func setUpTimer(){
-        //refreshes at next half hour
-        let timeInt = self.getTimeToRefresh()
-        let timeSeconds : NSTimeInterval = Double(timeInt)*60.0
-        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("refreshShow"), userInfo: nil, repeats: false)
-    }
-    
-    //gets time between now and next 30 min mark, so we know when to refresh next
-    func getTimeToRefresh() -> Int{
-        let now = NSDate()
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "mm"
-        var minString = dateFormatter.stringFromDate(now) as String
-        let minInt = minString.toInt()!
-        
-        
-        var timeToRefresh : Int
-        if minInt <= 30 {
-            timeToRefresh = 30 - minInt
-        }
-        else{
-            timeToRefresh = 60 - minInt
-        }
-        return timeToRefresh
-        
-        
-    }
-    
-    func refreshShow(){
-        self.setCurrentShow()
-        //refreshes every 30 minutes
-        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("setCurrentShow"), userInfo: nil, repeats: true)
-        
-    }
-
     
     @IBAction func buttonPressed(sender: AnyObject) {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

@@ -49,7 +49,8 @@ class ArticleHeader {
         return self.content
     }
     
-    //Checks if we already loaded this in appDelegate.loadedArticleHeaders, because of typecasting we can't just check membership
+    //Checks if we already loaded this in appDelegate.loadedArticleHeaders
+    //membership in nsarray determined by hash value, which of course is different
     func isLoaded() -> Bool{
         let loadedArticles = NSArray(array: appDelegate.loadedArticleHeaders) as! [ArticleHeader]
 

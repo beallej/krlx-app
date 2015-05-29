@@ -21,7 +21,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet weak var currentDJLabel: UILabel!
     @IBOutlet weak var currentShowLabel: UILabel!
     
-    var refreshTimer : NSTimer!
     var calendarAssistant : GoogleAPIPull!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -59,49 +58,21 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.loadCalendar()
         self.spinnyWidget.stopAnimating()
         
-        self.setUpTimer()
         
 
+    }
+    override func viewWillAppear(animated: Bool) {
+        appDelegate.subscribe(self)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        appDelegate.unssubscribe(self)
     }
     
     func notify() {
         self.loadCalendar()
     }
     
-    func setUpTimer(){
-        //refreshes at next half hour
-        let timeInt = self.getTimeToRefresh()
-        let timeSeconds : NSTimeInterval = Double(timeInt)*60.0
-        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("refreshCalendar"), userInfo: nil, repeats: false)
-    }
-    
-    //gets time between now and next 30 min mark, so we know when to refresh next
-    func getTimeToRefresh() -> Int{
-        let now = NSDate()
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "mm"
-        var minString = dateFormatter.stringFromDate(now) as String
-        let minInt = minString.toInt()!
-        
-        
-        var timeToRefresh : Int
-        if minInt <= 30 {
-            timeToRefresh = 30 - minInt
-        }
-        else{
-            timeToRefresh = 60 - minInt
-        }
-        return timeToRefresh
-        
-        
-    }
-    func refreshCalendar(){
-        self.loadCalendar()
-        
-        //refreshes every 30 minutes
-        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1800.00, target: self, selector: Selector("loadCalendar"), userInfo: nil, repeats: true)
-        
-    }
     func loadCalendar(){
         if let needReload = self.calendarAssistant.pullKRLXGoogleCal(){
             if needReload {
