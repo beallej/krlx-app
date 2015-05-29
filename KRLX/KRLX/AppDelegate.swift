@@ -17,44 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //For navigation bar item
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-    var rightBarButtonItem: UIBarButtonItem!
+    var playButtonItem: UIBarButtonItem!
+    var pauseButtonItem: UIBarButtonItem!
     //var setNavigationItem: Bool = false
     
     
-    func setButtonPlay(){
-        self.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
-        self.buttonPlay.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
-        self.buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPlay)
-    
-    }
-    
-    func setButtonPause(){
-        self.buttonPause.frame = CGRectMake(0, 0, 40, 40)
-        self.buttonPause.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
-        self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPause)
-        
-    }
-    
     func playRadio(){
         player.play()
-        setButtonPlay()
-        //self.buttonPause.hidden = true
-        //self.buttonPlay.hidden = false
-        rightBarButtonItem = UIBarButtonItem(customView: buttonPlay)
-        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.pauseButtonItem, animated: false)
         //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
  
     }
     
     func pauseRadio(){
         player.pause()
-        setButtonPause()
-        //self.buttonPlay.hidden = true
-        //self.buttonPause.hidden = false
-        rightBarButtonItem = UIBarButtonItem(customView: buttonPause)
-        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.playButtonItem, animated: false)
         //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
         
     }
@@ -64,13 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.pauseRadio()
             //setNavigationItem = true
             //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.playButtonItem, animated: false)
             self.isPlaying = false
             
         }else{
             self.playRadio()
             //setNavigationItem = true
-            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.pauseButtonItem, animated: false)
             //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
             //navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
             self.isPlaying = true
@@ -99,6 +76,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.setUpTimer()
+        
+        // Initialize play/pause buttons
+        self.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
+        self.buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+        self.buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.playButtonItem = UIBarButtonItem(customView: self.buttonPlay)
+
+        self.buttonPause.frame = CGRectMake(0, 0, 40, 40)
+        self.buttonPause.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
+        self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.pauseButtonItem = UIBarButtonItem(customView: self.buttonPause)
+        
         return true
     }
     func preferredStatusBarStyle()-> UIStatusBarStyle{

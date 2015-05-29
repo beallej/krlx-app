@@ -155,14 +155,11 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     func addRightNavItemOnView()
     {
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.rightBarButtonItem = UIBarButtonItem(customView: appDelegate.buttonPlay)
         if appDelegate.isPlaying {
-            appDelegate.setButtonPlay()
+            self.navigationItem.rightBarButtonItem = appDelegate.pauseButtonItem
         }else{
-            appDelegate.setButtonPause()
+            self.navigationItem.rightBarButtonItem = appDelegate.playButtonItem
         }
-        self.navigationItem.setRightBarButtonItem(appDelegate.rightBarButtonItem, animated: false)
-        
     }
 
     
