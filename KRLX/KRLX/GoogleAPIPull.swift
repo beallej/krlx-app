@@ -8,149 +8,70 @@
 
 import Foundation
 class GoogleAPIPull {
-    var show_arrays : [ShowHeader]
     var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     init(){
-        show_arrays = [ShowHeader]()
-
-    }
-    func getCurrentShow() -> ShowHeader?{
-        var currentShow: ShowHeader?
-        let curTime = getCurrentTime()
-        let key = appDelegate.openFile("GoogleCalCredentials", fileExtension: "txt")
-        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=1&key="+key!
-        let url = NSURL(string: urlString)
-        
-        
-        var request : NSMutableURLRequest = NSMutableURLRequest()
-        request.URL = url
-        request.HTTPMethod = "GET"
-        var response: NSURLResponse?
-        var error: NSError?
-        
-        //NSURLConnection used here because NSURLSession does not have a synchronous request option,  which we need in this case.
-        
-        //replace with NSURLSession.dataTaskWithURL(url: NSURL, completionHandler completionHandler: NSData!, NSURLResponse!) NSError!) -> Void)?)
-        let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
-        
-        if let data = urlData{
-            
-            var errorJSON: AutoreleasingUnsafeMutablePointer<NSError?> = nil
-            
-            let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
-            // Parse show content of NSDictionary
-            if (jsonResult != nil){
-                if let allitems_wrapper = jsonResult["items"] as? NSArray{
-                    for item in allitems_wrapper {
-                        var ShowTitle = item["summary"] as! String
-                        var startTimeArray = (item["start"] as! NSDictionary)["dateTime"] as! String
-                        var startTime = self.prettifyTimeLabel(startTimeArray)[0]
-                        var date = self.prettifyTimeLabel(startTimeArray)[1] as String
-                        var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
-                        endTime = self.prettifyTimeLabel(endTime)[0]
-                        var ShowDJ: String
-                        if let DJ:String = item["description"] as? String {
-                            ShowDJ = DJ
-                        }
-                        else {
-                            ShowDJ = ""
-                        }
-                        var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
-                        currentShow = show
-                    }
-                }
-            }
-            else
-            {
-                //currentShow never assigned
-            }
-        }
-            
-            //no response
-        else{
-            //currentShow never assigned
-            
-        }
-        return currentShow
     }
     
-    func pullKRLXGoogleCal() -> Bool?{
+    func pullKRLXGoogleCal(){
         // This function pull KRLX calendar using Google Calendar API,
         // parse info and display it in readable form
-        var needsReload : Bool?
-        
+        var show_arrays = [ShowHeader]()
         let curTime = getCurrentTime()
         var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=60&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
         let url = NSURL(string: urlString)
-
-        
-        
-        var request : NSMutableURLRequest = NSMutableURLRequest()
-        request.URL = url
-        request.HTTPMethod = "GET"
-        var response: NSURLResponse?
-        var error: NSError?
-
-        //NSURLConnection used here because NSURLSession does not have a synchronous request option,  which we need in this case.
-        let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
-        
-        if let data = urlData{
-        
-            var errorJSON: AutoreleasingUnsafeMutablePointer<NSError?> = nil
-            
-                let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
-            
-            // Parse show content of NSDictionary
-                if (jsonResult != nil){
-                    if let allitems_wrapper = jsonResult["items"] as? NSArray{
-                        for item in allitems_wrapper {
-                            var ShowTitle = item["summary"] as! String
-                            var startTimeArray = (item["start"] as! NSDictionary)["dateTime"] as! String
-                            var startTime = self.prettifyTimeLabel(startTimeArray)[0]
-                            var date = self.prettifyTimeLabel(startTimeArray)[1] as String
-                            var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
-                            endTime = self.prettifyTimeLabel(endTime)[0]
-                            var ShowDJ: String
-                            if let DJ:String = item["description"] as? String {
-                                ShowDJ = DJ
-                            }
-                            else {
-                                ShowDJ = ""
-                            }
-                            var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
-                            self.show_arrays.append(show)
-                        }
-                        var lastLine = ShowHeader(titleString: "For more upcoming shows visit krlx.org", startString: "", endString: "", DJString: "", dateString: "")
-                        self.show_arrays.append(lastLine)
-                    }
-                    var newShowList = NSMutableArray(array: self.show_arrays)
-                    if newShowList != appDelegate.loadedShowHeaders{
-                        appDelegate.loadedShowHeaders = newShowList
-                        needsReload = true
+//        var response: NSURLResponse?
+//        var error: NSError?
+//        var urlData: NSData?
   
+        var session = NSURLSession.sharedSession()
+        var task = session.dataTaskWithURL(url!, completionHandler: { (urlData: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if let data = urlData {
+        
+                var errorJSON: AutoreleasingUnsafeMutablePointer<NSError?> = nil
+                
+                    let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
+                
+                // Parse show content of NSDictionary
+                    if (jsonResult != nil){
+                        if let allitems_wrapper = jsonResult["items"] as? NSArray{
+                            for item in allitems_wrapper {
+                                var ShowTitle = item["summary"] as! String
+                                var startTimeArray = (item["start"] as! NSDictionary)["dateTime"] as! String
+                                var startTime = self.prettifyTimeLabel(startTimeArray)[0]
+                                var date = self.prettifyTimeLabel(startTimeArray)[1] as String
+                                var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
+                                endTime = self.prettifyTimeLabel(endTime)[0]
+                                var ShowDJ: String
+                                if let DJ:String = item["description"] as? String {
+                                    ShowDJ = DJ
+                                }
+                                else {
+                                    ShowDJ = ""
+                                }
+                                var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
+                                show_arrays.append(show)
+                            }
+                            var lastLine = ShowHeader(titleString: "For more upcoming shows visit krlx.org", startString: "", endString: "", DJString: "", dateString: "")
+                            show_arrays.append(lastLine)
+                        }
+                        var newShowList = NSMutableArray(array: show_arrays)
+                        self.appDelegate.loadedShowHeaders = newShowList
+                        self.appDelegate.notifySubscribers()
+                        
                     }
-                    else{
-                        needsReload = false
-
+                        
+                    else
+                    {
+                        //json is nil
                     }
-                }
-                    
-                else
-                {
-                    //needsReload never assigned
-                }
             }
                 
-                //no response
-            else{
-            //needsReload never assigned
-
+            else {
+                //urldata nil
             }
-        
-        //
-        self.show_arrays.removeAll(keepCapacity: true)
-        return needsReload
+            })
+        task.resume()
 
         }
     

@@ -29,10 +29,19 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     var show_arrays = [ShowHeader]()
     var currentShowName: String = "show"
     var currentDJName: String = "DJ"
+    var calendarAssistant = GoogleAPIPull()
     
     override func viewDidLoad() {
+        self.appDelegate.subscribe(self)
+
         self.currentShowLabel.text = "Loading Show Name and DJ Name..."
-        self.setCurrentShow()
+        //dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+
+           self.calendarAssistant.pullKRLXGoogleCal()
+//           dispatch_async(dispatch_get_main_queue()) {
+ //               self.setCurrentShow()
+//            }
+        //}
         //volumeController.setThumbImage(<#image: UIImage?#>, forState: <#UIControlState#>)
         volumeController.value = appDelegate.currentVolume
         appDelegate.player.volume = appDelegate.currentVolume
@@ -53,7 +62,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
                 // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
-        self.appDelegate.subscribe(self)
+//        self.appDelegate.subscribe(self)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -106,13 +115,12 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     }
     
     func setCurrentShow(){
-        let calendarAssistant = GoogleAPIPull()
-        if let currentShow = calendarAssistant.getCurrentShow(){
+        if let currentShow: ShowHeader = appDelegate.loadedShowHeaders[0] as? ShowHeader{
             self.currentShowLabel.numberOfLines = 3
             self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
             self.currentShowLabel.sizeToFit()
         }
-        // if nothing returned from server, label is blank
+        // if nothing ever loaded from server, label is blank
     }
     
 }

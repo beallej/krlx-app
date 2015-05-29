@@ -21,7 +21,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet weak var currentDJLabel: UILabel!
     @IBOutlet weak var currentShowLabel: UILabel!
     
-    var calendarAssistant : GoogleAPIPull!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -54,7 +53,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         }
 
         // Pull calendar
-        self.calendarAssistant = GoogleAPIPull()
         self.loadCalendar()
         self.spinnyWidget.stopAnimating()
         
@@ -74,21 +72,14 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     
     func loadCalendar(){
-        if let needReload = self.calendarAssistant.pullKRLXGoogleCal(){
-            if needReload {
-                self.setFirstShow()
-                self.tableView.reloadData()
-            }
+        if (appDelegate.loadedShowHeaders.count == 0){
+            self.currentShowLabel.text = "Sorry! Internet Problems"
         }
         else{
-            if (appDelegate.loadedShowHeaders.count == 0){
-                self.currentShowLabel.text = "Sorry! Internet Problems"
-            }
+            self.setFirstShow()
+            self.tableView.reloadData()
         }
-
     }
-    
-     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
