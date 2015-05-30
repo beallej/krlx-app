@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -61,7 +61,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="54B71DFF-1A02-4A95-90AC-85FDF91FD3FD" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DAEF47BE-0171-4ED4-9760-668876C067BD" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
                                             <rect key="frame" x="14" y="11" width="53" height="53"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="53" id="LwD-Gp-WRW"/>
@@ -548,7 +548,7 @@
                                     <constraint firstAttribute="width" constant="210" id="XET-D1-Byc"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3G-5O-OeB">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3G-5O-OeB">
                                 <rect key="frame" x="260" y="418" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Lsx-fA-knJ"/>
@@ -561,20 +561,7 @@
                                     <action selector="buttonPressed:" destination="sE8-Cy-yWP" eventType="touchUpInside" id="oaw-pg-Sof"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="volumeMin.png" maximumValueImage="volumeMax.png" translatesAutoresizingMaskIntoConstraints="NO" id="OOP-ev-eTo">
-                                <rect key="frame" x="157" y="527" width="286" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="SRy-0p-2Ic"/>
-                                    <constraint firstAttribute="width" constant="282" id="TWW-j0-0cP"/>
-                                </constraints>
-                                <color key="minimumTrackTintColor" red="0.26186753142158642" green="0.43326741216390224" blue="0.59534801136363635" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="maximumTrackTintColor" red="0.57754304857218874" green="0.62802598828034106" blue="0.84799163510101017" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" red="0.53864820075757569" green="0.42037301137841027" blue="0.48162079289507242" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="changeVolume:" destination="sE8-Cy-yWP" eventType="valueChanged" id="pIQ-G7-YDF"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0b-Tq-BHy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0b-Tq-BHy">
                                 <rect key="frame" x="171" y="336" width="259" height="39"/>
                                 <color key="backgroundColor" red="0.23719581880112159" green="0.246369678179124" blue="0.27389125631313127" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -588,10 +575,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="O0b-Tq-BHy" secondAttribute="centerX" id="1RC-W9-ovj"/>
-                            <constraint firstAttribute="centerX" secondItem="OOP-ev-eTo" secondAttribute="centerX" id="6tj-X2-F5W"/>
                             <constraint firstAttribute="centerX" secondItem="b3G-5O-OeB" secondAttribute="centerX" id="8R5-Of-ANd"/>
                             <constraint firstAttribute="centerX" secondItem="O0b-Tq-BHy" secondAttribute="centerX" id="GTv-eN-tOW"/>
-                            <constraint firstItem="VBi-dM-ohh" firstAttribute="top" secondItem="OOP-ev-eTo" secondAttribute="bottom" constant="43" id="HPY-Yb-LyF"/>
                             <constraint firstAttribute="centerX" secondItem="O0b-Tq-BHy" secondAttribute="centerX" id="LFc-hh-osv"/>
                             <constraint firstAttribute="centerX" secondItem="O0b-Tq-BHy" secondAttribute="centerX" id="OXj-JI-zhW"/>
                             <constraint firstItem="VBi-dM-ohh" firstAttribute="top" secondItem="IL0-tN-Stk" secondAttribute="bottom" id="OcK-NL-2Ez"/>
@@ -601,8 +586,6 @@
                             <constraint firstAttribute="centerX" secondItem="ziU-YV-ZSs" secondAttribute="centerX" id="b99-tm-guQ"/>
                             <constraint firstItem="O0b-Tq-BHy" firstAttribute="top" secondItem="ziU-YV-ZSs" secondAttribute="bottom" constant="59" id="cBU-8Y-jg0"/>
                             <constraint firstAttribute="trailing" secondItem="IL0-tN-Stk" secondAttribute="trailing" id="eeg-6g-EB5"/>
-                            <constraint firstItem="OOP-ev-eTo" firstAttribute="top" secondItem="b3G-5O-OeB" secondAttribute="bottom" constant="29" id="gEe-aV-hGC"/>
-                            <constraint firstItem="VBi-dM-ohh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OOP-ev-eTo" secondAttribute="bottom" id="hEY-r0-oRl"/>
                             <constraint firstAttribute="centerX" secondItem="ziU-YV-ZSs" secondAttribute="centerX" id="iVN-7n-G0t"/>
                             <constraint firstAttribute="centerY" secondItem="ziU-YV-ZSs" secondAttribute="centerY" constant="116" id="phR-ur-ruy"/>
                             <constraint firstItem="b3G-5O-OeB" firstAttribute="top" secondItem="O0b-Tq-BHy" secondAttribute="bottom" constant="43" id="ypD-9G-EB9"/>
@@ -617,17 +600,61 @@
                     </view>
                     <navigationItem key="navigationItem" title="Live Stream" id="cfc-BV-ZDE">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="okk-0h-9oo"/>
+                        <barButtonItem key="rightBarButtonItem" image="volumeIcon.png" style="plain" id="KCU-OU-dbC">
+                            <connections>
+                                <segue destination="bK2-Ob-N69" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="KCU-OU-dbC" id="EpX-uI-uKT">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="currentShowLabel" destination="O0b-Tq-BHy" id="eDh-aq-sRO"/>
                         <outlet property="menuButton" destination="okk-0h-9oo" id="XbV-1C-7L9"/>
                         <outlet property="playButton" destination="b3G-5O-OeB" id="qDq-ef-M1M"/>
-                        <outlet property="volumeController" destination="OOP-ev-eTo" id="MXW-t9-Tbl"/>
+                        <outlet property="volumeControllerButton" destination="KCU-OU-dbC" id="iTP-QV-DGW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ne9-ho-vGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2629" y="748"/>
+        </scene>
+        <!--Volume View Controller-->
+        <scene sceneID="0BU-wN-sXA">
+            <objects>
+                <viewController id="bK2-Ob-N69" customClass="VolumeViewController" customModule="KRLX" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xIF-Pw-thh"/>
+                        <viewControllerLayoutGuide type="bottom" id="NFZ-fP-xuX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZXk-iy-7Fl">
+                        <rect key="frame" x="0.0" y="0.0" width="54" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wih-Rm-3vK">
+                                <rect key="frame" x="16" y="60" width="118" height="31"/>
+                                <connections>
+                                    <action selector="changeVolume:" destination="bK2-Ob-N69" eventType="valueChanged" id="thX-Y3-bJy"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="wih-Rm-3vK" secondAttribute="centerY" id="jTZ-1b-pKn"/>
+                            <constraint firstAttribute="centerX" secondItem="wih-Rm-3vK" secondAttribute="centerX" id="rso-Uq-8hh"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="54" height="150"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="54" height="150"/>
+                    <connections>
+                        <outlet property="volumeSlider" destination="wih-Rm-3vK" id="q7u-l4-V53"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8uH-j6-61A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3272" y="748"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UtP-zp-P1I">
@@ -914,7 +941,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="54B71DFF-1A02-4A95-90AC-85FDF91FD3FD" width="300" height="300">
+        <image name="DAEF47BE-0171-4ED4-9760-668876C067BD" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -6976,8 +7003,7 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         <image name="newsIcon.png" width="128" height="128"/>
         <image name="play" width="128" height="128"/>
         <image name="recentMusicIcon.png" width="460" height="460"/>
-        <image name="volumeMax.png" width="32" height="32"/>
-        <image name="volumeMin.png" width="32" height="32"/>
+        <image name="volumeIcon.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cQO-fF-LGe"/>

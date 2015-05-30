@@ -10,7 +10,7 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataObserver{
+class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataObserver, UIPopoverPresentationControllerDelegate{
 
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
@@ -21,6 +21,10 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     @IBOutlet weak var currentShowLabel: UILabel!
     
     @IBOutlet weak var volumeController: UISlider!
+    
+    
+    @IBOutlet weak var volumeControllerButton: UIBarButtonItem!
+    
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -35,7 +39,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.appDelegate.subscribe(self)
         self.calendarAssistant.pullKRLXGoogleCal(self)
   
-        volumeController.value = appDelegate.currentVolume
+        //volumeController.value = appDelegate.currentVolume
         appDelegate.player.volume = appDelegate.currentVolume
         
         if appDelegate.isPlaying {
@@ -51,6 +55,12 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        /*
+        var volumeButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        volumeButton.frame = CGRectMake(0, 0, 40, 40)
+        volumeButton.setImage(UIImage(named:"volumeIcon.png"), forState: UIControlState.Normal)
+        self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
+        */
                 // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -92,12 +102,13 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
-    
+    /*
     @IBAction func changeVolume(sender: UISlider) {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.currentVolume = Float(sender.value)
         appDelegate.player.volume = appDelegate.currentVolume
     }
+*/
     
     
     
@@ -112,12 +123,25 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             //UI updates must be in main queue, else there is a delay :(
             dispatch_async(dispatch_get_main_queue()) {
             
-                self.currentShowLabel.numberOfLines = 3
+                self.currentShowLabel.numberOfLines = 4
                 self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
                 self.currentShowLabel.sizeToFit()
             }
         }
         // if nothing ever loaded from server, label is blank
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "popoverSegue" {
+            //let popoverViewController = segue.destinationViewController as! UIViewController
+            let popoverViewController = segue.destinationViewController as! VolumeViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            popoverViewController.popoverPresentationController!.delegate = self
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
     
 }
