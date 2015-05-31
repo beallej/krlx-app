@@ -24,14 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func playRadio(){
         player.play()
-        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.pauseButtonItem, animated: false)
+        self.window?.rootViewController?.navigationItem.setRightBarButtonItem(self.pauseButtonItem, animated: false)
         //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
  
     }
     
     func pauseRadio(){
         player.pause()
-        window?.rootViewController?.navigationItem.setRightBarButtonItem(self.playButtonItem, animated: false)
+        self.window?.rootViewController?.navigationItem.setRightBarButtonItem(self.playButtonItem, animated: false)
         //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
         
     }

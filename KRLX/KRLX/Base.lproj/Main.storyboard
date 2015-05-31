@@ -61,7 +61,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1999E706-7D6D-4DAF-BC78-4EAD92FB2C6F" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C296B419-6768-448D-AECE-7883EF115B2E" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
                                             <rect key="frame" x="14" y="11" width="53" height="53"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="53" id="LwD-Gp-WRW"/>
@@ -604,7 +604,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Live Stream" id="cfc-BV-ZDE">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="okk-0h-9oo"/>
-                        <barButtonItem key="rightBarButtonItem" image="volumeIcon.png" style="plain" id="KCU-OU-dbC">
+                        <barButtonItem key="rightBarButtonItem" title="Volume" style="plain" id="KCU-OU-dbC">
                             <connections>
                                 <segue destination="bK2-Ob-N69" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="KCU-OU-dbC" id="EpX-uI-uKT">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -945,7 +945,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1999E706-7D6D-4DAF-BC78-4EAD92FB2C6F" width="300" height="300">
+        <image name="C296B419-6768-448D-AECE-7883EF115B2E" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -7007,7 +7007,6 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         <image name="newsIcon.png" width="128" height="128"/>
         <image name="play" width="128" height="128"/>
         <image name="recentMusicIcon.png" width="460" height="460"/>
-        <image name="volumeIcon.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cQO-fF-LGe"/>

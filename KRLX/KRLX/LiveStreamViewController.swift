@@ -20,11 +20,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     @IBOutlet weak var currentShowLabel: UILabel!
     
-    @IBOutlet weak var volumeController: UISlider!
-    
     
     @IBOutlet weak var volumeControllerButton: UIBarButtonItem!
-    
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -55,6 +52,9 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        
+        //self.volumeControllerButton.setBackgroundImage(volumeImg, forState: .Normal, barMetrics: .Default)
         /*
         var volumeButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         volumeButton.frame = CGRectMake(0, 0, 40, 40)

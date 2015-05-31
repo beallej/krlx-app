@@ -154,15 +154,25 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
     func addRightNavItemOnView()
     {
+        //let recognizer = UITapGestureRecognizer(target: self, action: "navItemTapped")
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.isPlaying {
+            //appDelegate.pauseButtonItem.add
             self.navigationItem.rightBarButtonItem = appDelegate.pauseButtonItem
+            self.navigationItem.rightBarButtonItem?.target = self.navigationItem.rightBarButtonItem
+            self.navigationItem.rightBarButtonItem?.action = "navItemTapped:"
+            //self.navigationItem.rightBarButtonItem.addTarget =
         }else{
             self.navigationItem.rightBarButtonItem = appDelegate.playButtonItem
         }
+        
+        
+    }
+    
+    func navItemTapped(sender: AnyObject){
+        print("works")
     }
 
-    
     
     ///Adding play/pause button
     /*
