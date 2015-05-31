@@ -77,8 +77,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        var activeError: NSError? = nil
+        self.session.setActive(true, error: &activeError)
+        
+        if let actError = activeError {
+            NSLog("Error setting audio active: \(actError.code)")
+        }
+        
+        var categoryError: NSError? = nil
+        self.session.setCategory(AVAudioSessionCategoryPlayback, error: &categoryError)
+        
+        if let catError = categoryError {
+            NSLog("Error setting audio category: \(catError.code)")
+        }
+        
         //Right place?
-        self.session.setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
+        //self.session.setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
+        //self.session.setActive(true, error: nil)
         
         return true
     }
