@@ -91,10 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Error setting audio category: \(catError.code)")
         }
         
-        //Right place?
-        //self.session.setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
-        //self.session.setActive(true, error: nil)
-        
         return true
     }
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
