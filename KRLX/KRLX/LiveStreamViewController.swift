@@ -124,7 +124,10 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             dispatch_async(dispatch_get_main_queue()) {
             
                 self.currentShowLabel.numberOfLines = 4
-                self.currentShowLabel.text = "Listening to " + currentShow.getTitle() + " \nDJ: " + currentShow.getDJ()
+                self.currentShowLabel.text = "Listening to " + currentShow.getTitle()
+                if currentShow.getDJ() != ""{
+                    self.currentShowLabel.text = self.currentShowLabel.text! + " \nDJ: " + currentShow.getDJ()
+                }
                 self.currentShowLabel.sizeToFit()
             }
         }

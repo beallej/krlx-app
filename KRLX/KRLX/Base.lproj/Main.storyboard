@@ -57,7 +57,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="610DD19F-01D3-4010-A718-42435058A266" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BF1B2F93-3085-4AE1-B9DB-34A7B6B98722" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
                                             <rect key="frame" x="14" y="11" width="78" height="78"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="78" id="LwD-Gp-WRW"/>
@@ -103,6 +103,7 @@
                                         <constraint firstItem="JjP-Hh-SFj" firstAttribute="top" secondItem="W49-Dq-FFI" secondAttribute="top" constant="-5" id="bmf-uy-DaQ"/>
                                         <constraint firstItem="JjP-Hh-SFj" firstAttribute="centerY" secondItem="NzH-ES-Lfu" secondAttribute="centerY" constant="0.5" id="dJF-Qu-KqY"/>
                                         <constraint firstItem="1KW-Os-iMh" firstAttribute="trailing" secondItem="W49-Dq-FFI" secondAttribute="trailing" id="ejd-lu-4Ki"/>
+                                        <constraint firstItem="1KW-Os-iMh" firstAttribute="top" secondItem="W49-Dq-FFI" secondAttribute="bottom" constant="-1" id="h2d-DR-uHE"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="1KW-Os-iMh" secondAttribute="trailing" id="kpV-2a-89H"/>
                                         <constraint firstItem="1KW-Os-iMh" firstAttribute="leading" secondItem="W49-Dq-FFI" secondAttribute="leading" id="x9a-OA-kX0"/>
                                     </constraints>
@@ -111,6 +112,7 @@
                                             <exclude reference="1hP-fn-6Lb"/>
                                             <exclude reference="5VN-uy-Rim"/>
                                             <exclude reference="H5u-v2-dQB"/>
+                                            <exclude reference="JQR-xM-LPf"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -960,7 +962,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="610DD19F-01D3-4010-A718-42435058A266" width="300" height="300">
+        <image name="BF1B2F93-3085-4AE1-B9DB-34A7B6B98722" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
