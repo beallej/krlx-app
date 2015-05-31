@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <segue destination="c8U-hf-vWv" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="Mtl-gz-6Ew"/>
@@ -61,7 +61,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C296B419-6768-448D-AECE-7883EF115B2E" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FC760FF7-4994-46D0-AD3D-5E46E5566AEE" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Hh-SFj">
                                             <rect key="frame" x="14" y="11" width="53" height="53"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="53" id="LwD-Gp-WRW"/>
@@ -564,7 +564,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="krlx.png" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-YV-ZSs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="krlx.png" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-YV-ZSs">
                                 <rect key="frame" x="195" y="166" width="210" height="186"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="186" id="GJK-oj-E0H"/>
@@ -945,7 +945,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C296B419-6768-448D-AECE-7883EF115B2E" width="300" height="300">
+        <image name="FC760FF7-4994-46D0-AD3D-5E46E5566AEE" width="300" height="300">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -7009,7 +7009,7 @@ BYhsAAWIbwAFiIEABYiEAAWIiQAAAAAAAAQBAAAAAAAAAEIAAAAAAAAAAAAAAAAABYiLA
         <image name="recentMusicIcon.png" width="460" height="460"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cQO-fF-LGe"/>
+        <segue reference="zsI-tj-JJH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
