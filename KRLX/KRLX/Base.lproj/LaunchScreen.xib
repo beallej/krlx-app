@@ -10,31 +10,23 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhonographRecord" translatesAutoresizingMaskIntoConstraints="NO" id="uGQ-KQ-ldV">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="krlx" translatesAutoresizingMaskIntoConstraints="NO" id="LFo-97-B3p">
-                    <rect key="frame" x="174" y="131" width="253" height="180"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="krlx" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-3M-FFm">
+                    <rect key="frame" x="240" y="250" width="120" height="99"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="180" id="6Ya-Eg-njk"/>
-                        <constraint firstAttribute="width" constant="253" id="D3L-od-9Cm"/>
+                        <constraint firstAttribute="width" constant="120" id="C8a-br-MV1"/>
+                        <constraint firstAttribute="height" constant="99" id="HDe-FT-jde"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="uGQ-KQ-ldV" firstAttribute="leading" secondItem="Ghh-aW-63b" secondAttribute="leading" id="BXS-HA-IFa"/>
-                <constraint firstItem="LFo-97-B3p" firstAttribute="top" secondItem="Ghh-aW-63b" secondAttribute="top" constant="131" id="CH1-5w-D0I"/>
-                <constraint firstItem="uGQ-KQ-ldV" firstAttribute="centerX" secondItem="LFo-97-B3p" secondAttribute="centerX" id="Rt0-Sq-OFT"/>
-                <constraint firstAttribute="trailing" secondItem="uGQ-KQ-ldV" secondAttribute="trailing" id="Vny-MN-PoP"/>
-                <constraint firstItem="uGQ-KQ-ldV" firstAttribute="top" secondItem="Ghh-aW-63b" secondAttribute="top" id="gfL-9q-Qvw"/>
-                <constraint firstAttribute="bottom" secondItem="uGQ-KQ-ldV" secondAttribute="bottom" id="mbL-ur-eLr"/>
+                <constraint firstAttribute="centerY" secondItem="YAA-3M-FFm" secondAttribute="centerY" id="3by-x8-E6e"/>
+                <constraint firstAttribute="centerX" secondItem="YAA-3M-FFm" secondAttribute="centerX" id="Rel-lq-30B"/>
             </constraints>
             <point key="canvasLocation" x="605" y="396"/>
         </view>
     </objects>
     <resources>
-        <image name="PhonographRecord" width="2332" height="1764"/>
         <image name="krlx" width="250" height="185"/>
     </resources>
 </document>
