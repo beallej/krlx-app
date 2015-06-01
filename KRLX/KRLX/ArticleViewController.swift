@@ -166,7 +166,6 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
             self.navigationItem.rightBarButtonItem = appDelegate.playButtonItem
         }
         
-        
     }
     
     func navItemTapped(sender: AnyObject){
