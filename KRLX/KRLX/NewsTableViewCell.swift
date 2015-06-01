@@ -11,10 +11,10 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateBkgd :UIImageView!
     @IBOutlet weak var postTitleLabel:UILabel!
     @IBOutlet weak var authorLabel:UILabel!
-
     @IBOutlet weak var monthLabel: UILabel!
-    
     @IBOutlet weak var dayLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.dateBkgd.image = UIImage(named: "black")

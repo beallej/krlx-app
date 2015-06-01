@@ -175,8 +175,8 @@
 				BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */,
 				BDCEA5231B177E6700A078C3 /* DataObserver.swift */,
 				BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */,
-				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 				3364C5021B19A10E008D1707 /* VolumeViewController.swift */,
+				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 			);
 			path = KRLX;
 			sourceTree = "<group>";

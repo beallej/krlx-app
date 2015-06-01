@@ -8,8 +8,8 @@
 
 class ScrapeAssistant {
     var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+   
     init(){
-        
     }
     
     //does scraping for an article content
@@ -122,7 +122,7 @@ class ScrapeAssistant {
     }
 
     //This function scrape KRLX for list of recently heard
-    func scrapeRecentlyHeard() -> [SongHeader] {
+    func scrapeRecentlyHeard() {
         var songs = [SongHeader]()
         let myURLString = "http://www.krlx.org/"
         if let myURL = NSURL(string: myURLString) {
@@ -167,11 +167,9 @@ class ScrapeAssistant {
                         for node in imageTag {
                             imageURL = node.getAttributeNamed("src")
                         }
-                        var song = SongHeader(titleString: title, singerString: singer,urlString: imageURL)
-                        let m = appDelegate.loadedSongHeaders
-                        if !(appDelegate.loadedSongHeaders.containsObject(song)) {
-                            songs.append(song)
-                        }
+                        let song = SongHeader(titleString: title, singerString: singer,urlString: imageURL)
+                        songs.append(song)
+                        
                     }
 
                     // Get next 4 items
@@ -180,12 +178,9 @@ class ScrapeAssistant {
                             var titleNsinger = (node.rawContents.componentsSeparatedByString("<b>"))[1]
                             title = (titleNsinger.componentsSeparatedByString("</b> - "))[0]
                             singer = (titleNsinger.componentsSeparatedByString("</b> - "))[1].componentsSeparatedByString("</p>")[0]
-                            var song = SongHeader(titleString: title, singerString: singer)
-                            let m = appDelegate.loadedSongHeaders
-
-                            if !(appDelegate.loadedSongHeaders.containsObject(song)) {
-                                songs.append(song)
-                            }
+                            let song = SongHeader(titleString: title, singerString: singer)
+                            songs.append(song)
+                            
                         }
                     }
                 }
@@ -193,7 +188,9 @@ class ScrapeAssistant {
         } else {
             println("Error: \(myURLString) doesn't seem to be a valid URL")
         }
-        return songs
+        if songs.count != 0{
+            self.appDelegate.loadedSongHeaders = NSMutableArray(array: songs)
+        }
     }
 
     

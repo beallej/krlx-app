@@ -37,9 +37,9 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.calendarAssistant.pullKRLXGoogleCal(self)
   
         //volumeController.value = appDelegate.currentVolume
-        appDelegate.player.volume = appDelegate.currentVolume
+        self.appDelegate.player.volume = appDelegate.currentVolume
         
-        if appDelegate.isPlaying {
+        if self.appDelegate.isPlaying {
             let image = UIImage(named: "pause") as UIImage?
             playButton.setBackgroundImage(image, forState: UIControlState.Normal)
             
@@ -47,11 +47,10 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             let image = UIImage(named: "play") as UIImage?
             playButton.setBackgroundImage(image, forState: UIControlState.Normal)
         }
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
+        
+        //Connect to menu
+        self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
+
         
         
         //self.volumeControllerButton.setBackgroundImage(volumeImg, forState: .Normal, barMetrics: .Default)
@@ -77,8 +76,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     }
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        if appDelegate.isPlaying {
+        if self.appDelegate.isPlaying {
             pauseRadio()
             appDelegate.isPlaying = false
         }else{

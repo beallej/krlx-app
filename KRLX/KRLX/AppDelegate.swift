@@ -89,6 +89,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func setUpSWRevealVC(vc: UIViewController, menuButton: UIBarButtonItem){
+        if vc.revealViewController() != nil {
+            menuButton.target = vc.revealViewController()
+            menuButton.action = "revealToggle:"
+            vc.view.addGestureRecognizer(vc.revealViewController().panGestureRecognizer())
+        }
+    }
+    
     //opens a file
     func openFile (fileName: String, fileExtension: String, utf8: NSStringEncoding = NSUTF8StringEncoding) -> String? {
         let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: fileExtension)

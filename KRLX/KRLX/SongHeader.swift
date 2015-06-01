@@ -38,15 +38,4 @@ class SongHeader {
         return self.url
     }
     
-    //Checks if we already loaded this in appDelegate.loadedSongHeaders
-    //membership in nsarray determined by hash value, which of course is different
-    func isLoaded() -> Bool{
-        let loadedSongs = NSArray(array: appDelegate.loadedSongHeaders) as! [SongHeader]
-        for song in loadedSongs{
-            if (song.getTitle() == self.title) && (song.getArtist() == self.artist) {
-                return true
-            }
-        }
-        return false
-    }
 }

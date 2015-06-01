@@ -18,52 +18,47 @@ class NewsTableViewController: UITableViewController {
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
-        //appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //Set Play/Pause button in navigation bar
         setButtons()
         addRightNavItemOnView()
         
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
         
+        //Connect to menu
+        self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
         
+        self.loadArticles()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+    }
+    
+    func loadArticles(){
         //because scraping is sloooowwww, we use the magic of asynchronization!
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             let scraper = ScrapeAssistant()
             let articles = scraper.scrapeArticleInfo()
             if articles.count != 0{
+                
                 //insert new articles at the top
                 self.appDelegate.loadedArticleHeaders.insertObjects(articles, atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, articles.count)))
-              
-                
-
             }
+            
             dispatch_async(dispatch_get_main_queue()) {
                 self.spinnyWidget.stopAnimating()
                 self.tableView.reloadData()
                 
                 if (self.appDelegate.loadedArticleHeaders.count == 0){
                     var alert = UIAlertController(title: "Whoops!", message: "Internet problems, try again later", preferredStyle: UIAlertControllerStyle.Alert)
-                    
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
                 
             }
         }
-
-
-
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
     }
     
@@ -83,7 +78,6 @@ class NewsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return appDelegate.loadedArticleHeaders.count
-        //return articles.count
     }
 
     //populate table
