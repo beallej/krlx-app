@@ -11,10 +11,19 @@ import Social
 class NewsTableViewController: UITableViewController {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
-    var appDelegate: AppDelegate!
-
+    //var appDelegate: AppDelegate!
+    var rightBarButtonItem: UIBarButtonItem!
+    var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     override func viewDidLoad() {
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        //Set Play/Pause button in navigation bar
+        setButtons()
+        addRightNavItemOnView()
+        
         super.viewDidLoad()
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -100,6 +109,57 @@ class NewsTableViewController: UITableViewController {
        
         self.navigationController?.pushViewController(articleVC, animated: true)
     }
+    
+    ///Adding play/pause button
+    func addRightNavItemOnView()
+    {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDelegate.isPlaying {
+            self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPause)
+            
+        }else{
+            self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPlay)
+        }
+        self.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+        
+    }
+    
+    
+    @IBAction func musicButtonClicked(sender: AnyObject) {
+        if appDelegate.isPlaying {
+            self.pauseRadio()
+            appDelegate.isPlaying = false
+            
+        }else{
+            self.playRadio()
+            appDelegate.isPlaying = true
+            
+        }
+    }
+    
+    func playRadio(){
+        appDelegate.player.play()
+        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPause)
+        self.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+    }
+    
+    func pauseRadio(){
+        appDelegate.player.pause()
+        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPlay)
+        self.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
+    }
+    
+    func setButtons(){
+        self.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
+        self.buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+        self.buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.buttonPause.frame = CGRectMake(0, 0, 40, 40)
+        self.buttonPause.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
+        self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+    }
+
 
     
 }

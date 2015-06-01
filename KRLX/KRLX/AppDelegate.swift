@@ -15,47 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var session: AVAudioSession = AVAudioSession.sharedInstance()
-    
-    //For navigation bar item
-    var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-    var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-    var playButtonItem: UIBarButtonItem!
-    var pauseButtonItem: UIBarButtonItem!
-    //var setNavigationItem: Bool = false
-    
-    
-    func playRadio(){
-        player.play()
-        self.window?.rootViewController?.navigationItem.setRightBarButtonItem(self.pauseButtonItem, animated: false)
-        //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
- 
-    }
-    
-    func pauseRadio(){
-        player.pause()
-        self.window?.rootViewController?.navigationItem.setRightBarButtonItem(self.playButtonItem, animated: false)
-        //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-        
-    }
-    
-    @IBAction func musicButtonClicked(sender: AnyObject){
-        if self.isPlaying {
-            self.pauseRadio()
-            //setNavigationItem = true
-            //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.playButtonItem, animated: false)
-            self.isPlaying = false
-            
-        }else{
-            self.playRadio()
-            //setNavigationItem = true
-            window?.rootViewController?.navigationItem.setRightBarButtonItem(self.pauseButtonItem, animated: false)
-            //window?.rootViewController?.navigationController?.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-            //navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-            self.isPlaying = true
-            
-        }
-    }
+
     
     
     //For live streaming view
@@ -95,17 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         self.setUpTimer()
-        
-        // Initialize play/pause buttons
-        self.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
-        self.buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
-        self.buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.playButtonItem = UIBarButtonItem(customView: self.buttonPlay)
-
-        self.buttonPause.frame = CGRectMake(0, 0, 40, 40)
-        self.buttonPause.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
-        self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.pauseButtonItem = UIBarButtonItem(customView: self.buttonPause)
         
         return true
 
