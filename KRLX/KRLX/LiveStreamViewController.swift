@@ -40,11 +40,11 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.appDelegate.player.volume = appDelegate.currentVolume
         
         if self.appDelegate.isPlaying {
-            let image = UIImage(named: "pause") as UIImage?
+            let image = UIImage(named: "pause2") as UIImage?
             playButton.setBackgroundImage(image, forState: UIControlState.Normal)
             
         }else{
-            let image = UIImage(named: "play") as UIImage?
+            let image = UIImage(named: "play2") as UIImage?
             playButton.setBackgroundImage(image, forState: UIControlState.Normal)
         }
         
@@ -89,14 +89,14 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     func playRadio() {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.player.play()
-        let image = UIImage(named: "pause") as UIImage?
+        let image = UIImage(named: "pause2") as UIImage?
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
     func pauseRadio() {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.player.pause()
-        let image = UIImage(named: "play") as UIImage?
+        let image = UIImage(named: "play2") as UIImage?
         playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
