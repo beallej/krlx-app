@@ -44,7 +44,7 @@ class ScrapeAssistant {
     }
     
     // does scraping for article title, date, author
-    func scrapeArticleInfo() -> [ArticleHeader] {
+    func scrapeArticleInfo(){
         var articles = [ArticleHeader]()
         let myURLString = "http://www.krlx.org/"
         if let myURL = NSURL(string: myURLString) {
@@ -104,10 +104,8 @@ class ScrapeAssistant {
                                 
                             }
                         }
-                        var article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
-                        if !(article.isLoaded()){
+                        let article = ArticleHeader(authorString: author, titleString: article_header, dateString: datetime, urlString: article_url)
                             articles.append(article)
-                        }
                         
                     }
     
@@ -118,7 +116,7 @@ class ScrapeAssistant {
         } else {
             println("Error: \(myURLString) doesn't seem to be a valid URL")
         }
-        return articles
+        self.appDelegate.loadedArticleHeaders = NSMutableArray(array: articles)
     }
 
     //This function scrape KRLX for list of recently heard

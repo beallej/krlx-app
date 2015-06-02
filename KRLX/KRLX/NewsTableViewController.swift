@@ -40,12 +40,7 @@ class NewsTableViewController: UITableViewController {
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             let scraper = ScrapeAssistant()
-            let articles = scraper.scrapeArticleInfo()
-            if articles.count != 0{
-                
-                //insert new articles at the top
-                self.appDelegate.loadedArticleHeaders.insertObjects(articles, atIndexes: NSIndexSet(indexesInRange: NSMakeRange(0, articles.count)))
-            }
+            scraper.scrapeArticleInfo()
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.spinnyWidget.stopAnimating()

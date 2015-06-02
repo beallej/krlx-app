@@ -41,6 +41,13 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         //set webview delegate
         self.content.delegate = self
         
+        self.addActivityIndicator()
+        self.formatLables()
+        self.loadArticle()
+        
+    }
+    
+    func addActivityIndicator(){
         //adds spinner to show activity while getting content
         self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
         self.navigationItem.titleView = self.activityIndicator
@@ -48,7 +55,9 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.startAnimating()
 
-        
+    }
+    
+    func formatLables(){
         //add basic info
         self.titleLabel.text = self.articleHeader.getTitle()
         let dt = self.articleHeader.getDate()
@@ -56,28 +65,13 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         self.dayLabel.text = day
         self.monthLabel.text = month
         self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
-        
-        ///////////////Testing Purpose/////////////
-        //let button : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        //button.backgroundColor = UIColor.blackColor()
-        //self.button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        //self.button.setTitle("Share", forState: UIControlState.Normal)
-        //self.button.titleLabel!.adjustsFontSizeToFitWidth = true
-        //self.button.titleLabel!.font =  UIFont(name: "Avenir Next Regular", size: 8)
-        //self.button = button
-        
-        //------------------------------------
-        //test  spinning image
-        
-        
+    }
+    func loadArticle(){
         //Display an adorable gif while loading <3
         var urlSpin = NSURL(string:"http://www.blackbox.sa.com/app/webroot/img/loading.gif")
         var req = NSURLRequest(URL:urlSpin!)
         self.content.loadRequest(req)
-        //self.content.loadHTMLString("<!DOCTYPE html><html><head></head><body><div><font size='30pt'>Loading... Please wait! or a spinner</font></div></body></html>", baseURL: NSURL(string: self.articleHeader.getURL()))
-        
-        //-------------------------------------
-        
+
         //Because scraping takes and converting html into text takes forever too, we use the magical powers of asychronization!
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
@@ -90,41 +84,35 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
                 let scraper = ScrapeAssistant()
                 var articleContentScraped = scraper.scrapeArticle(self.articleHeader.getURL())
                 
-                //self.scrape()
-                articleContentScraped = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0] //eliminate the title and the next navigation
                     dispatch_async(dispatch_get_main_queue()) {
-                        
-                        //Put the pieces of the giant HTML string together
-                        let htmlStrings = self.appDelegate.openFile("htmlString", fileExtension: "txt")!.componentsSeparatedByString("\n")
-                        var finalHTMLString = htmlStrings[0]+self.articleHeader.getURL()+htmlStrings[1]+articleContentScraped+htmlStrings[2]
-                        finalHTMLString = finalHTMLString.stringByReplacingOccurrencesOfString("style=\"font-size: 13.0pt; mso-bidi-font-size: 12.0pt;\"", withString:"") // Deal with span html style
-                        
-                        //load content, dismiss activity indicator
-                        self.content.loadHTMLString(finalHTMLString, baseURL: NSURL(string: self.articleHeader.getURL()))
-                        
-                        //Put content into the class (no need to load next time)
-                        self.articleHeader.content = finalHTMLString
-                        
-                        self.activityIndicator.stopAnimating()
-                    }
-                }
-        }
-        
-    }
-    
+                    
+                    //load content, dismiss activity indicator
+                    let finalHTMLString = self.createHTMLString(articleContentScraped)
 
-        
-    
-    
-    //////////Testing function to create a share button in article itself/////////////////
-    /*
-    func buttonClicked(sender: UIButton!){
-        let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("socialMediaView") as! SocialMediaController
-        
-        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
-        
+                    self.content.loadHTMLString(finalHTMLString, baseURL: NSURL(string: self.articleHeader.getURL()))
+                        
+                    //Put content into the class (no need to load next time)
+                    self.articleHeader.content = finalHTMLString
+                    
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+        }
     }
-    */
+    
+    //Put the pieces of the giant HTML string together
+    func createHTMLString(articleContentScraped : String) -> String{
+        let articleNoTitle = ((articleContentScraped.componentsSeparatedByString("</h1>"))[1].componentsSeparatedByString("<ul class=\"pager pagenav\">"))[0] //eliminate the title and the next navigation
+
+        let htmlStrings = self.appDelegate.openFile("htmlString", fileExtension: "txt")!.componentsSeparatedByString("\n")
+        var finalHTMLString = htmlStrings[0]+self.articleHeader.getURL()+htmlStrings[1]+articleNoTitle+htmlStrings[2]
+        
+        // Deal with span html style
+        finalHTMLString = finalHTMLString.stringByReplacingOccurrencesOfString("style=\"font-size: 13.0pt; mso-bidi-font-size: 12.0pt;\"", withString:"")
+        return finalHTMLString
+    }
+    
+   
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -144,7 +132,6 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         
     }
     
-    //////////////////////////////////////////////////////////////////////////////////
     
     
     override func didReceiveMemoryWarning() {

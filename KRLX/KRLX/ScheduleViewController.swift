@@ -33,8 +33,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         //Adding play/pause button in navigation bar
-        setButtons()
-        addRightNavItemOnView()
+        self.setButtons()
+        self.addRightNavItemOnView()
 
         
         //Pulls Shows from Calendar
@@ -43,9 +43,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         //Change the font color in the search bar
         var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
-        
-        var app = UIApplication.sharedApplication()
-        app.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+     
         
         //Connect to menu
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
