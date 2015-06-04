@@ -41,9 +41,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         //Pulls Shows from Calendar
         self.calendarAssistant.pullKRLXGoogleCal(self)
         
-        //Change the font color in the search bar
-        //var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
-        //textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+        
      
         
         //Connect to menu
@@ -51,7 +49,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
-        searchBar.delegate = self
+        self.searchBar.delegate = self
+
+        //Change the font color in the search bar
+        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+
         self.filteredShows = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         self.filteredShows.removeAtIndex(0)
         //clear placeholder time label

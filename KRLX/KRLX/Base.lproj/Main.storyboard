@@ -885,7 +885,7 @@
                                     <constraint firstItem="385-YP-G0T" firstAttribute="leading" secondItem="HiX-jQ-Q7d" secondAttribute="leading" id="yaL-IN-boR"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" placeholder="Search Shows or DJ" translatesAutoresizingMaskIntoConstraints="NO" id="5jL-e4-2Pv">
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search Shows or DJ" translatesAutoresizingMaskIntoConstraints="NO" id="5jL-e4-2Pv">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
