@@ -222,9 +222,10 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
 
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        var showArray = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
-        showArray.removeAtIndex(0)
-        self.filteredShows = searchText.isEmpty ? showArray : showArray.filter({(show: ShowHeader) -> Bool in
+        var showArrayfull = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
+        var showArrayExceptFirst = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
+        showArrayExceptFirst.removeAtIndex(0)
+        self.filteredShows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
             let stringMatch = show.title.rangeOfString(searchText)
             return  (stringMatch != nil)
         })
