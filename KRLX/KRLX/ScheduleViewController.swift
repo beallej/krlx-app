@@ -51,7 +51,9 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
-        
+        searchBar.delegate = self
+        self.filteredShows = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
+        self.filteredShows.removeAtIndex(0)
         //clear placeholder time label
         self.currentTimeLabel.text = ""
         
@@ -108,11 +110,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        if tableView == self.searchDisplayController!.searchResultsTableView {
-            return self.filteredShows.count - 1
-        } else {
-            return self.appDelegate.loadedShowHeaders.count - 1
-        }
+        return self.filteredShows.count
+//        if tableView == self.searchDisplayController!.searchResultsTableView {
+//            return self.filteredShows.count - 1
+//        } else {
+//            return self.appDelegate.loadedShowHeaders.count - 1
+//        }
     }
     
     
@@ -129,11 +132,13 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var show: ShowHeader
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
-        if tableView == self.searchDisplayController!.searchResultsTableView {
-            show = self.filteredShows[indexPath.row]
-        } else {
-            show = self.appDelegate.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
-        }
+        show = self.filteredShows[indexPath.row]
+
+//        if tableView == self.searchDisplayController!.searchResultsTableView {
+//            show = self.filteredShows[indexPath.row]
+//        } else {
+//            show = self.appDelegate.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
+//        }
         
         //offset by 1 because the first show is displayed separately
         cell.title.text = show.getTitle()
@@ -214,14 +219,16 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         })
     }
 
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        self.filterContentForSearchText(searchString)
-        return true
-    }
     
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
-        return true
-    }
 
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        var showArray = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
+        showArray.removeAtIndex(0)
+        self.filteredShows = searchText.isEmpty ? showArray : showArray.filter({(show: ShowHeader) -> Bool in
+            let stringMatch = show.title.rangeOfString(searchText)
+            return  (stringMatch != nil)
+        })
+        
+        tableView.reloadData()
+    }
 }

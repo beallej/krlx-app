@@ -763,15 +763,6 @@
                                         <color key="separatorColor" red="0.0" green="0.93725496529999996" blue="0.87843143940000001" alpha="0.41999999999999998" colorSpace="deviceRGB"/>
                                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="sectionIndexBackgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search by Show or DJ" showsCancelButton="YES" id="2Ch-6U-RNf">
-                                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="Gkz-ka-TEw" id="7jv-uz-hka"/>
-                                            </connections>
-                                        </searchBar>
                                         <prototypes>
                                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="showCell" rowHeight="69" id="WFm-Cd-isr" customClass="ScheduleTableViewCell" customModule="KRLX" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="613" height="44"/>
@@ -894,8 +885,16 @@
                                     <constraint firstItem="385-YP-G0T" firstAttribute="leading" secondItem="HiX-jQ-Q7d" secondAttribute="leading" id="yaL-IN-boR"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" placeholder="Search Shows or DJ" translatesAutoresizingMaskIntoConstraints="NO" id="5jL-e4-2Pv">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="5jL-e4-2Pv" firstAttribute="leading" secondItem="HiX-jQ-Q7d" secondAttribute="leading" id="085-U0-hDA"/>
+                            <constraint firstItem="5jL-e4-2Pv" firstAttribute="top" secondItem="bQ6-Gy-wFR" secondAttribute="bottom" id="5SI-D4-qdi"/>
+                            <constraint firstItem="5jL-e4-2Pv" firstAttribute="trailing" secondItem="HiX-jQ-Q7d" secondAttribute="trailing" id="D0T-2P-wpw"/>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="leading" secondItem="6vP-qc-Sqk" secondAttribute="leading" id="FSJ-4H-SfK"/>
                             <constraint firstItem="HiX-jQ-Q7d" firstAttribute="top" secondItem="bQ6-Gy-wFR" secondAttribute="bottom" constant="49" id="NLB-Jy-bZO"/>
                             <constraint firstAttribute="trailing" secondItem="HiX-jQ-Q7d" secondAttribute="trailing" id="mKt-Ic-Yfd"/>
@@ -941,6 +940,7 @@
                         <outlet property="currentShowLabel" destination="9sC-SC-ioN" id="ze1-xo-11V"/>
                         <outlet property="currentTimeLabel" destination="dqe-Um-Zic" id="4IT-Tp-8bZ"/>
                         <outlet property="menuButton" destination="sTu-ab-xi8" id="iej-yC-l19"/>
+                        <outlet property="searchBar" destination="5jL-e4-2Pv" id="xD8-ah-qt9"/>
                         <outlet property="searchDisplayController" destination="64P-Em-Grh" id="FYP-F2-xIU"/>
                         <outlet property="spinnyWidget" destination="Fiy-gZ-1hR" id="i9p-Te-c6M"/>
                         <outlet property="tableView" destination="385-YP-G0T" id="RiN-ZV-arH"/>
@@ -950,7 +950,6 @@
                 <searchDisplayController id="64P-Em-Grh">
                     <connections>
                         <outlet property="delegate" destination="Gkz-ka-TEw" id="I0v-Oq-YPI"/>
-                        <outlet property="searchBar" destination="2Ch-6U-RNf" id="qkv-cF-nCC"/>
                         <outlet property="searchContentsController" destination="Gkz-ka-TEw" id="AiG-Bb-DxV"/>
                         <outlet property="searchResultsDataSource" destination="Gkz-ka-TEw" id="vo0-3N-Y10"/>
                         <outlet property="searchResultsDelegate" destination="Gkz-ka-TEw" id="MKU-Km-Qhu"/>
