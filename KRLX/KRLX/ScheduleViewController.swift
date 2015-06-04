@@ -133,7 +133,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         show = self.filteredShows[indexPath.row]
         
         cell.title.text = show.getTitle()
-        
+        cell.DJ.text = show.getDJ()
         
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         cell.start.text = finalTimeString
@@ -206,9 +206,16 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         var showArrayExceptFirst = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         showArrayExceptFirst.removeAtIndex(0)
         self.filteredShows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
-            let stringMatch = show.title.rangeOfString(searchText)
+            let stringMatch = show.getTitle().rangeOfString(searchText)
             return  (stringMatch != nil)
         })
+        
+        //Also searches by DJ Name
+        var DJshows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
+            let stringMatch = show.getDJ().rangeOfString(searchText)
+            return  (stringMatch != nil)
+        })
+        self.filteredShows.extend(DJshows)
         
         tableView.reloadData()
     }
