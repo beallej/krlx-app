@@ -42,9 +42,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         //Pulls Shows from Calendar
         self.calendarAssistant.pullKRLXGoogleCal(self)
         
-        //Change the font color in the search bar
-        //var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
-        //textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+        
      
         
         //Connect to menu
@@ -54,6 +52,11 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.tableView!.dataSource = self
         self.searchBar.delegate = self
         // initialise filtered show table to all shows except from the currently showing
+
+        //Change the font color in the search bar
+        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+
         self.filteredShows = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         self.filteredShows.removeAtIndex(0)
         
@@ -131,7 +134,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         show = self.filteredShows[indexPath.row]
         
         cell.title.text = show.getTitle()
-        
+        cell.DJ.text = show.getDJ()
         
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         cell.start.text = finalTimeString
@@ -204,19 +207,42 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         var showArrayfull = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         var showArrayExceptFirst = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         showArrayExceptFirst.removeAtIndex(0)
+
+        // Search by Show Names
         // If searchText is empty, return all show (except currently shown)
         // Else, return show with stringMatch only (including current show)
         self.filteredShows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
             var stringMatch = false
             // stringMatch = true if found a show that has word start with the user' entered string
             // e.g User enter "Sn" then shows like "Snack Time" will be true but "No Reasons" won't
-            for word in show.title.lowercaseString.componentsSeparatedByString(" "){
+            for word in show.getTitle().lowercaseString.componentsSeparatedByString(" "){
+                if word.hasPrefix(searchText.lowercaseString){
+                    stringMatch = true
+                }
+            }
+            for word in show.getDJ().lowercaseString.componentsSeparatedByString(" "){
                 if word.hasPrefix(searchText.lowercaseString){
                     stringMatch = true
                 }
             }
             return  stringMatch
         })
+        
+//        //Also searches by DJ Name
+//        var DJshows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
+//            var stringMatch = false
+//            // stringMatch = true if found a show that has word start with the user' entered string
+//            // e.g User enter "Sn" then shows like "Snack Time" will be true but "No Reasons" won't
+//            for word in show.getDJ().lowercaseString.componentsSeparatedByString(" "){
+//                if word.hasPrefix(searchText.lowercaseString){
+//                    stringMatch = true
+//                }
+//            }
+//            return  stringMatch
+//
+//        })
+//        self.filteredShows.extend(DJshows)
+
         tableView.reloadData()
     }
     
