@@ -111,11 +111,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return self.filteredShows.count
-//        if tableView == self.searchDisplayController!.searchResultsTableView {
-//            return self.filteredShows.count - 1
-//        } else {
-//            return self.appDelegate.loadedShowHeaders.count - 1
-//        }
     }
     
     
@@ -133,14 +128,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         var show: ShowHeader
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
         show = self.filteredShows[indexPath.row]
-
-//        if tableView == self.searchDisplayController!.searchResultsTableView {
-//            show = self.filteredShows[indexPath.row]
-//        } else {
-//            show = self.appDelegate.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
-//        }
         
-        //offset by 1 because the first show is displayed separately
         cell.title.text = show.getTitle()
         
         
@@ -209,17 +197,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         
     }
-
-    func filterContentForSearchText(searchText: String) {
-        // Filter the array using the filter method
-            var showArray = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
-            self.filteredShows = showArray.filter({(show: ShowHeader) -> Bool in
-            let stringMatch = show.title.rangeOfString(searchText)
-            return  (stringMatch != nil)
-        })
-    }
-
-    
 
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         var showArrayfull = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
