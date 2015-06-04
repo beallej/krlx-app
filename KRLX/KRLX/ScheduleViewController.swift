@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, DataObserver {
+class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, DataObserver , UISearchBarDelegate, UISearchDisplayDelegate {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
@@ -29,6 +29,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var calendarAssistant = GoogleAPIPull()
+    var filteredShows = [ShowHeader]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +42,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.calendarAssistant.pullKRLXGoogleCal(self)
         
         //Change the font color in the search bar
-        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
-        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+        //var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        //textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
      
         
         //Connect to menu
@@ -107,7 +108,11 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return appDelegate.loadedShowHeaders.count - 1
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            return self.filteredShows.count - 1
+        } else {
+            return self.appDelegate.loadedShowHeaders.count - 1
+        }
     }
     
     
@@ -122,8 +127,14 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     //populates table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var show: ShowHeader
         let cell = tableView.dequeueReusableCellWithIdentifier("showCell", forIndexPath: indexPath) as! ScheduleTableViewCell
-        let show = appDelegate.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            show = self.filteredShows[indexPath.row]
+        } else {
+            show = self.appDelegate.loadedShowHeaders[indexPath.row + 1] as! ShowHeader
+        }
+        
         //offset by 1 because the first show is displayed separately
         cell.title.text = show.getTitle()
         
@@ -194,6 +205,23 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         
     }
 
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+            var showArray = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
+            self.filteredShows = showArray.filter({(show: ShowHeader) -> Bool in
+            let stringMatch = show.title.rangeOfString(searchText)
+            return  (stringMatch != nil)
+        })
+    }
 
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
+    }
 
 }
