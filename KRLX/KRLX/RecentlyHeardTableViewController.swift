@@ -28,6 +28,7 @@ class RecentlyHeardTableViewController: UITableViewController {
         //Connect to menu
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
        
+        // Hide empty cell
         tableView.tableFooterView = UIView()
         
         

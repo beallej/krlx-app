@@ -31,6 +31,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     var calendarAssistant = GoogleAPIPull()
     var filteredShows = [ShowHeader]()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //Adding play/pause button in navigation bar
@@ -51,21 +52,21 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
-        searchBar.delegate = self
+        self.searchBar.delegate = self
+        // initialise filtered show table to all shows except from the currently showing
         self.filteredShows = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         self.filteredShows.removeAtIndex(0)
+        
         //clear placeholder time label
         self.currentTimeLabel.text = ""
         
         //Display previously loaded first show
         if appDelegate.loadedShowHeaders.count != 0{
             self.setFirstShow()
-
         }
-
         
-        
-        
+        // Hide empty cell
+        tableView.tableFooterView = UIView()
 
     }
     override func viewWillAppear(animated: Bool) {
@@ -198,15 +199,29 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         
     }
 
+    //This function read the text from search bar and decide whether to reload the data
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         var showArrayfull = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         var showArrayExceptFirst = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         showArrayExceptFirst.removeAtIndex(0)
+        // If searchText is empty, return all show (except currently shown)
+        // Else, return show with stringMatch only (including current show)
         self.filteredShows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
-            let stringMatch = show.title.rangeOfString(searchText)
-            return  (stringMatch != nil)
+            var stringMatch = false
+            // stringMatch = true if found a show that has word start with the user' entered string
+            // e.g User enter "Sn" then shows like "Snack Time" will be true but "No Reasons" won't
+            for word in show.title.lowercaseString.componentsSeparatedByString(" "){
+                if word.hasPrefix(searchText.lowercaseString){
+                    stringMatch = true
+                }
+            }
+            return  stringMatch
         })
-        
         tableView.reloadData()
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        //hide keyboard when not in designated searchbar or table :D
+        self.view.endEditing(true)
     }
 }
