@@ -45,7 +45,6 @@ class RecentlyHeardTableViewController: UITableViewController {
     //Pull to refresh
     func handleRefresh(refreshControl: UIRefreshControl) {
         self.loadSongs()
-        refreshControl.endRefreshing()
         
     }
     
@@ -63,6 +62,9 @@ class RecentlyHeardTableViewController: UITableViewController {
                 
                 //This has to be set here, after the tableview has been loaded, as opposed to as within viewDidLoad/willAppear/didAppear (at those points, the tableview has not yet been loaded because we're loading it asynchronously)
                 self.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+                if (self.refreshControl!.refreshing) {
+                    self.refreshControl?.endRefreshing()
+                }
 
             }
         }
