@@ -193,21 +193,16 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
     @IBAction func showShareActionSheet(sender: AnyObject) {
         var sheet: UIActionSheet = UIActionSheet()
-        let title: String = "Please choose a plan"
+        let title: String = "Share Article"
         sheet.title  = title
         sheet.delegate = self
         sheet.addButtonWithTitle("Cancel")
-        sheet.addButtonWithTitle("A plan")
-        sheet.addButtonWithTitle("B plan")
-        sheet.addButtonWithTitle("C plan")
+        sheet.addButtonWithTitle("Facebook")
+        sheet.addButtonWithTitle("Twitter")
         
-        // キャンセルボタンのindexを指定
         sheet.cancelButtonIndex = 0
-        
-        // UIActionSheet表示
+            //sheet.buttonTitleAtIndex(buttonIndex)
         sheet.showInView(self.view)
     }
-    
-
     
 }
