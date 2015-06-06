@@ -126,7 +126,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         }
         // if nothing ever loaded from server, label is blank
     }
-    
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "popoverSegue" {
             //let popoverViewController = segue.destinationViewController as! UIViewController
@@ -134,7 +134,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
             popoverViewController.popoverPresentationController!.delegate = self
         }
-    }
+    }*/
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
@@ -156,6 +156,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         popover!.sourceRect = CGRectMake(335,65,0,0)
         
         self.presentViewController(popoverContent, animated: true, completion: nil)
+        
+        setVolumeButton()
     }
     
     func setVolumeButton(){
