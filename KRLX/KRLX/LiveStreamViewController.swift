@@ -21,7 +21,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     @IBOutlet weak var currentShowLabel: UILabel!
     
     
-    @IBOutlet weak var volumeControllerButton: UIBarButtonItem!
+    var volumeControllerButton: UIBarButtonItem!
+    //@IBOutlet weak var volumeControllerButton: UIBarButtonItem!
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -41,10 +42,12 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         
         if self.appDelegate.isPlaying {
             let image = UIImage(named: "pause2") as UIImage?
+            //let image = UIImage(named: "pause2") as UIImage?
             playButton.setBackgroundImage(image, forState: UIControlState.Normal)
             
         }else{
             let image = UIImage(named: "play2") as UIImage?
+            //let image = UIImage(named: "play2") as UIImage?
             playButton.setBackgroundImage(image, forState: UIControlState.Normal)
         }
         
@@ -54,12 +57,14 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         
         
         //self.volumeControllerButton.setBackgroundImage(volumeImg, forState: .Normal, barMetrics: .Default)
-        /*
+        
         var volumeButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         volumeButton.frame = CGRectMake(0, 0, 40, 40)
-        volumeButton.setImage(UIImage(named:"volumeIcon.png"), forState: UIControlState.Normal)
+        volumeButton.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+        volumeButton.addTarget(self, action: "showPopover:", forControlEvents: UIControlEvents.TouchUpInside)
         self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
-        */
+        self.navigationItem.setRightBarButtonItem(self.volumeControllerButton, animated: false)
+        
                 // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -143,6 +148,24 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
+    }
+    
+    @IBAction func showPopover(sender: AnyObject) {
+        
+        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("volumeControllerPopView") as! UIViewController
+        
+        popoverContent.modalPresentationStyle = .Popover
+        var popover = popoverContent.popoverPresentationController
+        
+        // set the size you wan to display
+        popoverContent.preferredContentSize = CGSizeMake(54, 150)
+        popover!.delegate = self
+        popover!.sourceView = self.view
+        
+        // position of the popover where it's showed
+        popover!.sourceRect = CGRectMake(335,65,0,0)
+        
+        self.presentViewController(popoverContent, animated: true, completion: nil)
     }
     
 }
