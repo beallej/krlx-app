@@ -12,7 +12,7 @@ import UIKit
 import WebKit
 import AVFoundation
 
-class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerDelegate {
+class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerDelegate, UIActionSheetDelegate {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -189,6 +189,25 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
     
     }
+    
+    
+    @IBAction func showShareActionSheet(sender: AnyObject) {
+        var sheet: UIActionSheet = UIActionSheet()
+        let title: String = "Please choose a plan"
+        sheet.title  = title
+        sheet.delegate = self
+        sheet.addButtonWithTitle("Cancel")
+        sheet.addButtonWithTitle("A plan")
+        sheet.addButtonWithTitle("B plan")
+        sheet.addButtonWithTitle("C plan")
+        
+        // キャンセルボタンのindexを指定
+        sheet.cancelButtonIndex = 0
+        
+        // UIActionSheet表示
+        sheet.showInView(self.view)
+    }
+    
 
     
 }
