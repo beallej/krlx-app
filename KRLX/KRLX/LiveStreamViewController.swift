@@ -22,7 +22,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     
     var volumeControllerButton: UIBarButtonItem!
-    //@IBOutlet weak var volumeControllerButton: UIBarButtonItem!
+    var volumeButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -54,18 +54,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         //Connect to menu
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
 
-        
-        
-        //self.volumeControllerButton.setBackgroundImage(volumeImg, forState: .Normal, barMetrics: .Default)
-        
-        var volumeButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        volumeButton.frame = CGRectMake(0, 0, 40, 40)
-        volumeButton.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
-        volumeButton.addTarget(self, action: "showPopover:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
-        self.navigationItem.setRightBarButtonItem(self.volumeControllerButton, animated: false)
-        
-                // Do any additional setup after loading the view.
+        setVolumeButton()
+        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
         self.appDelegate.subscribe(self)
@@ -166,6 +156,23 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         popover!.sourceRect = CGRectMake(335,65,0,0)
         
         self.presentViewController(popoverContent, animated: true, completion: nil)
+    }
+    
+    func setVolumeButton(){
+        self.volumeButton.frame = CGRectMake(0, 0, 30, 30)
+        if (appDelegate.currentVolume == 0){
+            self.volumeButton.setImage(UIImage(named:"volumeLevel0.png"), forState: UIControlState.Normal)
+        }else if (appDelegate.currentVolume < 0.5) {
+            self.volumeButton.setImage(UIImage(named:"volumeLevel1.png"), forState: UIControlState.Normal)
+        }else if (appDelegate.currentVolume < 1) {
+            self.volumeButton.setImage(UIImage(named:"volumeLevel2.png"), forState: UIControlState.Normal)
+        }else{
+            self.volumeButton.setImage(UIImage(named:"volumeLevel4.png"), forState: UIControlState.Normal)
+        }
+        
+        self.volumeButton.addTarget(self, action: "showPopover:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
+        self.navigationItem.setRightBarButtonItem(self.volumeControllerButton, animated: false)
     }
     
 }
