@@ -164,9 +164,9 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.volumeButton.frame = CGRectMake(0, 0, 30, 30)
         if (appDelegate.currentVolume == 0){
             self.volumeButton.setImage(UIImage(named:"volumeLevel0.png"), forState: UIControlState.Normal)
-        }else if (appDelegate.currentVolume < 0.5) {
+        }else if (appDelegate.currentVolume < 0.4) {
             self.volumeButton.setImage(UIImage(named:"volumeLevel1.png"), forState: UIControlState.Normal)
-        }else if (appDelegate.currentVolume < 1) {
+        }else if (appDelegate.currentVolume < 0.8) {
             self.volumeButton.setImage(UIImage(named:"volumeLevel2.png"), forState: UIControlState.Normal)
         }else{
             self.volumeButton.setImage(UIImage(named:"volumeLevel4.png"), forState: UIControlState.Normal)
