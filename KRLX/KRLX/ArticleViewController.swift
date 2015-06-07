@@ -192,6 +192,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
     
     @IBAction func showShareActionSheet(sender: AnyObject) {
+        /*
         var sheet: UIActionSheet = UIActionSheet()
         let title: String = "Share Article"
         sheet.title  = title
@@ -203,6 +204,20 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         sheet.cancelButtonIndex = 0
             //sheet.buttonTitleAtIndex(buttonIndex)
         sheet.showInView(self.view)
+*/
+        var newURL = articleHeader.getURL()
+        shareContent(text: newURL)
     }
+    
+    func shareContent(#text: String?) {
+        var itemsToShare = [AnyObject]()
+        if let text = text {
+            itemsToShare.append(text)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
+    }
+
     
 }
