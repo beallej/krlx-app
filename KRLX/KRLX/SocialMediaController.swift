@@ -46,46 +46,21 @@ class SocialMediaController: UIViewController{
     }
     
     @IBAction func twitterButtonSender(sender: AnyObject) {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
-            
+       
             var tweetShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             tweetShare.setInitialText(articleURL)
             self.presentViewController(tweetShare, animated: true, completion: nil)
-            
-        } else {
-            
-            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to tweet.", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
+
     }
     
    
     @IBAction func facebookButtonSender(sender: AnyObject) {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+
             var fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             fbShare.setInitialText(articleURL)
             self.presentViewController(fbShare, animated: true, completion: nil)
-            
-        } else {
-            var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
-    }
-    
 
-    /*
-    @IBAction func goBack(sender: AnyObject) {
-        performSegueWithIdentifier("back",sender: nil)
     }
-    
-    
-    @IBAction func back(sender : UIButton) {
-        performSegueWithIdentifier("back",sender: nil)
-    }*/
+
 }
 
