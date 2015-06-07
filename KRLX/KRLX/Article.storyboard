@@ -83,7 +83,7 @@ Published: 28 December 2015
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qto-9S-0Q5">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qto-9S-0Q5">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="q5g-0b-6Fl">
@@ -97,6 +97,7 @@ Published: 28 December 2015
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tDb-0u-EG8" firstAttribute="firstBaseline" secondItem="dk2-AF-qjJ" secondAttribute="baseline" constant="-7" id="3Ih-G0-374"/>
+                            <constraint firstItem="Qto-9S-0Q5" firstAttribute="leading" secondItem="RQ4-Qm-5TW" secondAttribute="leading" id="6Ni-FM-ZaY"/>
                             <constraint firstItem="tDb-0u-EG8" firstAttribute="baseline" secondItem="dk2-AF-qjJ" secondAttribute="firstBaseline" constant="-7" id="8rG-RQ-Ise"/>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="leading" secondItem="dk2-AF-qjJ" secondAttribute="leading" id="Aej-45-9kG"/>
                             <constraint firstItem="V9z-T0-WP1" firstAttribute="trailing" secondItem="dk2-AF-qjJ" secondAttribute="trailing" id="BvU-fz-E6c"/>
@@ -119,9 +120,12 @@ Published: 28 December 2015
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="leading" secondItem="rRh-2w-N2F" secondAttribute="leading" id="hud-Cc-dv5"/>
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="centerX" secondItem="vxQ-Ew-Tq3" secondAttribute="centerX" id="iwV-xX-hF0"/>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="leading" secondItem="rRh-2w-N2F" secondAttribute="leadingMargin" id="jeK-B9-6Ws"/>
+                            <constraint firstItem="Hwz-kt-68H" firstAttribute="top" secondItem="Qto-9S-0Q5" secondAttribute="bottom" id="mLt-cg-y6A"/>
+                            <constraint firstItem="Qto-9S-0Q5" firstAttribute="trailing" secondItem="RQ4-Qm-5TW" secondAttribute="trailing" id="n8k-0D-LUg"/>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="centerY" secondItem="tDb-0u-EG8" secondAttribute="centerY" id="o3Z-26-e8T"/>
                             <constraint firstAttribute="trailing" secondItem="RQ4-Qm-5TW" secondAttribute="trailing" id="oZf-Zp-FHh"/>
                             <constraint firstItem="RQ4-Qm-5TW" firstAttribute="top" secondItem="iNe-zX-Yep" secondAttribute="bottom" constant="24" id="pLG-lo-fIr"/>
+                            <constraint firstItem="Qto-9S-0Q5" firstAttribute="bottom" secondItem="Hwz-kt-68H" secondAttribute="top" id="pWZ-iu-8kJ"/>
                             <constraint firstItem="V9z-T0-WP1" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="72" id="tn6-IX-UmF"/>
                             <constraint firstItem="iNe-zX-Yep" firstAttribute="top" secondItem="UJX-bJ-hCc" secondAttribute="bottom" constant="70" id="v1d-oB-KpP"/>
                             <constraint firstItem="V9z-T0-WP1" firstAttribute="leading" secondItem="dk2-AF-qjJ" secondAttribute="leading" id="wP4-yg-uAQ"/>
@@ -131,6 +135,7 @@ Published: 28 December 2015
                                 <exclude reference="buQ-lD-j1I"/>
                                 <exclude reference="gOQ-HV-KvL"/>
                                 <exclude reference="Ehe-lV-PaG"/>
+                                <exclude reference="mLt-cg-y6A"/>
                             </mask>
                         </variation>
                     </view>
