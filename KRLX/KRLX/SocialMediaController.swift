@@ -16,11 +16,7 @@ class SocialMediaController: UIViewController{
     @IBOutlet weak var menuBarItem: UINavigationItem!
     
     let transitionManager = MenuTransitionManager()
-    
-    //@IBOutlet weak var twitterIcon: UIImageView!
-    
-    //@IBOutlet weak var facebookIcon: UIImageView!
-    
+        
     var articleURL: String = "Article URL\n"
     
     @IBOutlet weak var facebookIcon: UIButton!
@@ -48,7 +44,7 @@ class SocialMediaController: UIViewController{
     @IBAction func twitterButtonSender(sender: AnyObject) {
        
             var tweetShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            tweetShare.setInitialText(articleURL)
+            tweetShare.addURL(NSURL(string: articleURL))
             self.presentViewController(tweetShare, animated: true, completion: nil)
 
     }
@@ -57,7 +53,7 @@ class SocialMediaController: UIViewController{
     @IBAction func facebookButtonSender(sender: AnyObject) {
 
             var fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            fbShare.setInitialText(articleURL)
+            fbShare.addURL(NSURL(string: articleURL))
             self.presentViewController(fbShare, animated: true, completion: nil)
 
     }
