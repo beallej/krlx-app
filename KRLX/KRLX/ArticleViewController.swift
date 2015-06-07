@@ -12,7 +12,7 @@ import UIKit
 import WebKit
 import AVFoundation
 
-class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerDelegate {
+class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerDelegate, UIActionSheetDelegate {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -189,6 +189,20 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
     
     }
-
+    
+    
+    @IBAction func showShareActionSheet(sender: AnyObject) {
+        var sheet: UIActionSheet = UIActionSheet()
+        let title: String = "Share Article"
+        sheet.title  = title
+        sheet.delegate = self
+        sheet.addButtonWithTitle("Cancel")
+        sheet.addButtonWithTitle("Facebook")
+        sheet.addButtonWithTitle("Twitter")
+        
+        sheet.cancelButtonIndex = 0
+            //sheet.buttonTitleAtIndex(buttonIndex)
+        sheet.showInView(self.view)
+    }
     
 }

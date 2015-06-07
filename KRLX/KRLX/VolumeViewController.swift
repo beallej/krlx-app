@@ -35,6 +35,7 @@ class VolumeViewController: UIViewController {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.currentVolume = Float(sender.value)
         appDelegate.player.volume = appDelegate.currentVolume
+        
     }
     
     

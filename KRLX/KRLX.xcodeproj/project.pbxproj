@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		044391731B16315000D0C998 /* SongHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044391721B16315000D0C998 /* SongHeader.swift */; };
+		3308E1391B1EA54A00F02B4A /* livePlayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3308E1371B1EA54A00F02B4A /* livePlayIcon.png */; };
+		3310299E1B238BA9003CB312 /* volumeLevel0.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299A1B238BA9003CB312 /* volumeLevel0.png */; };
+		3310299F1B238BA9003CB312 /* volumeLevel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299B1B238BA9003CB312 /* volumeLevel1.png */; };
+		331029A01B238BA9003CB312 /* volumeLevel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299C1B238BA9003CB312 /* volumeLevel2.png */; };
+		331029A11B238BA9003CB312 /* volumeLevel4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299D1B238BA9003CB312 /* volumeLevel4.png */; };
 		3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */; };
 		3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */; };
 		3364C5031B19A10E008D1707 /* VolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364C5021B19A10E008D1707 /* VolumeViewController.swift */; };
@@ -15,7 +20,6 @@
 		BD02FEDD1B0E578500751F7B /* ShowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02FEDC1B0E578500751F7B /* ShowHeader.swift */; };
 		BD02FEDF1B0E579B00751F7B /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */; };
 		BD286CD31AEF0BA10021B036 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD286CD21AEF0BA10021B036 /* SWRevealViewController.m */; };
-		BD2F27591B0D0D3400A835F8 /* htmlString.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD2F27581B0D0D3400A835F8 /* htmlString.txt */; };
 		BD365C651B02801700BF946A /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C621B02801700BF946A /* HTMLNode.swift */; };
 		BD365C661B02801700BF946A /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD365C631B02801700BF946A /* HTMLParser.swift */; };
 		BD365C681B02820400BF946A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD365C671B02820400BF946A /* libxml2.dylib */; };
@@ -52,6 +56,11 @@
 
 /* Begin PBXFileReference section */
 		044391721B16315000D0C998 /* SongHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongHeader.swift; sourceTree = "<group>"; };
+		3308E1371B1EA54A00F02B4A /* livePlayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = livePlayIcon.png; sourceTree = "<group>"; };
+		3310299A1B238BA9003CB312 /* volumeLevel0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel0.png; sourceTree = "<group>"; };
+		3310299B1B238BA9003CB312 /* volumeLevel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel1.png; sourceTree = "<group>"; };
+		3310299C1B238BA9003CB312 /* volumeLevel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel2.png; sourceTree = "<group>"; };
+		3310299D1B238BA9003CB312 /* volumeLevel4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel4.png; sourceTree = "<group>"; };
 		3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaController.swift; sourceTree = "<group>"; };
 		3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTransitionManager.swift; sourceTree = "<group>"; };
 		3364C5021B19A10E008D1707 /* VolumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +70,6 @@
 		BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KRLX-Bridging-Header.h"; sourceTree = "<group>"; };
 		BD286CD11AEF0BA10021B036 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		BD286CD21AEF0BA10021B036 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		BD2F27581B0D0D3400A835F8 /* htmlString.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htmlString.txt; sourceTree = "<group>"; };
 		BD365C621B02801700BF946A /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		BD365C631B02801700BF946A /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		BD365C671B02820400BF946A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -184,7 +192,11 @@
 		F47029F31A7F27DB00E30A3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BD2F27581B0D0D3400A835F8 /* htmlString.txt */,
+				3310299A1B238BA9003CB312 /* volumeLevel0.png */,
+				3310299B1B238BA9003CB312 /* volumeLevel1.png */,
+				3310299C1B238BA9003CB312 /* volumeLevel2.png */,
+				3310299D1B238BA9003CB312 /* volumeLevel4.png */,
+				3308E1371B1EA54A00F02B4A /* livePlayIcon.png */,
 				3397B6591AFEE58C00974947 /* high_quality.m3u */,
 				F47029F41A7F27DB00E30A3C /* Info.plist */,
 				BDCEA5211B177BD700A078C3 /* GoogleCalCredentials.txt */,
@@ -298,10 +310,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD785BED1B03EE0C003A3C33 /* Article.storyboard in Resources */,
-				BD2F27591B0D0D3400A835F8 /* htmlString.txt in Resources */,
 				F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */,
 				F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */,
+				3310299F1B238BA9003CB312 /* volumeLevel1.png in Resources */,
+				331029A11B238BA9003CB312 /* volumeLevel4.png in Resources */,
 				BDCEA5221B177BD700A078C3 /* GoogleCalCredentials.txt in Resources */,
+				3308E1391B1EA54A00F02B4A /* livePlayIcon.png in Resources */,
+				3310299E1B238BA9003CB312 /* volumeLevel0.png in Resources */,
+				331029A01B238BA9003CB312 /* volumeLevel2.png in Resources */,
 				3397B65A1AFEE58C00974947 /* high_quality.m3u in Resources */,
 				BD785BF01B03EE8C003A3C33 /* Main.storyboard in Resources */,
 			);
