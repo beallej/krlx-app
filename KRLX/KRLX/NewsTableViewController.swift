@@ -11,17 +11,16 @@ import Social
 class NewsTableViewController: UITableViewController, PlayPause {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
-    //var appDelegate: AppDelegate!
     
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate    
     
     override func viewDidLoad() {
         
         //Set Play/Pause button in navigation bar
-        appDelegate.setUpPlayPause(self)
-
+        self.appDelegate.setUpPlayPause(self)
         
         super.viewDidLoad()
         
@@ -29,13 +28,13 @@ class NewsTableViewController: UITableViewController, PlayPause {
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
         
         self.loadArticles()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+
 
     }
     
+    //Loads article info from KRLX website
     func loadArticles(){
+        
         //because scraping is sloooowwww, we use the magic of asynchronization!
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
@@ -46,6 +45,8 @@ class NewsTableViewController: UITableViewController, PlayPause {
                 self.spinnyWidget.stopAnimating()
                 self.tableView.reloadData()
                 
+                
+                //No articles found
                 if (self.appDelegate.loadedArticleHeaders.count == 0){
                     var alert = UIAlertController(title: "Whoops!", message: "Internet problems, try again later", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -63,7 +64,6 @@ class NewsTableViewController: UITableViewController, PlayPause {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
@@ -88,19 +88,19 @@ class NewsTableViewController: UITableViewController, PlayPause {
          return cell
     }
 
- 
+    //When user clicks on an article to view, we load that article
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
        
         let articleStoryboard = UIStoryboard(name: "Article", bundle: nil)
-
         var articleVC = articleStoryboard.instantiateViewControllerWithIdentifier("articleViewController") as! ArticleViewController
         articleVC.articleHeader = appDelegate.loadedArticleHeaders[indexPath.row] as! ArticleHeader
        
         self.navigationController?.pushViewController(articleVC, animated: true)
     }
     
+    //Toggles play pause
     @IBAction func musicButtonClicked(sender: AnyObject) {
-        appDelegate.musicButtonClicked(self)
+        self.appDelegate.musicButtonClicked(self)
     }
 
 

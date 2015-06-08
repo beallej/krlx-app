@@ -19,7 +19,6 @@ class VolumeViewController: UIViewController {
 
     override func viewDidLoad() {
         volumeSlider.value = appDelegate.currentVolume
-
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -32,9 +31,8 @@ class VolumeViewController: UIViewController {
     
     
     @IBAction func changeVolume(sender: UISlider) {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.currentVolume = Float(sender.value)
-        appDelegate.player.volume = appDelegate.currentVolume
+        self.appDelegate.currentVolume = Float(sender.value)
+        self.appDelegate.player.volume = appDelegate.currentVolume
         
     }
     

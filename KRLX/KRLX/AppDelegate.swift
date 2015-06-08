@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     //For live streaming view
+    
+    /*UNCOMMENT LINE BELOW AND COMMENT OTHER LINE TO GET KRLX*/
     //var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
     var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
 
@@ -34,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var refreshTimer : NSTimer!
     var subscribers = NSMutableArray()
+    
+    //The first time, timer is for less thann 30 minute interval
     var firstTimerRun = true
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -91,6 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
+    //Sets up the menu and hamburger button
     func setUpSWRevealVC(vc: UIViewController, menuButton: UIBarButtonItem){
         if vc.revealViewController() != nil {
             menuButton.target = vc.revealViewController()
@@ -98,6 +104,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc.view.addGestureRecognizer(vc.revealViewController().panGestureRecognizer())
         }
     }
+    
+    //Sets up play/pause toggle in viewcontrollers
     func setUpPlayPause(vc: PlayPause){
         self.setButtons(vc)
         self.addRightNavItemOnView(vc)
@@ -165,9 +173,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return NSFileManager().fileExistsAtPath(filePath!) ? String(contentsOfFile: filePath!, encoding: utf8, error: &error)! : nil
     }
     
+    //Sets up timer to go off at next half-hour mark
     func setUpTimer(){
 
-        //refreshes at next half hour
         let timeInt = self.getTimeToRefresh()
         var timeSeconds : NSTimeInterval = Double(timeInt)
         self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(timeSeconds, target: self, selector: Selector("handleTimer"), userInfo: nil, repeats: false)
@@ -199,6 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    //A view controller subscribes when it wants to get its data updated
     func subscribe(viewController : UIViewController){
         self.subscribers.addObject(viewController)
     }
@@ -206,6 +215,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.subscribers.removeObject(viewController)
     }
     
+    //Refreshes ever 30 minutes
     func handleTimer(){
         
         //The first time, the timer runs for less time to get to next half hour mark

@@ -27,6 +27,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var calendarAssistant = GoogleAPIPull()
     var filteredShows = [ShowHeader]()
@@ -37,35 +38,18 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         
         //Adding play/pause button in navigation bar
         appDelegate.setUpPlayPause(self)
-
-
         
         //Pulls Shows from Calendar
         self.calendarAssistant.pullKRLXGoogleCal(self)
-        
-        
-     
         
         //Connect to menu
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
 
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
-        self.searchBar.delegate = self
         
-        //Makes search keyboard disappear when you touch tableview
-        tap.addTarget(self, action: "didTapOnTableView:")
-        self.tableView.addGestureRecognizer(tap)
-        self.tableView.userInteractionEnabled = true
-        self.tableView.addGestureRecognizer(tap)
-     
-        
+        self.setUpSearchBar()
         // initialise filtered show table to all shows except from the currently showing
-
-        //Change the font color in the search bar
-        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
-        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
-
         self.filteredShows = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         self.filteredShows.removeAtIndex(0)
         
@@ -77,8 +61,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             self.setFirstShow()
         }
         
-        // Hide empty cell
-        tableView.tableFooterView = UIView()
+        // Hide empty cells
+        self.tableView.tableFooterView = UIView()
 
     }
     override func viewWillAppear(animated: Bool) {
@@ -89,10 +73,28 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         appDelegate.unssubscribe(self)
     }
     
+    func setUpSearchBar(){
+        self.searchBar.delegate = self
+        
+        //Makes search keyboard disappear when you touch tableview
+        tap.addTarget(self, action: "didTapOnTableView:")
+        self.tableView.addGestureRecognizer(tap)
+        self.tableView.userInteractionEnabled = true
+        self.tableView.addGestureRecognizer(tap)
+        
+        //Change the font color in the search bar
+        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+
+    }
+    
+    //Pulls show data for app
     func notify() {
         self.calendarAssistant.pullKRLXGoogleCal(self)
     }
     
+    
+    //Upates the view with new data
     func updateView(){
         //UI updates must be in main queue, else there is a delay :(
         dispatch_async(dispatch_get_main_queue()) {
@@ -161,6 +163,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
     }
     
+    
+    //Toggles play/pause
     @IBAction func musicButtonClicked(sender: AnyObject) {
         appDelegate.musicButtonClicked(self)
     }
@@ -192,7 +196,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             return  stringMatch
         })
 
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     //hide keyboard when not in designated searchbar or table :D

@@ -17,18 +17,19 @@ class RecentlyHeardTableViewController: UITableViewController, PlayPause {
 
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate.setUpPlayPause(self)
+        self.appDelegate.setUpPlayPause(self)
 
         //Connect to menu
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
        
-        // Hide empty cell
-        tableView.tableFooterView = UIView()
+        // Hide empty cells
+        self.tableView.tableFooterView = UIView()
         
         
         //pull to refresh power!
@@ -37,7 +38,7 @@ class RecentlyHeardTableViewController: UITableViewController, PlayPause {
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
      
         //Pull songs from server, load into table
-        scraper = ScrapeAssistant()
+        self.scraper = ScrapeAssistant()
         self.loadSongs()
        
     }
@@ -132,7 +133,7 @@ class RecentlyHeardTableViewController: UITableViewController, PlayPause {
     }
 
     @IBAction func musicButtonClicked(sender: AnyObject) {
-        appDelegate.musicButtonClicked(self)
+        self.appDelegate.musicButtonClicked(self)
     }
 
 }

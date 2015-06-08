@@ -19,12 +19,10 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var subtitle: UITextView!
     
-    @IBOutlet weak var button: UIButton!
-    
     
     @IBOutlet weak var content: UIWebView!
-    
     var articleHeader : ArticleHeader!
+    
     var activityIndicator : UIActivityIndicatorView!
     
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
@@ -33,8 +31,9 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Adding play/pause button in navigation bar
-        appDelegate.setUpPlayPause(self)
+        self.appDelegate.setUpPlayPause(self)
         
         //set webview delegate
         self.content.delegate = self
@@ -65,7 +64,10 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         self.monthLabel.text = month
         self.subtitle.text = "Written by "+self.articleHeader.getAuthor()+"\n"+day+" "+longMonth+" "+year
     }
+    
+    //loads article content
     func loadArticle(){
+        
         //Display an adorable gif while loading <3
         var urlSpin = NSURL(string:"http://www.blackbox.sa.com/app/webroot/img/loading.gif")
         var req = NSURLRequest(URL:urlSpin!)
@@ -113,7 +115,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
    
     
-    
+    //Called when they want to share the article
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "next") {
             var newURL = articleHeader.getURL()
@@ -124,6 +126,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
         let destinationVC = segue.destinationViewController as! SocialMediaController
         destinationVC.articleURL = newURL
     }
+    
     //unwind
     @IBAction func exitTo(segue: UIStoryboardSegue) {
         if (segue.identifier == "back") {

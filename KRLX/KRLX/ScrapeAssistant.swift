@@ -6,6 +6,9 @@
 //  Based on the KRLX website structure on May 2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
+//  Any "HTML parser error" print statements are from the library and cannot be removed,
+//  we are very sorry.
+//
 
 class ScrapeAssistant {
     var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

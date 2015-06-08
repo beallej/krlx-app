@@ -12,12 +12,16 @@ import AVFoundation
 
 class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataObserver, UIPopoverPresentationControllerDelegate{
 
+    //Hamburger button
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
+    
+    //Playback
     @IBOutlet weak var playButton: UIButton!
+    var imagePlay = UIImage(named: "play2") as UIImage?
+    var imagePause = UIImage(named: "pause2") as UIImage?
     
     // http://stackoverflow.com/questions/5655864/check-play-state-of-avplayer
-    
     @IBOutlet weak var currentShowLabel: UILabel!
     
     
@@ -42,24 +46,19 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.appDelegate.subscribe(self)
         self.calendarAssistant.pullKRLXGoogleCal(self)
   
-        //volumeController.value = appDelegate.currentVolume
         self.appDelegate.player.volume = appDelegate.currentVolume
         
         if self.appDelegate.isPlaying {
-            let image = UIImage(named: "pause2") as UIImage?
-            //let image = UIImage(named: "pause2") as UIImage?
-            playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+            self.playButton.setBackgroundImage(self.imagePause, forState: UIControlState.Normal)
             
         }else{
-            let image = UIImage(named: "play2") as UIImage?
-            //let image = UIImage(named: "play2") as UIImage?
-            playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+            self.playButton.setBackgroundImage(self.imagePlay, forState: UIControlState.Normal)
         }
         
         //Connect to menu
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
 
-        setVolumeButton()
+        self.setVolumeButton()
         
         //Makes volume controller disappear when you click on background
         tap.addTarget(self, action: "didTapOnBackgroundView:")
@@ -83,38 +82,25 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     @IBAction func buttonPressed(sender: AnyObject) {
         if self.appDelegate.isPlaying {
-            pauseRadio()
-            appDelegate.isPlaying = false
+            self.pauseRadio()
+            self.appDelegate.isPlaying = false
         }else{
-            playRadio()
-            appDelegate.isPlaying = true
+            self.playRadio()
+            self.appDelegate.isPlaying = true
             
         }
     }
     
     func playRadio() {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.appDelegate.player.play()
-        let image = UIImage(named: "pause2") as UIImage?
-        self.playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        self.playButton.setBackgroundImage(self.imagePause, forState: UIControlState.Normal)
     }
     
     func pauseRadio() {
-        
         self.appDelegate.player.pause()
-        let image = UIImage(named: "play2") as UIImage?
-        self.playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        self.playButton.setBackgroundImage(self.imagePlay, forState: UIControlState.Normal)
     }
-    
-    /*
-    @IBAction func changeVolume(sender: UISlider) {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.currentVolume = Float(sender.value)
-        appDelegate.player.volume = appDelegate.currentVolume
-    }
-*/
-    
-    
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -135,17 +121,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
                 self.currentShowLabel.sizeToFit()
             }
         }
-        // if nothing ever loaded from server, label is blank
     }
-    /*
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "popoverSegue" {
-            //let popoverViewController = segue.destinationViewController as! UIViewController
-            let popoverViewController = segue.destinationViewController as! VolumeViewController
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            popoverViewController.popoverPresentationController!.delegate = self
-        }
-    }*/
+
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
@@ -167,10 +144,11 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         popover!.sourceRect = CGRectMake(335,65,0,0)
         
         self.presentViewController(self.popoverContent!, animated: true, completion: nil)
-        
-        setVolumeButton()
+        self.setVolumeButton()
     }
     
+    
+    //Sets up volume button
     func setVolumeButton(){
         self.volumeButton.frame = CGRectMake(0, 0, 30, 30)
         if (appDelegate.currentVolume == 0){

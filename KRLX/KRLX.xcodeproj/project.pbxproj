@@ -225,6 +225,15 @@
 			name = "Data Fetching";
 			sourceTree = "<group>";
 		};
+		BDF9BDC81B25843B00BA15C8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BDF9BDC61B253CE500BA15C8 /* PlayPause.swift */,
+				BDCEA5231B177E6700A078C3 /* DataObserver.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +258,7 @@
 		F47029F21A7F27DB00E30A3C /* KRLX */ = {
 			isa = PBXGroup;
 			children = (
+				BDF9BDC81B25843B00BA15C8 /* Protocols */,
 				BDF9BDC51B24D11500BA15C8 /* Data Fetching */,
 				BDF9BDC41B24D0BD00BA15C8 /* Models */,
 				BDF9BDC31B24D09B00BA15C8 /* TableView Cells */,
@@ -262,8 +272,6 @@
 				F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */,
 				F47029F31A7F27DB00E30A3C /* Supporting Files */,
 				3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */,
-				BDF9BDC61B253CE500BA15C8 /* PlayPause.swift */,
-				BDCEA5231B177E6700A078C3 /* DataObserver.swift */,
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 			);
 			path = KRLX;
