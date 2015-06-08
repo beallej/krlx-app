@@ -24,7 +24,6 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     var imagePlay = UIImage(named: "play2") as UIImage?
     var imagePause = UIImage(named: "pause2") as UIImage?
     
-    // http://stackoverflow.com/questions/5655864/check-play-state-of-avplayer
     @IBOutlet weak var currentShowLabel: UILabel!
     
     //Setting background image
@@ -132,6 +131,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     }
     
     //Handels pop up volume controller
+    //Reference: http://stackoverflow.com/questions/29132940/creating-a-popover-from-a-uibutton-in-swift
     @IBAction func showPopover(sender: AnyObject) {
         
         self.popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("volumeControllerPopView") as? UIViewController
@@ -148,26 +148,16 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         popover!.sourceRect = CGRectMake(335,65,0,0)
         
         self.presentViewController(self.popoverContent!, animated: true, completion: nil)
-        self.setVolumeButton()
     }
     
     
     //Sets up volume button
     func setVolumeButton(){
-        self.volumeButton.frame = CGRectMake(0, 0, 30, 30)
-        if (appDelegate.currentVolume == 0){
-            self.volumeButton.setImage(UIImage(named:"volumeLevel0.png"), forState: UIControlState.Normal)
-        }else if (appDelegate.currentVolume < 0.4) {
-            self.volumeButton.setImage(UIImage(named:"volumeLevel1.png"), forState: UIControlState.Normal)
-        }else if (appDelegate.currentVolume < 0.8) {
-            self.volumeButton.setImage(UIImage(named:"volumeLevel2.png"), forState: UIControlState.Normal)
-        }else{
-            self.volumeButton.setImage(UIImage(named:"volumeLevel4.png"), forState: UIControlState.Normal)
-        }
-        
-        self.volumeButton.addTarget(self, action: "showPopover:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
-        self.navigationItem.setRightBarButtonItem(self.volumeControllerButton, animated: false)
+       self.volumeButton.frame = CGRectMake(0, 0, 30, 30)
+       self.volumeButton.setImage(UIImage(named:"volumeLevel2.png"), forState: UIControlState.Normal)
+       self.volumeButton.addTarget(self, action: "showPopover:", forControlEvents: UIControlEvents.TouchUpInside)
+       self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
+       self.navigationItem.setRightBarButtonItem(self.volumeControllerButton, animated: false)
     }
     
     

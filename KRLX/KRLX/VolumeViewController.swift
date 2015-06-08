@@ -12,6 +12,8 @@ import Foundation
 class VolumeViewController: UIViewController {
      var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    //Make vertical slider
+    //Reference: http://stackoverflow.com/questions/29731891/how-can-i-make-a-vertical-slider-in-swift
     @IBOutlet weak var volumeSlider: UISlider!{
         didSet{
         volumeSlider.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2))
