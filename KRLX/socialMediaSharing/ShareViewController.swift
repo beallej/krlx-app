@@ -5,6 +5,7 @@
 //  Created by Naomi Yamamoto on 6/6/15.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
+//  Instruction obtained from https://www.shinobicontrols.com/blog/posts/2014/07/21/ios8-day-by-day-day-2-sharing-extension
 
 import UIKit
 import Social
