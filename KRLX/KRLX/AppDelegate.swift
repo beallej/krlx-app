@@ -44,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        //Set up background mode for audio
+        //Reference: http://stackoverflow.com/questions/27280041/ios-swift-streaming-app-does-not-play-music-in-background-mode
         var activeError: NSError? = nil
         self.session.setActive(true, error: &activeError)
         
@@ -154,6 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: false)
     }
     
+    //Create play/pause button for navigaation bar
     func setButtons(vc: PlayPause){
         
         vc.buttonPlay.frame = CGRectMake(0, 0, 40, 40)

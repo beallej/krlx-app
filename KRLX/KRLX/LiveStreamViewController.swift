@@ -21,7 +21,6 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     var imagePlay = UIImage(named: "play2") as UIImage?
     var imagePause = UIImage(named: "pause2") as UIImage?
     
-    // http://stackoverflow.com/questions/5655864/check-play-state-of-avplayer
     @IBOutlet weak var currentShowLabel: UILabel!
     
     //Setting background image
@@ -129,6 +128,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     }
     
     //Handels pop up volume controller
+    //Reference: http://stackoverflow.com/questions/29132940/creating-a-popover-from-a-uibutton-in-swift
     @IBAction func showPopover(sender: AnyObject) {
         
         self.popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("volumeControllerPopView") as? UIViewController
