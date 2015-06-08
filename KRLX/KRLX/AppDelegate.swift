@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /*UNCOMMENT LINE BELOW AND COMMENT OTHER LINE TO GET KRLX*/
     //var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
+    
+    //Instruction to make radio app and the fake URL are obtained from: http://luciancancescu.blogspot.com/2015/02/how-to-build-ios-radio-app-with-swift.html
     var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
 
     var isPlaying = false
