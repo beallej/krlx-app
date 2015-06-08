@@ -16,7 +16,10 @@ class ScrapeAssistant {
     init(){
     }
     
+    
+    
     //This function scrapes for an article content given url
+    
     func scrapeArticle(url: String) -> String {
         // This function take in the URL as parameter of the Article and pass its content
         let myURLString = url
@@ -51,7 +54,11 @@ class ScrapeAssistant {
         return String(article_content)
     }
     
+    
+    
+    
     // This function scrapes for article title, date, author
+    
     func scrapeArticleInfo(){
         var articles = [ArticleHeader]() //list of all articles (array)
         let myURLString = "http://www.krlx.org/" //The scraping list comes from the Home page
@@ -98,7 +105,11 @@ class ScrapeAssistant {
         self.appDelegate.loadedArticleHeaders = NSMutableArray(array: articles)
     }
     
+    
+    
+    
     //This function scrape KRLX for list of recently heard
+    
     func scrapeRecentlyHeard() {
         var songs = [SongHeader]() //global array of songs
         let myURLString = "http://www.krlx.org/"
@@ -148,7 +159,11 @@ class ScrapeAssistant {
         }
     }
     
+    
+    
+    
     // This function take in articleInfo html (in div), parse and return article URL and title
+    
     func getArticleTitle_URL(articleInfo: HTMLNode?) -> (article_header: String, article_url: String) {
         var article_url = String()
         var article_header = String()
@@ -171,7 +186,11 @@ class ScrapeAssistant {
         return (article_header,article_url)
     }
     
+    
+    
+    
     // This function take in articleInfo html (in div), parse and return article author
+    
     func getArticleAuthor(articleInfo: HTMLNode?) -> String {
         var author = String()
         var err : NSError?
@@ -183,7 +202,11 @@ class ScrapeAssistant {
         return author
     }
     
+    
+    
+    
     // This function take in articleInfo html (in div), parse and return Date of publish
+    
     func getArticleDate(articleInfo: HTMLNode?) -> String {
         var datetime = String()
         var err : NSError?
@@ -196,11 +219,16 @@ class ScrapeAssistant {
         return datetime
     }
     
+    
+    
+    
     // This function take in Recently Heard Songs html (in div), parse and return first item (most recent)
+    
     func getFirstSong_Image(recentHeardContent: HTMLNode?)-> SongHeader{
         var imageURL = String()
         var title = String()
         var singer = String()
+        
         // Get first item title and artist
         // 2 cases with different HTML format:
         // With real image, there is a hyper link attached to artist name
@@ -223,7 +251,11 @@ class ScrapeAssistant {
         return song
     }
     
+    
+    
+    
     // This function take in Recently Heard Songs html (in div), parse and return next 4 items in array
+    
     func getNext4Songs(recentHeardContent: HTMLNode?)-> [SongHeader] {
         var title = String()
         var singer = String()

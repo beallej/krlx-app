@@ -32,9 +32,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     let tap = UIGestureRecognizer()
 
 
-    
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
     
     
     var show_arrays = [ShowHeader]()
@@ -165,6 +163,8 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
         self.navigationItem.setRightBarButtonItem(self.volumeControllerButton, animated: false)
     }
+    
+    
     //Makes keyboard disappear when you touch the tableview, because you're done searching
     func didTapOnBackgroundView(recognizer: UIGestureRecognizer) {
         self.popoverContent?.dismissViewControllerAnimated(false, completion: nil)

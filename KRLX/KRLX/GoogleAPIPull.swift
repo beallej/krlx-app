@@ -15,9 +15,12 @@ class GoogleAPIPull {
     init(){
     }
   
+    
+    
     // This function pull KRLX calendar using Google Calendar API,
     // parse info and display it in readable form
     func pullKRLXGoogleCal(delegate: DataObserver){
+        
         var show_arrays = [ShowHeader]()//initiate a show arrays that hold all the future shows in 1 week
         
         // ApiCode from URLString comes from the GoogleCalCredentials.txt file that is not included in repository
@@ -60,10 +63,10 @@ class GoogleAPIPull {
         }
     
     
+    
     // This function take in a time string of format 2015-05-21T05:30:00-05:00
     // Return an array of prettified [time, date]
-    func prettifyTimeLabel(time: String) -> [String]
-    {
+    func prettifyTimeLabel(time: String) -> [String] {
         
         var finalTime : [String] = []
         //2015-05-21T05:30:00-05:00 --> 05:30:00
@@ -94,8 +97,12 @@ class GoogleAPIPull {
         
     }
     
-        // Get current time in UTC and 7.5 days after time to substitute in the Google API String -> time return in format 2015-05-23T10%3A44%3A59Z
+    
+    
+    
+    // Get current time in UTC and 7.5 days after time to substitute in the Google API String -> time return in format 2015-05-23T10%3A44%3A59Z
     func getStartEndScheduleTime () -> (curTime: String, endTime: String){
+        
         let now = NSDate()
         let nextWeek = NSDate().dateByAddingTimeInterval(60*60*24*8)//number of seconds in 8 days (including today)
         var dateFormatter = NSDateFormatter()
@@ -107,9 +114,13 @@ class GoogleAPIPull {
         return (dateStringNow, dateStringNextWeek)
     }
     
+    
+    
+    
     // This helper function pass JSON from the main function, get show title, DJ, time
     // Return show lists
     func parseJsonGetShows(jsonResult: NSDictionary!) -> [ShowHeader]{
+        
         var show_arrays: [ShowHeader] = []
         if let allitems_wrapper = jsonResult["items"] as? NSArray{
             for item in allitems_wrapper {
@@ -134,6 +145,4 @@ class GoogleAPIPull {
         }
         return show_arrays
     }
-    
-
 }

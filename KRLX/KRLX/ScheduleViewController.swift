@@ -65,13 +65,17 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.tableView.tableFooterView = UIView()
 
     }
+    
+    
     override func viewWillAppear(animated: Bool) {
         appDelegate.subscribe(self)
     }
     
+    
     override func viewWillDisappear(animated: Bool) {
         appDelegate.unssubscribe(self)
     }
+    
     
     func setUpSearchBar(){
         self.searchBar.delegate = self
@@ -88,10 +92,14 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
     }
     
+    
+    
     //Pulls show data for app
     func notify() {
         self.calendarAssistant.pullKRLXGoogleCal(self)
     }
+    
+    
     
     
     //Upates the view with new data
@@ -111,6 +119,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         }
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -123,10 +133,13 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         return 1
     }
     
+    
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return self.filteredShows.count
     }
+    
     
     
     //The current show is not in tableview, it is pinned to top in a separate view
@@ -137,6 +150,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         let finalTimeString = show.getStartTime() + " - " + show.getEndTime()
         self.currentTimeLabel.text = finalTimeString
     }
+    
+    
     
     //populates table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -169,6 +184,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         appDelegate.musicButtonClicked(self)
     }
 
+    
+    
     //This function read the text from search bar and decide whether to reload the data
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         var showArrayfull = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
@@ -199,15 +216,18 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.tableView.reloadData()
     }
     
+    
     //hide keyboard when not in designated searchbar or table :D
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
     
+    
     //hides keybord when search button clicked
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
         self.searchBar.resignFirstResponder()
     }
+    
     
     //Makes keyboard disappear when you touch the tableview, because you're done searching
     func didTapOnTableView(recognizer: UIGestureRecognizer) {

@@ -42,6 +42,8 @@ class ShowHeader {
         return self.date
     }
     
+    
+    
     //Returns date as "Mon, Dec 21",for example
     func formatDate(dateString : String) -> String{
         
@@ -51,8 +53,10 @@ class ShowHeader {
         dateFormatter.timeZone = NSTimeZone(abbreviation: "America/Chicago")
         let showDate = dateFormatter.dateFromString(dateString)
         
+        
         //converts nsdate to preferred format, then back to a string
         var prettyDateFormatter = NSDateFormatter()
+        
         
         //DayOfWeek-MonthAsString-DayNumber
         prettyDateFormatter.dateFormat = "EEEE-LLLL-dd"
@@ -62,9 +66,11 @@ class ShowHeader {
         let day = dateStringArray[0]
         let month = dateStringArray[1]
         
+        
         //Shorten December-> Dec, Monday -> Mon, for example
         dateStringArray[0] = day.substringWithRange(Range<String.Index>(start: day.startIndex, end: advance(day.startIndex, 3)))
         dateStringArray[1] = month.substringWithRange(Range<String.Index>(start: month.startIndex, end: advance(month.startIndex, 3)))
+        
         
         //                    Day of week         ,   Month                  Day
         let finalDateString = dateStringArray[0]+", "+dateStringArray[1]+" "+dateStringArray[2]
