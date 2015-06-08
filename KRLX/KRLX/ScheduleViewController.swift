@@ -170,18 +170,19 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         var showArrayExceptFirst = NSArray(array: self.appDelegate.loadedShowHeaders) as! [ShowHeader]
         showArrayExceptFirst.removeAtIndex(0)
 
-        // Search by Show Names
         // If searchText is empty, return all show (except currently shown)
         // Else, return show with stringMatch only (including current show)
         self.filteredShows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
             var stringMatch = false
             // stringMatch = true if found a show that has word start with the user' entered string
             // e.g User enter "Sn" then shows like "Snack Time" will be true but "No Reasons" won't
+            // Search by Show Names
             for word in show.getTitle().lowercaseString.componentsSeparatedByString(" "){
                 if word.hasPrefix(searchText.lowercaseString){
                     stringMatch = true
                 }
             }
+            // Search by DJ8
             for word in show.getDJ().lowercaseString.componentsSeparatedByString(" "){
                 if word.hasPrefix(searchText.lowercaseString){
                     stringMatch = true
@@ -189,7 +190,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             }
             return  stringMatch
         })
-        
+
         tableView.reloadData()
     }
     
