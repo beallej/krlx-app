@@ -1,5 +1,3 @@
-Your readme file (either readme.txt or readme.md), should be located at the top level of your repository, and should contain:
-
 Project: KRLX
 
 Client: Ibrahim Rabbani
@@ -12,11 +10,16 @@ The goal of creating this application is to enable more students enjoying and ac
 
 Instruction to install:
 
-As you clone the project, the Google Calendar API key will be missing. You will need to create a new file in the repository (folder KRLX) named GoogleCalCredentials.txt. The text contains only the API key.
+* When you clone the project, the Google Calendar API key will be missing. You will need to add a new file in the directory (folder KRLX) named GoogleCalCredentials.txt. The text contains only the API key. Then, drag the file into the Project Navigator in Xcode (The folder tab under the left menu, that lists all of the files in a hierarchical layout).
 We use a SidebarMenu library (created by Simon Ng) which will be installed as you download and pull the repository.
+* Also, since KRLX does not stream during the summer, we have a dummy radio station in our app. To change back to KRLX, go to line 25 in AppDelegate.swift, uncomment that line, and comment the line below.
+
+Other Notes:
+* In the summer, KRLX does not stream, so the schedule table may be empty depending on the actions of the calendar creator.
+* In NewsTableViewController, ArticleViewController, and RecentlyHeardTableViewController we scrape from the KRLX website. There is some incorrect HTML tagging on the website, and that causes some output (ex "HTML parser error") in the console. We do not have access to the code that creates that out; it is in a library, so we were not able to suppress it.
 
 ------Do we need library installation? I think no right???----
 
 Note to future developers:
-- All basic functions are complete and functional. We commented our code extensively following Ibrahim's request.
-- If the website structure changes, certain aspects of the project will no longer be valid (News and recently Heard). Future developement of this project can attempt to access the Joomla database which will potentially be more stable and fast.
+* All basic functions are complete and functional. We commented our code extensively following Ibrahim's request.
+* If the website structure changes, certain aspects of the project will no longer be valid (News and recently Heard). Future development of this project can attempt to access the Joomla database which will potentially be more stable and fast.
