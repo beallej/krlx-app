@@ -2,7 +2,7 @@
 //  ArticleViewController.swift
 //  KRLX
 //
-//  Created by Josie Bealle and Phuong Dinh on 07/05/2015.
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto  on 07/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
