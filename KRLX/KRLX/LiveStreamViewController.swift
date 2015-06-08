@@ -21,8 +21,13 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     @IBOutlet weak var currentShowLabel: UILabel!
     
     
+    @IBOutlet weak var bkgdImage: UIImageView!
     var volumeControllerButton: UIBarButtonItem!
     var volumeButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    var popoverContent :UIViewController?
+    let tap = UIGestureRecognizer()
+
+
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -55,6 +60,12 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.appDelegate.setUpSWRevealVC(self, menuButton: self.menuButton)
 
         setVolumeButton()
+        
+        //Makes volume controller disappear when you click on background
+        tap.addTarget(self, action: "didTapOnBackgroundView:")
+        self.bkgdImage.addGestureRecognizer(tap)
+        self.bkgdImage.userInteractionEnabled = true
+
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -83,16 +94,16 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     func playRadio() {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.player.play()
+        self.appDelegate.player.play()
         let image = UIImage(named: "pause2") as UIImage?
-        playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        self.playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
     func pauseRadio() {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.player.pause()
+        
+        self.appDelegate.player.pause()
         let image = UIImage(named: "play2") as UIImage?
-        playButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        self.playButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
     /*
@@ -142,20 +153,20 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     
     @IBAction func showPopover(sender: AnyObject) {
         
-        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("volumeControllerPopView") as! UIViewController
+        self.popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("volumeControllerPopView") as? UIViewController
         
-        popoverContent.modalPresentationStyle = .Popover
-        var popover = popoverContent.popoverPresentationController
+        self.popoverContent!.modalPresentationStyle = .Popover
+        var popover = popoverContent!.popoverPresentationController
         
         // set the size you wan to display
-        popoverContent.preferredContentSize = CGSizeMake(54, 150)
+        self.popoverContent!.preferredContentSize = CGSizeMake(54, 150)
         popover!.delegate = self
         popover!.sourceView = self.view
         
         // position of the popover where it's showed
         popover!.sourceRect = CGRectMake(335,65,0,0)
         
-        self.presentViewController(popoverContent, animated: true, completion: nil)
+        self.presentViewController(self.popoverContent!, animated: true, completion: nil)
         
         setVolumeButton()
     }
@@ -175,6 +186,10 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.volumeButton.addTarget(self, action: "showPopover:", forControlEvents: UIControlEvents.TouchUpInside)
         self.volumeControllerButton = UIBarButtonItem(customView: volumeButton)
         self.navigationItem.setRightBarButtonItem(self.volumeControllerButton, animated: false)
+    }
+    //Makes keyboard disappear when you touch the tableview, because you're done searching
+    func didTapOnBackgroundView(recognizer: UIGestureRecognizer) {
+        self.popoverContent?.dismissViewControllerAnimated(false, completion: nil)
     }
     
 }

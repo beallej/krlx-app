@@ -11,6 +11,7 @@ import UIKit
 class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, DataObserver , PlayPause, UISearchBarDelegate, UISearchDisplayDelegate {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
+    
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
