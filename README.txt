@@ -17,6 +17,7 @@ We use a SidebarMenu library (created by Simon Ng) which will be installed as yo
 Other Notes:
 * In the summer, KRLX does not stream, so the schedule table may be empty depending on the actions of the calendar creator.
 * In NewsTableViewController, ArticleViewController, and RecentlyHeardTableViewController we scrape from the KRLX website. There is some incorrect HTML tagging on the website, and that causes some output (ex "HTML parser error") in the console. We do not have access to the code that creates that out; it is in a library, so we were not able to suppress it.
+* The correctness of recently heard songs depending on KRLX's DJ and the website source. We do not have access to make sure the recently heard songs actually match the radio.
 
 Note to future developers:
 * All basic functions are complete and functional. We commented our code extensively following Ibrahim's request.
