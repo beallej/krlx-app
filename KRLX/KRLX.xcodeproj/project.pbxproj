@@ -32,6 +32,7 @@
 		BD944B951B14F7D6005E6A83 /* GoogleAPIPull.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */; };
 		BDCEA5221B177BD700A078C3 /* GoogleCalCredentials.txt in Resources */ = {isa = PBXBuildFile; fileRef = BDCEA5211B177BD700A078C3 /* GoogleCalCredentials.txt */; };
 		BDCEA5241B177E6700A078C3 /* DataObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEA5231B177E6700A078C3 /* DataObserver.swift */; };
+		BDF9BDC71B253CE500BA15C8 /* PlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF9BDC61B253CE500BA15C8 /* PlayPause.swift */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47029FC1A7F27DB00E30A3C /* Images.xcassets */; };
 		F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */; };
@@ -102,6 +103,7 @@
 		BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPIPull.swift; sourceTree = "<group>"; };
 		BDCEA5211B177BD700A078C3 /* GoogleCalCredentials.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GoogleCalCredentials.txt; sourceTree = "<group>"; };
 		BDCEA5231B177E6700A078C3 /* DataObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataObserver.swift; sourceTree = "<group>"; };
+		BDF9BDC61B253CE500BA15C8 /* PlayPause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPause.swift; sourceTree = "<group>"; };
 		F47029F01A7F27DB00E30A3C /* KRLX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRLX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F41A7F27DB00E30A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47029F51A7F27DB00E30A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */,
 				F47029F31A7F27DB00E30A3C /* Supporting Files */,
 				3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */,
+				BDF9BDC61B253CE500BA15C8 /* PlayPause.swift */,
 				BDCEA5231B177E6700A078C3 /* DataObserver.swift */,
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 			);
@@ -450,6 +453,7 @@
 				3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */,
 				F4702A181A7F351C00E30A3C /* MenuController.swift in Sources */,
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
+				BDF9BDC71B253CE500BA15C8 /* PlayPause.swift in Sources */,
 				BD02FEDD1B0E578500751F7B /* ShowHeader.swift in Sources */,
 				BD944B951B14F7D6005E6A83 /* GoogleAPIPull.swift in Sources */,
 				3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */,

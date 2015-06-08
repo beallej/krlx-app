@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, DataObserver , UISearchBarDelegate, UISearchDisplayDelegate {
+class ScheduleViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, DataObserver , PlayPause, UISearchBarDelegate, UISearchDisplayDelegate {
     @IBOutlet weak var menuButton:UIBarButtonItem!
     
     @IBOutlet weak var spinnyWidget: UIActivityIndicatorView!
@@ -24,7 +24,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var rightBarButtonItem: UIBarButtonItem!
     var buttonPlay: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var buttonPause: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -34,9 +33,10 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Adding play/pause button in navigation bar
-        self.setButtons()
-        self.addRightNavItemOnView()
+        appDelegate.setUpPlayPause(self)
+
 
         
         //Pulls Shows from Calendar
@@ -160,54 +160,8 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
 
     }
     
-    ///Adding play/pause button
-    func addRightNavItemOnView()
-    {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        if appDelegate.isPlaying {
-            self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPause)
-            
-        }else{
-            self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPlay)
-        }
-        self.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-        
-    }
-    
-    
     @IBAction func musicButtonClicked(sender: AnyObject) {
-        if appDelegate.isPlaying {
-            self.pauseRadio()
-            appDelegate.isPlaying = false
-            
-        }else{
-            self.playRadio()
-            appDelegate.isPlaying = true
-            
-        }
-    }
-    
-    func playRadio(){
-        appDelegate.player.play()
-        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPause)
-        self.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-    }
-    
-    func pauseRadio(){
-        appDelegate.player.pause()
-        self.rightBarButtonItem = UIBarButtonItem(customView: self.buttonPlay)
-        self.navigationItem.setRightBarButtonItem(self.rightBarButtonItem, animated: false)
-    }
-    
-    func setButtons(){
-        self.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
-        self.buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
-        self.buttonPlay.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.buttonPause.frame = CGRectMake(0, 0, 40, 40)
-        self.buttonPause.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
-        self.buttonPause.addTarget(self, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        
+        appDelegate.musicButtonClicked(self)
     }
 
     //This function read the text from search bar and decide whether to reload the data

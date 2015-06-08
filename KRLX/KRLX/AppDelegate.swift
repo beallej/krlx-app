@@ -19,9 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     //For live streaming view
-    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
+    //var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://radio.krlx.org/mp3/high_quality"))
+    var player:AVPlayer = AVPlayer(URL: NSURL(string: "http://www.radiobrasov.ro/listen.m3u"))
 
-    var isPlaying = false    
+    var isPlaying = false
+    
 
     var currentVolume: Float = 0.5
     
@@ -96,6 +98,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc.view.addGestureRecognizer(vc.revealViewController().panGestureRecognizer())
         }
     }
+    func setUpPlayPause(vc: PlayPause){
+        self.setButtons(vc)
+        self.addRightNavItemOnView(vc)
+    }
+    
+    
+    ///Adding play/pause button
+    func addRightNavItemOnView(vc: PlayPause)
+    {
+        var rightBarButtonItem: UIBarButtonItem!
+
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDelegate.isPlaying {
+            rightBarButtonItem = UIBarButtonItem(customView: vc.buttonPause)
+            
+        }else{
+            rightBarButtonItem = UIBarButtonItem(customView: vc.buttonPlay)
+        }
+        vc.navigationItem.setRightBarButtonItem(rightBarButtonItem!, animated: false)
+        
+    }
+    
+    
+    func musicButtonClicked(vc: PlayPause) {
+        if self.isPlaying {
+            self.pauseRadio(vc)
+            self.isPlaying = false
+            
+        }else{
+            self.playRadio(vc)
+            self.isPlaying = true
+            
+        }
+    }
+    
+    func playRadio(vc: PlayPause){
+        self.player.play()
+        let rightBarButtonItem = UIBarButtonItem(customView: vc.buttonPause)
+        vc.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: false)
+    }
+    
+    func pauseRadio(vc: PlayPause){
+        self.player.pause()
+        let rightBarButtonItem = UIBarButtonItem(customView: vc.buttonPlay)
+        vc.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: false)
+    }
+    
+    func setButtons(vc: PlayPause){
+        
+        vc.buttonPlay.frame = CGRectMake(0, 0, 40, 40)
+        vc.buttonPlay.setImage(UIImage(named:"play.png"), forState: UIControlState.Normal)
+        vc.buttonPlay.addTarget(vc as! UIViewController, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        vc.buttonPause.frame = CGRectMake(0, 0, 40, 40)
+        vc.buttonPause.setImage(UIImage(named:"pause.png"), forState: UIControlState.Normal)
+        vc.buttonPause.addTarget(vc as! UIViewController, action: "musicButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+    }
+    
     
     //opens a file
     func openFile (fileName: String, fileExtension: String, utf8: NSStringEncoding = NSUTF8StringEncoding) -> String? {
