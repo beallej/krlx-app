@@ -31,7 +31,7 @@ public class HTMLNode {
     private let nodeType  : HTMLNodeType
     
     /**
-    * 親ノード
+    * Parent node
     */
     private var parent    : HTMLNode? {
         if let p = self.node?.parent {
@@ -41,7 +41,7 @@ public class HTMLNode {
     }
     
     /**
-    * 次ノード
+    * Next node
     */
     private var next : HTMLNode? {
         if let n : UnsafeMutablePointer<xmlNode> = node?.next {
@@ -53,7 +53,7 @@ public class HTMLNode {
     }
     
     /**
-    * 子ノード
+    * Child node
     */
     private var child     : HTMLNode? {
         if let c = node?.children {
@@ -65,14 +65,14 @@ public class HTMLNode {
     }
     
     /**
-    * クラス名
+    * Class name
     */
     public var className : String {
         return getAttributeNamed("class")
     }
     
     /**
-    * タグ名
+    * Tag name
     */
     public var tagName : String {
         return HTMLNode.GetTagName(self.node)
@@ -86,7 +86,7 @@ public class HTMLNode {
     }
     
     /**
-    * コンテンツ
+    * Content
     */
     public var contents : String {
         if node != nil {
@@ -131,9 +131,9 @@ public class HTMLNode {
     }
     
     /**
-    * 属性名を取得する
-    * @param[in] name 属性
-    * @return 属性名
+    * Get attribute name
+    * @param[in] name Attribute
+    * @return Attribute name
     */
     public func getAttributeNamed(name: String) -> String {
         for var attr : xmlAttrPtr = node!.properties; attr != nil; attr = attr.memory.next {
@@ -148,9 +148,9 @@ public class HTMLNode {
     }
     
     /**
-    * タグ名に一致する全ての子ノードを探す
-    * @param[in] tagName タグ名
-    * @return 子ノードの配列
+    * Find all of the child nodes that match with tag name
+    * @param[in] tagName tag name
+    * @return array of child node
     */
     public func findChildTags(tagName: String) -> [HTMLNode] {
         var nodes : [HTMLNode] = []
@@ -172,9 +172,9 @@ public class HTMLNode {
     }
     
     /**
-    * タグ名で子ノードを探す
-    * @param[in] tagName タグ名
-    * @return 子ノード。見つからなければnil
+    * Find child node by tag name
+    * @param[in] tagName tag name
+    * @return child node; if not found, return nil
     */
     public func findChildTag(tagName: String) -> HTMLNode? {
         return findChildTag(tagName, node: self)
@@ -243,7 +243,7 @@ public class HTMLNode {
         return nil
     }
     /**
-    * Find node by id (id has to be used properly it is a uniq attribute)
+    * Look for node by id (id has to be used properly it is a uniq attribute)
     * @param[in] id String
     * @return HTMLNode
     */
@@ -270,9 +270,9 @@ public class HTMLNode {
     }
     
     /**
-    * xpathで子ノードを探す
+    * Look for child node by xpath
     * @param[in] xpath xpath
-    * @return 子ノード。見つからなければnil
+    * @return child node; if not found, return nil
     */
     public func xpath(xpath: String) -> [HTMLNode]? {
         let ctxt = xmlXPathNewContext(self.doc)
