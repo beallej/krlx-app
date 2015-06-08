@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		044391731B16315000D0C998 /* SongHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044391721B16315000D0C998 /* SongHeader.swift */; };
-		3308E1391B1EA54A00F02B4A /* livePlayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3308E1371B1EA54A00F02B4A /* livePlayIcon.png */; };
-		3310299E1B238BA9003CB312 /* volumeLevel0.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299A1B238BA9003CB312 /* volumeLevel0.png */; };
-		3310299F1B238BA9003CB312 /* volumeLevel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299B1B238BA9003CB312 /* volumeLevel1.png */; };
-		331029A01B238BA9003CB312 /* volumeLevel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299C1B238BA9003CB312 /* volumeLevel2.png */; };
-		331029A11B238BA9003CB312 /* volumeLevel4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3310299D1B238BA9003CB312 /* volumeLevel4.png */; };
 		3339AD311B08402D00E5DBD0 /* SocialMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */; };
 		3339AD331B08429B00E5DBD0 /* MenuTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */; };
 		335B22EC1B24003A00144107 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335B22EB1B24003A00144107 /* ShareViewController.swift */; };
@@ -80,11 +75,6 @@
 
 /* Begin PBXFileReference section */
 		044391721B16315000D0C998 /* SongHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongHeader.swift; sourceTree = "<group>"; };
-		3308E1371B1EA54A00F02B4A /* livePlayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = livePlayIcon.png; sourceTree = "<group>"; };
-		3310299A1B238BA9003CB312 /* volumeLevel0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel0.png; sourceTree = "<group>"; };
-		3310299B1B238BA9003CB312 /* volumeLevel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel1.png; sourceTree = "<group>"; };
-		3310299C1B238BA9003CB312 /* volumeLevel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel2.png; sourceTree = "<group>"; };
-		3310299D1B238BA9003CB312 /* volumeLevel4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volumeLevel4.png; sourceTree = "<group>"; };
 		3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaController.swift; sourceTree = "<group>"; };
 		3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTransitionManager.swift; sourceTree = "<group>"; };
 		335B22E71B24003A00144107 /* socialMediaSharing.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = socialMediaSharing.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +178,51 @@
 			name = "Swift-HTML-Parser";
 			sourceTree = "<group>";
 		};
+		BDF9BDC21B24D05F00BA15C8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */,
+				F491E7491A7F4B300026528E /* NewsTableViewController.swift */,
+				BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */,
+				3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */,
+				F491E7521A7F7DF20026528E /* RecentlyHeardTableViewController.swift */,
+				F491E7541A7F7E010026528E /* ScheduleViewController.swift */,
+				3364C5021B19A10E008D1707 /* VolumeViewController.swift */,
+				F4702A171A7F351C00E30A3C /* MenuController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BDF9BDC31B24D09B00BA15C8 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F491E74B1A7F4C630026528E /* NewsTableViewCell.swift */,
+				BD77895B1B165E0800CCD46A /* FirstSongTableViewCell.swift */,
+				BD77895D1B165FFA00CCD46A /* OtherSongTableViewCell.swift */,
+				BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */,
+			);
+			name = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		BDF9BDC41B24D0BD00BA15C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */,
+				044391721B16315000D0C998 /* SongHeader.swift */,
+				BD02FEDC1B0E578500751F7B /* ShowHeader.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		BDF9BDC51B24D11500BA15C8 /* Data Fetching */ = {
+			isa = PBXGroup;
+			children = (
+				BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */,
+				BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */,
+			);
+			name = "Data Fetching";
+			sourceTree = "<group>";
+		};
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +247,10 @@
 		F47029F21A7F27DB00E30A3C /* KRLX */ = {
 			isa = PBXGroup;
 			children = (
+				BDF9BDC51B24D11500BA15C8 /* Data Fetching */,
+				BDF9BDC41B24D0BD00BA15C8 /* Models */,
+				BDF9BDC31B24D09B00BA15C8 /* TableView Cells */,
+				BDF9BDC21B24D05F00BA15C8 /* ViewControllers */,
 				BD84995D1B0F876200D43BA9 /* Swift-HTML-Parser */,
 				BD286CCF1AEF0B7E0021B036 /* SWRevealViewController */,
 				F47029F51A7F27DB00E30A3C /* AppDelegate.swift */,
@@ -220,25 +259,8 @@
 				F47029FC1A7F27DB00E30A3C /* Images.xcassets */,
 				F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */,
 				F47029F31A7F27DB00E30A3C /* Supporting Files */,
-				F4702A171A7F351C00E30A3C /* MenuController.swift */,
-				BD55116C1AFBF50E0016AEFA /* LiveStreamViewController.swift */,
-				F491E7491A7F4B300026528E /* NewsTableViewController.swift */,
-				F491E74B1A7F4C630026528E /* NewsTableViewCell.swift */,
-				BD785BEA1B03A72A003A3C33 /* ArticleHeader.swift */,
-				BD55116E1AFBF7BE0016AEFA /* ArticleViewController.swift */,
-				3339AD301B08402D00E5DBD0 /* SocialMediaController.swift */,
 				3339AD321B08429B00E5DBD0 /* MenuTransitionManager.swift */,
-				F491E7521A7F7DF20026528E /* RecentlyHeardTableViewController.swift */,
-				BD77895B1B165E0800CCD46A /* FirstSongTableViewCell.swift */,
-				BD77895D1B165FFA00CCD46A /* OtherSongTableViewCell.swift */,
-				044391721B16315000D0C998 /* SongHeader.swift */,
-				F491E7541A7F7E010026528E /* ScheduleViewController.swift */,
-				BD02FEDE1B0E579B00751F7B /* ScheduleTableViewCell.swift */,
-				BD02FEDC1B0E578500751F7B /* ShowHeader.swift */,
-				BD944B941B14F7D6005E6A83 /* GoogleAPIPull.swift */,
 				BDCEA5231B177E6700A078C3 /* DataObserver.swift */,
-				BD84995E1B0F895300D43BA9 /* ScrapeAssistant.swift */,
-				3364C5021B19A10E008D1707 /* VolumeViewController.swift */,
 				BD286CD01AEF0BA10021B036 /* KRLX-Bridging-Header.h */,
 			);
 			path = KRLX;
@@ -247,11 +269,6 @@
 		F47029F31A7F27DB00E30A3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3310299A1B238BA9003CB312 /* volumeLevel0.png */,
-				3310299B1B238BA9003CB312 /* volumeLevel1.png */,
-				3310299C1B238BA9003CB312 /* volumeLevel2.png */,
-				3310299D1B238BA9003CB312 /* volumeLevel4.png */,
-				3308E1371B1EA54A00F02B4A /* livePlayIcon.png */,
 				3397B6591AFEE58C00974947 /* high_quality.m3u */,
 				F47029F41A7F27DB00E30A3C /* Info.plist */,
 				BDCEA5211B177BD700A078C3 /* GoogleCalCredentials.txt */,
@@ -399,12 +416,7 @@
 				BD785BED1B03EE0C003A3C33 /* Article.storyboard in Resources */,
 				F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */,
 				F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */,
-				3310299F1B238BA9003CB312 /* volumeLevel1.png in Resources */,
-				331029A11B238BA9003CB312 /* volumeLevel4.png in Resources */,
 				BDCEA5221B177BD700A078C3 /* GoogleCalCredentials.txt in Resources */,
-				3308E1391B1EA54A00F02B4A /* livePlayIcon.png in Resources */,
-				3310299E1B238BA9003CB312 /* volumeLevel0.png in Resources */,
-				331029A01B238BA9003CB312 /* volumeLevel2.png in Resources */,
 				3397B65A1AFEE58C00974947 /* high_quality.m3u in Resources */,
 				BD785BF01B03EE8C003A3C33 /* Main.storyboard in Resources */,
 			);
@@ -701,6 +713,7 @@
 				335B22F31B24003A00144107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F47029EB1A7F27DB00E30A3C /* Build configuration list for PBXProject "KRLX" */ = {
 			isa = XCConfigurationList;

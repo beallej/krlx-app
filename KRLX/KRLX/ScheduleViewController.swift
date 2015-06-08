@@ -20,7 +20,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var currentDJLabel: UILabel!
     @IBOutlet weak var currentShowLabel: UILabel!
-    
+    let tap = UITapGestureRecognizer()
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -51,6 +51,14 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
         self.searchBar.delegate = self
+        
+        //Makes search keyboard disappear when you touch tableview
+        tap.addTarget(self, action: "didTapOnTableView:")
+        self.tableView.addGestureRecognizer(tap)
+        self.tableView.userInteractionEnabled = true
+        self.tableView.addGestureRecognizer(tap)
+     
+        
         // initialise filtered show table to all shows except from the currently showing
 
         //Change the font color in the search bar
@@ -236,4 +244,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         //hide keyboard when not in designated searchbar or table :D
         self.view.endEditing(true)
     }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+        self.searchBar.resignFirstResponder()
+    }
+    func didTapOnTableView(recognizer: UIGestureRecognizer) {
+        self.searchBar.resignFirstResponder()
+    }
+
+
 }
