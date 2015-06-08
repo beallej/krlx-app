@@ -4,6 +4,8 @@ Client: Ibrahim Rabbani
 
 Team members: Josie Bealle, Phuong Dinh, Maraki Ketema and Naomi Yamamoto
 
+CS342 Mobile Application Development Final Project (Spring 2015)
+
 Description of KRLX: KRLX is a iOS-based application (an application version of KRLX website). KRLX live streams KRLX Carleton radio and pulls articles from the website and displays them in a readable way. 
 It will also integrate social media sharing options for the content, shows schedule of radio shows, displays which show is currently playing and have a playing song history of 5 most recently heard songs. 
 The goal of creating this application is to enable more students enjoying and accessing KRLX radio, hence giving KRLX more listeners.
