@@ -8,6 +8,7 @@
 //  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 07/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
+//Reference: http://luciancancescu.blogspot.com/2015/02/how-to-build-ios-radio-app-with-swift.html
 
 import UIKit
 import MediaPlayer
