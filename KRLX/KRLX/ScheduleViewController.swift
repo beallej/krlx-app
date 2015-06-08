@@ -182,7 +182,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
                     stringMatch = true
                 }
             }
-            // Search by DJ8
+            // Search by DJ
             for word in show.getDJ().lowercaseString.componentsSeparatedByString(" "){
                 if word.hasPrefix(searchText.lowercaseString){
                     stringMatch = true
@@ -194,13 +194,17 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         tableView.reloadData()
     }
     
+    //hide keyboard when not in designated searchbar or table :D
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        //hide keyboard when not in designated searchbar or table :D
         self.view.endEditing(true)
     }
+    
+    //hides keybord when search button clicked
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
         self.searchBar.resignFirstResponder()
     }
+    
+    //Makes keyboard disappear when you touch the tableview, because you're done searching
     func didTapOnTableView(recognizer: UIGestureRecognizer) {
         self.searchBar.resignFirstResponder()
     }

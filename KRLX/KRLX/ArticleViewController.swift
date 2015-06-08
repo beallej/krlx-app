@@ -147,19 +147,7 @@ class ArticleViewController: UIViewController, UIWebViewDelegate, AVAudioPlayerD
     
     
     @IBAction func showShareActionSheet(sender: AnyObject) {
-        /*
-        var sheet: UIActionSheet = UIActionSheet()
-        let title: String = "Share Article"
-        sheet.title  = title
-        sheet.delegate = self
-        sheet.addButtonWithTitle("Cancel")
-        sheet.addButtonWithTitle("Facebook")
-        sheet.addButtonWithTitle("Twitter")
-        
-        sheet.cancelButtonIndex = 0
-            //sheet.buttonTitleAtIndex(buttonIndex)
-        sheet.showInView(self.view)
-*/
+
         var newURL = articleHeader.getURL()
         shareContent(text: newURL)
     }
