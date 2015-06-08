@@ -3,7 +3,7 @@
 //  KRLX
 //
 //  This class define each song properties, including title, artist, imageURL (only 1st recently heard song has URL)
-//  Created by Phuong Dinh on 5/27/15.
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 5/27/15.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 

@@ -2,6 +2,9 @@
 //  LiveStreamViewController.swift
 //  KRLX
 //
+//  This file handles all functionality associated with the live stream. This includes, 
+//      the actual streaming of radio, display of current show and DJ, as well as volume 
+//      control. 
 //  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 07/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //

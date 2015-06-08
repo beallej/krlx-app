@@ -2,7 +2,8 @@
 //  OtherSongTableViewCell.swift
 //  KRLX
 //
-//  Created by Josie Bealle on 27/05/2015.
+//  Defines properties of all other cells (except first) in recently heard
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 27/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 ////
 

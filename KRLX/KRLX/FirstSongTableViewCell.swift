@@ -2,7 +2,8 @@
 //  FirstSongTableViewCell.swift
 //  KRLX
 //
-//  Created by Josie Bealle on 27/05/2015.
+//  Defines layout for first cell of recently heard
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 27/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 

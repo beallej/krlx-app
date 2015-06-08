@@ -3,7 +3,7 @@
 //  KRLX
 //
 //  This class define each article information (title, author, date of publish and URL)
-//  Created by Josie Bealle and Phuong Dinh on 13/05/2015.
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 13/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 

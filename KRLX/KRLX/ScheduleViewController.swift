@@ -2,7 +2,8 @@
 //  ScheduleViewController.swift
 //  KRLX
 //
-//  Created by Phuong Dinh and Josie Bealle.
+//  This file handles the schedule view. The name and DJ associated with the current show, and the next upcoming 60 shows are displayed on this view. 
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
