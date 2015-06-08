@@ -2,6 +2,7 @@
 //  ShowHeader.swift
 //  KRLX
 //
+//  This class define each show's properties (including title, DJ, start, end time and date of show)
 //  Created by Phuong Dinh on 5/20/15.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //

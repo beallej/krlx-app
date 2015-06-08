@@ -2,6 +2,7 @@
 //  ArticleHeader.swift
 //  KRLX
 //
+//  This class define each article information (title, author, date of publish and URL)
 //  Created by Josie Bealle and Phuong Dinh on 13/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
@@ -23,6 +24,7 @@ class ArticleHeader {
         self.title = titleString
         self.url = urlString
         
+        // Sprlit long date string into month and day string to display into the black date box
         var dateArr = split(dateString) {$0 == "-"}
         var monthNum = dateArr[1].toInt()! - 1
         let monthstr = self.months[monthNum]

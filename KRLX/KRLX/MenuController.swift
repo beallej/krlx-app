@@ -1,6 +1,6 @@
 //
 //  MenuController.swift
-//  SidebarMenu
+//  KRLX
 //
 //  Created by Simon Ng on 2/2/15.
 //  Adapted by KRLXpert on May 2015

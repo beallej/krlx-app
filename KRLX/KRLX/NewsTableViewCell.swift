@@ -1,8 +1,12 @@
 //
 //  NewsTableViewCell.swift
+//  KRLX
 //
+//  Define each table view cell
 //  Created by Josie and Phuong Dinh on April 15.
+//  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
+
 
 import UIKit
 

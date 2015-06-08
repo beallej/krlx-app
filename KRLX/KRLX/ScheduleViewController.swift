@@ -1,6 +1,6 @@
 //
 //  ScheduleViewController.swift
-//  KRLXperts
+//  KRLX
 //
 //  Created by Phuong Dinh and Josie Bealle.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.

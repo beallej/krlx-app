@@ -1,6 +1,7 @@
 /**@file
 * @brief Swift-HTML-Parser
 * @author _tid_
+* Adapted and reference from https://github.com/tid-kijyun/Swift-HTML-Parser by KRLXpert on May 2015
 */
 import Foundation
 

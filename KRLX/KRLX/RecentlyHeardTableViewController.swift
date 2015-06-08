@@ -1,10 +1,10 @@
 //
-//  MapViewController.swift
-//  SidebarMenu
+//  RecentlyHeardTableViewController.swift
+//  KRLX
 //
-//  Created by KRLXpert, adapted from Simon Ng on 2/2/15.
+//  Created by Phuong Dinh and Josie Bealle
 //  Copyright (c) 2015 AppCoda. All rights reserved.
-//
+////
 
 import UIKit
 
