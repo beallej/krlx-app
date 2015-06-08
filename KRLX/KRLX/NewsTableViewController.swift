@@ -1,7 +1,9 @@
 //
 //  NewsTableViewController.swift
 //  KRLX
-//
+//  
+//  This file handles the functionality of the news forum where articles, videos, and other media acan be accessed. 
+
 //  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto  April 15.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 ////

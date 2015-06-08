@@ -2,7 +2,9 @@
 //  VolumeViewController.swift
 //  KRLX
 //
-//  Created by Naomi Yamamoto on 5/30/15.
+//  This file handles volume control functionality located on the live stream view. 
+//
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 5/30/15.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 

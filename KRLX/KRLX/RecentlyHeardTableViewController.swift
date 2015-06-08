@@ -2,8 +2,8 @@
 //  RecentlyHeardTableViewController.swift
 //  KRLX
 //
-//  Created by Phuong Dinh and Josie Bealle
-//  Copyright (c) 2015 AppCoda. All rights reserved.
+//  This file handles all things associated the recently heard view where users can view the last five songs that were played by the DJ(s).
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto//  Copyright (c) 2015 AppCoda. All rights reserved.
 ////
 
 import UIKit

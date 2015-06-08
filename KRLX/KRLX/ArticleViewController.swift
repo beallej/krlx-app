@@ -2,6 +2,8 @@
 //  ArticleViewController.swift
 //  KRLX
 //
+//  This file handles the view where all articles and other media can be viewed by the user. 
+//
 //  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto  on 07/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
