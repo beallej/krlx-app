@@ -23,7 +23,6 @@ class NewsTableViewController: UITableViewController, PlayPause {
     override func viewDidLoad() {
         
         //Set Play/Pause button in navigation bar
-        self.appDelegate.setUpPlayPause(self)
         
         super.viewDidLoad()
         
@@ -32,6 +31,11 @@ class NewsTableViewController: UITableViewController, PlayPause {
         
         self.loadArticles()
 
+
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.appDelegate.setUpPlayPause(self)
 
     }
     
