@@ -15,7 +15,7 @@ class SocialMediaController: UIViewController{
     
     @IBOutlet weak var menuBarItem: UINavigationItem!
     
-    let transitionManager = MenuTransitionManager()
+    //let transitionManager = MenuTransitionManager()
         
     var articleURL: String = "Article URL\n"
     
@@ -27,7 +27,7 @@ class SocialMediaController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.transitioningDelegate = self.transitionManager
+        //self.transitioningDelegate = self.transitionManager
         
     }
     
