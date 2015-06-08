@@ -26,7 +26,11 @@ class GoogleAPIPull {
         // ApiCode from URLString comes from the GoogleCalCredentials.txt file that is not included in repository
         let apiCode = self.appDelegate.openFile("GoogleCalCredentials", fileExtension: "txt")!
         
+        
+        //Now
         let curTime = getStartEndScheduleTime().curTime
+        
+        //A week later
         let endTime = getStartEndScheduleTime().endTime
         
         
@@ -35,29 +39,41 @@ class GoogleAPIPull {
         let url = NSURL(string: urlString)
   
         var session = NSURLSession.sharedSession()
+        
+        //A function to do the API call
         var task = session.dataTaskWithURL(url!, completionHandler: { (urlData: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            
+            //if urlData not nil, we parse it
             if let data = urlData {
-                
                 var errorJSON: AutoreleasingUnsafeMutablePointer<NSError?> = nil
                 
+                    //turn nsdata into json
                     let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
                 
                 // Parse show content of NSDictionary
                     if (jsonResult != nil){
+                        
                         // Get array of show list by parsing JSON then make the show list global
                         var newShowList = NSMutableArray(array: self.parseJsonGetShows(jsonResult))
+                        
+                        //update global list of shows
                         self.appDelegate.loadedShowHeaders = newShowList
+                        
+                        //tell the viewcontroller to update its view with the current data
                         delegate.updateView()
                     } else {
+                        
                         // Handle error when json is nil
                         println("Json is empty. Google API is not pulling or there is no show")
                     }
             } else {
                 // Handle error when urldata nil
-                println("No internet connection or Google API totally depreciated.")
+                println("No internet connection or Google API totally deprecated.")
             }
             })
-        //Continue with other tasks
+        
+        
+        //Runs the API Pull
         task.resume()
 
         }
@@ -100,17 +116,16 @@ class GoogleAPIPull {
     
     
     
-    // Get current time in UTC and 7.5 days after time to substitute in the Google API String -> time return in format 2015-05-23T10%3A44%3A59Z
+    // Get current time in UTC and 7 days after time to substitute in the Google API String -> time return in format 2015-05-23T10%3A44%3A59Z
     func getStartEndScheduleTime () -> (curTime: String, endTime: String){
         
         let now = NSDate()
-        let nextWeek = NSDate().dateByAddingTimeInterval(60*60*24*8)//number of seconds in 8 days (including today)
+        let nextWeek = NSDate().dateByAddingTimeInterval(60*60*24*7)//number of seconds in 7 days (including today)
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH'%3A'mm'%3A'ss"
         dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
         var dateStringNow = dateFormatter.stringFromDate(now) as String //current time
         var dateStringNextWeek = dateFormatter.stringFromDate(nextWeek) as String //this time next week
-        
         return (dateStringNow, dateStringNextWeek)
     }
     
@@ -126,10 +141,14 @@ class GoogleAPIPull {
             for item in allitems_wrapper {
                 var ShowTitle = item["summary"] as! String
                 var startTimeArray = (item["start"] as! NSDictionary)["dateTime"] as! String
+                
+                //dates/times are formatted uglyly, so we take care of that.
                 var startTime = self.prettifyTimeLabel(startTimeArray)[0]
                 var date = self.prettifyTimeLabel(startTimeArray)[1] as String
                 var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
                 endTime = self.prettifyTimeLabel(endTime)[0]
+                
+                //There is not always a DJ
                 var ShowDJ: String
                 if let DJ:String = item["description"] as? String {
                     ShowDJ = DJ
@@ -140,6 +159,8 @@ class GoogleAPIPull {
                 var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
                 show_arrays.append(show)
             }
+            
+            //Add a last cell telling user to check out website
             var lastLine = ShowHeader(titleString: "For more upcoming shows visit krlx.org", startString: "", endString: "", DJString: "", dateString: "")
             show_arrays.append(lastLine)
         }

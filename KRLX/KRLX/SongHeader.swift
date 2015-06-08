@@ -13,9 +13,7 @@ class SongHeader {
     var title : String
     var artist: String
     var url: String?
-    
-    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    
+        
     init (titleString: String, singerString:String, urlString:String){
         self.title = titleString
         self.artist = singerString

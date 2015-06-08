@@ -18,9 +18,7 @@ class OtherSongTableViewCell: UITableViewCell {
 
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-
-        
+        super.awakeFromNib()        
         // Initialization code
     }
     

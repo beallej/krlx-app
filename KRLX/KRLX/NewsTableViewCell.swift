@@ -21,6 +21,8 @@ class NewsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        //Sets black background behind date
         self.dateBkgd.image = UIImage(named: "black")
         
         // Initialization code

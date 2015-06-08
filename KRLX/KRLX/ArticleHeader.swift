@@ -15,10 +15,8 @@ class ArticleHeader {
     var url : String
     var content : String?
     let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    let longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]    
     
-    var appDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
-       
     init (authorString: String, titleString: String, dateString: String, urlString: String){
         self.author = authorString
         self.title = titleString
