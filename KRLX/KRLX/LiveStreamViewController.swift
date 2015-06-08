@@ -2,7 +2,7 @@
 //  LiveStreamViewController.swift
 //  KRLX
 //
-//  Created by KRLXxpert on 07/05/2015.
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto on 07/05/2015.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
@@ -24,7 +24,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     // http://stackoverflow.com/questions/5655864/check-play-state-of-avplayer
     @IBOutlet weak var currentShowLabel: UILabel!
     
-    
+    //Setting background image
     @IBOutlet weak var bkgdImage: UIImageView!
     var volumeControllerButton: UIBarButtonItem!
     var volumeButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
@@ -44,6 +44,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         self.appDelegate.subscribe(self)
         self.calendarAssistant.pullKRLXGoogleCal(self)
   
+        //Setting volume control to curret volume
         self.appDelegate.player.volume = appDelegate.currentVolume
         
         if self.appDelegate.isPlaying {
@@ -77,7 +78,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
     func notify() {
         self.calendarAssistant.pullKRLXGoogleCal(self)
     }
-    
+    //Handels play/ pause button functionality
     @IBAction func buttonPressed(sender: AnyObject) {
         if self.appDelegate.isPlaying {
             self.pauseRadio()
@@ -88,12 +89,12 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
             
         }
     }
-    
+    //plays live stream
     func playRadio() {
         self.appDelegate.player.play()
         self.playButton.setBackgroundImage(self.imagePause, forState: UIControlState.Normal)
     }
-    
+    //pauses live stream
     func pauseRadio() {
         self.appDelegate.player.pause()
         self.playButton.setBackgroundImage(self.imagePlay, forState: UIControlState.Normal)
@@ -105,6 +106,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         // Dispose of any resources that can be recreated.
     }
     
+    //Creates text box where show description and DJ names are present
     func updateView(){
         if let currentShow: ShowHeader = self.appDelegate.loadedShowHeaders[0] as? ShowHeader{
             
@@ -126,6 +128,7 @@ class LiveStreamViewController: UIViewController, AVAudioPlayerDelegate , DataOb
         return UIModalPresentationStyle.None
     }
     
+    //Handels pop up volume controller
     @IBAction func showPopover(sender: AnyObject) {
         
         self.popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("volumeControllerPopView") as? UIViewController

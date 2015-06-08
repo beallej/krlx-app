@@ -2,7 +2,7 @@
 //  NewsTableViewController.swift
 //  KRLX
 //
-//  Created by Josie and Phuong Dinh on April 15.
+//  Created by Josie Bealle, Phuong Dinh, Maraki Ketema, Naomi Yamamoto  April 15.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 ////
 
