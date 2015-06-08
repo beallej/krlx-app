@@ -195,21 +195,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         // If searchText is empty, return all show (except currently shown)
         // Else, return show with stringMatch only (including current show)
         self.filteredShows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
-            var stringMatch = false
-            // stringMatch = true if found a show that has word start with the user' entered string
+            
+            // stringMatch = true if found a show with either title or DJ
+            // that has word start with the user' entered string
             // e.g User enter "Sn" then shows like "Snack Time" will be true but "No Reasons" won't
-            // Search by Show Names
-            for word in show.getTitle().lowercaseString.componentsSeparatedByString(" "){
-                if word.hasPrefix(searchText.lowercaseString){
-                    stringMatch = true
-                }
-            }
-            // Search by DJ
-            for word in show.getDJ().lowercaseString.componentsSeparatedByString(" "){
-                if word.hasPrefix(searchText.lowercaseString){
-                    stringMatch = true
-                }
-            }
+            var stringMatch = self.searchShowInArray(show, searchText: searchText)
+            
             return  stringMatch
         })
 
@@ -234,5 +225,38 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.searchBar.resignFirstResponder()
     }
 
+    
+    
+    //This function search
+    func searchShowInArray(show: ShowHeader, searchText: String) -> Bool {
+        var wholeStringMatch: Bool = false
+        // In the entered search text, check if word by word is matched
+        for enteredWord in searchText.lowercaseString.componentsSeparatedByString(" ") {
+                var oneWordStringMatch = false
+                // Search by Show Names
+                for word in show.getTitle().lowercaseString.componentsSeparatedByString(" "){
+                    // if word starts with entered words or entered word is empty (space), match = true
+                    if word.hasPrefix(enteredWord) || enteredWord.isEmpty {
+                        oneWordStringMatch = true
+                    }
+                }
+                // Search by DJ
+                for word in show.getDJ().lowercaseString.componentsSeparatedByString(" "){
+                    if word.hasPrefix(enteredWord) || enteredWord.isEmpty{
+                        oneWordStringMatch = true
+                    }
+                }
+                
+                // Only accept string if all each individual words are in either title or DJ
+                // e.g: If user enter "Ibrahim Show", this will match to "Ibrahim's Show" but not "Phuong's Show"
+                if oneWordStringMatch == false {
+                    wholeStringMatch = false
+                } else {
+                    wholeStringMatch = true
+                }
+        }
+        
+        return wholeStringMatch
+    }
 
 }
