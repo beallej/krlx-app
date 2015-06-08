@@ -17,8 +17,14 @@ class GoogleAPIPull {
         // This function pull KRLX calendar using Google Calendar API,
         // parse info and display it in readable form
         var show_arrays = [ShowHeader]()
-        let curTime = getCurrentTime()
-        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeZone=America%2fChicago&maxResults=60&key=AIzaSyD-Lcm54auLNoxEPqxNYpq2SP4Jcldzq2I"
+        
+        let apiCode = self.appDelegate.openFile("GoogleCalCredentials", fileExtension: "txt")!
+        let curTime = getStartEndScheduleTime().curTime
+        let endTime = getStartEndScheduleTime().endTime
+        
+        
+        var urlString = "https://www.googleapis.com/calendar/v3/calendars/cetgrdg2sa8qch41hsegktohv0%40group.calendar.google.com/events?singleEvents=true&orderBy=startTime&timeMin="+curTime+"Z&timeMax="+endTime+"Z&timeZone=America%2fChicago&key="+apiCode
+        
         let url = NSURL(string: urlString)
   
         var session = NSURLSession.sharedSession()
@@ -106,15 +112,18 @@ class GoogleAPIPull {
         
     }
     
-    func getCurrentTime () -> String{
+    func getStartEndScheduleTime () -> (curTime: String, endTime: String){
         // Get current time in UTC to substitute in the Google API String
         // timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago
         let now = NSDate()
+        let nextWeek = NSDate().dateByAddingTimeInterval(60*60*24*7)//number of seconds in 7 days
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH'%3A'mm'%3A'ss"
         dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
-        var dateString = dateFormatter.stringFromDate(now) as String
-        return dateString
+        var dateStringNow = dateFormatter.stringFromDate(now) as String
+        var dateStringNextWeek = dateFormatter.stringFromDate(nextWeek) as String
+        
+        return (dateStringNow, dateStringNextWeek)
     }
 
 }
