@@ -666,8 +666,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="54" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wih-Rm-3vK">
-                                <rect key="frame" x="16" y="60" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wih-Rm-3vK">
+                                <rect key="frame" x="-32" y="60" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="dTy-Nc-V24"/>
+                                </constraints>
                                 <connections>
                                     <action selector="changeVolume:" destination="bK2-Ob-N69" eventType="valueChanged" id="thX-Y3-bJy"/>
                                 </connections>
