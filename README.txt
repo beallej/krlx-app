@@ -11,7 +11,8 @@ The goal of creating this application is to enable more students enjoying and ac
 Instruction to install:
 
 * When you clone the project, the Google Calendar API key will be missing. You will need to add a new file in the directory (folder KRLX) named GoogleCalCredentials.txt. The text contains only the API key. Then, drag the file into the Project Navigator in Xcode (The folder tab under the left menu, that lists all of the files in a hierarchical layout).
-We use a SidebarMenu library (created by Simon Ng) which will be installed as you download and pull the repository.
+We use a SidebarMenu library (created by Simon Ng), libxml2 and Swift-HTML-Parser (by TID) which will be installed as you download and pull the repository.
+
 * Also, since KRLX does not stream during the summer, we have a dummy radio station in our app. To change back to KRLX, go to line 25 in AppDelegate.swift, uncomment that line, and comment the line below.
 
 Other Notes:
