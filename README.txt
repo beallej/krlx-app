@@ -22,6 +22,7 @@ Other Notes:
 * In the summer, KRLX does not stream, so the schedule table may be empty depending on the actions of the calendar creator.
 * In NewsTableViewController, ArticleViewController, and RecentlyHeardTableViewController we scrape from the KRLX website. There is some incorrect HTML tagging on the website, and that causes some output (ex "HTML parser error") in the console. We do not have access to the code that creates that out; it is in a library, so we were not able to suppress it.
 * The correctness of the recently heard song depends on KRLX's DJ and the website source. We do not have the means and access to ensure the song always match the radio
+* KRLX Live stream only works within the Carleton network.
 
 Note to future developers:
 * All basic functions are complete and functional. We commented our code extensively following Ibrahim's request.
