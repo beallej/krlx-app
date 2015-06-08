@@ -20,7 +20,7 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var currentDJLabel: UILabel!
     @IBOutlet weak var currentShowLabel: UILabel!
-    
+    let tap = UITapGestureRecognizer()
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -51,6 +51,14 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
         self.searchBar.delegate = self
+        
+        //Makes search keyboard disappear when you touch tableview
+        tap.addTarget(self, action: "didTapOnTableView:")
+        self.tableView.addGestureRecognizer(tap)
+        self.tableView.userInteractionEnabled = true
+        self.tableView.addGestureRecognizer(tap)
+     
+        
         // initialise filtered show table to all shows except from the currently showing
 
         //Change the font color in the search bar
@@ -228,21 +236,6 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
             return  stringMatch
         })
         
-//        //Also searches by DJ Name
-//        var DJshows = searchText.isEmpty ? showArrayExceptFirst : showArrayfull.filter({(show: ShowHeader) -> Bool in
-//            var stringMatch = false
-//            // stringMatch = true if found a show that has word start with the user' entered string
-//            // e.g User enter "Sn" then shows like "Snack Time" will be true but "No Reasons" won't
-//            for word in show.getDJ().lowercaseString.componentsSeparatedByString(" "){
-//                if word.hasPrefix(searchText.lowercaseString){
-//                    stringMatch = true
-//                }
-//            }
-//            return  stringMatch
-//
-//        })
-//        self.filteredShows.extend(DJshows)
-
         tableView.reloadData()
     }
     
@@ -250,4 +243,12 @@ class ScheduleViewController: UIViewController , UITableViewDelegate, UITableVie
         //hide keyboard when not in designated searchbar or table :D
         self.view.endEditing(true)
     }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+        self.searchBar.resignFirstResponder()
+    }
+    func didTapOnTableView(recognizer: UIGestureRecognizer) {
+        self.searchBar.resignFirstResponder()
+    }
+
+
 }
