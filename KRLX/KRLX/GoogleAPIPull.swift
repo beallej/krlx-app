@@ -1,24 +1,28 @@
 //
 //  GoogleAPIPull.swift
 //  KRLX
+//  This class pull data from Google Calendar API and update the global show list
 //
 //  Created by Phuong Dinh on 5/25/15.
 //  Copyright (c) 2015 KRLXpert. All rights reserved.
 //
 
 import Foundation
+
 class GoogleAPIPull {
     var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     init(){
     }
-    
+  
+    // This function pull KRLX calendar using Google Calendar API,
+    // parse info and display it in readable form
     func pullKRLXGoogleCal(delegate: DataObserver){
-        // This function pull KRLX calendar using Google Calendar API,
-        // parse info and display it in readable form
-        var show_arrays = [ShowHeader]()
+        var show_arrays = [ShowHeader]()//initiate a show arrays that hold all the future shows in 1 week
         
+        // ApiCode from URLString comes from the GoogleCalCredentials.txt file that is not included in repository
         let apiCode = self.appDelegate.openFile("GoogleCalCredentials", fileExtension: "txt")!
+        
         let curTime = getStartEndScheduleTime().curTime
         let endTime = getStartEndScheduleTime().endTime
         
@@ -30,49 +34,27 @@ class GoogleAPIPull {
         var session = NSURLSession.sharedSession()
         var task = session.dataTaskWithURL(url!, completionHandler: { (urlData: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
             if let data = urlData {
-        
+                
                 var errorJSON: AutoreleasingUnsafeMutablePointer<NSError?> = nil
                 
                     let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: errorJSON) as? NSDictionary
                 
                 // Parse show content of NSDictionary
                     if (jsonResult != nil){
-                        if let allitems_wrapper = jsonResult["items"] as? NSArray{
-                            for item in allitems_wrapper {
-                                var ShowTitle = item["summary"] as! String
-                                var startTimeArray = (item["start"] as! NSDictionary)["dateTime"] as! String
-                                var startTime = self.prettifyTimeLabel(startTimeArray)[0]
-                                var date = self.prettifyTimeLabel(startTimeArray)[1] as String
-                                var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
-                                endTime = self.prettifyTimeLabel(endTime)[0]
-                                var ShowDJ: String
-                                if let DJ:String = item["description"] as? String {
-                                    ShowDJ = DJ
-                                }
-                                else {
-                                    ShowDJ = ""
-                                }
-                                var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
-                                show_arrays.append(show)
-                            }
-                            var lastLine = ShowHeader(titleString: "For more upcoming shows visit krlx.org", startString: "", endString: "", DJString: "", dateString: "")
-                            show_arrays.append(lastLine)
-                        }
-                        var newShowList = NSMutableArray(array: show_arrays)
+                        // Get array of show list by parsing JSON then make the show list global
+                        var newShowList = NSMutableArray(array: self.parseJsonGetShows(jsonResult))
                         self.appDelegate.loadedShowHeaders = newShowList
                         delegate.updateView()
+                    } else {
+                        // Handle error when json is nil
+                        println("Json is empty. Google API is not pulling or there is no show")
                     }
-                        
-                    else
-                    {
-                        //json is nil
-                    }
-            }
-                
-            else {
-                //urldata nil
+            } else {
+                // Handle error when urldata nil
+                println("No internet connection or Google API totally depreciated.")
             }
             })
+        //Continue with other tasks
         task.resume()
 
         }
@@ -112,18 +94,46 @@ class GoogleAPIPull {
         
     }
     
+        // Get current time in UTC and 7.5 days after time to substitute in the Google API String -> time return in format 2015-05-23T10%3A44%3A59Z
     func getStartEndScheduleTime () -> (curTime: String, endTime: String){
-        // Get current time in UTC to substitute in the Google API String
-        // timeMin=2015-05-23T10%3A44%3A59Z&timeZone=America%2FChicago
         let now = NSDate()
-        let nextWeek = NSDate().dateByAddingTimeInterval(60*60*24*7)//number of seconds in 7 days
+        let nextWeek = NSDate().dateByAddingTimeInterval(60*60*24*8)//number of seconds in 8 days (including today)
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH'%3A'mm'%3A'ss"
         dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
-        var dateStringNow = dateFormatter.stringFromDate(now) as String
-        var dateStringNextWeek = dateFormatter.stringFromDate(nextWeek) as String
+        var dateStringNow = dateFormatter.stringFromDate(now) as String //current time
+        var dateStringNextWeek = dateFormatter.stringFromDate(nextWeek) as String //this time next week
         
         return (dateStringNow, dateStringNextWeek)
     }
+    
+    // This helper function pass JSON from the main function, get show title, DJ, time
+    // Return show lists
+    func parseJsonGetShows(jsonResult: NSDictionary!) -> [ShowHeader]{
+        var show_arrays: [ShowHeader] = []
+        if let allitems_wrapper = jsonResult["items"] as? NSArray{
+            for item in allitems_wrapper {
+                var ShowTitle = item["summary"] as! String
+                var startTimeArray = (item["start"] as! NSDictionary)["dateTime"] as! String
+                var startTime = self.prettifyTimeLabel(startTimeArray)[0]
+                var date = self.prettifyTimeLabel(startTimeArray)[1] as String
+                var endTime = (item["end"] as! NSDictionary)["dateTime"] as! String
+                endTime = self.prettifyTimeLabel(endTime)[0]
+                var ShowDJ: String
+                if let DJ:String = item["description"] as? String {
+                    ShowDJ = DJ
+                }
+                else {
+                    ShowDJ = ""
+                }
+                var show = ShowHeader(titleString: ShowTitle, startString: startTime, endString: endTime, DJString: ShowDJ, dateString: date)
+                show_arrays.append(show)
+            }
+            var lastLine = ShowHeader(titleString: "For more upcoming shows visit krlx.org", startString: "", endString: "", DJString: "", dateString: "")
+            show_arrays.append(lastLine)
+        }
+        return show_arrays
+    }
+    
 
 }
